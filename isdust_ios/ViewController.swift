@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 
     @IBAction func Login(sender: AnyObject) {
         var mhttp=Http();
-        imageview.image=mhttp.get_picture("http://card.proxy.isdust.com:3100/getpasswdPhoto.action")
+   //     imageview.image=mhttp.get_picture("http://card.proxy.isdust.com:3100/getpasswdPhoto.action")
 //        var image : UIImage = UIImage(named:"yzm1.png")!
 //        //var image1:CIImage=image.CIImage
 //        var test=ImageProcess()

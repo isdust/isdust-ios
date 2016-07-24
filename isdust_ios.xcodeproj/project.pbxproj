@@ -29,6 +29,7 @@
 		751C360E1D44534C00A26D45 /* yzm8.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36041D44534C00A26D45 /* yzm8.png */; };
 		751C360F1D44534C00A26D45 /* yzm9.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36051D44534C00A26D45 /* yzm9.png */; };
 		751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C36101D445FEC00A26D45 /* ImageProcess.swift */; };
+		751C36131D44A5EC00A26D45 /* getpasswdPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36121D44A5EC00A26D45 /* getpasswdPhoto.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		751C36041D44534C00A26D45 /* yzm8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm8.png; path = Assets.xcassets/yzm8.png; sourceTree = "<group>"; };
 		751C36051D44534C00A26D45 /* yzm9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm9.png; path = Assets.xcassets/yzm9.png; sourceTree = "<group>"; };
 		751C36101D445FEC00A26D45 /* ImageProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcess.swift; sourceTree = "<group>"; };
+		751C36121D44A5EC00A26D45 /* getpasswdPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = getpasswdPhoto.png; path = Assets.xcassets/getpasswdPhoto.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 		751C35FB1D44533E00A26D45 /* yzm */ = {
 			isa = PBXGroup;
 			children = (
+				751C36121D44A5EC00A26D45 /* getpasswdPhoto.png */,
 				751C35FC1D44534C00A26D45 /* yzm0.png */,
 				751C35FD1D44534C00A26D45 /* yzm1.png */,
 				751C35FE1D44534C00A26D45 /* yzm2.png */,
@@ -328,6 +331,7 @@
 				751C360B1D44534C00A26D45 /* yzm5.png in Resources */,
 				751C360F1D44534C00A26D45 /* yzm9.png in Resources */,
 				751C36071D44534C00A26D45 /* yzm1.png in Resources */,
+				751C36131D44A5EC00A26D45 /* getpasswdPhoto.png in Resources */,
 				751C35BE1D4354B500A26D45 /* Assets.xcassets in Resources */,
 				751C35BC1D4354B500A26D45 /* Main.storyboard in Resources */,
 				751C36061D44534C00A26D45 /* yzm0.png in Resources */,

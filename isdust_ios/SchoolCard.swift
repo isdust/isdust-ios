@@ -8,23 +8,24 @@
 
 import Foundation
 class SchoolCard{
+    
     let location="http://card.proxy.isdust.com:3100/"
     var mhttp:Http
     var StandardPicture:[ImageProcess]
     init(){
         mhttp=Http()
+
         StandardPicture=[ImageProcess]()
-        for(var i=0;i<9;i++){
+        for(var i=0;i<10;i++){
             var temp=ImageProcess()
-            //temp.loadimage(UIImage(named:"yzm"+String(i)+".png")!)
-            //StandardPicture.append(temp)
-        
+            temp.loadimage(UIImage(named:"yzm"+String(i)+".png")!)
+            StandardPicture.append(temp)        
         }
     }
     func recognize(image:UIImage) -> Void {
         var tmp_image=ImageProcess();
         tmp_image.loadimage(image)
-        tmp_image.printbit()
+        tmp_image.binarize()
         var image_split:[ImageProcess]
         var image_split_detail:[CGRect]
         image_split_detail=[
@@ -40,15 +41,22 @@ class SchoolCard{
         CGRect(x: 10,y: 144,width: 23,height: 23)
         ]
         image_split=tmp_image.split(image_split_detail)
-        image_split[0].printbit()
+        for(var i=0;i<10;i++){
+        
+            image_split[i].printbit()
+            print("")
+        }
+        
         
         
     }
     func login(username:String,password:String) -> String {
+        
         recognize(mhttp.get_picture(location+"getpasswdPhoto.action"))
         
         return ""
     }
+    
     
 
 }
