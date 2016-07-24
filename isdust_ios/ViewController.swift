@@ -36,7 +36,10 @@ class ViewController: UIViewController {
 //        a.JumpToSelectClass()
 //        a.ScheduleLookup("1", year: "2016-2017", semester: "1")
         var test=SchoolCard()
+        //741852
         test.login("1501060225", password: "960826")
+        test.LookUpToday()
+        test.LookUpHistory("20160601", inputEndDate: "20160625", page: 1)
     }
 
  

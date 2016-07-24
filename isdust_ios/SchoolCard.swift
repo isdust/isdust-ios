@@ -8,11 +8,30 @@
 
 import Foundation
 class SchoolCard{
-    
+    struct PersonInfo{
+        var name:String=""
+        var identity:String=""//身份证
+        var classs:String=""
+        var schoolid:String=""//校园卡号码
+        var id:String=""
+        var password:String=""
+        var xuegongid:String=""
+        var balance_total:Float=0
+        var balance_split:[Float]=[Float]()
+    }
+    var mPersonInfo:PersonInfo=PersonInfo()
     let location="http://card.proxy.isdust.com:3100/"
     var mhttp:Http
     var StandardPicture:[ImageProcess]=[ImageProcess]()
-    var relation:[Int]=[Int]()
+    var relation:[Int]=[Int]()//密码映射关系
+    var mkey:String=""
+    
+    var page_total:Int=0;
+    var page_current:Int=0;
+    var day_current:String="";
+    var day_last:String="";
+    
+    //var PersonInfo:[String]=[String]()
     init(){
         mhttp=Http()
         for(var i=0;i<10;i++){
@@ -71,8 +90,167 @@ class SchoolCard{
         mhttp.setencoding(1)
         var mpassword=translate(password);
         var text_web=mhttp.post(location+"loginstudent.action", "name=" + username + "&userType=1&passwd=" + mpassword + "&loginType=2&rand=6520&imageField.x=39&imageField.y=10")
-        return ""
+        if(text_web.containsString("持卡人")){
+            mhttp.setencoding(0)
+            text_web=mhttp.get(location+"accountcardUser.action")
+            var expression="<div align=\"left\">([\\S\\s]*?)</div>"
+            var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpressionOptions.CaseInsensitive)
+            var res = regex.matchesInString(text_web, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, text_web.characters.count))
+            var temp_stuinfo=[String]()
+            
+            for(var i=0;i<res.count;i++){
+                let temp_string=(text_web as NSString).substringWithRange(res[i].rangeAtIndex(1))
+                temp_stuinfo.append(temp_string)
+            }
+            mPersonInfo=PersonInfo()
+            mPersonInfo.name=temp_stuinfo[0]
+            mPersonInfo.schoolid=temp_stuinfo[3]
+            mPersonInfo.id=temp_stuinfo[1]
+            mPersonInfo.classs=temp_stuinfo[13]
+            mPersonInfo.identity=temp_stuinfo[9]
+            mPersonInfo.xuegongid=temp_stuinfo[3]
+            mPersonInfo.password=password
+            expression="<td class=\"neiwen\">([-]*?[0-9]*.[0-9]*)元\\（卡余额\\）([-]*?[0-9]*.[0-9]*)元\\(当前过渡余额\\)([-]*?[0-9]*.[0-9]*)元\\(上次过渡余额\\)</td>"
+            regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpressionOptions.CaseInsensitive)
+            res = regex.matchesInString(text_web, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, text_web.characters.count))
+            mPersonInfo.balance_split.append(Float((text_web as NSString).substringWithRange(res[0].rangeAtIndex(1)))!)
+            mPersonInfo.balance_split.append(Float((text_web as NSString).substringWithRange(res[0].rangeAtIndex(2)))!)
+            mPersonInfo.balance_split.append(Float((text_web as NSString).substringWithRange(res[0].rangeAtIndex(3)))!)
+            mPersonInfo.balance_total=mPersonInfo.balance_split[0]+mPersonInfo.balance_split[1]
+            mkey=getkey()
+            return "登陆成功"
+        }else if(text_web.containsString("登陆失败，无此用户名称")){
+            return "无此用户名称"
+            
+        }else if(text_web.containsString("登陆失败，密码错误")){
+            return "密码错误"
+        }
+        return "未知错误"
+    }
+    func getkey() -> String {
+        mhttp.setencoding(1)
+        var text_web=mhttp.get(location+"accounthisTrjn.action")
+        var expression="\"/accounthisTrjn.action\\?__continue=([\\s\\S]*?)\""
+        var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpressionOptions.CaseInsensitive)
+        var res = regex.matchesInString(text_web, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, text_web.characters.count))
         
+        var key_init=(text_web as NSString).substringWithRange(res[0].rangeAtIndex(1))
+        text_web=mhttp.post(location+"accounthisTrjn.action?__continue="+key_init, "account="+mPersonInfo.id+"&inputObject=all&Submit=+%C8%B7+%B6%A8+")
+        res = regex.matchesInString(text_web, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, text_web.characters.count))
+        var result=(text_web as NSString).substringWithRange(res[0].rangeAtIndex(1))
+        return result
+        
+        
+    }
+    func LookUpHistory(inputStartDate:String,inputEndDate:String,page:Int) -> [[String]] {
+        mhttp.setencoding(1)
+        mkey=getkey()
+        var text_web = mhttp.post(location+"accounthisTrjn.action?__continue=" + mkey, "inputStartDate=" + inputStartDate + "&inputEndDate=" + inputEndDate + "&pageNum="+String(page))
+        
+        page_current=page;
+        day_current=inputStartDate;
+        var expression="<form id=\"\\?__continue=([\\S\\s]*?)\" name=\"form1\" "
+        var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpressionOptions.CaseInsensitive)
+        var res = regex.matchesInString(text_web, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, text_web.characters.count))
+        
+        var msearchkey=(text_web as NSString).substringWithRange(res[0].rangeAtIndex(1))
+        var result:[[String]]=AnalyzeHistory(mhttp.get(location+"accounthisTrjn.action?__continue=" + msearchkey))
+
+        return result
+        
+    }
+    
+    func AnalyzeHistory(text:String) -> [[String]] {
+        var result:[[String]]=[[String]]()
+        var expression="<tr class=\"listbg[\\s\\S]*?\">[\\s\\S]*?<td  align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td   align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"right\">([\\s\\S]*?)</td>[\\s\\S]*?<td align=\"right\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?</tr>"
+        var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpressionOptions.CaseInsensitive)
+        var res = regex.matchesInString(text, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, text.characters.count))
+        
+        for(var i=0;i<res.count;i++){
+            var temp:[String]=[String]()
+            for(var j=1;j<res[i].numberOfRanges;j++)
+            {
+                temp.append((text as NSString).substringWithRange(res[i].rangeAtIndex(j)))
+            }
+            result.append(temp)
+            
+        }
+        return result
+        
+        
+    }
+    func LookUpToday() -> [[String]] {
+        mhttp.setencoding(1)
+        var text_temp=mhttp.post(location+"accounttodatTrjnObject.action", "account=" + mPersonInfo.id + "&inputObject=all&Submit=+%C8%B7+%B6%A8+")
+        var result:[[String]]=AnalyzeToday(text_temp)
+        return result
+        
+    }
+    func AnalyzeToday(text:String) -> [[String]] {
+        var result:[[String]]=[[String]]()
+        var expression="<tr class=\"listbg[\\s\\S]*?\">[\\s\\S]*?<td  align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td   align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"right\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"right\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?</tr>"
+        
+        var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpressionOptions.CaseInsensitive)
+        var res = regex.matchesInString(text, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, text.characters.count))
+        
+        for(var i=0;i<res.count;i++){
+            var temp:[String]=[String]()
+            for(var j=1;j<res[i].numberOfRanges;j++)
+            {
+                temp.append((text as NSString).substringWithRange(res[i].rangeAtIndex(j)))
+            }
+            result.append(temp)
+            
+        }
+        return result
+        
+    }
+    
+    func LookUpHistoryNext(inputStartDate:String,inputEndDate:String,page:Int) -> [[String]] {
+        var text_web=mhttp.post(location+"accountconsubBrows.action", "inputStartDate="+inputStartDate+"&inputEndDate="+inputEndDate+"&pageNum="+String(page))
+        var result:[[String]]=AnalyzeHistory(text_web)
+        return result
+        
+    }
+    
+    func ChangePassword(oldpassword:String,newpassword:String,identity:String) -> String {
+        if(identity != mPersonInfo.identity){
+            return "身份证号码错误"
+        }
+        recognize(mhttp.get_picture(location+"getpasswdPhoto.action"))
+        var moldpassword=translate(oldpassword)
+        var mnewpassword=translate(newpassword)
+        var submit="account=" +  mPersonInfo.id + "&passwd=" + moldpassword + "&newpasswd="+mnewpassword + "&newpasswd2=" + mnewpassword
+        var text_web=mhttp.post(location+"accountDocpwd.action",submit)
+        if(text_web.containsString("操作成功")){
+            return "修改密码成功"
+            
+        }else if(text_web.containsString("密码错误")){
+            return "原始密码错误"
+            
+        }else if(text_web.containsString("本日业务已结束")){
+            return "本日业务已结束"
+        }
+        return "未知错误"
+    }
+    func ReportLoss(password:String,identity:String) -> String {
+        if(identity != mPersonInfo.identity){
+            return "身份证号码错误"
+        }
+        recognize(mhttp.get_picture(location+"getpasswdPhoto.action"))
+        var mpassword=translate(password)
+        var submit="account=" + mPersonInfo.id + "&passwd=" + mpassword
+        var text_web=mhttp.post(location+"accountDoLoss.action",submit)
+        if(text_web.containsString("持卡人已挂失")){
+            return "持卡人已挂失，无需再次挂失"
+            
+        }else if(text_web.containsString("密码错误")){
+            return "密码错误"
+            
+        }else if(text_web.containsString("操作成功")){
+            return "操作成功"
+        }
+        return "未知错误"
     }
     
     

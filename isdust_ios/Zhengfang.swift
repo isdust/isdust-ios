@@ -87,9 +87,7 @@ class Zhengfang{
     }
     func ScoreAnalyzeZhengfang(text:String) -> [[String]] {
         let expression = "<tr[\\s\\S]*?>[\\s\\S]*?<td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td>[\\S\\s]*?</tr>"
-        // - 2、创建正则表达式对象
         let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpressionOptions.CaseInsensitive)
-        // - 3、开始匹配
         var result=[[String]]();
         let res = regex.matchesInString(text, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, text.characters.count))
         for(var i=1;i<res.count;i++){
@@ -116,7 +114,7 @@ class Zhengfang{
         var result=[Kebiao]();
         let res = regex.matchesInString(text_web, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, text_web.characters.count))
         for(var i=0;i<res.count;i++){
-            print((text_web as NSString).substringWithRange(res[i].rangeAtIndex(0)))
+            //print((text_web as NSString).substringWithRange(res[i].rangeAtIndex(0)))
             for(var j=1;j<7;j++){
                 
                 
