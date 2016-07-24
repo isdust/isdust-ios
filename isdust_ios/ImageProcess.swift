@@ -152,6 +152,33 @@ class ImageProcess{
         
         }
              print("\n",terminator: "")
+        }
+        
     }
+    func recognize(standard:[ImageProcess]) -> Int {
+        var error_array=[Int]()
+        var min_index=0;
+        for(var i=0;i<10;i++){
+            var error=0;
+            for(var j=0;j<Int(rect.height);j++)
+            {
+                for(var k=0;k<Int(rect.width);k++)
+                {
+                    let offset = 4*((Int(rect.width) * Int(j)) + Int(k))
+                    if(data[offset+3] != standard[i].data[offset+3])
+                    {
+                        error++
+                    }
+                
+                }
+            
+            }
+            error_array.append(error)
+            if(error<error_array[min_index ]){
+                min_index=i;
+            }
+        }
+        return min_index;
+        
     }
 }
