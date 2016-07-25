@@ -12,8 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var test=Http()
-        
+
        // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -38,8 +37,9 @@ class ViewController: UIViewController {
         var test=SchoolCard()
         //741852
         test.login("1501060225", password: "960826")
-        test.LookUpToday()
-        test.LookUpHistory("20160601", inputEndDate: "20160625", page: 1)
+        var a=test.GetTransaction()
+//        test.LookUpToday()
+//        test.LookUpHistory("20160601", inputEndDate: "20160625", page: 1)
     }
 
  

@@ -19,3 +19,34 @@ struct Kebiao {
         kecheng=""
     }
 }
+struct Transaction{
+    var time:String
+    var address:String
+    var balance:String
+    var money:String
+    var detail:String
+    init(){
+        time=""
+        address=""
+        balance=""
+        money=""
+        detail=""
+    }
+    mutating func FormatFromString(data:[String]) {
+        detail = data[1]
+        address = data[2]
+        time = data[0]
+        balance = data[5]
+        money = data[4]
+        
+        let index=money.startIndex.advancedBy(0)
+        if(money[index]=="-"){
+            return
+        }
+        balance=String(Float(balance)!+Float(money)!)
+        
+    }
+    
+    
+    
+}

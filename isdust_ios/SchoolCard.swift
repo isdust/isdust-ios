@@ -19,6 +19,7 @@ class SchoolCard{
         var balance_total:Float=0
         var balance_split:[Float]=[Float]()
     }
+
     var mPersonInfo:PersonInfo=PersonInfo()
     let location="http://card.proxy.isdust.com:3100/"
     var mhttp:Http
@@ -31,6 +32,12 @@ class SchoolCard{
     var day_current:String="";
     var day_last:String="";
     
+    var date:NSDate
+    var DateFormatter:NSDateFormatter
+    let D_DAY:Double = 86400
+    
+    var flag_first=0
+    
     //var PersonInfo:[String]=[String]()
     init(){
         mhttp=Http()
@@ -39,6 +46,16 @@ class SchoolCard{
             temp.loadimage(UIImage(named:"yzm"+String(i)+".png")!)
             StandardPicture.append(temp)        
         }
+        DateFormatter=NSDateFormatter()
+        DateFormatter.dateFormat = "yyyyMMdd"
+        date=NSDate()
+    }
+    func day_minus() {
+        date=date.dateByAddingTimeInterval(-D_DAY*31)
+        
+    }
+    func day_get() -> String {
+        return DateFormatter.stringFromDate(date)
     }
     func recognize(image:UIImage) -> Void {
         var tmp_image=ImageProcess();
@@ -146,12 +163,11 @@ class SchoolCard{
         mhttp.setencoding(1)
         mkey=getkey()
         var text_web = mhttp.post(location+"accounthisTrjn.action?__continue=" + mkey, "inputStartDate=" + inputStartDate + "&inputEndDate=" + inputEndDate + "&pageNum="+String(page))
-        
-        page_current=page;
-        day_current=inputStartDate;
         var expression="<form id=\"\\?__continue=([\\S\\s]*?)\" name=\"form1\" "
         var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpressionOptions.CaseInsensitive)
         var res = regex.matchesInString(text_web, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, text_web.characters.count))
+        page_current=page;
+        day_current=inputStartDate;
         
         var msearchkey=(text_web as NSString).substringWithRange(res[0].rangeAtIndex(1))
         var result:[[String]]=AnalyzeHistory(mhttp.get(location+"accounthisTrjn.action?__continue=" + msearchkey))
@@ -175,12 +191,14 @@ class SchoolCard{
             result.append(temp)
             
         }
+        page_total = Int(mhttp.GetMiddleText(text, "&nbsp;&nbsp;共", "页&nbsp;&nbsp;"))!;
         return result
         
         
     }
     func LookUpToday() -> [[String]] {
         mhttp.setencoding(1)
+        page_current=0
         var text_temp=mhttp.post(location+"accounttodatTrjnObject.action", "account=" + mPersonInfo.id + "&inputObject=all&Submit=+%C8%B7+%B6%A8+")
         var result:[[String]]=AnalyzeToday(text_temp)
         return result
@@ -202,6 +220,8 @@ class SchoolCard{
             result.append(temp)
             
         }
+        page_total=0
+        
         return result
         
     }
@@ -251,6 +271,54 @@ class SchoolCard{
             return "操作成功"
         }
         return "未知错误"
+    }
+    func NextPage() -> [[String]] {
+        page_current=page_current+1
+        if (page_current>page_total){
+            
+            page_current=1
+            day_last=day_get()
+            day_minus()
+            day_current=day_get()
+            
+            return LookUpHistory(day_current,inputEndDate: day_last,page: page_current)
+        }
+        return LookUpHistoryNext(day_current, inputEndDate: day_last, page: page_current);
+    }
+    func ResetFlag()  {
+        flag_first=0
+        date=NSDate()
+    }
+    func GetTransaction() -> [Transaction] {
+        var result:[Transaction]=[Transaction]()
+        if(flag_first==0){
+            var data_today=LookUpToday()
+            var data_history=NextPage()
+            for i in data_today{
+                var temp_transaction:Transaction=Transaction()
+                temp_transaction.FormatFromString(i)
+                result.append(temp_transaction)
+            
+            }
+            for i in data_history{
+                var temp_transaction:Transaction=Transaction()
+                temp_transaction.FormatFromString(i)
+                result.append(temp_transaction)
+                
+            }
+            flag_first=1
+        
+        }else{
+            var data_history=NextPage()
+            for i in data_history{
+                var temp_transaction:Transaction=Transaction()
+                temp_transaction.FormatFromString(i)
+                result.append(temp_transaction)
+                
+            }
+        
+        }
+        return result
     }
     
     
