@@ -286,15 +286,18 @@
 					751C35B21D4354B500A26D45 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 26E6MT4ZVS;
+						LastSwiftMigration = 0800;
 					};
 					751C35C61D4354B500A26D45 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 26E6MT4ZVS;
+						LastSwiftMigration = 0800;
 						TestTargetID = 751C35B21D4354B500A26D45;
 					};
 					751C35D11D4354B500A26D45 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 26E6MT4ZVS;
+						LastSwiftMigration = 0800;
 						TestTargetID = 751C35B21D4354B500A26D45;
 					};
 				};
@@ -517,6 +520,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "isdust_ios/isdust_ios-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -530,6 +534,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.isdust-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "isdust_ios/isdust_ios-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -541,6 +546,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.isdust-iosTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/isdust_ios.app/isdust_ios";
 			};
 			name = Debug;
@@ -553,6 +559,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.isdust-iosTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/isdust_ios.app/isdust_ios";
 			};
 			name = Release;
@@ -564,6 +571,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.isdust-iosUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = isdust_ios;
 			};
 			name = Debug;
@@ -575,6 +583,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.isdust-iosUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = isdust_ios;
 			};
 			name = Release;
@@ -598,6 +607,7 @@
 				751C35DD1D4354B500A26D45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		751C35DE1D4354B500A26D45 /* Build configuration list for PBXNativeTarget "isdust_iosTests" */ = {
 			isa = XCConfigurationList;
@@ -606,6 +616,7 @@
 				751C35E01D4354B500A26D45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		751C35E11D4354B500A26D45 /* Build configuration list for PBXNativeTarget "isdust_iosUITests" */ = {
 			isa = XCConfigurationList;
@@ -614,6 +625,7 @@
 				751C35E31D4354B500A26D45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

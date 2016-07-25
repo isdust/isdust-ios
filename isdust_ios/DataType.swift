@@ -32,14 +32,14 @@ struct Transaction{
         money=""
         detail=""
     }
-    mutating func FormatFromString(data:[String]) {
+    mutating func FormatFromString(_ data:[String]) {
         detail = data[1]
         address = data[2]
         time = data[0]
         balance = data[5]
         money = data[4]
         
-        let index=money.startIndex.advancedBy(0)
+        let index=money.index(money.startIndex, offsetBy: 0)
         if(money[index]=="-"){
             return
         }

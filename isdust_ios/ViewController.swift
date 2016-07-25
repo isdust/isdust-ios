@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func Login(sender: AnyObject) {
+    @IBAction func Login(_ sender: AnyObject) {
         var mhttp=Http();
         imageview.image=mhttp.get_picture("http://card.proxy.isdust.com:3100/getpasswdPhoto.action")
 //        var image : UIImage = UIImage(named:"yzm1.png")!
