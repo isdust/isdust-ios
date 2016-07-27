@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A499BC93DECD93BA1E45A4BD42A6C5799107088A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8092C8C7FB5C3FF769ACA4A4D09F354B1F39375F" : 0,
+    "A499BC93DECD93BA1E45A4BD42A6C5799107088A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "738FA07F-459F-4FBC-9D20-F61693C30950",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8092C8C7FB5C3FF769ACA4A4D09F354B1F39375F" : "..\/OpenSSL-for-iPhone",
+    "A499BC93DECD93BA1E45A4BD42A6C5799107088A" : "isdust_ios\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "isdust_ios",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "isdust_ios.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/x2on\/OpenSSL-for-iPhone",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8092C8C7FB5C3FF769ACA4A4D09F354B1F39375F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/qq960826\/isdust_ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A499BC93DECD93BA1E45A4BD42A6C5799107088A"
+    }
+  ]
+}

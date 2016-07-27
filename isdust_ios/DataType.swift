@@ -12,11 +12,15 @@ struct Kebiao {
     var xingqi:String
     var jieci:String
     var kecheng:String
+    var location:String
+    var teacher:String
     init(){
         zhoushu=""
         xingqi=""
         jieci=""
         kecheng=""
+        location=""
+        teacher=""
     }
 }
 struct Transaction{

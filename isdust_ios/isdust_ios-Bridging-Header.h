@@ -4,3 +4,5 @@
 
 #import "Http.h"
 
+char* openssl_rsa_encrypt(char* data);
+char* openssl_md5(char *data);

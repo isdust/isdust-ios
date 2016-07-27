@@ -66,7 +66,7 @@
     dispatch_semaphore_t    sem;
     sem = dispatch_semaphore_create(0);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:murl];
-    NSLog(data);
+    //NSLog(data);
     request.HTTPBody = [data dataUsingEncoding:enc2];
     
     request.HTTPMethod = @"POST";

@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //var a=String()
+//        print(b)
+
        // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -34,12 +37,16 @@ class ViewController: UIViewController {
 //        a.Login("201501060225", password: "960826wang")
 //        a.JumpToSelectClass()
 //        a.ScheduleLookup("1", year: "2016-2017", semester: "1")
-        var test=SchoolCard()
-        //741852
-        test.login("1501060225", password: "960826")
-        var a=test.GetTransaction()
+//        var test=SchoolCard()
+//        //741852
+//        test.login("1501060225", password: "960826")
+//        var a=test.GetTransaction()
 //        test.LookUpToday()
 //        test.LookUpHistory("20160601", inputEndDate: "20160625", page: 1)
+        
+        
+        var c=EmptyClassroom()
+        c.getEmptyClassroom(building: "J7", schooldate: 2, week: 2, jieci: 2)
     }
 
  

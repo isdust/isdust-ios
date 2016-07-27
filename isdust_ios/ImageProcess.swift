@@ -181,4 +181,7 @@ class ImageProcess{
         return min_index;
         
     }
+    deinit{
+    free(data)
+    }
 }

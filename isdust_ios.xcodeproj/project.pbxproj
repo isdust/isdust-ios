@@ -29,7 +29,10 @@
 		751C360E1D44534C00A26D45 /* yzm8.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36041D44534C00A26D45 /* yzm8.png */; };
 		751C360F1D44534C00A26D45 /* yzm9.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36051D44534C00A26D45 /* yzm9.png */; };
 		751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C36101D445FEC00A26D45 /* ImageProcess.swift */; };
-		751C36131D44A5EC00A26D45 /* getpasswdPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36121D44A5EC00A26D45 /* getpasswdPhoto.png */; };
+		75985B2D1D46784600388278 /* rsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 75985B2B1D46784600388278 /* rsa.c */; };
+		75F675EA1D4903A4004164D0 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F675E81D4903A4004164D0 /* libcrypto.a */; };
+		75F675EB1D4903A4004164D0 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F675E91D4903A4004164D0 /* libssl.a */; };
+		75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F675ED1D490D58004164D0 /* EmptyClassroom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +83,18 @@
 		751C36041D44534C00A26D45 /* yzm8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm8.png; path = Assets.xcassets/yzm8.png; sourceTree = "<group>"; };
 		751C36051D44534C00A26D45 /* yzm9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm9.png; path = Assets.xcassets/yzm9.png; sourceTree = "<group>"; };
 		751C36101D445FEC00A26D45 /* ImageProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcess.swift; sourceTree = "<group>"; };
-		751C36121D44A5EC00A26D45 /* getpasswdPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = getpasswdPhoto.png; path = Assets.xcassets/getpasswdPhoto.png; sourceTree = "<group>"; };
+		75985B2B1D46784600388278 /* rsa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa.c; sourceTree = "<group>"; };
+		75985B2C1D46784600388278 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
+		75F675DC1D48FCB4004164D0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
+		75F675DE1D48FCE1004164D0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = lib/libssl.a; sourceTree = "<group>"; };
+		75F675E01D49015F004164D0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../OpenSSL-for-iPhone/lib/libcrypto.a"; sourceTree = "<group>"; };
+		75F675E21D490173004164D0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../OpenSSL-for-iPhone/lib/libssl.a"; sourceTree = "<group>"; };
+		75F675E41D4902FC004164D0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/lib/libcrypto.a; sourceTree = DEVELOPER_DIR; };
+		75F675E51D4902FC004164D0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/lib/libssl.a; sourceTree = DEVELOPER_DIR; };
+		75F675E81D4903A4004164D0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../OpenSSL-for-iPhone/bin/iPhoneSimulator9.3-x86_64.sdk/lib/libcrypto.a"; sourceTree = "<group>"; };
+		75F675E91D4903A4004164D0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../OpenSSL-for-iPhone/bin/iPhoneSimulator9.3-x86_64.sdk/lib/libssl.a"; sourceTree = "<group>"; };
+		75F675EC1D4905F0004164D0 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		75F675ED1D490D58004164D0 /* EmptyClassroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyClassroom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75F675EA1D4903A4004164D0 /* libcrypto.a in Frameworks */,
+				75F675EB1D4903A4004164D0 /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +131,7 @@
 				751C35CA1D4354B500A26D45 /* isdust_iosTests */,
 				751C35D51D4354B500A26D45 /* isdust_iosUITests */,
 				751C35B41D4354B500A26D45 /* Products */,
+				75F675DB1D48FCB4004164D0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,7 +185,10 @@
 				751C35E91D43551000A26D45 /* Module */,
 				751C35E51D4354DF00A26D45 /* Http.h */,
 				751C35E71D4354F600A26D45 /* Http.m */,
+				75F675EC1D4905F0004164D0 /* base64.h */,
 				751C35E61D4354F500A26D45 /* isdust_ios-Bridging-Header.h */,
+				75985B2B1D46784600388278 /* rsa.c */,
+				75985B2C1D46784600388278 /* rsa.h */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -179,6 +199,7 @@
 				751C35EA1D43551D00A26D45 /* Zhengfang.swift */,
 				751C35EF1D4446E900A26D45 /* SchoolCard.swift */,
 				751C36101D445FEC00A26D45 /* ImageProcess.swift */,
+				75F675ED1D490D58004164D0 /* EmptyClassroom.swift */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -202,7 +223,6 @@
 		751C35FB1D44533E00A26D45 /* yzm */ = {
 			isa = PBXGroup;
 			children = (
-				751C36121D44A5EC00A26D45 /* getpasswdPhoto.png */,
 				751C35FC1D44534C00A26D45 /* yzm0.png */,
 				751C35FD1D44534C00A26D45 /* yzm1.png */,
 				751C35FE1D44534C00A26D45 /* yzm2.png */,
@@ -215,6 +235,21 @@
 				751C36051D44534C00A26D45 /* yzm9.png */,
 			);
 			name = yzm;
+			sourceTree = "<group>";
+		};
+		75F675DB1D48FCB4004164D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75F675E81D4903A4004164D0 /* libcrypto.a */,
+				75F675E91D4903A4004164D0 /* libssl.a */,
+				75F675E41D4902FC004164D0 /* libcrypto.a */,
+				75F675E51D4902FC004164D0 /* libssl.a */,
+				75F675E21D490173004164D0 /* libssl.a */,
+				75F675E01D49015F004164D0 /* libcrypto.a */,
+				75F675DE1D48FCE1004164D0 /* libssl.a */,
+				75F675DC1D48FCB4004164D0 /* libcrypto.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,7 +369,6 @@
 				751C360B1D44534C00A26D45 /* yzm5.png in Resources */,
 				751C360F1D44534C00A26D45 /* yzm9.png in Resources */,
 				751C36071D44534C00A26D45 /* yzm1.png in Resources */,
-				751C36131D44A5EC00A26D45 /* getpasswdPhoto.png in Resources */,
 				751C35BE1D4354B500A26D45 /* Assets.xcassets in Resources */,
 				751C35BC1D4354B500A26D45 /* Main.storyboard in Resources */,
 				751C36061D44534C00A26D45 /* yzm0.png in Resources */,
@@ -368,7 +402,9 @@
 				751C35B91D4354B500A26D45 /* ViewController.swift in Sources */,
 				751C35F01D4446E900A26D45 /* SchoolCard.swift in Sources */,
 				751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */,
+				75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */,
 				751C35EE1D44383900A26D45 /* DataType.swift in Sources */,
+				75985B2D1D46784600388278 /* rsa.c in Sources */,
 				751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */,
 				751C35EB1D43551D00A26D45 /* Zhengfang.swift in Sources */,
 				751C35E81D4354F600A26D45 /* Http.m in Sources */,
@@ -512,12 +548,17 @@
 		751C35DC1D4354B500A26D45 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = "include/**";
+				"HEADER_SEARCH_PATHS[arch=*]" = "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/include";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.isdust-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "isdust_ios/isdust_ios-Bridging-Header.h";
@@ -529,12 +570,16 @@
 		751C35DD1D4354B500A26D45 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = "include/**";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.isdust-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "isdust_ios/isdust_ios-Bridging-Header.h";
