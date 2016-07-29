@@ -29,6 +29,9 @@
 		751C360E1D44534C00A26D45 /* yzm8.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36041D44534C00A26D45 /* yzm8.png */; };
 		751C360F1D44534C00A26D45 /* yzm9.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36051D44534C00A26D45 /* yzm9.png */; };
 		751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C36101D445FEC00A26D45 /* ImageProcess.swift */; };
+		7521C52E1D4A5CFB001E0CC0 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C52D1D4A5CFB001E0CC0 /* Library.swift */; };
+		7521C5341D4AF459001E0CC0 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5321D4AF459001E0CC0 /* SWXMLHash.swift */; };
+		7521C5351D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5331D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift */; };
 		75985B2D1D46784600388278 /* rsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 75985B2B1D46784600388278 /* rsa.c */; };
 		75F675EA1D4903A4004164D0 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F675E81D4903A4004164D0 /* libcrypto.a */; };
 		75F675EB1D4903A4004164D0 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F675E91D4903A4004164D0 /* libssl.a */; };
@@ -83,6 +86,10 @@
 		751C36041D44534C00A26D45 /* yzm8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm8.png; path = Assets.xcassets/yzm8.png; sourceTree = "<group>"; };
 		751C36051D44534C00A26D45 /* yzm9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm9.png; path = Assets.xcassets/yzm9.png; sourceTree = "<group>"; };
 		751C36101D445FEC00A26D45 /* ImageProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcess.swift; sourceTree = "<group>"; };
+		7521C52D1D4A5CFB001E0CC0 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		7521C5311D4AF459001E0CC0 /* SWXMLHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWXMLHash.h; path = SWXMLHash/SWXMLHash.h; sourceTree = "<group>"; };
+		7521C5321D4AF459001E0CC0 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWXMLHash.swift; path = SWXMLHash/SWXMLHash.swift; sourceTree = "<group>"; };
+		7521C5331D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SWXMLHash+TypeConversion.swift"; path = "SWXMLHash/SWXMLHash+TypeConversion.swift"; sourceTree = "<group>"; };
 		75985B2B1D46784600388278 /* rsa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa.c; sourceTree = "<group>"; };
 		75985B2C1D46784600388278 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
 		75F675DC1D48FCB4004164D0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
@@ -181,6 +188,7 @@
 		751C35E41D4354D000A26D45 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				7521C52F1D4AF444001E0CC0 /* Library */,
 				751C35EC1D44382500A26D45 /* Data */,
 				751C35E91D43551000A26D45 /* Module */,
 				751C35E51D4354DF00A26D45 /* Http.h */,
@@ -200,6 +208,7 @@
 				751C35EF1D4446E900A26D45 /* SchoolCard.swift */,
 				751C36101D445FEC00A26D45 /* ImageProcess.swift */,
 				75F675ED1D490D58004164D0 /* EmptyClassroom.swift */,
+				7521C52D1D4A5CFB001E0CC0 /* Library.swift */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -235,6 +244,24 @@
 				751C36051D44534C00A26D45 /* yzm9.png */,
 			);
 			name = yzm;
+			sourceTree = "<group>";
+		};
+		7521C52F1D4AF444001E0CC0 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				7521C5301D4AF44D001E0CC0 /* SWXMLHash */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		7521C5301D4AF44D001E0CC0 /* SWXMLHash */ = {
+			isa = PBXGroup;
+			children = (
+				7521C5311D4AF459001E0CC0 /* SWXMLHash.h */,
+				7521C5321D4AF459001E0CC0 /* SWXMLHash.swift */,
+				7521C5331D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift */,
+			);
+			name = SWXMLHash;
 			sourceTree = "<group>";
 		};
 		75F675DB1D48FCB4004164D0 /* Frameworks */ = {
@@ -401,11 +428,14 @@
 			files = (
 				751C35B91D4354B500A26D45 /* ViewController.swift in Sources */,
 				751C35F01D4446E900A26D45 /* SchoolCard.swift in Sources */,
+				7521C5341D4AF459001E0CC0 /* SWXMLHash.swift in Sources */,
 				751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */,
 				75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */,
 				751C35EE1D44383900A26D45 /* DataType.swift in Sources */,
 				75985B2D1D46784600388278 /* rsa.c in Sources */,
+				7521C5351D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift in Sources */,
 				751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */,
+				7521C52E1D4A5CFB001E0CC0 /* Library.swift in Sources */,
 				751C35EB1D43551D00A26D45 /* Zhengfang.swift in Sources */,
 				751C35E81D4354F600A26D45 /* Http.m in Sources */,
 			);

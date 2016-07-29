@@ -51,6 +51,22 @@ struct Transaction{
         
     }
     
-    
-    
+}
+struct Book{
+    var name:String;
+    var writer:String;
+    var publisher:String;
+    var publishedday:String;
+    var bookrecno:String;
+    var ISBN:String;
+    var Suoshuhao:String;
+    init(){
+        name=""
+        writer=""
+        publisher=""
+        publishedday=""
+        bookrecno=""
+        ISBN=""
+        Suoshuhao=""
+    }
 }

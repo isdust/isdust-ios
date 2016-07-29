@@ -33,11 +33,24 @@ class EmptyClassroom{
         var submit=rsa_encrypt(data: submit_pre)
         var mmd5_2=md5(data: submit+"dsfwedsdv"+time).lowercased()
         submit=mhttp.postencode(submit)
-        
         var text_web=mhttp.post("http://kzxs.isdust.com/chaxun_new.php","data="+submit+"&verification="+mmd5_2+"&time="+time)
         
+        return analyze(text_web: text_web!)
+    }
+    func analyze(text_web:String) -> [Kebiao] {
+        var result=[Kebiao]()
+        let data = text_web.data(using: String.Encoding.utf8) //data  是json格式字符串
+        let json = try? JSONSerialization.jsonObject(with: data!)
+        for i in json as? [AnyObject] ?? []{
+            var temp=Kebiao()
+            temp.location=i["location"] as! String
+            temp.zhoushu=i["zhoushu"] as! String
+            temp.xingqi=String( i["xingqi"] as! Int)
+            temp.jieci=String(i["jieci"] as! Int)
+            result.append(temp)
         
-        return [Kebiao]()
+        }
+        return result
     }
     
     
