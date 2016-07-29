@@ -28,7 +28,7 @@ class Zhengfang{
         var submit="_VIEWSTATE=" + VIEWSTATE! + "&TextBox1=" + username + "&TextBox2=" + mhttp.postencode(password)
         submit=submit+"&RadioButtonList1=%d1%a7%c9%fa&Button1=++%b5%c7%c2%bc++"
         text_web=mhttp.post(location_zhengfang+"default_ysdx.aspx",submit)
-        if((text_web?.contains("<script>window.open('xs_main.aspx?xh=2")) != nil){
+        if((text_web?.contains("<script>window.open('xs_main.aspx?xh=2")) == true){
             var url_login_zhengfang=mhttp.getMiddleText(text_web,  "<script>window.open('","','_parent');</script>")
             url_login_zhengfang=location_zhengfang+url_login_zhengfang!;
             text_web=mhttp.get(url_login_zhengfang)
@@ -41,11 +41,11 @@ class Zhengfang{
             
         
         }
-        else if((text_web?.contains("密码错误")) != nil){
+        else if((text_web?.contains("密码错误")) == true){
             return "密码错误"
         
         }
-        else if((text_web?.contains("用户名不存在")) != nil){
+        else if((text_web?.contains("用户名不存在")) == true){
             return "用户名不存在"
             
         }

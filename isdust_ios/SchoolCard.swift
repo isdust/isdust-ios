@@ -107,7 +107,7 @@ class SchoolCard{
         mhttp.setencoding(1)
         var mpassword=translate(password);
         var text_web=mhttp.post(location+"loginstudent.action", "name=" + username + "&userType=1&passwd=" + mpassword + "&loginType=2&rand=6520&imageField.x=39&imageField.y=10")
-        if((text_web?.contains("持卡人")) != nil){
+        if((text_web?.contains("持卡人")) == true){
             mhttp.setencoding(0)
             text_web=mhttp.get(location+"accountcardUser.action")
             var expression="<div align=\"left\">([\\S\\s]*?)</div>"
@@ -137,10 +137,10 @@ class SchoolCard{
             mPersonInfo.balance_total=mPersonInfo.balance_split[0]+mPersonInfo.balance_split[1]
             mkey=getkey()
             return "登陆成功"
-        }else if((text_web?.contains("登陆失败，无此用户名称")) != nil){
+        }else if((text_web?.contains("登陆失败，无此用户名称")) == true){
             return "无此用户名称"
             
-        }else if((text_web?.contains("登陆失败，密码错误")) != nil){
+        }else if((text_web?.contains("登陆失败，密码错误")) == true){
             return "密码错误"
         }
         return "未知错误"
@@ -243,13 +243,13 @@ class SchoolCard{
         let mnewpassword=translate(newpassword)
         let submit="account=" +  mPersonInfo.id + "&passwd=" + moldpassword + "&newpasswd="+mnewpassword + "&newpasswd2=" + mnewpassword
         let text_web=mhttp.post(location+"accountDocpwd.action",submit)
-        if((text_web?.contains("操作成功")) != nil){
+        if((text_web?.contains("操作成功")) == true){
             return "修改密码成功"
             
-        }else if((text_web?.contains("密码错误")) != nil){
+        }else if((text_web?.contains("密码错误")) == true){
             return "原始密码错误"
             
-        }else if((text_web?.contains("本日业务已结束")) != nil){
+        }else if((text_web?.contains("本日业务已结束")) == true){
             return "本日业务已结束"
         }
         return "未知错误"
@@ -262,13 +262,13 @@ class SchoolCard{
         let mpassword=translate(password)
         let submit="account=" + mPersonInfo.id + "&passwd=" + mpassword
         let text_web=mhttp.post(location+"accountDoLoss.action",submit)
-        if((text_web?.contains("持卡人已挂失")) != nil){
+        if((text_web?.contains("持卡人已挂失")) == true){
             return "持卡人已挂失，无需再次挂失"
             
-        }else if((text_web?.contains("密码错误")) != nil){
+        }else if((text_web?.contains("密码错误")) == true){
             return "密码错误"
             
-        }else if((text_web?.contains("操作成功")) != nil){
+        }else if((text_web?.contains("操作成功")) == true){
             return "操作成功"
         }
         return "未知错误"
