@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B61D4354B500A26D45 /* AppDelegate.swift */; };
-		751C35B91D4354B500A26D45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B81D4354B500A26D45 /* ViewController.swift */; };
+		751C35B91D4354B500A26D45 /* ViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B81D4354B500A26D45 /* ViewMain.swift */; };
 		751C35BC1D4354B500A26D45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751C35BA1D4354B500A26D45 /* Main.storyboard */; };
 		751C35BE1D4354B500A26D45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 751C35BD1D4354B500A26D45 /* Assets.xcassets */; };
 		751C35C11D4354B500A26D45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751C35BF1D4354B500A26D45 /* LaunchScreen.storyboard */; };
@@ -32,9 +32,11 @@
 		7521C52E1D4A5CFB001E0CC0 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C52D1D4A5CFB001E0CC0 /* Library.swift */; };
 		7521C5341D4AF459001E0CC0 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5321D4AF459001E0CC0 /* SWXMLHash.swift */; };
 		7521C5351D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5331D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift */; };
+		7521C5421D4D9D34001E0CC0 /* ViewSchoolCardMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5411D4D9D34001E0CC0 /* ViewSchoolCardMain.swift */; };
+		7521C5441D4DA2ED001E0CC0 /* ViewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */; };
+		754043DA1D502EC700F6B957 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754043D21D502DB800F6B957 /* libcrypto.a */; };
+		754043DB1D502EC700F6B957 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754043D31D502DB800F6B957 /* libssl.a */; };
 		75985B2D1D46784600388278 /* rsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 75985B2B1D46784600388278 /* rsa.c */; };
-		75F675EA1D4903A4004164D0 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F675E81D4903A4004164D0 /* libcrypto.a */; };
-		75F675EB1D4903A4004164D0 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75F675E91D4903A4004164D0 /* libssl.a */; };
 		75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F675ED1D490D58004164D0 /* EmptyClassroom.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +60,7 @@
 /* Begin PBXFileReference section */
 		751C35B31D4354B500A26D45 /* isdust_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = isdust_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		751C35B61D4354B500A26D45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		751C35B81D4354B500A26D45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		751C35B81D4354B500A26D45 /* ViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMain.swift; sourceTree = "<group>"; };
 		751C35BB1D4354B500A26D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		751C35BD1D4354B500A26D45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		751C35C01D4354B500A26D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -90,6 +92,12 @@
 		7521C5311D4AF459001E0CC0 /* SWXMLHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWXMLHash.h; path = SWXMLHash/SWXMLHash.h; sourceTree = "<group>"; };
 		7521C5321D4AF459001E0CC0 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWXMLHash.swift; path = SWXMLHash/SWXMLHash.swift; sourceTree = "<group>"; };
 		7521C5331D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SWXMLHash+TypeConversion.swift"; path = "SWXMLHash/SWXMLHash+TypeConversion.swift"; sourceTree = "<group>"; };
+		7521C53B1D4B3317001E0CC0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = isdust_ios/libcrypto.a; sourceTree = "<group>"; };
+		7521C53D1D4B333A001E0CC0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = isdust_ios/libssl.a; sourceTree = "<group>"; };
+		7521C5411D4D9D34001E0CC0 /* ViewSchoolCardMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolCardMain.swift; sourceTree = "<group>"; };
+		7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLogin.swift; sourceTree = "<group>"; };
+		754043D21D502DB800F6B957 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = isdust_ios/openssl/arm/libcrypto.a; sourceTree = "<group>"; };
+		754043D31D502DB800F6B957 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = isdust_ios/openssl/arm/libssl.a; sourceTree = "<group>"; };
 		75985B2B1D46784600388278 /* rsa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa.c; sourceTree = "<group>"; };
 		75985B2C1D46784600388278 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
 		75F675DC1D48FCB4004164D0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
@@ -109,8 +117,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75F675EA1D4903A4004164D0 /* libcrypto.a in Frameworks */,
-				75F675EB1D4903A4004164D0 /* libssl.a in Frameworks */,
+				754043DA1D502EC700F6B957 /* libcrypto.a in Frameworks */,
+				754043DB1D502EC700F6B957 /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,11 +163,11 @@
 		751C35B51D4354B500A26D45 /* isdust_ios */ = {
 			isa = PBXGroup;
 			children = (
+				7521C5381D4B321C001E0CC0 /* Controller */,
+				7521C5371D4B31F5001E0CC0 /* View */,
 				751C35F41D444FD700A26D45 /* Resource */,
 				751C35E41D4354D000A26D45 /* System */,
 				751C35B61D4354B500A26D45 /* AppDelegate.swift */,
-				751C35B81D4354B500A26D45 /* ViewController.swift */,
-				751C35BA1D4354B500A26D45 /* Main.storyboard */,
 				751C35BD1D4354B500A26D45 /* Assets.xcassets */,
 				751C35BF1D4354B500A26D45 /* LaunchScreen.storyboard */,
 				751C35C21D4354B500A26D45 /* Info.plist */,
@@ -191,12 +199,6 @@
 				7521C52F1D4AF444001E0CC0 /* Library */,
 				751C35EC1D44382500A26D45 /* Data */,
 				751C35E91D43551000A26D45 /* Module */,
-				751C35E51D4354DF00A26D45 /* Http.h */,
-				751C35E71D4354F600A26D45 /* Http.m */,
-				75F675EC1D4905F0004164D0 /* base64.h */,
-				751C35E61D4354F500A26D45 /* isdust_ios-Bridging-Header.h */,
-				75985B2B1D46784600388278 /* rsa.c */,
-				75985B2C1D46784600388278 /* rsa.h */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -204,6 +206,12 @@
 		751C35E91D43551000A26D45 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				751C35E51D4354DF00A26D45 /* Http.h */,
+				751C35E71D4354F600A26D45 /* Http.m */,
+				75F675EC1D4905F0004164D0 /* base64.h */,
+				751C35E61D4354F500A26D45 /* isdust_ios-Bridging-Header.h */,
+				75985B2B1D46784600388278 /* rsa.c */,
+				75985B2C1D46784600388278 /* rsa.h */,
 				751C35EA1D43551D00A26D45 /* Zhengfang.swift */,
 				751C35EF1D4446E900A26D45 /* SchoolCard.swift */,
 				751C36101D445FEC00A26D45 /* ImageProcess.swift */,
@@ -264,9 +272,31 @@
 			name = SWXMLHash;
 			sourceTree = "<group>";
 		};
+		7521C5371D4B31F5001E0CC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				751C35BA1D4354B500A26D45 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7521C5381D4B321C001E0CC0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				751C35B81D4354B500A26D45 /* ViewMain.swift */,
+				7521C5411D4D9D34001E0CC0 /* ViewSchoolCardMain.swift */,
+				7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		75F675DB1D48FCB4004164D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				754043D21D502DB800F6B957 /* libcrypto.a */,
+				754043D31D502DB800F6B957 /* libssl.a */,
+				7521C53D1D4B333A001E0CC0 /* libssl.a */,
+				7521C53B1D4B3317001E0CC0 /* libcrypto.a */,
 				75F675E81D4903A4004164D0 /* libcrypto.a */,
 				75F675E91D4903A4004164D0 /* libssl.a */,
 				75F675E41D4902FC004164D0 /* libcrypto.a */,
@@ -426,13 +456,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751C35B91D4354B500A26D45 /* ViewController.swift in Sources */,
+				751C35B91D4354B500A26D45 /* ViewMain.swift in Sources */,
 				751C35F01D4446E900A26D45 /* SchoolCard.swift in Sources */,
 				7521C5341D4AF459001E0CC0 /* SWXMLHash.swift in Sources */,
+				7521C5421D4D9D34001E0CC0 /* ViewSchoolCardMain.swift in Sources */,
 				751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */,
 				75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */,
 				751C35EE1D44383900A26D45 /* DataType.swift in Sources */,
 				75985B2D1D46784600388278 /* rsa.c in Sources */,
+				7521C5441D4DA2ED001E0CC0 /* ViewLogin.swift in Sources */,
 				7521C5351D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift in Sources */,
 				751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */,
 				7521C52E1D4A5CFB001E0CC0 /* Library.swift in Sources */,
@@ -529,7 +561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -568,8 +600,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -581,6 +614,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				"HEADER_SEARCH_PATHS[arch=*]" = "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/include";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -588,6 +622,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
+					"$(PROJECT_DIR)/isdust_ios",
+					"$(PROJECT_DIR)/isdust_ios/openssl/arm",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.isdust-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -603,12 +639,15 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = isdust_ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
+					"$(PROJECT_DIR)/isdust_ios",
+					"$(PROJECT_DIR)/isdust_ios/openssl/arm",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.isdust-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";

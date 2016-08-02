@@ -7,16 +7,10 @@
 //
 
 import UIKit
-class ViewController: UIViewController {
+class ViewMain: UIViewController {
     @IBOutlet weak var imageview: UIImageView!
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //var a=String()
-//        print(b)
-
-       // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
