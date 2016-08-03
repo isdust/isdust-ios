@@ -8,33 +8,163 @@
 
 import UIKit
 
-class ViewSchoolCardMain: UIViewController {
+class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var UITableView_detail: UITableView!
+    var purchase_detail:[[String]]=[[String]]()
+    var purchase_section:[String]=[String]()
+    var loadingData = false
+
+    var refreshControl = UIRefreshControl()
     var mschoolcard:SchoolCard!
     let key_user="schoolcard_user"
     let key_password="schoolcard_password"
-    
+    var loadMoreText = UILabel()
     //for multi-thread
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+
     var serialQueue:DispatchQueue!
-    var thread_user:String=""
-    var thread_password:String=""
-  
+    var thread_user:String?
+    var thread_password:String?
+    func refreshData()  {
+        serialQueue.async(execute: thread_getdetail)
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var total:Float=0
+        
+        for i in purchase_detail{
+            if(i[0].contains(self.purchase_section[section ])==true){
+                total+=Float(i[4])!
+            }
+        
+        }
+        
+        
+        return self.purchase_section[section ] + "     收入:" + String(total)
+        
+    }
+    
+func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        
+        return self.purchase_section.count
+        
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var count=0
+        for i in purchase_detail{
+            if(i[0].contains(purchase_section[section])==true){
+                count+=1
+            }
+        
+        }
+        
+        return count
+    }
+//    func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int
+//    {
+//        return purchase_detail.count
+//    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if !loadingData && indexPath.section == purchase_section.count - 1 {
+            spinner.startAnimating()
+            loadingData = true
+            refreshData()
+            //refreshResults2()
+        }
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+//        let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+        
+        let cell:TableViewSchoolCard=tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewSchoolCard
+        var record=0
+        for j in  0..<purchase_detail.count{
+            if(purchase_detail[j][0].contains(purchase_section[indexPath.section])==true) {
+                record=j
+                break
+            }
+        }
+
+        cell.label_detail.text=purchase_detail[indexPath.row+record][1]
+        cell.label_type.text=purchase_detail[indexPath.row+record][2].replacingOccurrences(of: "(可备..", with: "楼")
+        
+        
+        cell.label_deposit.text=purchase_detail[indexPath.row+record][4]
+        cell.label_balance.text=purchase_detail[indexPath.row+record][5]
+        
+        var i=purchase_detail[indexPath.row+record]
+        var index=i[0].index(i[0].endIndex, offsetBy: -8)
+        
+        var date=i[0].substring(from: index)
+        cell.label_time.text=date
+        
+        
+        return cell
+    }
+    func menu_changepass(sender: AnyObject) {
+        self.performSegue(withIdentifier: "SchoolCardChangePass", sender: nil)
+    }
+    func menu_reportloss(sender: AnyObject) {
+        self.performSegue(withIdentifier: "SchoolCardReportLoss", sender: nil)
+    }
+    func respondOfMenu(sender: AnyObject) {
+        
+        print(sender)
+    }
+    @IBAction func menu_plus_click(_ sender: UIBarButtonItem) {
+        let menuArray:[AnyObject] = [
+            KxMenuItem.init("修改密码", image: UIImage(named: "item_key"), target: self, action: #selector(self.menu_changepass(sender:))),
+            KxMenuItem.init("挂失", image: UIImage(named: "item_heartbroken"), target: self, action: #selector(self.menu_reportloss(sender:))),
+            KxMenuItem.init("注销", image: UIImage(named: "item_logout"), target: self, action: #selector(self.respondOfMenu(sender:)))
+        ]
+        
+        //配置一：基础配置
+        KxMenu.setTitleFont(UIFont(name: "HelveticaNeue", size: 15))
+        
+        //配置二：拓展配置
+        let options = OptionalConfiguration(arrowSize: 9,  //指示箭头大小
+            marginXSpacing: 7,  //MenuItem左右边距
+            marginYSpacing: 9,  //MenuItem上下边距
+            intervalSpacing: 25,  //MenuItemImage与MenuItemTitle的间距
+            menuCornerRadius: 6.5,  //菜单圆角半径
+            maskToBackground: true,  //是否添加覆盖在原View上的半透明遮罩
+            shadowOfMenu: false,  //是否添加菜单阴影
+            hasSeperatorLine: true,  //是否设置分割线
+            seperatorLineHasInsets: false,  //是否在分割线两侧留下Insets
+            textColor: Color(R: 0, G: 0, B: 0),  //menuItem字体颜色
+            menuBackgroundColor: Color(R: 1, G: 1, B: 1)  //菜单的底色
+        )
+        var barButtonItem = self.navigationItem.rightBarButtonItem!
+        var buttonItemView = barButtonItem.value(forKey: "view")
+        var frame = buttonItemView?.frame
+        frame?.origin.y+=30
+        KxMenu.show(in: self.navigationController?.view, from: frame!, menuItems:menuArray, withOptions: options)
+        
+        
+        
+    }
     override func performSelector(onMainThread aSelector: Selector, with arg: AnyObject?, waitUntilDone wait: Bool) {
         DispatchQueue.main.async(){
         switch aSelector {
-        case "login":
-            var message=arg as! String
+        case Selector("login"):
+            let message=arg as! String
+            SVProgressHUD.dismiss()
+            self.view_login.isHidden=false
             if(message=="登陆成功"){
                 
-                var alert = UIAlertView()
-                alert.title = "校园卡-登录"
-                alert.message = message
-                alert.addButton(withTitle: "确定")
-                alert.delegate=self
-                alert.show()
+                self.view_login.isHidden=true
+                self.navigationItem.title="余额:"+String(self.mschoolcard.mPersonInfo.balance_total)
+                UserDefaults.standard().set(self.thread_user, forKey: self.key_user)
+                UserDefaults.standard().set(self.thread_password, forKey: self.key_password)
+                self.serialQueue.async(execute: self.thread_getdetail)
+                self.serialQueue.async(execute: self.thread_getdetail)
+
+
             }else if(message=="无此用户名称"){
 
 
-                var alert = UIAlertView()
+                let alert = UIAlertView()
                 alert.title = "校园卡-登录"
                 alert.message = message
                 alert.addButton(withTitle: "确定")
@@ -43,21 +173,39 @@ class ViewSchoolCardMain: UIViewController {
                 self.edit_user.text=""
                 self.edit_pass.text=""
             }else if(message=="密码错误"){
-                var alert = UIAlertView()
+                let alert = UIAlertView()
                 alert.title = "校园卡-登录"
                 alert.message = message
                 alert.addButton(withTitle: "确定")
                 alert.delegate=self
                 alert.show()
                 self.edit_pass.text=""
+                UserDefaults.standard().set("", forKey: self.key_password)
             }else if(message=="未知错误"){
-                var alert = UIAlertView()
+                let alert = UIAlertView()
                 alert.title = "校园卡-登录"
                 alert.message = message
                 alert.addButton(withTitle: "确定")
                 alert.delegate=self
                 alert.show()
             }
+            break
+        case Selector("detail"):
+            let message=arg as! [[String]]
+            for i in message{
+               // var index=i[0][startIndex...string.index(startIndex, offsetBy: 4)]
+                var date=i[0][i[0].startIndex...i[0].index(i[0].startIndex, offsetBy: 9)]
+
+                if !self.purchase_section.contains(date){
+                    self.purchase_section.append(date)
+                }
+            }
+            self.purchase_detail.append(contentsOf: message)
+            self.UITableView_detail.reloadData()
+            self.refreshControl.endRefreshing()
+            self.spinner.stopAnimating()
+            self.loadingData = false
+
             break
         default:
             break
@@ -67,51 +215,57 @@ class ViewSchoolCardMain: UIViewController {
     }
 
     func thread_login() {
-        var result=mschoolcard.login(thread_user, password: thread_password)
-        self.performSelector(onMainThread: "login", with: result as! AnyObject, waitUntilDone: false)
+        let result=mschoolcard.login(thread_user!, password: thread_password!)
+        self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false)
         //self.performSelector(inBackground: "login", with: result as! AnyObject)
     }
-    
-    @IBOutlet weak var label_user: UILabel!
-    @IBOutlet weak var label_password: UILabel!
-    @IBOutlet weak var button_login: UIButton!
-    @IBOutlet weak var edit_pass: UITextField!
+    func thread_getdetail()  {
+        var data=mschoolcard.NextPage()
+        self.performSelector(onMainThread: Selector(("detail")), with: data as AnyObject, waitUntilDone: false)
+    }
+    @IBOutlet weak var view_login: UIView!
+    @IBOutlet var view_main: UIView!
     @IBOutlet weak var edit_user: UITextField!
+    @IBOutlet weak var edit_pass: UITextField!
+
+
     @IBAction func button_login_click(_ sender: AnyObject) {
         if(edit_pass.text != "" && edit_user.text != ""){
             thread_user=edit_user.text!
             thread_password=edit_pass.text!
-            edit_pass.text=""
             serialQueue.async(execute: thread_login)
+            //let alert = UIAlertController(title: nil, message: "正在登录", preferredStyle: .alert)
+            SVProgressHUD.show()
+
             
             
             
-        
+            
         }
     }
-    func view_login_hide(){
-        edit_pass.isHidden=true
-        edit_user.isHidden=true
-        label_user.isHidden=true
-        label_password.isHidden=true
-        button_login.isHidden=true
-        
-    }
-    func view_login_show(){
-        edit_pass.isHidden=false
-        edit_user.isHidden=false
-        label_user.isHidden=false
-        label_password.isHidden=false
-        button_login.isHidden=false
-    }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.layoutIfNeeded()
+
+        UITableView_detail.delegate = self
+        UITableView_detail.dataSource = self
+        //
+        refreshControl.addTarget(self, action: "refreshData",
+                                 for: UIControlEvents.valueChanged)
+        refreshControl.attributedTitle = AttributedString(string: "下拉刷新数据")
+        //UITableView_detail.contentInset = UIEdgeInsetsZero
+        UITableView_detail.addSubview(refreshControl)
+        
+        view.bringSubview(toFront: view_login)
+        //view_login.frame=view_main.frame
         mschoolcard=SchoolCard()
         serialQueue = DispatchQueue(label: "queuename", attributes: .serial)
-        
-        let save_user = UserDefaults.standard().string(forKey: key_user)
-        let save_password = UserDefaults.standard().string(forKey: key_password)
-        if(save_user==""||save_password==""||save_user==nil||save_password==nil){
+        thread_user = UserDefaults.standard().string(forKey: key_user)
+        thread_password = UserDefaults.standard().string(forKey: key_password)
+        if(thread_user==""||thread_user==""||thread_user==nil||thread_password==nil){
+            title="校园卡登录"
 //            let alert = UIAlertController(title: "Video", message: "You have played all videos", preferredStyle: UIAlertControllerStyle.alert)
 //            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
 //            self.present(alert, animated: true, completion: nil)
@@ -131,7 +285,9 @@ class ViewSchoolCardMain: UIViewController {
 
             //self.present(anotherView, animated: true, completion: nil)
         }else{
-            view_login_hide()
+            view_login.isHidden=true
+            serialQueue.async(execute: thread_login)
+            SVProgressHUD.show()
         
         }
                 //let storedUsername = NSUserDefaults.standardUserDefaults().stringForKey(StrUsernameKey)

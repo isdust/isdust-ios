@@ -18,16 +18,6 @@
 		751C35EB1D43551D00A26D45 /* Zhengfang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35EA1D43551D00A26D45 /* Zhengfang.swift */; };
 		751C35EE1D44383900A26D45 /* DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35ED1D44383900A26D45 /* DataType.swift */; };
 		751C35F01D4446E900A26D45 /* SchoolCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35EF1D4446E900A26D45 /* SchoolCard.swift */; };
-		751C36061D44534C00A26D45 /* yzm0.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C35FC1D44534C00A26D45 /* yzm0.png */; };
-		751C36071D44534C00A26D45 /* yzm1.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C35FD1D44534C00A26D45 /* yzm1.png */; };
-		751C36081D44534C00A26D45 /* yzm2.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C35FE1D44534C00A26D45 /* yzm2.png */; };
-		751C36091D44534C00A26D45 /* yzm3.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C35FF1D44534C00A26D45 /* yzm3.png */; };
-		751C360A1D44534C00A26D45 /* yzm4.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36001D44534C00A26D45 /* yzm4.png */; };
-		751C360B1D44534C00A26D45 /* yzm5.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36011D44534C00A26D45 /* yzm5.png */; };
-		751C360C1D44534C00A26D45 /* yzm6.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36021D44534C00A26D45 /* yzm6.png */; };
-		751C360D1D44534C00A26D45 /* yzm7.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36031D44534C00A26D45 /* yzm7.png */; };
-		751C360E1D44534C00A26D45 /* yzm8.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36041D44534C00A26D45 /* yzm8.png */; };
-		751C360F1D44534C00A26D45 /* yzm9.png in Resources */ = {isa = PBXBuildFile; fileRef = 751C36051D44534C00A26D45 /* yzm9.png */; };
 		751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C36101D445FEC00A26D45 /* ImageProcess.swift */; };
 		7521C52E1D4A5CFB001E0CC0 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C52D1D4A5CFB001E0CC0 /* Library.swift */; };
 		7521C5341D4AF459001E0CC0 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5321D4AF459001E0CC0 /* SWXMLHash.swift */; };
@@ -36,6 +26,14 @@
 		7521C5441D4DA2ED001E0CC0 /* ViewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */; };
 		754043DA1D502EC700F6B957 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754043D21D502DB800F6B957 /* libcrypto.a */; };
 		754043DB1D502EC700F6B957 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754043D31D502DB800F6B957 /* libssl.a */; };
+		754043DD1D50706D00F6B957 /* ViewSchoolCardRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754043DC1D50706D00F6B957 /* ViewSchoolCardRecord.swift */; };
+		7578EAFB1D52491600F0A538 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAF21D52491600F0A538 /* SVIndefiniteAnimatedView.m */; };
+		7578EAFC1D52491600F0A538 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAF41D52491600F0A538 /* SVProgressAnimatedView.m */; };
+		7578EAFD1D52491600F0A538 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7578EAF61D52491600F0A538 /* SVProgressHUD.bundle */; };
+		7578EAFE1D52491600F0A538 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAF81D52491600F0A538 /* SVProgressHUD.m */; };
+		7578EAFF1D52491600F0A538 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAFA1D52491600F0A538 /* SVRadialGradientLayer.m */; };
+		757BEB101D508B3900432695 /* NirKxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 757BEB0F1D508B3900432695 /* NirKxMenu.m */; };
+		757BEB121D51513E00432695 /* TableViewSchoolCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757BEB111D51513E00432695 /* TableViewSchoolCard.swift */; };
 		75985B2D1D46784600388278 /* rsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 75985B2B1D46784600388278 /* rsa.c */; };
 		75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F675ED1D490D58004164D0 /* EmptyClassroom.swift */; };
 /* End PBXBuildFile section */
@@ -77,16 +75,6 @@
 		751C35EA1D43551D00A26D45 /* Zhengfang.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zhengfang.swift; sourceTree = "<group>"; };
 		751C35ED1D44383900A26D45 /* DataType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataType.swift; sourceTree = "<group>"; };
 		751C35EF1D4446E900A26D45 /* SchoolCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolCard.swift; sourceTree = "<group>"; };
-		751C35FC1D44534C00A26D45 /* yzm0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm0.png; path = Assets.xcassets/yzm0.png; sourceTree = "<group>"; };
-		751C35FD1D44534C00A26D45 /* yzm1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm1.png; path = Assets.xcassets/yzm1.png; sourceTree = "<group>"; };
-		751C35FE1D44534C00A26D45 /* yzm2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm2.png; path = Assets.xcassets/yzm2.png; sourceTree = "<group>"; };
-		751C35FF1D44534C00A26D45 /* yzm3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm3.png; path = Assets.xcassets/yzm3.png; sourceTree = "<group>"; };
-		751C36001D44534C00A26D45 /* yzm4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm4.png; path = Assets.xcassets/yzm4.png; sourceTree = "<group>"; };
-		751C36011D44534C00A26D45 /* yzm5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm5.png; path = Assets.xcassets/yzm5.png; sourceTree = "<group>"; };
-		751C36021D44534C00A26D45 /* yzm6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm6.png; path = Assets.xcassets/yzm6.png; sourceTree = "<group>"; };
-		751C36031D44534C00A26D45 /* yzm7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm7.png; path = Assets.xcassets/yzm7.png; sourceTree = "<group>"; };
-		751C36041D44534C00A26D45 /* yzm8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm8.png; path = Assets.xcassets/yzm8.png; sourceTree = "<group>"; };
-		751C36051D44534C00A26D45 /* yzm9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yzm9.png; path = Assets.xcassets/yzm9.png; sourceTree = "<group>"; };
 		751C36101D445FEC00A26D45 /* ImageProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcess.swift; sourceTree = "<group>"; };
 		7521C52D1D4A5CFB001E0CC0 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		7521C5311D4AF459001E0CC0 /* SWXMLHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWXMLHash.h; path = SWXMLHash/SWXMLHash.h; sourceTree = "<group>"; };
@@ -98,6 +86,20 @@
 		7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLogin.swift; sourceTree = "<group>"; };
 		754043D21D502DB800F6B957 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = isdust_ios/openssl/arm/libcrypto.a; sourceTree = "<group>"; };
 		754043D31D502DB800F6B957 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = isdust_ios/openssl/arm/libssl.a; sourceTree = "<group>"; };
+		754043DC1D50706D00F6B957 /* ViewSchoolCardRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolCardRecord.swift; sourceTree = "<group>"; };
+		7578EAF11D52491600F0A538 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		7578EAF21D52491600F0A538 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		7578EAF31D52491600F0A538 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressAnimatedView.h; path = SVProgressHUD/SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		7578EAF41D52491600F0A538 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressAnimatedView.m; path = SVProgressHUD/SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		7578EAF51D52491600F0A538 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVProgressHUD-Prefix.pch"; path = "SVProgressHUD/SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		7578EAF61D52491600F0A538 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		7578EAF71D52491600F0A538 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
+		7578EAF81D52491600F0A538 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
+		7578EAF91D52491600F0A538 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		7578EAFA1D52491600F0A538 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRadialGradientLayer.m; path = SVProgressHUD/SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		757BEB0E1D508B3900432695 /* NirKxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NirKxMenu.h; path = NirKxMenu/NirKxMenu.h; sourceTree = "<group>"; };
+		757BEB0F1D508B3900432695 /* NirKxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NirKxMenu.m; path = NirKxMenu/NirKxMenu.m; sourceTree = "<group>"; };
+		757BEB111D51513E00432695 /* TableViewSchoolCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSchoolCard.swift; sourceTree = "<group>"; };
 		75985B2B1D46784600388278 /* rsa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa.c; sourceTree = "<group>"; };
 		75985B2C1D46784600388278 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
 		75F675DC1D48FCB4004164D0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
@@ -165,7 +167,6 @@
 			children = (
 				7521C5381D4B321C001E0CC0 /* Controller */,
 				7521C5371D4B31F5001E0CC0 /* View */,
-				751C35F41D444FD700A26D45 /* Resource */,
 				751C35E41D4354D000A26D45 /* System */,
 				751C35B61D4354B500A26D45 /* AppDelegate.swift */,
 				751C35BD1D4354B500A26D45 /* Assets.xcassets */,
@@ -229,34 +230,11 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
-		751C35F41D444FD700A26D45 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				751C35FB1D44533E00A26D45 /* yzm */,
-			);
-			name = Resource;
-			sourceTree = "<group>";
-		};
-		751C35FB1D44533E00A26D45 /* yzm */ = {
-			isa = PBXGroup;
-			children = (
-				751C35FC1D44534C00A26D45 /* yzm0.png */,
-				751C35FD1D44534C00A26D45 /* yzm1.png */,
-				751C35FE1D44534C00A26D45 /* yzm2.png */,
-				751C35FF1D44534C00A26D45 /* yzm3.png */,
-				751C36001D44534C00A26D45 /* yzm4.png */,
-				751C36011D44534C00A26D45 /* yzm5.png */,
-				751C36021D44534C00A26D45 /* yzm6.png */,
-				751C36031D44534C00A26D45 /* yzm7.png */,
-				751C36041D44534C00A26D45 /* yzm8.png */,
-				751C36051D44534C00A26D45 /* yzm9.png */,
-			);
-			name = yzm;
-			sourceTree = "<group>";
-		};
 		7521C52F1D4AF444001E0CC0 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7578EAF01D52490700F0A538 /* SVProgressHUD */,
+				757BEB0D1D508B1F00432695 /* NirKxMenu */,
 				7521C5301D4AF44D001E0CC0 /* SWXMLHash */,
 			);
 			name = Library;
@@ -286,8 +264,36 @@
 				751C35B81D4354B500A26D45 /* ViewMain.swift */,
 				7521C5411D4D9D34001E0CC0 /* ViewSchoolCardMain.swift */,
 				7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */,
+				754043DC1D50706D00F6B957 /* ViewSchoolCardRecord.swift */,
+				757BEB111D51513E00432695 /* TableViewSchoolCard.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		7578EAF01D52490700F0A538 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				7578EAF11D52491600F0A538 /* SVIndefiniteAnimatedView.h */,
+				7578EAF21D52491600F0A538 /* SVIndefiniteAnimatedView.m */,
+				7578EAF31D52491600F0A538 /* SVProgressAnimatedView.h */,
+				7578EAF41D52491600F0A538 /* SVProgressAnimatedView.m */,
+				7578EAF51D52491600F0A538 /* SVProgressHUD-Prefix.pch */,
+				7578EAF61D52491600F0A538 /* SVProgressHUD.bundle */,
+				7578EAF71D52491600F0A538 /* SVProgressHUD.h */,
+				7578EAF81D52491600F0A538 /* SVProgressHUD.m */,
+				7578EAF91D52491600F0A538 /* SVRadialGradientLayer.h */,
+				7578EAFA1D52491600F0A538 /* SVRadialGradientLayer.m */,
+			);
+			name = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		757BEB0D1D508B1F00432695 /* NirKxMenu */ = {
+			isa = PBXGroup;
+			children = (
+				757BEB0E1D508B3900432695 /* NirKxMenu.h */,
+				757BEB0F1D508B3900432695 /* NirKxMenu.m */,
+			);
+			name = NirKxMenu;
 			sourceTree = "<group>";
 		};
 		75F675DB1D48FCB4004164D0 /* Frameworks */ = {
@@ -420,18 +426,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				751C35C11D4354B500A26D45 /* LaunchScreen.storyboard in Resources */,
-				751C360C1D44534C00A26D45 /* yzm6.png in Resources */,
-				751C36091D44534C00A26D45 /* yzm3.png in Resources */,
-				751C360D1D44534C00A26D45 /* yzm7.png in Resources */,
-				751C360B1D44534C00A26D45 /* yzm5.png in Resources */,
-				751C360F1D44534C00A26D45 /* yzm9.png in Resources */,
-				751C36071D44534C00A26D45 /* yzm1.png in Resources */,
 				751C35BE1D4354B500A26D45 /* Assets.xcassets in Resources */,
 				751C35BC1D4354B500A26D45 /* Main.storyboard in Resources */,
-				751C36061D44534C00A26D45 /* yzm0.png in Resources */,
-				751C36081D44534C00A26D45 /* yzm2.png in Resources */,
-				751C360A1D44534C00A26D45 /* yzm4.png in Resources */,
-				751C360E1D44534C00A26D45 /* yzm8.png in Resources */,
+				7578EAFD1D52491600F0A538 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,11 +460,18 @@
 				751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */,
 				75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */,
 				751C35EE1D44383900A26D45 /* DataType.swift in Sources */,
+				7578EAFF1D52491600F0A538 /* SVRadialGradientLayer.m in Sources */,
+				757BEB101D508B3900432695 /* NirKxMenu.m in Sources */,
+				757BEB121D51513E00432695 /* TableViewSchoolCard.swift in Sources */,
 				75985B2D1D46784600388278 /* rsa.c in Sources */,
+				7578EAFC1D52491600F0A538 /* SVProgressAnimatedView.m in Sources */,
 				7521C5441D4DA2ED001E0CC0 /* ViewLogin.swift in Sources */,
+				7578EAFB1D52491600F0A538 /* SVIndefiniteAnimatedView.m in Sources */,
 				7521C5351D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift in Sources */,
 				751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */,
+				754043DD1D50706D00F6B957 /* ViewSchoolCardRecord.swift in Sources */,
 				7521C52E1D4A5CFB001E0CC0 /* Library.swift in Sources */,
+				7578EAFE1D52491600F0A538 /* SVProgressHUD.m in Sources */,
 				751C35EB1D43551D00A26D45 /* Zhengfang.swift in Sources */,
 				751C35E81D4354F600A26D45 /* Http.m in Sources */,
 			);
