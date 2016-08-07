@@ -102,11 +102,48 @@ func numberOfSections(in tableView: UITableView) -> Int {
         
         return cell
     }
-    func menu_changepass(sender: AnyObject) {
+    func menu_changepass() {
         self.performSegue(withIdentifier: "SchoolCardChangePass", sender: nil)
     }
-    func menu_reportloss(sender: AnyObject) {
+    func menu_reportloss() {
         self.performSegue(withIdentifier: "SchoolCardReportLoss", sender: nil)
+    }
+    func menu_logout()  {
+        
+        
+        
+        // Create the alert controller
+        let alertController = UIAlertController(title: "校园卡-注销", message: "是否确认注销?", preferredStyle: .alert)
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            self.mschoolcard=SchoolCard()
+            self.purchase_detail=[[String]]()
+            self.purchase_section=[String]()
+            self.UITableView_detail.reloadData()
+            self.navigationItem.title="校园卡登录"
+            
+            self.edit_user.text=self.thread_user
+            self.thread_password=""
+            UserDefaults.standard().set(self.thread_password, forKey: self.key_password)
+            self.view_table.isHidden=true
+            self.view_login.isHidden=false
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        // Present the controller
+        self.present(alertController, animated: true, completion: nil)
+        
+        
+
     }
     func respondOfMenu(sender: AnyObject) {
         
@@ -114,9 +151,9 @@ func numberOfSections(in tableView: UITableView) -> Int {
     }
     @IBAction func menu_plus_click(_ sender: UIBarButtonItem) {
         let menuArray:[AnyObject] = [
-            KxMenuItem.init("修改密码", image: UIImage(named: "item_key"), target: self, action: #selector(self.menu_changepass(sender:))),
-            KxMenuItem.init("挂失", image: UIImage(named: "item_heartbroken"), target: self, action: #selector(self.menu_reportloss(sender:))),
-            KxMenuItem.init("注销", image: UIImage(named: "item_logout"), target: self, action: #selector(self.respondOfMenu(sender:)))
+            KxMenuItem.init("修改密码", image: UIImage(named: "item_key"), target: self, action: "menu_changepass"),
+            KxMenuItem.init("挂失", image: UIImage(named: "item_heartbroken"), target: self, action: "menu_reportloss"),
+            KxMenuItem.init("注销", image: UIImage(named: "item_logout"), target: self, action: "menu_logout")
         ]
         
         //配置一：基础配置
@@ -154,11 +191,13 @@ func numberOfSections(in tableView: UITableView) -> Int {
             if(message=="登陆成功"){
                 
                 self.view_login.isHidden=true
+                self.view_table.isHidden=false
                 self.navigationItem.title="余额:"+String(self.mschoolcard.mPersonInfo.balance_total)
                 UserDefaults.standard().set(self.thread_user, forKey: self.key_user)
                 UserDefaults.standard().set(self.thread_password, forKey: self.key_password)
                 self.serialQueue.async(execute: self.thread_getdetail)
                 self.serialQueue.async(execute: self.thread_getdetail)
+                
 
 
             }else if(message=="无此用户名称"){
@@ -207,6 +246,15 @@ func numberOfSections(in tableView: UITableView) -> Int {
             self.loadingData = false
 
             break
+        case Selector("menu_changepass"):
+            self.menu_changepass()
+            break
+        case Selector("menu_reportloss"):
+            self.menu_reportloss()
+            break
+        case Selector("menu_logout"):
+            self.menu_logout()
+            break
         default:
             break
             
@@ -220,7 +268,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
         //self.performSelector(inBackground: "login", with: result as! AnyObject)
     }
     func thread_getdetail()  {
-        var data=mschoolcard.NextPage()
+        let data=mschoolcard.NextPage()
         self.performSelector(onMainThread: Selector(("detail")), with: data as AnyObject, waitUntilDone: false)
     }
     @IBOutlet weak var view_login: UIView!
@@ -228,11 +276,14 @@ func numberOfSections(in tableView: UITableView) -> Int {
     @IBOutlet weak var edit_user: UITextField!
     @IBOutlet weak var edit_pass: UITextField!
 
+    @IBOutlet weak var view_table: UITableView!
 
     @IBAction func button_login_click(_ sender: AnyObject) {
         if(edit_pass.text != "" && edit_user.text != ""){
             thread_user=edit_user.text!
             thread_password=edit_pass.text!
+            edit_user.endEditing(true)
+            edit_pass.endEditing(true)
             serialQueue.async(execute: thread_login)
             //let alert = UIAlertController(title: nil, message: "正在登录", preferredStyle: .alert)
             SVProgressHUD.show()
@@ -252,11 +303,11 @@ func numberOfSections(in tableView: UITableView) -> Int {
         UITableView_detail.delegate = self
         UITableView_detail.dataSource = self
         //
-        refreshControl.addTarget(self, action: "refreshData",
-                                 for: UIControlEvents.valueChanged)
-        refreshControl.attributedTitle = AttributedString(string: "下拉刷新数据")
+//        refreshControl.addTarget(self, action: "refreshData",
+//                                 for: UIControlEvents.valueChanged)
+//        refreshControl.attributedTitle = AttributedString(string: "下拉刷新数据")
         //UITableView_detail.contentInset = UIEdgeInsetsZero
-        UITableView_detail.addSubview(refreshControl)
+//        UITableView_detail.addSubview(refreshControl)
         
         view.bringSubview(toFront: view_login)
         //view_login.frame=view_main.frame
@@ -264,28 +315,16 @@ func numberOfSections(in tableView: UITableView) -> Int {
         serialQueue = DispatchQueue(label: "queuename", attributes: .serial)
         thread_user = UserDefaults.standard().string(forKey: key_user)
         thread_password = UserDefaults.standard().string(forKey: key_password)
-        if(thread_user==""||thread_user==""||thread_user==nil||thread_password==nil){
+        if(thread_user==""||thread_password==""||thread_user==nil||thread_password==nil){
             title="校园卡登录"
-//            let alert = UIAlertController(title: "Video", message: "You have played all videos", preferredStyle: UIAlertControllerStyle.alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-//            self.present(alert, animated: true, completion: nil)
-//            self.performSegue(withIdentifier: "login", sender: nil)
-            //self.performSegue(withIdentifier: "login", sender: nil)
+            view_table.isHidden=true
+            view_login.isHidden=false
 
-            //self.performSegue(withIdentifier: "login", sender: nil)
-            //self.tabBarController?.performSegue(withIdentifier: "login", sender: self)
-        //
-           // var vcs=NSMutableArray.init(array: self.presentedViewController)
-            
-           // self.view.present
-            
-            //let myStoryBoard = self.storyboard
-           // let anotherView:ViewLogin = myStoryBoard?.instantiateViewController(withIdentifier: "login") as! ViewLogin
-            
 
             //self.present(anotherView, animated: true, completion: nil)
         }else{
             view_login.isHidden=true
+            view_table.isHidden=false
             serialQueue.async(execute: thread_login)
             SVProgressHUD.show()
         
@@ -298,14 +337,14 @@ func numberOfSections(in tableView: UITableView) -> Int {
         // Dispose of any resources that can be recreated.
     }
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier=="login" {
-//            let LoginController=segue.destinationViewController as! ViewLogin
-//            //LoginController.transitioni=self
-//            LoginController.hint_user="校园卡号码"
-//            LoginController.hint_password="校园卡密码(默认为校园卡后6位)"
-//            LoginController.titlename="校园卡登录"
-//            
-//        }
+        if segue.identifier=="SchoolCardChangePass" {
+            let SchoolCardChangePassController=segue.destinationViewController as! SchoolCardChangePass
+            SchoolCardChangePassController.mschoolcard=self.mschoolcard
+            
+            //LoginController.transitioni=self
+
+            
+        }
     }
     
 }

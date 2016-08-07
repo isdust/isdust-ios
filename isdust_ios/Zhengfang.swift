@@ -59,6 +59,20 @@ class Zhengfang{
         mhttp.get(url_xuanke);
 
     }
+    func AllScoreLookUp()->[[String]]{
+        mhttp.setencoding(1);
+        var text_web="";
+        var submit=""
+        var result:[[String]]
+        text_web=mhttp.get(mhttp.urlencode(url_chengji) );
+        var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
+        VIEWSTATE=mhttp.postencode(VIEWSTATE);
+        submit = "_VIEWSTATE=" + VIEWSTATE!+"&ddlXN=&ddlXQ=&btn_xq=C0%FA%C4%EA%B3%C9%BC%A8"
+        text_web=mhttp.post(mhttp.urlencode(url_chengji), submit);
+        return ScoreAnalyzeZhengfang(text_web)
+        
+        
+    }
     func ScoreLookUp(_ year:String,semester:String)->[[String]]{
         mhttp.setencoding(1);
         var text_web="";

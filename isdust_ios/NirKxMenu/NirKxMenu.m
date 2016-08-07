@@ -298,7 +298,7 @@ typedef enum {
 - (void)showMenuInView:(UIView *)view
               fromRect:(CGRect)rect
              menuItems:(NSArray *)menuItems
-            withOptions:(OptionalConfiguration) options
+           withOptions:(OptionalConfiguration) options
 {
     
     self.kxMenuViewOptions = options;
@@ -311,7 +311,7 @@ typedef enum {
     [self setupFrameInView:view fromRect:rect];
     
     KxMenuOverlay *overlay = [[KxMenuOverlay alloc] initWithFrame:view.bounds maskSetting:self.kxMenuViewOptions.maskToBackground];
-
+    
     [overlay addSubview:self];
     [view addSubview:overlay];
     
@@ -414,7 +414,7 @@ typedef enum {
         const CGSize titleSize = [menuItem.title sizeWithAttributes:@{NSFontAttributeName: titleFont}];
 #else
         const CGSize titleSize = [menuItem.title sizeWithFont:titleFont];
-#endif       
+#endif
         const CGSize imageSize = menuItem.image.size;
         
         //这个地方为header和Footer预留了高度
@@ -604,7 +604,7 @@ typedef enum {
 
 + (UIImage *) selectedImage: (CGSize) size
 {
-
+    
     const CGFloat locations[] = {0,1};
     //配置：选中时阴影的颜色  -- 隐藏属性
     const CGFloat components[] = {
@@ -849,7 +849,7 @@ static UIFont *gTitleFont;
 - (void) showMenuInView:(UIView *)view
                fromRect:(CGRect)rect
               menuItems:(NSArray *)menuItems
-                withOptions:(OptionalConfiguration) options
+            withOptions:(OptionalConfiguration) options
 {
     NSParameterAssert(view);
     NSParameterAssert(menuItems.count);
@@ -898,7 +898,7 @@ static UIFont *gTitleFont;
 + (void) showMenuInView:(UIView *)view
                fromRect:(CGRect)rect
               menuItems:(NSArray *)menuItems
-                withOptions:(OptionalConfiguration) options
+            withOptions:(OptionalConfiguration) options
 {
     [[self sharedMenu] showMenuInView:view fromRect:rect menuItems:menuItems withOptions:options];
 }
