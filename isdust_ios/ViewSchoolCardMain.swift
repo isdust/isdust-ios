@@ -20,7 +20,7 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
     let key_user="schoolcard_user"
     let key_password="schoolcard_password"
     var loadMoreText = UILabel()
-    //for multi-thread
+
     @IBOutlet weak var spinner: UIActivityIndicatorView!
 
     var serialQueue:DispatchQueue!
@@ -28,6 +28,12 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
     var thread_password:String?
     func refreshData()  {
         serialQueue.async(execute: thread_getdetail)
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1.0
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 35
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var total:Float=0
@@ -145,10 +151,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
         
 
     }
-    func respondOfMenu(sender: AnyObject) {
-        
-        print(sender)
-    }
+
     @IBAction func menu_plus_click(_ sender: UIBarButtonItem) {
         let menuArray:[AnyObject] = [
             KxMenuItem.init("修改密码", image: UIImage(named: "item_key"), target: self, action: "menu_changepass"),
@@ -298,7 +301,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layoutIfNeeded()
+//        self.view.layoutIfNeeded()
 
         UITableView_detail.delegate = self
         UITableView_detail.dataSource = self
@@ -309,7 +312,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
         //UITableView_detail.contentInset = UIEdgeInsetsZero
 //        UITableView_detail.addSubview(refreshControl)
         
-        view.bringSubview(toFront: view_login)
+//        view.bringSubview(toFront: view_login)
         //view_login.frame=view_main.frame
         mschoolcard=SchoolCard()
         serialQueue = DispatchQueue(label: "queuename", attributes: .serial)
@@ -340,9 +343,6 @@ func numberOfSections(in tableView: UITableView) -> Int {
         if segue.identifier=="SchoolCardChangePass" {
             let SchoolCardChangePassController=segue.destinationViewController as! SchoolCardChangePass
             SchoolCardChangePassController.mschoolcard=self.mschoolcard
-            
-            //LoginController.transitioni=self
-
             
         }
     }

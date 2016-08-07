@@ -11,6 +11,8 @@ class ViewMain: UIViewController {
     @IBOutlet weak var imageview: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+//        var a=Zhengfang();
+//        a.Login("201501060225", password: "960826wang")
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,8 +29,7 @@ class ViewMain: UIViewController {
 //        test.loadimage(image)
 //        test.binarize()
         
-//        var a=Zhengfang();
-//        a.Login("201501060225", password: "960826wang")
+
 //        a.JumpToSelectClass()
 //        a.ScheduleLookup("1", year: "2016-2017", semester: "1")
 //        var test=SchoolCard()
@@ -42,9 +43,9 @@ class ViewMain: UIViewController {
 //        var c=EmptyClassroom()
 //        c.getEmptyClassroom(building: "J7", schooldate: 2, week: 2, jieci: 2)
         
-        var d=Library()
-        //d.findBookByName(Name: "swift")
-        d.getStorage(bookrecno: "1900768652")
+//        var d=Library()
+//        //d.findBookByName(Name: "swift")
+//        d.getStorage(bookrecno: "1900768652")
       //  d.xml_getSuoshuhao(raw: "<records><record><bookrecno>1900802816</bookrecno><callno><![CDATA[ TN929.53/450 ]]></callno></record><record><bookrecno>1900786499</bookrecno><callno><![CDATA[ TP312/265 ]]></callno><callno><![CDATA[ TP312SW/1 ]]></callno></record></records>", bookrecno: "1900802816")
 //        d.login(user: "1501060225", password: "1501060225")
 //        d.get_borrwingdetail()

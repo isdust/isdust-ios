@@ -28,6 +28,8 @@
 		7544D4661D55E46D00642A2E /* ViewNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D4651D55E46D00642A2E /* ViewNetwork.swift */; };
 		7544D4681D56388200642A2E /* ViewSchoolCardReportLoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D4671D56388200642A2E /* ViewSchoolCardReportLoss.swift */; };
 		7544D46A1D56C36100642A2E /* ViewEducation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D4691D56C36100642A2E /* ViewEducation.swift */; };
+		7544D46C1D56EAEB00642A2E /* ViewEducationScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D46B1D56EAEB00642A2E /* ViewEducationScore.swift */; };
+		7544D46E1D56ED2400642A2E /* TableViewScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D46D1D56ED2400642A2E /* TableViewScore.swift */; };
 		7578EAFB1D52491600F0A538 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAF21D52491600F0A538 /* SVIndefiniteAnimatedView.m */; };
 		7578EAFC1D52491600F0A538 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAF41D52491600F0A538 /* SVProgressAnimatedView.m */; };
 		7578EAFD1D52491600F0A538 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7578EAF61D52491600F0A538 /* SVProgressHUD.bundle */; };
@@ -93,6 +95,8 @@
 		7544D4651D55E46D00642A2E /* ViewNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNetwork.swift; sourceTree = "<group>"; };
 		7544D4671D56388200642A2E /* ViewSchoolCardReportLoss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolCardReportLoss.swift; sourceTree = "<group>"; };
 		7544D4691D56C36100642A2E /* ViewEducation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewEducation.swift; sourceTree = "<group>"; };
+		7544D46B1D56EAEB00642A2E /* ViewEducationScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewEducationScore.swift; sourceTree = "<group>"; };
+		7544D46D1D56ED2400642A2E /* TableViewScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewScore.swift; sourceTree = "<group>"; };
 		7578EAF11D52491600F0A538 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		7578EAF21D52491600F0A538 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		7578EAF31D52491600F0A538 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressAnimatedView.h; path = SVProgressHUD/SVProgressAnimatedView.h; sourceTree = "<group>"; };
@@ -271,12 +275,14 @@
 			children = (
 				751C35B81D4354B500A26D45 /* ViewMain.swift */,
 				7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */,
-				757BEB111D51513E00432695 /* TableViewSchoolCard.swift */,
 				7544D4651D55E46D00642A2E /* ViewNetwork.swift */,
 				7521C5411D4D9D34001E0CC0 /* ViewSchoolCardMain.swift */,
+				757BEB111D51513E00432695 /* TableViewSchoolCard.swift */,
 				7544D4671D56388200642A2E /* ViewSchoolCardReportLoss.swift */,
 				754043DC1D50706D00F6B957 /* ViewSchoolCardChangePass.swift */,
 				7544D4691D56C36100642A2E /* ViewEducation.swift */,
+				7544D46B1D56EAEB00642A2E /* ViewEducationScore.swift */,
+				7544D46D1D56ED2400642A2E /* TableViewScore.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -469,12 +475,14 @@
 			files = (
 				751C35B91D4354B500A26D45 /* ViewMain.swift in Sources */,
 				751C35F01D4446E900A26D45 /* SchoolCard.swift in Sources */,
+				7544D46E1D56ED2400642A2E /* TableViewScore.swift in Sources */,
 				7521C5341D4AF459001E0CC0 /* SWXMLHash.swift in Sources */,
 				7521C5421D4D9D34001E0CC0 /* ViewSchoolCardMain.swift in Sources */,
 				751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */,
 				75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */,
 				7544D4681D56388200642A2E /* ViewSchoolCardReportLoss.swift in Sources */,
 				751C35EE1D44383900A26D45 /* DataType.swift in Sources */,
+				7544D46C1D56EAEB00642A2E /* ViewEducationScore.swift in Sources */,
 				7578EAFF1D52491600F0A538 /* SVRadialGradientLayer.m in Sources */,
 				757BEB101D508B3900432695 /* NirKxMenu.m in Sources */,
 				757BEB121D51513E00432695 /* TableViewSchoolCard.swift in Sources */,

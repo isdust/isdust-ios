@@ -25,7 +25,8 @@ class Zhengfang{
         var text_web=mhttp.get(location_zhengfang+"default_ysdx.aspx");
         var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
         VIEWSTATE=mhttp.postencode(VIEWSTATE);
-        var submit="_VIEWSTATE=" + VIEWSTATE! + "&TextBox1=" + username + "&TextBox2=" + mhttp.postencode(password)
+//        VIEWSTATE=VIEWSTATE?.replacingOccurrences(of: <#T##String#>, with: "%3D")
+        var submit="__VIEWSTATE=" + VIEWSTATE! + "&TextBox1=" + username + "&TextBox2=" + mhttp.postencode(password)
         submit=submit+"&RadioButtonList1=%d1%a7%c9%fa&Button1=++%b5%c7%c2%bc++"
         text_web=mhttp.post(location_zhengfang+"default_ysdx.aspx",submit)
         if((text_web?.contains("<script>window.open('xs_main.aspx?xh=2")) == true){
@@ -67,7 +68,7 @@ class Zhengfang{
         text_web=mhttp.get(mhttp.urlencode(url_chengji) );
         var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
         VIEWSTATE=mhttp.postencode(VIEWSTATE);
-        submit = "_VIEWSTATE=" + VIEWSTATE!+"&ddlXN=&ddlXQ=&btn_xq=C0%FA%C4%EA%B3%C9%BC%A8"
+        submit = "__VIEWSTATE=" + VIEWSTATE!+"&ddlXN=&ddlXQ=&btn_zcj=C0%FA%C4%EA%B3%C9%BC%A8"
         text_web=mhttp.post(mhttp.urlencode(url_chengji), submit);
         return ScoreAnalyzeZhengfang(text_web)
         
@@ -83,7 +84,7 @@ class Zhengfang{
             text_web=mhttp.get(mhttp.urlencode(url_chengji) );
             var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
             VIEWSTATE=mhttp.postencode(VIEWSTATE);
-            submit = "_VIEWSTATE=" + VIEWSTATE!+"&ddlXN=" + year + "&ddlXQ=" + semester + "&btn_xq=%d1%a7%c6%da%b3%c9%bc%a8"
+            submit = "__VIEWSTATE=" + VIEWSTATE!+"&ddlXN=" + year + "&ddlXQ=" + semester + "&btn_xq=%d1%a7%c6%da%b3%c9%bc%a8"
             text_web=mhttp.post(mhttp.urlencode(url_chengji), submit);
             return ScoreAnalyzeZhengfang(text_web)
             break;
@@ -148,6 +149,25 @@ class Zhengfang{
                 
             }
         }
+        return result
+        
+    }
+    func JidianLookup()->[String] {
+        mhttp.setencoding(1);
+        var text_web="";
+        var submit=""
+        var result:[String] = [String] ()
+        text_web=mhttp.get(mhttp.urlencode(url_chengji) );
+        var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
+        VIEWSTATE=mhttp.postencode(VIEWSTATE);
+        submit = "__VIEWSTATE=" + VIEWSTATE!+"&ddlXN=&ddlXQ=&Button1=%B3%C9%BC%A8%CD%B3%BC%C6"
+        text_web=mhttp.post(mhttp.urlencode(url_chengji), submit);
+        var temp:String
+        
+        temp=mhttp.getMiddleText(text_web,"<span id=\"pjxfjd\"><b>所有课程平均学分绩点：" , "</b></span>")
+        result.append(temp)
+        temp=mhttp.getMiddleText(text_web,"<span id=\"xfjdzh\"><b>学分绩点总和：" , "</b></span>")
+        result.append(temp)
         return result
         
     }

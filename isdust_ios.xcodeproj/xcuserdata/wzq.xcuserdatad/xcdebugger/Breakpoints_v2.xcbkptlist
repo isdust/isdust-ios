@@ -1718,11 +1718,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
@@ -1766,11 +1766,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1830,11 +1830,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1846,11 +1846,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1862,11 +1862,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "thread_getdetail()"
             landmarkType = "7">
             <Locations>
@@ -1910,11 +1910,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1926,11 +1926,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "thread_login()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1942,11 +1942,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1958,11 +1958,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1974,11 +1974,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "thread_login()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1990,11 +1990,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "menu_plus_click(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2006,11 +2006,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2022,11 +2022,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "thread_getdetail()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2038,11 +2038,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "button_login_click(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2054,11 +2054,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2070,11 +2070,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "tableView(_:willDisplay:forRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2086,11 +2086,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2102,11 +2102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "tableView(_:willDisplay:forRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2134,11 +2134,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491934294.43237"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "menu_changepass()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2150,23 +2150,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -2182,11 +2166,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2198,11 +2182,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewSchoolCardMain.swift"
+            timestampString = "492246007.519836"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2214,11 +2214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "tableView(_:titleForHeaderInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2230,11 +2230,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "numberOfSections(in:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2246,11 +2246,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "numberOfSections(in:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2262,11 +2262,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2294,11 +2294,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "numberOfSections(in:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2310,11 +2310,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2326,11 +2326,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2342,23 +2342,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -2374,11 +2358,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2390,11 +2374,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2406,11 +2390,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewSchoolCardMain.swift"
+            timestampString = "492246007.519836"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "tableView(_:titleForHeaderInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2422,11 +2422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "tableView(_:titleForHeaderInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2438,11 +2438,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "tableView(_:titleForHeaderInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2454,11 +2454,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "tableView(_:willDisplay:forRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2470,11 +2470,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491929704.870188"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2486,28 +2486,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491934366.417338"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "menu_changepass()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "respondOfMenu(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2518,11 +2502,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "491957737.20741"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "menu_reportloss()"
             landmarkType = "7">
          </BreakpointContent>
@@ -2614,11 +2598,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2630,11 +2614,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
             landmarkType = "7">
             <Locations>
@@ -2678,11 +2662,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2694,11 +2678,251 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolCardMain.swift"
-            timestampString = "492224315.861391"
+            timestampString = "492246007.519836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewEducation.swift"
+            timestampString = "492237309.731548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewEducation.swift"
+            timestampString = "492237309.731548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewEducation.swift"
+            timestampString = "492237309.731548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewMain.swift"
+            timestampString = "492227700.755717"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewMain.swift"
+            timestampString = "492227707.549821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewEducation.swift"
+            timestampString = "492237309.731548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewEducation.swift"
+            timestampString = "492233227.519286"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "thread_AllScoreLookup()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/Zhengfang.swift"
+            timestampString = "492229195.865727"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "AllScoreLookUp()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewEducation.swift"
+            timestampString = "492237309.731548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewEducation.swift"
+            timestampString = "492237309.731548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewEducation.swift"
+            timestampString = "492233227.519286"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "thread_AllScoreLookup()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewEducationScore.swift"
+            timestampString = "492248944.5658"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/Zhengfang.swift"
+            timestampString = "492248371.653079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "JidianLookup()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/Zhengfang.swift"
+            timestampString = "492249004.495257"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "JidianLookup()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewEducationScore.swift"
+            timestampString = "492249084.551574"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "performSelector(onMainThread:with:waitUntilDone:)"
             landmarkType = "7">
          </BreakpointContent>
