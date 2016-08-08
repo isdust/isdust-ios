@@ -25,6 +25,7 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
         table_score.delegate=self
         table_score.dataSource=self
         serialQueue = DispatchQueue(label: "queuename", attributes: .serial)
+        SVProgressHUD.show()
         self.serialQueue.async(execute: self.thread_AllScoreLookup)
         self.serialQueue.async(execute: self.thread_jidianLookup)
     }
@@ -48,9 +49,6 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count=0
         for i in score_detail{
-//            if(i[0].contains(score_section[section])==true){
-//                count+=1
-//            }
             if(score_section[section]==i[0]+"-"+i[1]){
                 count+=1
             }
@@ -118,6 +116,7 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
                 let message=arg as! [String]
                 self.textfield_Averagejidian.text=message[0]
                 self.textfield_Totaljidian.text=message[1]
+                SVProgressHUD.dismiss()
                 break
             default:
                 break

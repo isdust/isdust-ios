@@ -38,6 +38,8 @@
 		757BEB101D508B3900432695 /* NirKxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 757BEB0F1D508B3900432695 /* NirKxMenu.m */; };
 		757BEB121D51513E00432695 /* TableViewSchoolCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757BEB111D51513E00432695 /* TableViewSchoolCard.swift */; };
 		75985B2D1D46784600388278 /* rsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 75985B2B1D46784600388278 /* rsa.c */; };
+		75A0D51D1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A0D51C1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift */; };
+		75A0D51F1D58266C00E0C122 /* TableViewEmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A0D51E1D58266C00E0C122 /* TableViewEmptyClassroom.swift */; };
 		75B399691D55D263009C8951 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B399611D55CD8F009C8951 /* libcrypto.a */; };
 		75B3996A1D55D263009C8951 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B399621D55CD8F009C8951 /* libssl.a */; };
 		75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F675ED1D490D58004164D0 /* EmptyClassroom.swift */; };
@@ -112,6 +114,8 @@
 		757BEB111D51513E00432695 /* TableViewSchoolCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSchoolCard.swift; sourceTree = "<group>"; };
 		75985B2B1D46784600388278 /* rsa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa.c; sourceTree = "<group>"; };
 		75985B2C1D46784600388278 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
+		75A0D51C1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewEducationEmptyClassroom.swift; sourceTree = "<group>"; };
+		75A0D51E1D58266C00E0C122 /* TableViewEmptyClassroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewEmptyClassroom.swift; sourceTree = "<group>"; };
 		75B399611D55CD8F009C8951 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = isdust_ios/openssl/x86/libcrypto.a; sourceTree = "<group>"; };
 		75B399621D55CD8F009C8951 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = isdust_ios/openssl/x86/libssl.a; sourceTree = "<group>"; };
 		75F675DC1D48FCB4004164D0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
@@ -283,6 +287,8 @@
 				7544D4691D56C36100642A2E /* ViewEducation.swift */,
 				7544D46B1D56EAEB00642A2E /* ViewEducationScore.swift */,
 				7544D46D1D56ED2400642A2E /* TableViewScore.swift */,
+				75A0D51C1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift */,
+				75A0D51E1D58266C00E0C122 /* TableViewEmptyClassroom.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -476,6 +482,7 @@
 				751C35B91D4354B500A26D45 /* ViewMain.swift in Sources */,
 				751C35F01D4446E900A26D45 /* SchoolCard.swift in Sources */,
 				7544D46E1D56ED2400642A2E /* TableViewScore.swift in Sources */,
+				75A0D51D1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift in Sources */,
 				7521C5341D4AF459001E0CC0 /* SWXMLHash.swift in Sources */,
 				7521C5421D4D9D34001E0CC0 /* ViewSchoolCardMain.swift in Sources */,
 				751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */,
@@ -485,6 +492,7 @@
 				7544D46C1D56EAEB00642A2E /* ViewEducationScore.swift in Sources */,
 				7578EAFF1D52491600F0A538 /* SVRadialGradientLayer.m in Sources */,
 				757BEB101D508B3900432695 /* NirKxMenu.m in Sources */,
+				75A0D51F1D58266C00E0C122 /* TableViewEmptyClassroom.swift in Sources */,
 				757BEB121D51513E00432695 /* TableViewSchoolCard.swift in Sources */,
 				75985B2D1D46784600388278 /* rsa.c in Sources */,
 				7578EAFC1D52491600F0A538 /* SVProgressAnimatedView.m in Sources */,

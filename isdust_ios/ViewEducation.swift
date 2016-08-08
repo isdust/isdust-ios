@@ -15,6 +15,11 @@ class ViewEducation: UIViewController {
     @IBAction func button_lookupscore(_ sender: AnyObject) {
         self.performSegue(withIdentifier: "ScoreLookUp", sender: nil)
     }
+    
+    @IBAction func button_emptyclassroom(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "EmptyClassroom", sender: nil)
+    }
+    
     let key_user="zhengfang_user"
     let key_password="zhengfang_password"
     
@@ -48,7 +53,7 @@ class ViewEducation: UIViewController {
                 SVProgressHUD.dismiss()
                 //self.view_login.isHidden=false
                 if(message=="登录成功"){
-                    self.serialQueue.async(execute: self.thread_AllScoreLookup)
+                    //self.serialQueue.async(execute: self.thread_AllScoreLookup)
 //                    self.view_login.isHidden=true
 //                    self.view_table.isHidden=false
 //                    self.navigationItem.title="余额:"+String(self.mschoolcard.mPersonInfo.balance_total)
@@ -91,7 +96,7 @@ class ViewEducation: UIViewController {
             case Selector("zhengfang_scorelookup"):
                 
                 let message=arg as! [[String]]
-                print(message)
+                //print(message)
                 break
             default:
                 break
