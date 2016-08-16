@@ -56,7 +56,7 @@ class ViewSchoolCardReportLoss: UIViewController {
         let result=mschoolcard.ReportLoss(thread_pass, identity: thread_identity)
         self.performSelector(onMainThread: Selector(("reportloss")), with: result as AnyObject, waitUntilDone: false)
     }
-    override func performSelector(onMainThread aSelector: Selector, with arg: AnyObject?, waitUntilDone wait: Bool) {
+    override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
         DispatchQueue.main.async(){
             SVProgressHUD.dismiss()
             
@@ -88,7 +88,7 @@ class ViewSchoolCardReportLoss: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        serialQueue = DispatchQueue(label: "SchoolCardReportLoss", attributes: .serial)
+        serialQueue = DispatchQueue(label: "SchoolCardReportLoss", attributes: [])
     }
     
     override func didReceiveMemoryWarning() {

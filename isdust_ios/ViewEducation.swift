@@ -37,15 +37,15 @@ class ViewEducation: UIViewController {
         self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false)
 
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier=="ScoreLookUp" {
-            let SchoolCardChangePassController=segue.destinationViewController as! ViewEducationScore
+            let SchoolCardChangePassController=segue.destination as! ViewEducationScore
             SchoolCardChangePassController.mzhengfang=self.mzhengfang
             
         }
     }
-    
-    override func performSelector(onMainThread aSelector: Selector, with arg: AnyObject?, waitUntilDone wait: Bool) {
+
+    override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
         DispatchQueue.main.async(){
             switch aSelector {
             case Selector(("zhengfang_login")):
@@ -57,8 +57,8 @@ class ViewEducation: UIViewController {
 //                    self.view_login.isHidden=true
 //                    self.view_table.isHidden=false
 //                    self.navigationItem.title="余额:"+String(self.mschoolcard.mPersonInfo.balance_total)
-                    UserDefaults.standard().set(self.thread_user, forKey: self.key_user)
-                    UserDefaults.standard().set(self.thread_password, forKey: self.key_password)
+                    UserDefaults.standard.set(self.thread_user, forKey: self.key_user)
+                    UserDefaults.standard.set(self.thread_password, forKey: self.key_password)
                    
 //                    self.serialQueue.async(execute: self.thread_getdetail)
                     
@@ -83,7 +83,7 @@ class ViewEducation: UIViewController {
                     alert.delegate=self
                     alert.show()
                     self.edit_pass.text=""
-                    UserDefaults.standard().set("", forKey: self.key_password)
+                    UserDefaults.standard.set("", forKey: self.key_password)
                 }else if(message=="未知错误"){
                     let alert = UIAlertView()
                     alert.title = "正方教务系统-登录"
@@ -108,9 +108,9 @@ class ViewEducation: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mzhengfang=Zhengfang()
-        serialQueue = DispatchQueue(label: "queuename", attributes: .serial)
-        thread_user = UserDefaults.standard().string(forKey: key_user)
-        thread_password = UserDefaults.standard().string(forKey: key_password)
+        serialQueue = DispatchQueue(label: "queuename", attributes: [])
+        thread_user = UserDefaults.standard.string(forKey: key_user)
+        thread_password = UserDefaults.standard.string(forKey: key_password)
         
         if(thread_user==""||thread_password==""||thread_user==nil||thread_password==nil){
             self.navigationItem.title="正方教务系统登录"

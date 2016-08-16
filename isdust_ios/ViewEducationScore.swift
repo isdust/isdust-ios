@@ -24,7 +24,7 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
         table_score.delegate=self
         table_score.dataSource=self
-        serialQueue = DispatchQueue(label: "queuename", attributes: .serial)
+        serialQueue = DispatchQueue(label: "queuename", attributes: [])
         SVProgressHUD.show()
         self.serialQueue.async(execute: self.thread_AllScoreLookup)
         self.serialQueue.async(execute: self.thread_jidianLookup)
@@ -96,7 +96,7 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
         self.performSelector(onMainThread: Selector(("zhengfang_jidianlookup")), with: result as AnyObject, waitUntilDone: false)
         
     }
-    override func performSelector(onMainThread aSelector: Selector, with arg: AnyObject?, waitUntilDone wait: Bool) {
+    override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
         DispatchQueue.main.async(){
             switch aSelector {
             case Selector("zhengfang_scorelookup"):

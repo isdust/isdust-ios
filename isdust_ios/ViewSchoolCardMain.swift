@@ -132,7 +132,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
             
             self.edit_user.text=self.thread_user
             self.thread_password=""
-            UserDefaults.standard().set(self.thread_password, forKey: self.key_password)
+            UserDefaults.standard.set(self.thread_password, forKey: self.key_password)
             self.view_table.isHidden=true
             self.view_login.isHidden=false
         }
@@ -177,14 +177,16 @@ func numberOfSections(in tableView: UITableView) -> Int {
         )
         var barButtonItem = self.navigationItem.rightBarButtonItem!
         var buttonItemView = barButtonItem.value(forKey: "view")
-        var frame = buttonItemView?.frame
+        var frame = (buttonItemView as AnyObject).frame
         frame?.origin.y+=30
         KxMenu.show(in: self.navigationController?.view, from: frame!, menuItems:menuArray, withOptions: options)
         
         
         
     }
-    override func performSelector(onMainThread aSelector: Selector, with arg: AnyObject?, waitUntilDone wait: Bool) {
+    
+
+    override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
         DispatchQueue.main.async(){
         switch aSelector {
         case Selector("login"):
@@ -196,8 +198,8 @@ func numberOfSections(in tableView: UITableView) -> Int {
                 self.view_login.isHidden=true
                 self.view_table.isHidden=false
                 self.navigationItem.title="余额:"+String(self.mschoolcard.mPersonInfo.balance_total)
-                UserDefaults.standard().set(self.thread_user, forKey: self.key_user)
-                UserDefaults.standard().set(self.thread_password, forKey: self.key_password)
+                UserDefaults.standard.set(self.thread_user, forKey: self.key_user)
+                UserDefaults.standard.set(self.thread_password, forKey: self.key_password)
                 self.serialQueue.async(execute: self.thread_getdetail)
                 self.serialQueue.async(execute: self.thread_getdetail)
                 
@@ -222,7 +224,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
                 alert.delegate=self
                 alert.show()
                 self.edit_pass.text=""
-                UserDefaults.standard().set("", forKey: self.key_password)
+                UserDefaults.standard.set("", forKey: self.key_password)
             }else if(message=="未知错误"){
                 let alert = UIAlertView()
                 alert.title = "校园卡-登录"
@@ -315,9 +317,9 @@ func numberOfSections(in tableView: UITableView) -> Int {
 //        view.bringSubview(toFront: view_login)
         //view_login.frame=view_main.frame
         mschoolcard=SchoolCard()
-        serialQueue = DispatchQueue(label: "queuename", attributes: .serial)
-        thread_user = UserDefaults.standard().string(forKey: key_user)
-        thread_password = UserDefaults.standard().string(forKey: key_password)
+        serialQueue = DispatchQueue(label: "queuename", attributes: [])
+        thread_user = UserDefaults.standard.string(forKey: key_user)
+        thread_password = UserDefaults.standard.string(forKey: key_password)
         if(thread_user==""||thread_password==""||thread_user==nil||thread_password==nil){
             title="校园卡登录"
             view_table.isHidden=true
@@ -339,9 +341,12 @@ func numberOfSections(in tableView: UITableView) -> Int {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+    
+    func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier=="SchoolCardChangePass" {
-            let SchoolCardChangePassController=segue.destinationViewController as! SchoolCardChangePass
+            
+            let SchoolCardChangePassController=segue.destination as! SchoolCardChangePass
             SchoolCardChangePassController.mschoolcard=self.mschoolcard
             
         }

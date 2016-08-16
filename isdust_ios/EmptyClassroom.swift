@@ -14,13 +14,14 @@ class EmptyClassroom{
     }
     func rsa_encrypt(data:String) -> String {
         let cs = (data as NSString).utf8String
-        let buffer = UnsafeMutablePointer<Int8>(cs)
+        
+        let buffer = UnsafeMutablePointer<Int8>.init(mutating: cs)
         let b = String.init(cString: openssl_rsa_encrypt(buffer))
         return b;
     }
     func md5(data:String) -> String {
         let cs = (data as NSString).utf8String
-        let buffer = UnsafeMutablePointer<Int8>(cs)
+        let buffer = UnsafeMutablePointer<Int8>.init(mutating: cs)
         let b = String.init(cString: openssl_md5(buffer))
         return b;
     }

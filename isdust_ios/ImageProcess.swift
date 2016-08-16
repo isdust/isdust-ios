@@ -36,8 +36,9 @@ class ImageProcess{
         // Allocate memory for image data. This is the destination in memory
         // where any drawing to the bitmap context will be rendered.
         let bitmapData = malloc(bitmapByteCount)
-        data=UnsafeMutablePointer<UInt8>(malloc(bitmapByteCount))
-        
+//        data=UnsafeMutablePointer<UInt8>(malloc(bitmapByteCount))
+        data=UnsafeMutablePointer<UInt8>.allocate(capacity: bitmapByteCount)
+    
         // Create the bitmap context. We want pre-multiplied ARGB, 8-bits
         // per component. Regardless of what the source image format is
         // (CMYK, Grayscale, and so on) it will be converted over to the format
@@ -52,20 +53,22 @@ class ImageProcess{
         // Draw the image to the bitmap context. Once we draw, the memory
         // allocated for the context for rendering will then contain the
         // raw image data in the specified color space.
-        context?.draw(in: rect, image: inImage!)
-        
+//        context?.draw(in: rect, image: inImage!)
+        context?.draw(inImage!, in: rect)
         // Now we can get a pointer to the image data associated with the bitmap
         // context.
         let mdata = context?.data
-        let dataType = UnsafePointer<UInt8>(mdata)
+        
+        //let dataType = UnsafePointer<UInt8>.init(mdata)
+        let dataType = unsafeBitCast(mdata, to: UnsafePointer<UInt8>.self)
         
         for i in 0 ..< Int(pixelsHigh!){
             for j in 0 ..< Int(pixelsWide!) {
             let offset = 4*((Int(pixelsWide!) * Int(i)) + Int(j))
-                data?[offset]=(dataType?[offset])!
-                data?[offset+1]=(dataType?[offset+1])!
-                data?[offset+2]=(dataType?[offset+2])!
-                data?[offset+3]=(dataType?[offset+3])!
+                data?[offset]=(dataType[offset])
+                data?[offset+1]=(dataType[offset+1])
+                data?[offset+2]=(dataType[offset+2])
+                data?[offset+3]=(dataType[offset+3])
             
             }
         }
@@ -89,7 +92,7 @@ class ImageProcess{
             for j in 0 ..< Int(rect.width){
                 let offset = 4*((Int(rect.width) * Int(i)) + Int(j))
                 let blue = data?[offset+3]
-                if(blue>50){
+                if(blue!>50){
                     data?[offset+0]=0xFF
                     data?[offset+1]=0xFF
                     data?[offset+2]=0xFF
@@ -112,7 +115,7 @@ class ImageProcess{
             var tmp_rect = CGRect(x:0, y:0, width:Int(split_detail[i].width), height:Int(split_detail[i].height))
             var bitmapBytesPerRow = Int(split_detail[i].width) * 4
             var bitmapByteCount = bitmapBytesPerRow * Int(split_detail[i].height)
-            var temp_data=UnsafeMutablePointer<UInt8>(malloc(bitmapByteCount))
+            var temp_data=UnsafeMutablePointer<UInt8>.allocate(capacity: bitmapByteCount)
             for j in 0 ..< Int(split_detail[i].height){
                 for k in 0 ..< Int(split_detail[i].width){
                     
@@ -122,10 +125,10 @@ class ImageProcess{
                     offset1*=4
                     //var offset = 4*((Int(rect!.width) * Int(j+split_detail[i].maxX)) + Int(k+split_detail[i].maxY))
                     
-                    temp_data?[offset_temp]=(data?[offset1])!
-                    temp_data?[offset_temp+1]=(data?[offset1+1])!
-                    temp_data?[offset_temp+2]=(data?[offset1+2])!
-                    temp_data?[offset_temp+3]=(data?[offset1+3])!
+                    temp_data[offset_temp]=(data?[offset1])!
+                    temp_data[offset_temp+1]=(data?[offset1+1])!
+                    temp_data[offset_temp+2]=(data?[offset1+2])!
+                    temp_data[offset_temp+3]=(data?[offset1+3])!
                 }
             
             }
@@ -143,7 +146,7 @@ class ImageProcess{
         for i in 0 ..< Int(rect.height){
             for j in 0 ..< Int(rect.width){
             let offset = 4*((Int(rect.width) * Int(i)) + Int(j))
-                if(data?[offset+3]>200){
+                if((data?[offset+3])!>200){
                     print("1",terminator: "")
                 }else{
                 print("0",terminator: "")

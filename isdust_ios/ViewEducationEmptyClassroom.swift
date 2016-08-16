@@ -118,8 +118,8 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
     }
     //TableView end
     
-    
-    override func performSelector(onMainThread aSelector: Selector, with arg: AnyObject?, waitUntilDone wait: Bool) {
+
+    override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
         DispatchQueue.main.async(){
             switch aSelector {
             case Selector("emptyclassroom_search"):
@@ -141,7 +141,7 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
         self.table_emptyclassroom.delegate=self
         self.table_emptyclassroom.dataSource=self
         picker_data.autoresizingMask = .flexibleWidth
-        serialQueue = DispatchQueue(label: "queuename", attributes: .serial)
+        serialQueue = DispatchQueue(label: "queuename", attributes: [])
 
         for i in 1..<22{
             data_schooldate.append(String(i)+"周")

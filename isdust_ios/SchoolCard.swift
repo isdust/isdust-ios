@@ -111,12 +111,13 @@ class SchoolCard{
             mhttp.setencoding(0)
             text_web=mhttp.get(location+"accountcardUser.action")
             var expression="<div align=\"left\">([\\S\\s]*?)</div>"
-            var regex = try! RegularExpression(pattern: expression, options: RegularExpression.Options.caseInsensitive)
-            var res = regex.matches(in: text_web!, options: RegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
+            var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
+            var res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
             var temp_stuinfo=[String]()
             
             for i in 0 ..< res.count{
-                let temp_string=(text_web! as NSString).substring(with: res[i].range(at: 1))
+                
+                let temp_string=(text_web! as NSString).substring(with:res[i].rangeAt(1))
                 temp_stuinfo.append(temp_string)
             }
             
@@ -129,11 +130,11 @@ class SchoolCard{
             mPersonInfo.xuegongid=temp_stuinfo[3]
             mPersonInfo.password=password
             expression="<td class=\"neiwen\">([-]*?[0-9]*.[0-9]*)元\\（卡余额\\）([-]*?[0-9]*.[0-9]*)元\\(当前过渡余额\\)([-]*?[0-9]*.[0-9]*)元\\(上次过渡余额\\)</td>"
-            regex = try! RegularExpression(pattern: expression, options: RegularExpression.Options.caseInsensitive)
-            res = regex.matches(in: text_web!, options: RegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
-            mPersonInfo.balance_split.append(Float((text_web! as NSString).substring(with: res[0].range(at: 1)))!)
-            mPersonInfo.balance_split.append(Float((text_web! as NSString).substring(with: res[0].range(at: 2)))!)
-            mPersonInfo.balance_split.append(Float((text_web! as NSString).substring(with: res[0].range(at: 3)))!)
+            regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
+            res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
+            mPersonInfo.balance_split.append(Float((text_web! as NSString).substring(with: res[0].rangeAt(1)))!)
+            mPersonInfo.balance_split.append(Float((text_web! as NSString).substring(with: res[0].rangeAt( 2)))!)
+            mPersonInfo.balance_split.append(Float((text_web! as NSString).substring(with: res[0].rangeAt( 3)))!)
             mPersonInfo.balance_total=mPersonInfo.balance_split[0]+mPersonInfo.balance_split[1]
             mkey=getkey()
             return "登陆成功"
@@ -149,13 +150,13 @@ class SchoolCard{
         mhttp.setencoding(1)
         var text_web=mhttp.get(location+"accounthisTrjn.action")
         var expression="\"/accounthisTrjn.action\\?__continue=([\\s\\S]*?)\""
-        var regex = try! RegularExpression(pattern: expression, options: RegularExpression.Options.caseInsensitive)
-        var res = regex.matches(in: text_web!, options: RegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
+        var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
+        var res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
         
-        var key_init=(text_web! as NSString).substring(with: res[0].range(at: 1))
+        var key_init=(text_web! as NSString).substring(with: res[0].rangeAt( 1))
         text_web=mhttp.post(location+"accounthisTrjn.action?__continue="+key_init, "account="+mPersonInfo.id+"&inputObject=all&Submit=+%C8%B7+%B6%A8+")
-        res = regex.matches(in: text_web!, options: RegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
-        var result=(text_web! as NSString).substring(with: res[0].range(at: 1))
+        res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
+        var result=(text_web! as NSString).substring(with: res[0].rangeAt(1))
         return result
         
         
@@ -165,12 +166,12 @@ class SchoolCard{
         mkey=getkey()
         var text_web = mhttp.post(location+"accounthisTrjn.action?__continue=" + mkey, "inputStartDate=" + inputStartDate + "&inputEndDate=" + inputEndDate + "&pageNum="+String(page))
         var expression="<form id=\"\\?__continue=([\\S\\s]*?)\" name=\"form1\" "
-        var regex = try! RegularExpression(pattern: expression, options: RegularExpression.Options.caseInsensitive)
-        var res = regex.matches(in: text_web!, options: RegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
+        var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
+        var res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
         page_current=page;
         day_current=inputStartDate;
         
-        var msearchkey=(text_web! as NSString).substring(with: res[0].range(at: 1))
+        var msearchkey=(text_web! as NSString).substring(with: res[0].rangeAt(1))
         var result:[[String]]=AnalyzeHistory(mhttp.get(location+"accounthisTrjn.action?__continue=" + msearchkey))
 
         return result
@@ -180,14 +181,15 @@ class SchoolCard{
     func AnalyzeHistory(_ text:String) -> [[String]] {
         var result:[[String]]=[[String]]()
         let expression="<tr class=\"listbg[\\s\\S]*?\">[\\s\\S]*?<td  align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td   align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"right\">([\\s\\S]*?)</td>[\\s\\S]*?<td align=\"right\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?</tr>"
-        let regex = try! RegularExpression(pattern: expression, options: RegularExpression.Options.caseInsensitive)
-        var res = regex.matches(in: text, options: RegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, text.characters.count))
+        let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
+        var res = regex.matches(in: text, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, text.characters.count))
         
         for i in 0 ..< res.count{
             var temp:[String]=[String]()
             for j in 1 ..< res[i].numberOfRanges
             {
-                temp.append((text as NSString).substring(with: res[i].range(at: j)))
+                
+                temp.append((text as NSString).substring(with: res[i].rangeAt( j)))
             }
             result.append(temp)
             
@@ -209,14 +211,14 @@ class SchoolCard{
         var result:[[String]]=[[String]]()
         let expression="<tr class=\"listbg[\\s\\S]*?\">[\\s\\S]*?<td  align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td   align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"right\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"right\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?</tr>"
         
-        let regex = try! RegularExpression(pattern: expression, options: RegularExpression.Options.caseInsensitive)
-        var res = regex.matches(in: text, options: RegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, text.characters.count))
+        let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
+        var res = regex.matches(in: text, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, text.characters.count))
         
         for i in 0 ..< res.count{
             var temp:[String]=[String]()
             for j in 1 ..< res[i].numberOfRanges
             {
-                temp.append((text as NSString).substring(with: res[i].range(at: j)))
+                temp.append((text as NSString).substring(with: res[i].rangeAt(j)))
             }
             result.append(temp)
             

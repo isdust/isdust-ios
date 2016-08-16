@@ -65,7 +65,7 @@ class SchoolCardChangePass: UIViewController {
         let result=mschoolcard.ChangePassword(thread_rawpass, newpassword: thread_newpass, identity: thread_identity)
         self.performSelector(onMainThread: Selector(("changepass")), with: result as AnyObject, waitUntilDone: false)
     }
-    override func performSelector(onMainThread aSelector: Selector, with arg: AnyObject?, waitUntilDone wait: Bool) {
+    override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
         DispatchQueue.main.async(){
             SVProgressHUD.dismiss()
             
@@ -77,7 +77,7 @@ class SchoolCardChangePass: UIViewController {
                 
                 let message=arg as! String
                 if(message=="修改密码成功"){
-                    UserDefaults.standard().set(self.thread_newpass, forKey: self.key_password)
+                    UserDefaults.standard.set(self.thread_newpass, forKey: self.key_password)
                     alert.message = "密码修改成功"
                     alert.show()
                     self.navigationController?.popViewController(animated: true)
@@ -98,7 +98,7 @@ class SchoolCardChangePass: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        serialQueue = DispatchQueue(label: "SchoolCardChangePass", attributes: .serial)
+        serialQueue = DispatchQueue(label: "SchoolCardChangePass", attributes: [])
     }
     
     override func didReceiveMemoryWarning() {

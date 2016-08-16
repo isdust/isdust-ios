@@ -44,7 +44,7 @@ class ViewNetwork: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         )
         var barButtonItem = self.navigationItem.rightBarButtonItem!
         var buttonItemView = barButtonItem.value(forKey: "view")
-        var frame = buttonItemView?.frame
+        var frame = (buttonItemView as AnyObject).frame
         frame?.origin.y+=30
         KxMenu.show(in: self.navigationController?.view, from: frame!, menuItems:menuArray, withOptions: options)
     }

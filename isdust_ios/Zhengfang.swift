@@ -102,14 +102,14 @@ class Zhengfang{
     }
     func ScoreAnalyzeZhengfang(_ text:String) -> [[String]] {
         let expression = "<tr[\\s\\S]*?>[\\s\\S]*?<td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td>[\\S\\s]*?</tr>"
-        let regex = try! RegularExpression(pattern: expression, options: RegularExpression.Options.caseInsensitive)
+        let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
         var result=[[String]]();
-        let res = regex.matches(in: text, options: RegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, text.characters.count))
+        let res = regex.matches(in: text, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, text.characters.count))
         for i in 1 ..< res.count{
              var temp=[String]()
             for j in 1 ..< res[i].numberOfRanges{
                 
-                let str = (text as NSString).substring(with: res[i].range(at: j))
+                let str = (text as NSString).substring(with: res[i].rangeAt( j))
                 temp.append(str)
             
             }
@@ -124,16 +124,16 @@ class Zhengfang{
         text_web=text_web?.replacingOccurrences(of: " rowspan=\"2\" ", with: "")
         let expression="<td  class=\"leftheader\">第[1,3,5,7,9]节</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>"
         // - 2、创建正则表达式对象
-        let regex = try! RegularExpression(pattern: expression, options: RegularExpression.Options.caseInsensitive)
+        let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
         // - 3、开始匹配
         var result=[Kebiao]();
-        let res = regex.matches(in: text_web!, options: RegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
+        let res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
         for i in 0 ..< res.count{
             //print((text_web as NSString).substringWithRange(res[i].rangeAtIndex(0)))
             for j in 1 ..< 7{
                 
                 
-                var str = (text_web! as NSString).substring(with: res[i].range(at: j))
+                var str = (text_web! as NSString).substring(with: res[i].rangeAt(j))
                 if(!(str=="&nbsp;")){
                     var temp=Kebiao()
                     temp.jieci=String(i+1)

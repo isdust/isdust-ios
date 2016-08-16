@@ -34,7 +34,7 @@ class ViewLogin:UIViewController{
         
         // Dispose of any resources that can be recreated.
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier=="SchoolCardMain" {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             
