@@ -408,7 +408,8 @@
 				TargetAttributes = {
 					751C35B21D4354B500A26D45 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 26E6MT4ZVS;
+						DevelopmentTeam = 526JMJ27M9;
+						DevelopmentTeamName = "Ziqiang Wang";
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
