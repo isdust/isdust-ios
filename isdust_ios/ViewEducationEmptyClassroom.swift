@@ -35,7 +35,9 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
     func thread_search() {
         var result:[Kebiao] = memptyclassroom.getEmptyClassroom(building: thread_building, schooldate: thread_schooldate, week: thread_week, jieci: thread_jieci)
         self.emtpyclassroom_detail=result
-        self.performSelector(onMainThread: Selector(("emptyclassroom_search")), with:nil, waitUntilDone: false)
+//        self.performSelector(onMainThread: Selector(("emptyclassroom_search")), with:nil, waitUntilDone: false)
+        self.performSelector(onMainThread: Selector(("emptyclassroom_search")), with: nil, waitUntilDone: false, modes: nil)
+
     }
     
     

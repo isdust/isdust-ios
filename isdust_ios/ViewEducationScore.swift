@@ -88,13 +88,16 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     func thread_AllScoreLookup() {
         let result=mzhengfang.AllScoreLookUp()
-        self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false)
+//        self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false)
+        self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+
         
     }
     func thread_jidianLookup() {
         let result=mzhengfang.JidianLookup()
-        self.performSelector(onMainThread: Selector(("zhengfang_jidianlookup")), with: result as AnyObject, waitUntilDone: false)
-        
+//        self.performSelector(onMainThread: Selector(("zhengfang_jidianlookup")), with: result as AnyObject, waitUntilDone: false)
+        self.performSelector(onMainThread: Selector(("zhengfang_jidianlookup")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+
     }
     override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
         DispatchQueue.main.async(){

@@ -176,13 +176,15 @@ func numberOfSections(in tableView: UITableView) -> Int {
             menuBackgroundColor: Color(R: 1, G: 1, B: 1)  //菜单的底色
         )
         let barButtonItem = self.navigationItem.rightBarButtonItem!
-        barButtonItem.title="test"
         let buttonItemView = barButtonItem.value(forKey: "view")
-        
-        let temp = sender.accessibilityFrame
-        var frame = (buttonItemView as AnyObject).layoutFrame
-        frame?.origin.y+=30
-        KxMenu.show(in: self.navigationController?.view, from: frame!, menuItems:menuArray, withOptions: options)
+        var a=self.view.frame
+        a.size.height=60
+        a.size.width*=2
+        a.size.width-=60
+        //let temp = sender.accessibilityFrame
+        //var frame = (buttonItemView as AnyObject).frame
+        //frame?.origin.y+=30
+        KxMenu.show(in: self.navigationController?.view, from: a, menuItems:menuArray, withOptions: options)
         
         
         
@@ -347,7 +349,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
     }
     
     
-    func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="SchoolCardChangePass" {
             
             let SchoolCardChangePassController=segue.destination as! SchoolCardChangePass

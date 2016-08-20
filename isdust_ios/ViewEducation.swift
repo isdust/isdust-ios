@@ -30,14 +30,17 @@ class ViewEducation: UIViewController {
     
     func thread_login() {
         let result=mzhengfang.Login(thread_user!, password: thread_password!)
-        self.performSelector(onMainThread: Selector(("zhengfang_login")), with: result as AnyObject, waitUntilDone: false)
+        
+        self.performSelector(onMainThread: Selector(("zhengfang_login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+//        self.performSelector(onMainThread: Selector(("zhengfang_login")), with: result as AnyObject, waitUntilDone: false)
     }
     func thread_AllScoreLookup() {
         let result=mzhengfang.AllScoreLookUp()
-        self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false)
-
+//        self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false)
+        self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false, modes: nil)
     }
-    func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="ScoreLookUp" {
             let SchoolCardChangePassController=segue.destination as! ViewEducationScore
             SchoolCardChangePassController.mzhengfang=self.mzhengfang
