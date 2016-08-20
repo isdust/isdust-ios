@@ -11,8 +11,9 @@ class ViewMain: UIViewController {
     @IBOutlet weak var imageview: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        var d=Library()
-        var a = d.findBookByName(Name: "swift")
+//        var d=Library()
+//        d.getStorage(bookrecno: "1900605908")
+//        var a = d.findBookByName(Name: "swift")
 //        var a=Zhengfang();
 //        a.Login("201501060225", password: "960826wang")
     }

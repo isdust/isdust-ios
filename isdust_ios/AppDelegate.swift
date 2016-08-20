@@ -15,6 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let bounds: CGRect = UIScreen.main.bounds
+        var screenHeight = bounds.size.height
+        var deviceFamily: String
+        
+        var mainView: UIStoryboard!
+        mainView = UIStoryboard(name: "Main", bundle: nil)
+        let viewcontroller : UIViewController = mainView.instantiateViewController(withIdentifier: "viewmain") as UIViewController
+        self.window!.rootViewController = viewcontroller
         // Override point for customization after application launch.
         return true
     }

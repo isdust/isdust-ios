@@ -175,9 +175,12 @@ func numberOfSections(in tableView: UITableView) -> Int {
             textColor: Color(R: 0, G: 0, B: 0),  //menuItem字体颜色
             menuBackgroundColor: Color(R: 1, G: 1, B: 1)  //菜单的底色
         )
-        var barButtonItem = self.navigationItem.rightBarButtonItem!
-        var buttonItemView = barButtonItem.value(forKey: "view")
-        var frame = (buttonItemView as AnyObject).frame
+        let barButtonItem = self.navigationItem.rightBarButtonItem!
+        barButtonItem.title="test"
+        let buttonItemView = barButtonItem.value(forKey: "view")
+        
+        let temp = sender.accessibilityFrame
+        var frame = (buttonItemView as AnyObject).layoutFrame
         frame?.origin.y+=30
         KxMenu.show(in: self.navigationController?.view, from: frame!, menuItems:menuArray, withOptions: options)
         
@@ -269,12 +272,13 @@ func numberOfSections(in tableView: UITableView) -> Int {
 
     func thread_login() {
         let result=mschoolcard.login(thread_user!, password: thread_password!)
-        self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false)
+        self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        //self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false)
         //self.performSelector(inBackground: "login", with: result as! AnyObject)
     }
     func thread_getdetail()  {
         let data=mschoolcard.NextPage()
-        self.performSelector(onMainThread: Selector(("detail")), with: data as AnyObject, waitUntilDone: false)
+        self.performSelector(onMainThread: Selector(("detail")), with: data as AnyObject, waitUntilDone: false, modes: nil)
     }
     @IBOutlet weak var view_login: UIView!
     @IBOutlet var view_main: UIView!

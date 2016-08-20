@@ -77,7 +77,7 @@ class Library{
     func getLocalMap(text:String) -> String {
         let source="{\"QBCK\":\"青岛科图版书库\",\"JNJC\":\"济南教材参考库\",\"QXKYL\":\"青岛现刊阅览室\",\"QZKK\":\"青岛自科书库\",\"QWYK\":\"青岛外文书样本库\",\"QWWK\":\"青岛外文书库\",\"TDZKK\":\"泰东自科现刊\",\"QZYK\":\"青岛中文书样本库\",\"TDYB\":\"泰东样本库\",\"KJGK\":\"泰西过刊\",\"JNGK\":\"中文期刊\",\"JNWWK\":\"济南外文刊\",\"TDZT\":\"泰东中图库\",\"TDSKK\":\"泰东社科现刊\",\"JNGP\":\"济南随书光盘库\",\"QSKK\":\"青岛社科书库\",\"JNQK\":\"济南期刊库\",\"JNSK\":\"济南社科借阅区\",\"QJCK\":\"青岛教材样本库\",\"TDKT\":\"泰东科图库\",\"KJZKK\":\"泰西自科现刊\",\"QMJK\":\"青岛密集库\",\"QDZY\":\"青岛电子阅览室\",\"TDGK\":\"泰东过刊库\",\"TDXS\":\"泰东学生阅览室\",\"JNGJ\":\"济南工具书\",\"TDKY\":\"泰东考研库\",\"QGKK\":\"青岛过期期刊库\",\"Q007\":\"青岛未分配流通库\",\"JNXS\":\"济南学生借书处\",\"JNBC\":\"济南保存库\",\"TDWW\":\"泰东外文库\",\"TDZH\":\"泰东综合库\",\"KJTC\":\"特藏图书\",\"JNZK\":\"济南自科借阅区\",\"JNFY\":\"济南复印\",\"TDTC\":\"泰东特藏库\",\"KJZT\":\"泰西中图库\",\"TDZLS\":\"泰文法资料室\",\"JNWW\":\"济南外文借书处\",\"WFFG\":\"文法分馆\",\"QGJK\":\"青岛工具书库\",\"JNLS\":\"济南临时库\",\"QTCK\":\"青岛特藏书库\",\"KJSKK\":\"泰西社科现刊\",\"JNJS\":\"济南教师借书处\",\"JNDZ\":\"济南电子阅览室\",\"TDJS\":\"泰东教师阅览室\"}"
         let data = source.data(using: String.Encoding.utf8) //data  是json格式字符串
-        let json = try? JSONSerialization.jsonObject(with: data!) as AnyObject
+        let json = try? JSONSerialization.jsonObject(with: data!) as! NSDictionary
         
         return (json![text] as? String)!
         
@@ -85,7 +85,7 @@ class Library{
     func getOriginLib(text:String) -> String {
         let source="{\"02000\":\"泰安东校区\",\"04000\":\"泰山科技学院\",\"01000\":\"青岛校区\",\"01000 \":null,\"03000\":\"济南校区\",\"999\":\"山东科技大学图书馆\",\"05000\":\"文法分馆\"}"
         let data = source.data(using: String.Encoding.utf8) //data  是json格式字符串
-        let json = try? JSONSerialization.jsonObject(with: data!) as AnyObject
+        let json = try? JSONSerialization.jsonObject(with: data!) as! NSDictionary
         return (json![text] as? String)!
         
     }
@@ -97,13 +97,15 @@ class Library{
         
         //let number = json?["Language"]??["Field"]??[0]?["Number"] as? String
         
-        return ((json?[text] as AnyObject) ["stateName"] as? String)!
+        return ((json?[text] as! NSDictionary) ["stateName"] as? String)!
         
     }
     func getReturnDate(source:String,barcode:String) -> String {
         let data = source.data(using: String.Encoding.utf8) //data  是json格式字符串
-        let json = try? JSONSerialization.jsonObject(with: data!) as AnyObject
-        return ((json?[barcode] as AnyObject) ["returnDate"] as? String)!
+        let json = try? JSONSerialization.jsonObject(with: data!) as! NSDictionary
+        var temp=((json?[barcode] as! NSDictionary) ["returnDate"]) as! NSNumber
+        let temp1=temp.decimalValue/1000
+        return "\(temp1)"
     }
     func renew_all() -> String {
         var text_web=mhttp.post("http://interlib.sdust.edu.cn/opac/loan/doRenew","furl=%2Fopac%2Floan%2FrenewList&renewAll=all" )
@@ -137,11 +139,11 @@ class Library{
         var raw_borrowinfo=mhttp.getMiddleText(text,"{\"loanWorkMap\":",",\"holdingList");
         
         let data = raw_bookinfo.data(using: String.Encoding.utf8) //data  是json格式字符串
-        let json = try? JSONSerialization.jsonObject(with: data!) as? NSArray
+        let json = try? JSONSerialization.jsonObject(with: data!)
         
         for i in 0 ..< (json! as AnyObject).count{
             var temp=[String ](repeating:"",count: 6 )
-            let temp_json =  (json??[i] as! NSDictionary)
+            let temp_json =  ((json as! NSArray)[i] as! NSDictionary)
             
             temp[0]=temp_json["callno"]as! String
             temp[1]=temp_json["barcode"] as! String
@@ -151,8 +153,8 @@ class Library{
             }else{
             temp[3]=""
             }
-            temp[4]=temp_json["orglib"] as! String
-            temp[5]=temp_json["orglocal"] as! String
+            temp[4]=getOriginLib(text: temp_json["orglib"] as! String)
+            temp[5]=getLocalMap(text: temp_json["orglocal"] as! String)
             
             result.append(temp)
             
