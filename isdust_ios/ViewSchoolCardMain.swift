@@ -239,7 +239,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
                 alert.show()
             }
             break
-        case Selector("detail"):
+        case Selector(("detail")):
             let message=arg as! [[String]]
             for i in message{
                // var index=i[0][startIndex...string.index(startIndex, offsetBy: 4)]
@@ -256,13 +256,13 @@ func numberOfSections(in tableView: UITableView) -> Int {
             self.loadingData = false
 
             break
-        case Selector("menu_changepass"):
+        case #selector(ViewSchoolCardMain.menu_changepass):
             self.menu_changepass()
             break
-        case Selector("menu_reportloss"):
+        case #selector(ViewSchoolCardMain.menu_reportloss):
             self.menu_reportloss()
             break
-        case Selector("menu_logout"):
+        case #selector(ViewSchoolCardMain.menu_logout):
             self.menu_logout()
             break
         default:
@@ -275,8 +275,6 @@ func numberOfSections(in tableView: UITableView) -> Int {
     func thread_login() {
         let result=mschoolcard.login(thread_user!, password: thread_password!)
         self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
-        //self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false)
-        //self.performSelector(inBackground: "login", with: result as! AnyObject)
     }
     func thread_getdetail()  {
         let data=mschoolcard.NextPage()
@@ -296,32 +294,15 @@ func numberOfSections(in tableView: UITableView) -> Int {
             edit_user.endEditing(true)
             edit_pass.endEditing(true)
             serialQueue.async(execute: thread_login)
-            //let alert = UIAlertController(title: nil, message: "正在登录", preferredStyle: .alert)
             SVProgressHUD.show()
-
-            
-            
-            
-            
         }
     }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.layoutIfNeeded()
-
         UITableView_detail.delegate = self
         UITableView_detail.dataSource = self
-        //
-//        refreshControl.addTarget(self, action: "refreshData",
-//                                 for: UIControlEvents.valueChanged)
-//        refreshControl.attributedTitle = AttributedString(string: "下拉刷新数据")
-        //UITableView_detail.contentInset = UIEdgeInsetsZero
-//        UITableView_detail.addSubview(refreshControl)
-        
-//        view.bringSubview(toFront: view_login)
-        //view_login.frame=view_main.frame
         mschoolcard=SchoolCard()
         serialQueue = DispatchQueue(label: "queuename", attributes: [])
         thread_user = UserDefaults.standard.string(forKey: key_user)
@@ -331,8 +312,6 @@ func numberOfSections(in tableView: UITableView) -> Int {
             view_table.isHidden=true
             view_login.isHidden=false
 
-
-            //self.present(anotherView, animated: true, completion: nil)
         }else{
             view_login.isHidden=true
             view_table.isHidden=false

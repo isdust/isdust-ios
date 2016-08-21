@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		750A197B1D6955D9006E619E /* TableViewCellBorrowedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A197A1D6955D9006E619E /* TableViewCellBorrowedBook.swift */; };
 		751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B61D4354B500A26D45 /* AppDelegate.swift */; };
 		751C35B91D4354B500A26D45 /* ViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B81D4354B500A26D45 /* ViewMain.swift */; };
 		751C35BC1D4354B500A26D45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751C35BA1D4354B500A26D45 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 		753B87AA1D684D2B00A0218C /* TableViewControllerLibrarySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B87A91D684D2B00A0218C /* TableViewControllerLibrarySearchResult.swift */; };
 		753B87AC1D6856F000A0218C /* TableViewCellStorageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B87AB1D6856F000A0218C /* TableViewCellStorageSearch.swift */; };
 		753B87B01D68593400A0218C /* TableViewControllerSrorageSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B87AF1D68593400A0218C /* TableViewControllerSrorageSearchResult.swift */; };
+		753B87B81D694B5C00A0218C /* ViewControllerLibraryPersonal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B87B71D694B5C00A0218C /* ViewControllerLibraryPersonal.swift */; };
 		754043DD1D50706D00F6B957 /* ViewSchoolCardChangePass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754043DC1D50706D00F6B957 /* ViewSchoolCardChangePass.swift */; };
 		7544D4661D55E46D00642A2E /* ViewNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D4651D55E46D00642A2E /* ViewNetwork.swift */; };
 		7544D4681D56388200642A2E /* ViewSchoolCardReportLoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D4671D56388200642A2E /* ViewSchoolCardReportLoss.swift */; };
@@ -76,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		750A197A1D6955D9006E619E /* TableViewCellBorrowedBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellBorrowedBook.swift; sourceTree = "<group>"; };
 		751C35B31D4354B500A26D45 /* isdust_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = isdust_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		751C35B61D4354B500A26D45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		751C35B81D4354B500A26D45 /* ViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMain.swift; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 		753B87A91D684D2B00A0218C /* TableViewControllerLibrarySearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerLibrarySearchResult.swift; sourceTree = "<group>"; };
 		753B87AB1D6856F000A0218C /* TableViewCellStorageSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellStorageSearch.swift; sourceTree = "<group>"; };
 		753B87AF1D68593400A0218C /* TableViewControllerSrorageSearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerSrorageSearchResult.swift; sourceTree = "<group>"; };
+		753B87B71D694B5C00A0218C /* ViewControllerLibraryPersonal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLibraryPersonal.swift; sourceTree = "<group>"; };
 		754043D21D502DB800F6B957 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = isdust_ios/openssl/arm/libcrypto.a; sourceTree = "<group>"; };
 		754043D31D502DB800F6B957 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = isdust_ios/openssl/arm/libssl.a; sourceTree = "<group>"; };
 		754043DC1D50706D00F6B957 /* ViewSchoolCardChangePass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolCardChangePass.swift; sourceTree = "<group>"; };
@@ -346,6 +350,8 @@
 				753B87A91D684D2B00A0218C /* TableViewControllerLibrarySearchResult.swift */,
 				753B87AB1D6856F000A0218C /* TableViewCellStorageSearch.swift */,
 				753B87AF1D68593400A0218C /* TableViewControllerSrorageSearchResult.swift */,
+				753B87B71D694B5C00A0218C /* ViewControllerLibraryPersonal.swift */,
+				750A197A1D6955D9006E619E /* TableViewCellBorrowedBook.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -557,6 +563,7 @@
 				751C35F01D4446E900A26D45 /* SchoolCard.swift in Sources */,
 				7544D46E1D56ED2400642A2E /* TableViewScore.swift in Sources */,
 				75A0D51D1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift in Sources */,
+				753B87B81D694B5C00A0218C /* ViewControllerLibraryPersonal.swift in Sources */,
 				75CC0CB81D63F4930002E113 /* ToggleTorchButton.swift in Sources */,
 				7521C5341D4AF459001E0CC0 /* SWXMLHash.swift in Sources */,
 				75CC0CB61D63F4930002E113 /* ReaderOverlayView.swift in Sources */,
@@ -574,6 +581,7 @@
 				753B87A81D684BAD00A0218C /* TableViewCellLibrarySearch.swift in Sources */,
 				757BEB121D51513E00432695 /* TableViewSchoolCard.swift in Sources */,
 				75CC0CB31D63F4930002E113 /* QRCodeReaderResult.swift in Sources */,
+				750A197B1D6955D9006E619E /* TableViewCellBorrowedBook.swift in Sources */,
 				75985B2D1D46784600388278 /* rsa.c in Sources */,
 				7578EAFC1D52491600F0A538 /* SVProgressAnimatedView.m in Sources */,
 				7521C5441D4DA2ED001E0CC0 /* ViewLogin.swift in Sources */,
