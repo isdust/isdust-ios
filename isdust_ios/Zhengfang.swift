@@ -20,12 +20,19 @@ class Zhengfang{
         mhttp=Http();
         mhttp.setencoding(1);
     }
+        func JumpToSelectClass() {
+        mhttp.setencoding(1);
+        let text_web=mhttp.get(mhttp.urlencode(url_xuanke) );
+        url_xuanke=mhttp.getMiddleText(text_web, "<a target=\"_top\" href=\"", "\">如果您的浏览器没有跳转，请点这里</a>");
+        mhttp.get(url_xuanke);
+
+    }
     func Login(_ username:String,password:String)->String{
         mhttp.setencoding(1);
         var text_web=mhttp.get(location_zhengfang+"default_ysdx.aspx");
         var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
         VIEWSTATE=mhttp.postencode(VIEWSTATE);
-//        VIEWSTATE=VIEWSTATE?.replacingOccurrences(of: <#T##String#>, with: "%3D")
+        //        VIEWSTATE=VIEWSTATE?.replacingOccurrences(of: <#T##String#>, with: "%3D")
         var submit="__VIEWSTATE=" + VIEWSTATE! + "&TextBox1=" + username + "&TextBox2=" + mhttp.postencode(password)
         submit=submit+"&RadioButtonList1=%d1%a7%c9%fa&Button1=++%b5%c7%c2%bc++"
         text_web=mhttp.post(location_zhengfang+"default_ysdx.aspx",submit)
@@ -38,13 +45,13 @@ class Zhengfang{
             url_xuanke=url_xuanke.replacingOccurrences(of: "192.168.109.142", with: "xuanke.proxy.isdust.com:3100")
             url_chengji=mhttp.getMiddleText(text_web,"学生个人课表</a></li><li><a href=\"","\" target='zhuti' onclick=\"GetMc('个人成绩查询');\">");
             url_chengji=location_zhengfang+url_chengji;
-           return "登录成功";
+            return "登录成功";
             
-        
+            
         }
         else if((text_web?.contains("密码错误")) == true){
             return "密码错误"
-        
+            
         }
         else if((text_web?.contains("用户名不存在")) == true){
             return "用户名不存在"
@@ -53,13 +60,7 @@ class Zhengfang{
         //print(text_web)
         return "未知错误"
     }
-    func JumpToSelectClass() {
-        mhttp.setencoding(1);
-        let text_web=mhttp.get(mhttp.urlencode(url_xuanke) );
-        url_xuanke=mhttp.getMiddleText(text_web, "<a target=\"_top\" href=\"", "\">如果您的浏览器没有跳转，请点这里</a>");
-        mhttp.get(url_xuanke);
 
-    }
     func AllScoreLookUp()->[[String]]{
         mhttp.setencoding(1);
         var text_web="";

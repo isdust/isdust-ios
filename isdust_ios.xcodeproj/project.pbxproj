@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		750A197B1D6955D9006E619E /* TableViewCellBorrowedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A197A1D6955D9006E619E /* TableViewCellBorrowedBook.swift */; };
+		750A197D1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A197C1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift */; };
 		751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B61D4354B500A26D45 /* AppDelegate.swift */; };
 		751C35B91D4354B500A26D45 /* ViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B81D4354B500A26D45 /* ViewMain.swift */; };
 		751C35BC1D4354B500A26D45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751C35BA1D4354B500A26D45 /* Main.storyboard */; };
@@ -79,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		750A197A1D6955D9006E619E /* TableViewCellBorrowedBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellBorrowedBook.swift; sourceTree = "<group>"; };
+		750A197C1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerEducationSchedule.swift; sourceTree = "<group>"; };
 		751C35B31D4354B500A26D45 /* isdust_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = isdust_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		751C35B61D4354B500A26D45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		751C35B81D4354B500A26D45 /* ViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMain.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				7544D46D1D56ED2400642A2E /* TableViewScore.swift */,
 				75A0D51C1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift */,
 				75A0D51E1D58266C00E0C122 /* TableViewEmptyClassroom.swift */,
+				750A197C1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift */,
 			);
 			name = Education;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				7521C5421D4D9D34001E0CC0 /* ViewSchoolCardMain.swift in Sources */,
 				75CC0CB71D63F4930002E113 /* SwitchCameraButton.swift in Sources */,
 				753B87AA1D684D2B00A0218C /* TableViewControllerLibrarySearchResult.swift in Sources */,
+				750A197D1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift in Sources */,
 				751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */,
 				75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */,
 				7544D4681D56388200642A2E /* ViewSchoolCardReportLoss.swift in Sources */,

@@ -166,6 +166,14 @@
                                     <action selector="button_emptyclassroom:" destination="LkI-Ij-F2i" eventType="touchUpInside" id="luL-92-FAP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8v-PF-nhz">
+                                <frame key="frameInset" minX="164" minY="462" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="课程表"/>
+                                <connections>
+                                    <segue destination="s0H-0N-muO" kind="push" id="pHF-UG-jk1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -215,10 +223,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="64" id="pEE-A0-DRe" customClass="TableViewEmptyClassroom" customModule="isdust_ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="64"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pEE-A0-DRe" id="Zwc-8q-xc9">
-                                            <frame key="frameInset" width="375" height="63.5"/>
+                                            <frame key="frameInset" width="1000" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="J7-209室" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqi-Yn-Uao">
@@ -308,10 +316,10 @@
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="65" id="jJA-o5-jRc" customClass="TableViewScore" customModule="isdust_ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="65"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="1000" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jJA-o5-jRc" id="ypC-M3-cBK">
-                                            <frame key="frameInset" width="375" height="64.5"/>
+                                            <frame key="frameInset" width="1000" height="64.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成绩:及格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXM-mn-HuE">
@@ -420,6 +428,34 @@
             </objects>
             <point key="canvasLocation" x="631" y="1873"/>
         </scene>
+        <!--课程表-->
+        <scene sceneID="SbF-K4-Nrd">
+            <objects>
+                <viewController id="s0H-0N-muO" customClass="ViewControllerEducationSchedule" customModule="isdust_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Iic-27-zcH"/>
+                        <viewControllerLayoutGuide type="bottom" id="soO-3A-Hem"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l4I-GE-GfL">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_week_course_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Cma-N2-Kau"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="soO-3A-Hem" firstAttribute="top" secondItem="Cma-N2-Kau" secondAttribute="bottom" id="8H5-BI-3pj"/>
+                            <constraint firstAttribute="trailing" secondItem="Cma-N2-Kau" secondAttribute="trailing" id="hcl-yp-hnv"/>
+                            <constraint firstItem="Cma-N2-Kau" firstAttribute="leading" secondItem="l4I-GE-GfL" secondAttribute="leading" id="njX-J8-dZk"/>
+                            <constraint firstItem="Cma-N2-Kau" firstAttribute="top" secondItem="Iic-27-zcH" secondAttribute="bottom" id="p63-3P-BOa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="课程表" id="MHn-rh-F3u"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HSI-bQ-cQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1193.5" y="1872.5"/>
+        </scene>
         <!--View School Card Main-->
         <scene sceneID="RsS-6W-iUH">
             <objects>
@@ -476,15 +512,15 @@
                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="IDU-eJ-6zY">
-                                    <rect key="frame" x="0.0" y="139.5" width="375" height="20"/>
+                                    <rect key="frame" x="0.0" y="139.5" width="1000" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="66" id="YlI-0p-nrb" customClass="TableViewSchoolCard" customModule="isdust_ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="66"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="1000" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YlI-0p-nrb" id="po6-He-9Xb">
-                                            <frame key="frameInset" width="375" height="65.5"/>
+                                            <frame key="frameInset" width="1000" height="65.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vb2-3A-oAc">
@@ -1000,7 +1036,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KjX-Ut-d6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2498.5" y="595.5"/>
+            <point key="canvasLocation" x="1911" y="619"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ysB-YZ-Sp4">
@@ -1186,7 +1222,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="414" height="113"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Azt-pl-Aeg" id="JAp-eG-hdS">
-                                                    <frame key="frameInset" width="414" height="112"/>
+                                                    <frame key="frameInset" width="414" height="112.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="网络安全从入门到入狱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vO-Oa-lce">
@@ -1325,6 +1361,7 @@
         <image name="LibraryStorage_head2" width="1002" height="522"/>
         <image name="LibraryStorage_scan" width="152" height="142"/>
         <image name="LibraryStorage_search" width="996" height="141"/>
+        <image name="ic_week_course_bg" width="720" height="1284"/>
         <image name="item_card" width="25" height="25"/>
         <image name="item_education" width="37" height="37"/>
         <image name="item_home" width="25" height="25"/>
