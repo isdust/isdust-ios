@@ -3629,7 +3629,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
             endingLineNumber = "56"
-            landmarkName = "drawtable_head()"
+            landmarkName = "schedule_draw_head()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3640,12 +3640,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewControllerEducationSchedule.swift"
-            timestampString = "493614086.814823"
+            timestampString = "493633741.299249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "drawtable_head_cell(frame:)"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "schedule_head_cell_draw(frame:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3656,12 +3656,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewControllerEducationSchedule.swift"
-            timestampString = "493614086.814823"
+            timestampString = "493633741.299249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "drawtable_head_cell(frame:)"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "schedule_head_cell_draw(frame:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3677,7 +3677,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
             endingLineNumber = "51"
-            landmarkName = "drawtable_head()"
+            landmarkName = "schedule_draw_head()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3688,12 +3688,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewControllerEducationSchedule.swift"
-            timestampString = "493614086.814823"
+            timestampString = "493627588.676873"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "drawtable_schedule_cell()"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "schedule_draw_head()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewControllerEducationSchedule.swift"
+            timestampString = "493633741.299249"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "schedule_cell_draw(view:color:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewControllerEducationSchedule.swift"
+            timestampString = "493633741.299249"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "schedule_cell_draw(view:color:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

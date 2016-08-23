@@ -16,7 +16,7 @@ class ViewControllerEducationSchedule: UIViewController {
         super.viewDidLoad()
         mainview=UIView(frame:self.view.frame)
         
-        drawtable_head()
+        schedule_draw_head()
         self.view.addSubview(mainview)
 //myView.gest
 
@@ -43,105 +43,178 @@ class ViewControllerEducationSchedule: UIViewController {
         //self.myView.addGestureRecognizer(gesture)
         myView.addGestureRecognizer(gesture)
     }
-    func drawtable_head() {
+    func schedule_draw_head() {
         //画月份格子
         var base=CGRect.init(x: 0, y: 0, width: 20, height: 40)
-        drawtable_head_cell(frame: CGRect.init(x: 0, y: 0, width: base.width, height: base.height))
-        drawtable_head_label(frame: CGRect.init(x: 3, y: 4, width: 20, height: 40),text:"8月")
+        schedule_head_cell_draw(frame: CGRect.init(x: 0, y: 0, width: base.width, height: base.height))
+        schedule_head_label(frame: CGRect.init(x: 3, y: 4, width: 20, height: 40),text:"8月")
         var extraheight = UIApplication.shared.statusBarFrame.height +
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
         
         //画节次格子
         var jieci_height=(self.view.frame.height-base.height-extraheight)/12
         for i in 0 ..< 12{
-            drawtable_head_cell(frame: CGRect.init(x: 0, y: jieci_height*CGFloat(i)+base.height, width: base.width, height: jieci_height))
-            drawtable_head_label(frame: CGRect.init(x: 7, y: jieci_height*CGFloat(i)+base.height+14, width: base.width, height: jieci_height),text:String(i+1))//周次
+            schedule_head_cell_draw(frame: CGRect.init(x: 0, y: jieci_height*CGFloat(i)+base.height, width: base.width, height: jieci_height))
+            schedule_head_label(frame: CGRect.init(x: 7, y: jieci_height*CGFloat(i)+base.height+14, width: base.width, height: jieci_height),text:String(i+1))//周次
         }
         
         
         //画星期格子
         var xingqi_width=(self.view.frame.width-base.width)/7
         for i in 0..<7{
-            drawtable_head_cell(frame: CGRect.init(x: xingqi_width*CGFloat(i)+base.width, y: 0, width: xingqi_width, height: base.height))
-            drawtable_head_label(frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/3, y: base.height/2+5, width: xingqi_width, height: base.height),text:num2week(num: i+1))//周次
-            drawtable_head_label(frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/2-5, y: base.height/4, width: xingqi_width, height: base.height),text:String(i+1))//日期
+            schedule_head_cell_draw(frame: CGRect.init(x: xingqi_width*CGFloat(i)+base.width, y: 0, width: xingqi_width, height: base.height))
+            schedule_head_label(frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/3, y: base.height/2+5, width: xingqi_width, height: base.height),text:num2week(num: i+1))//周次
+            schedule_head_label(frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/2-5, y: base.height/4, width: xingqi_width, height: base.height),text:String(i+1))//日期
 
             
         }
-        drawtable_schedule_cell()
-
+        
+        //画叉叉
+        for i in 1..<7{
+            for j in 1..<12{
+                schedule_cross_draw(location: CGPoint.init(x: xingqi_width*CGFloat(i)+base.width-3, y: jieci_height*CGFloat(j)+base.height-3))
+            }
+        
+        }
+        
+        schedule_cell_generate(week: 4,jieci: 5, color: UIColor(red:132/255, green: 213/255, blue: 148/255, alpha: 0.7),course: "大学生心理健康教育\n@J14-321室")
         
     }
-    func drawtable_schedule_cell(){
+    func schedule_cell_generate(week:Int,jieci:Int,color:UIColor,course:String) {
+        var view_single=UIView()
+        let interval:CGFloat=2
         var base=CGRect.init(x: 0, y: 0, width: 20, height: 40)
         var extraheight = UIApplication.shared.statusBarFrame.height +
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
         
         var cell_height=(self.view.frame.height-base.height-extraheight)/12
         cell_height*=2
-        
         var cell_width=(self.view.frame.width-base.width)/7
-        let radius:CGFloat=5
+        view_single.frame=CGRect.init(x: (CGFloat(week)-1)*cell_width+base.width+interval, y: (CGFloat(jieci)-1)*cell_height+base.height+interval, width: cell_width, height: cell_height)
+        
+        
+        schedule_cell_draw(view: view_single, color: color)
+        
+        
+        var label_single=UILabel()
+        let label_interval_y:CGFloat=5
+        let label_interval_x:CGFloat=2
+        label_single.textColor=UIColor.white
+        label_single.frame=CGRect.init(x: label_interval_x, y: label_interval_y, width: cell_width-2*label_interval_x, height: cell_height-2*label_interval_y)
+        label_single.font = UIFont.systemFont(ofSize: 9, weight: UIFontWeightBold)
+        label_single.textColor=UIColor.white
+        label_single.text=course
+        label_single.adjustsFontSizeToFitWidth=true
+        label_single.numberOfLines=9
+        label_single.sizeToFit()
+        
+        view_single.addSubview(label_single)
+        
+        
+        
+        mainview.addSubview(view_single)
+        
+    }
+    func schedule_cell_label(view:UIView,week:Int,jieci:Int,course:String) {
+        
+        
+        
+        
+    }
+    func schedule_cross_draw(location:CGPoint) {
+        var length:CGFloat=6
+        let layer = CAShapeLayer()
+        var path = UIBezierPath()
+        
+        path.move(to: CGPoint.init(x: length/2, y: 0))
+        path.addLine(to: CGPoint.init(x: length/2, y: length))
+        path.move(to: CGPoint.init(x: 0, y: length/2))
+        path.addLine(to: CGPoint.init(x: length, y: length/2))
+        layer.path=path.cgPath
+        layer.frame=CGRect.init(x: location.x, y: location.y, width: length, height: length)
+        
+        
+        layer.fillColor=UIColor.clear.cgColor
+        layer.strokeColor = UIColor.black.cgColor
+        layer.strokeColor = UIColor(red:125/255, green: 184/255, blue: 215/255, alpha: 1).cgColor
+
+        layer.lineWidth=0.5
+        
+        mainview.layer.addSublayer(layer)
+        
+    }
+    func schedule_cell_draw(view:UIView,color:UIColor){
+        var base=CGRect.init(x: 0, y: 0, width: 20, height: 40)
+        var extraheight = UIApplication.shared.statusBarFrame.height +
+            self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
+        
+        let interval:CGFloat=2
+        var cell_height=(self.view.frame.height-base.height-extraheight)/12
+        cell_height*=2
+        cell_height=cell_height-2*interval
+        var cell_width=(self.view.frame.width-base.width)/7
+        cell_width=cell_width-2*interval
+        let radius:CGFloat=3
+        var angle:CGFloat
+        var location:CGPoint=CGPoint()
+       
         
         
         let layer = CAShapeLayer()
         var path = UIBezierPath()
         
-//        path.start
-        path.move(to: CGPoint.init(x: radius, y: 0))
+        
+        
+        
+//        drawtable_schedule_arc(path: path, location: CGPoint.init(x: radius, y: radius), angle: 180, radius: radius)
+        
+        angle = 180
+        location = CGPoint.init(x: radius, y: radius)
+        
+        path.move(to: CGPoint.init(x: cell_width-2*radius, y: 0))
+        path.addArc(withCenter: location, radius: radius, startAngle: CGFloat(M_PI)/180*(angle+90), endAngle: (CGFloat(M_PI)/180)*(angle+0), clockwise: false)
+        path.addLine(to: CGPoint.init(x: cell_width-radius, y: cell_height-radius))
+        
+        
+        angle = 270
+        location =  CGPoint.init(x: cell_width-radius*2, y: radius)
+        path.move(to: CGPoint.init(x: cell_width-radius, y: cell_height-radius))
+        path.addArc(withCenter: location, radius: radius, startAngle: CGFloat(M_PI)/180*(angle+90), endAngle: (CGFloat(M_PI)/180)*(angle+0), clockwise: false)
+        path.addLine(to: CGPoint.init(x: cell_width-radius*2, y: cell_height-radius))
         
         
         
         
+        angle = 360
         
-        drawtable_schedule_arc(path: path, location: CGPoint.init(x: radius, y: radius), angle: 180)//左上角圆弧
-        path.move(to: CGPoint.init(x: radius, y: 0))
-        path.addLine(to: CGPoint.init(x: cell_width-radius*2, y: 0))//上边
-        drawtable_schedule_arc(path: path, location: CGPoint.init(x: cell_width-radius*2, y: radius), angle: 270)//右上角圆弧
-        path.move(to: CGPoint.init(x: cell_width-radius, y: radius))
-        path.addLine(to: CGPoint.init(x: cell_width-radius, y: cell_height-radius))//右边
-        drawtable_schedule_arc(path: path, location: CGPoint.init(x: cell_width-radius*2, y: cell_height-radius), angle: 360)//右下角圆弧
-        path.move(to: CGPoint.init(x: cell_width-radius*2, y: cell_height))
-        path.addLine(to: CGPoint.init(x: radius, y: cell_height))//底边
-        drawtable_schedule_arc(path: path, location: CGPoint.init(x: radius, y: cell_height-radius), angle: 90)//左下角圆弧
-        path.move(to: CGPoint.init(x: 0, y: cell_height-radius))
-        path.addLine(to: CGPoint.init(x: 0, y: radius))//左边
+        location =   CGPoint.init(x: cell_width-radius*2, y: cell_height-radius)
+        path.move(to: CGPoint.init(x: radius, y: cell_height))
+        path.addArc(withCenter: location, radius: radius, startAngle: CGFloat(M_PI)/180*(angle+90), endAngle: (CGFloat(M_PI)/180)*(angle+0), clockwise: false)
+        path.addLine(to: CGPoint.init(x: 0, y: radius))
         
         
+        angle = 90
+        location = CGPoint.init(x: radius, y: cell_height-radius)
+        path.move(to: CGPoint.init(x: 0, y: radius))
+        path.addArc(withCenter: location, radius: radius, startAngle: CGFloat(M_PI)/180*(angle+90), endAngle: (CGFloat(M_PI)/180)*(angle+0), clockwise: false)
+        path.addLine(to: CGPoint.init(x: 0, y: radius))
         
-        
-        path.move(to: CGPoint.init(x: radius, y: 0))
+//        path.move(to:  CGPoint.init(x: cell_width-2*radius, y: 0))
         path.close()
-//        UIColor.black.setStroke()
-//        path.stroke()
         
-layer.fillMode=kCAFillModeBoth
-        
-        layer.frame=CGRect.init(x: 100, y: 100, width: 100, height: 100)
-        //var a=UIBezierPath.init(cgPath: path)
-        
-        //a.close()
+//        cell_height=cell_height+2*interval
+//        cell_width=cell_width+2*interval
+        layer.frame=CGRect.init(x: 0, y: 0, width: cell_width, height: cell_height)
+
         layer.path = path.cgPath
-        layer.fillColor=UIColor(red:0, green: 1, blue: 1, alpha: 0.5).cgColor
+        layer.fillColor=color.cgColor
+        layer.strokeColor = color.cgColor
+        layer.lineWidth=0
         
-        layer.strokeColor = UIColor(red:125/255, green: 184/255, blue: 215/255, alpha: 1).cgColor
-        layer.lineWidth=0.5
-        
-        mainview.layer.addSublayer(layer)
-        
+        view.layer.addSublayer(layer)
         
     }
-    func drawtable_schedule_arc(path:UIBezierPath,location:CGPoint,angle:CGFloat)  {
-        let radius:CGFloat=5
-        path.move(to: CGPoint.init(x: location.x+sin(CGFloat(M_PI)/180*(angle+90))*radius, y: location.y-cos(CGFloat(M_PI)/180*(angle+90))*radius))
-        
-        
-        
-        path.addArc(withCenter: location, radius: radius, startAngle: CGFloat(M_PI)/180*angle, endAngle: (CGFloat(M_PI)/180)*(angle+90), clockwise: true)
-        
-        
-    }
-    func drawtable_head_cell(frame:CGRect) {
+    func schedule_head_cell_draw(frame:CGRect) {
         let layer = CAShapeLayer()
         layer.frame=frame
         //layer.frame = CGRect.init(x: 0, y: 0, width: 10, height: 10)
@@ -176,7 +249,7 @@ layer.fillMode=kCAFillModeBoth
             return "error"
         }
     }
-    func drawtable_head_label(frame:CGRect,text:String) {
+    func schedule_head_label(frame:CGRect,text:String) {
         let label = UILabel()
         label.frame=frame
         label.font = UIFont.systemFont(ofSize: 9, weight: UIFontWeightBold)
