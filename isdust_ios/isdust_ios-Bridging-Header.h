@@ -5,5 +5,7 @@
 #import "Http.h"
 #import "NirKxMenu.h"
 #import "SVProgressHUD.h"
+//#import "FMDB.h"
+#import <sqlite3.h>
 char* openssl_rsa_encrypt(char* data);
 char* openssl_md5(char *data);

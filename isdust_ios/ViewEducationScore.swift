@@ -25,6 +25,7 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
         table_score.delegate=self
         table_score.dataSource=self
         serialQueue = DispatchQueue(label: "queuename", attributes: [])
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.show()
         self.serialQueue.async(execute: self.thread_AllScoreLookup)
         self.serialQueue.async(execute: self.thread_jidianLookup)

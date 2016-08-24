@@ -44,9 +44,12 @@
 		7578EAFF1D52491600F0A538 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAFA1D52491600F0A538 /* SVRadialGradientLayer.m */; };
 		757BEB101D508B3900432695 /* NirKxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 757BEB0F1D508B3900432695 /* NirKxMenu.m */; };
 		757BEB121D51513E00432695 /* TableViewSchoolCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757BEB111D51513E00432695 /* TableViewSchoolCard.swift */; };
+		758B5D8C1D6C9DA5004314D7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A70D4E1D6C9B300093DBEA /* libsqlite3.dylib */; };
 		75985B2D1D46784600388278 /* rsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 75985B2B1D46784600388278 /* rsa.c */; };
 		75A0D51D1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A0D51C1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift */; };
 		75A0D51F1D58266C00E0C122 /* TableViewEmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A0D51E1D58266C00E0C122 /* TableViewEmptyClassroom.swift */; };
+		75AB61BF1D6C86360047D4F4 /* ScheduleManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB61BE1D6C86360047D4F4 /* ScheduleManage.swift */; };
+		75AF0A4C1D6C91D900E755C2 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AF0A491D6C91CD00E755C2 /* FMDB.framework */; };
 		75B399691D55D263009C8951 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B399611D55CD8F009C8951 /* libcrypto.a */; };
 		75B3996A1D55D263009C8951 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B399621D55CD8F009C8951 /* libssl.a */; };
 		75CC0CB21D63F4930002E113 /* QRCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CC0CAB1D63F4930002E113 /* QRCodeReader.swift */; };
@@ -75,6 +78,48 @@
 			proxyType = 1;
 			remoteGlobalIDString = 751C35B21D4354B500A26D45;
 			remoteInfo = isdust_ios;
+		};
+		75AF0A401D6C91CD00E755C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75AF0A371D6C91CD00E755C2 /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DD76FA10486AA7600D96B5E;
+			remoteInfo = fmdb;
+		};
+		75AF0A421D6C91CD00E755C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75AF0A371D6C91CD00E755C2 /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE4290EF12B42F870088BD94;
+			remoteInfo = FMDB;
+		};
+		75AF0A441D6C91CD00E755C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75AF0A371D6C91CD00E755C2 /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BF5D041618416BB2008C5AA9;
+			remoteInfo = Tests;
+		};
+		75AF0A461D6C91CD00E755C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75AF0A371D6C91CD00E755C2 /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6290CBB5188FE836009790F8;
+			remoteInfo = "FMDB-IOS";
+		};
+		75AF0A481D6C91CD00E755C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75AF0A371D6C91CD00E755C2 /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 83C73EFE1C326AB000FFC730;
+			remoteInfo = "FMDB iOS";
+		};
+		75AF0A4A1D6C91CD00E755C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75AF0A371D6C91CD00E755C2 /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 83C73F0B1C326ADA00FFC730;
+			remoteInfo = "FMDB MacOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -132,13 +177,18 @@
 		7578EAF81D52491600F0A538 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
 		7578EAF91D52491600F0A538 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		7578EAFA1D52491600F0A538 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVRadialGradientLayer.m; path = SVProgressHUD/SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		757A54D21D6C8B7800884622 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		757BEB0E1D508B3900432695 /* NirKxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NirKxMenu.h; path = NirKxMenu/NirKxMenu.h; sourceTree = "<group>"; };
 		757BEB0F1D508B3900432695 /* NirKxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NirKxMenu.m; path = NirKxMenu/NirKxMenu.m; sourceTree = "<group>"; };
 		757BEB111D51513E00432695 /* TableViewSchoolCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSchoolCard.swift; sourceTree = "<group>"; };
+		7591573A1D6C8B2800EF9023 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		75985B2B1D46784600388278 /* rsa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa.c; sourceTree = "<group>"; };
 		75985B2C1D46784600388278 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
 		75A0D51C1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewEducationEmptyClassroom.swift; sourceTree = "<group>"; };
 		75A0D51E1D58266C00E0C122 /* TableViewEmptyClassroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewEmptyClassroom.swift; sourceTree = "<group>"; };
+		75A70D4E1D6C9B300093DBEA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
+		75AB61BE1D6C86360047D4F4 /* ScheduleManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleManage.swift; sourceTree = "<group>"; };
+		75AF0A371D6C91CD00E755C2 /* fmdb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = fmdb.xcodeproj; path = isdust_ios/fmdb/fmdb.xcodeproj; sourceTree = "<group>"; };
 		75B399611D55CD8F009C8951 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = isdust_ios/openssl/x86/libcrypto.a; sourceTree = "<group>"; };
 		75B399621D55CD8F009C8951 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = isdust_ios/openssl/x86/libssl.a; sourceTree = "<group>"; };
 		75CC0CAB1D63F4930002E113 /* QRCodeReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCodeReader.swift; path = QRCodeReader/QRCodeReader.swift; sourceTree = "<group>"; };
@@ -160,6 +210,7 @@
 		75F675E91D4903A4004164D0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../OpenSSL-for-iPhone/bin/iPhoneSimulator9.3-x86_64.sdk/lib/libssl.a"; sourceTree = "<group>"; };
 		75F675EC1D4905F0004164D0 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
 		75F675ED1D490D58004164D0 /* EmptyClassroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyClassroom.swift; sourceTree = "<group>"; };
+		75F8A8B01D6C9AAC003B24CA /* fmdb.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; name = fmdb.1; path = isdust_ios/fmdb/fmdb.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +218,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75AF0A4C1D6C91D900E755C2 /* FMDB.framework in Frameworks */,
+				758B5D8C1D6C9DA5004314D7 /* libsqlite3.dylib in Frameworks */,
 				75B399691D55D263009C8951 /* libcrypto.a in Frameworks */,
 				75B3996A1D55D263009C8951 /* libssl.a in Frameworks */,
 			);
@@ -192,6 +245,7 @@
 		751C35AA1D4354B500A26D45 = {
 			isa = PBXGroup;
 			children = (
+				75AF0A371D6C91CD00E755C2 /* fmdb.xcodeproj */,
 				751C35B51D4354B500A26D45 /* isdust_ios */,
 				751C35CA1D4354B500A26D45 /* isdust_iosTests */,
 				751C35D51D4354B500A26D45 /* isdust_iosUITests */,
@@ -266,6 +320,7 @@
 				751C36101D445FEC00A26D45 /* ImageProcess.swift */,
 				75F675ED1D490D58004164D0 /* EmptyClassroom.swift */,
 				7521C52D1D4A5CFB001E0CC0 /* Library.swift */,
+				75AB61BE1D6C86360047D4F4 /* ScheduleManage.swift */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -385,6 +440,19 @@
 			name = NirKxMenu;
 			sourceTree = "<group>";
 		};
+		75AF0A381D6C91CD00E755C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75AF0A411D6C91CD00E755C2 /* fmdb */,
+				75AF0A431D6C91CD00E755C2 /* libFMDB.a */,
+				75AF0A451D6C91CD00E755C2 /* Tests.xctest */,
+				75AF0A471D6C91CD00E755C2 /* libFMDB-IOS.a */,
+				75AF0A491D6C91CD00E755C2 /* FMDB.framework */,
+				75AF0A4B1D6C91CD00E755C2 /* FMDB.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		75CC0CAA1D63F2FE0002E113 /* QRCodeReader */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +470,10 @@
 		75F675DB1D48FCB4004164D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				75A70D4E1D6C9B300093DBEA /* libsqlite3.dylib */,
+				75F8A8B01D6C9AAC003B24CA /* fmdb.1 */,
+				757A54D21D6C8B7800884622 /* libsqlite3.tbd */,
+				7591573A1D6C8B2800EF9023 /* libsqlite3.0.tbd */,
 				75B399611D55CD8F009C8951 /* libcrypto.a */,
 				75B399621D55CD8F009C8951 /* libssl.a */,
 				754043D21D502DB800F6B957 /* libcrypto.a */,
@@ -518,6 +590,12 @@
 			mainGroup = 751C35AA1D4354B500A26D45;
 			productRefGroup = 751C35B41D4354B500A26D45 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 75AF0A381D6C91CD00E755C2 /* Products */;
+					ProjectRef = 75AF0A371D6C91CD00E755C2 /* fmdb.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				751C35B21D4354B500A26D45 /* isdust_ios */,
@@ -526,6 +604,51 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		75AF0A411D6C91CD00E755C2 /* fmdb */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = fmdb;
+			remoteRef = 75AF0A401D6C91CD00E755C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75AF0A431D6C91CD00E755C2 /* libFMDB.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFMDB.a;
+			remoteRef = 75AF0A421D6C91CD00E755C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75AF0A451D6C91CD00E755C2 /* Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.xctest;
+			remoteRef = 75AF0A441D6C91CD00E755C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75AF0A471D6C91CD00E755C2 /* libFMDB-IOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libFMDB-IOS.a";
+			remoteRef = 75AF0A461D6C91CD00E755C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75AF0A491D6C91CD00E755C2 /* FMDB.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FMDB.framework;
+			remoteRef = 75AF0A481D6C91CD00E755C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		75AF0A4B1D6C91CD00E755C2 /* FMDB.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FMDB.framework;
+			remoteRef = 75AF0A4A1D6C91CD00E755C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		751C35B11D4354B500A26D45 /* Resources */ = {
@@ -570,6 +693,7 @@
 				75CC0CB81D63F4930002E113 /* ToggleTorchButton.swift in Sources */,
 				7521C5341D4AF459001E0CC0 /* SWXMLHash.swift in Sources */,
 				75CC0CB61D63F4930002E113 /* ReaderOverlayView.swift in Sources */,
+				75AB61BF1D6C86360047D4F4 /* ScheduleManage.swift in Sources */,
 				7521C5421D4D9D34001E0CC0 /* ViewSchoolCardMain.swift in Sources */,
 				75CC0CB71D63F4930002E113 /* SwitchCameraButton.swift in Sources */,
 				753B87AA1D684D2B00A0218C /* TableViewControllerLibrarySearchResult.swift in Sources */,

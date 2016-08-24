@@ -8,19 +8,125 @@
 
 import UIKit
 
-class ViewControllerEducationSchedule: UIViewController {
-    var mainview:UIView!
+class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
+    var serialQueue:DispatchQueue!
+    var info_year="2016-2017"
+    var info_semester="1"
+    var manager=ScheduleManage()
+    func thread_downloadtable()  {
+        mzhengfang.JumpToSelectClass()
+        manager.droptable()
+        for i in 1..<23{
+            self.performSelector(onMainThread: Selector(("schedule_download_progress")), with: i, waitUntilDone: false, modes: nil)
+            var kecheng=mzhengfang.ScheduleLookup(String(i), year: info_year, semester: info_semester)
+            manager.importclass(course: kecheng)
+        }
+        self.performSelector(onMainThread: Selector(("schedule_download_finish")), with: nil, waitUntilDone: false, modes: nil)
 
+        
+    }
+    
+    override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
+        DispatchQueue.main.async(){
+            switch aSelector {
+            case Selector("schedule_download_progress"):
+                let result=arg as! Int
+                SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+
+                SVProgressHUD.showProgress(Float(result)/22, status: "正在下载课表")
+                break
+            case Selector("schedule_download_finish"):
+//                let result=arg as! Int
+                SVProgressHUD.dismiss()
+                //self.table_emptyclassroom.reloadData()
+                break
+                
+                
+            default:
+                break
+                
+            }
+            print(aSelector)}
+    }
+    
+    
+    let scrollView = UIScrollView(frame: UIScreen.main.bounds)
+
+    
+    var mainview:[UIView]=[UIView]()
+    var mzhengfang:Zhengfang!
+    var result_schedule:[Kebiao]!
+    var cell_color:[UIColor]!
     override func viewDidLoad() {
+        cell_color=[
+            UIColor(red:132/255, green: 213/255, blue: 148/255, alpha: 0.7),
+            UIColor(red:250/255, green: 158/255, blue: 125/255, alpha: 0.7),
+            UIColor(red:129/255, green: 204/255, blue: 201/255, alpha: 0.7),
+            UIColor(red:241/255, green: 143/255, blue: 146/255, alpha: 0.7),
+            UIColor(red:248/255, green: 191/255, blue: 103/255, alpha: 0.7),
+            UIColor(red:204/255, green: 156/255, blue: 143/255, alpha: 0.7),
+            UIColor(red:101/255, green: 182/255, blue: 223/255, alpha: 0.7),
+            UIColor(red:147/255, green: 206/255, blue: 90/255, alpha: 0.7),
+            UIColor(red:144/255, green: 172/255, blue: 205/255, alpha: 0.7),
+            UIColor(red:133/255, green: 156/255, blue: 228/255, alpha: 0.7),
+            UIColor(red:116/255, green: 183/255, blue: 159/255, alpha: 0.7),
+            UIColor(red:227/255, green: 132/255, blue: 167/255, alpha: 0.7),
+            UIColor(red:223/255, green: 189/255, blue: 131/255, alpha: 0.7),
+            UIColor(red:168/255, green: 146/255, blue: 210/255, alpha: 0.7)
+        
+        ]
 
         super.viewDidLoad()
-        mainview=UIView(frame:self.view.frame)
         
-        schedule_draw_head()
-        self.view.addSubview(mainview)
+
+        
+        scrollView.contentSize=CGSize.init(width: view.frame.size.width*22, height: view.frame.size.height)
+        scrollView.isPagingEnabled = true
+        scrollView.isScrollEnabled=true
+        scrollView.delegate=self
+        serialQueue = DispatchQueue(label: "queuename", attributes: [])
+        if(manager.getcount()==0){
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+
+            SVProgressHUD.show(withStatus: "正在登录选课平台")
+            serialQueue.async(execute: thread_downloadtable)
+        
+        
+        
+        }
+        
+        schedule_table_all()
 //myView.gest
 
         // Do any additional setup after loading the view.
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        var week=scrollView.bounds.origin.x/scrollView.bounds.width
+        self.navigationItem.title="第"+"\(week )"+"周"
+        //print(scrollView.bounds)
+    }
+    func schedule_table_all()  {
+        for i in 1..<23{
+            let mview=UIView(frame:self.view.frame)
+            let course=manager.getcourse(week: i)
+            mview.frame=CGRect.init(x: view.frame.size.width*CGFloat(i-1), y: 0, width: view.frame.size.width, height: view.frame.size.height)
+            schedule_draw_head(mview: mview)
+            schedule_cell_print(mview: mview,course: course)
+            scrollView.addSubview(mview)
+            mainview.append(mview)
+        }
+        scrollView.didMoveToWindow()
+        scrollView.contentOffset=CGPoint.init(x: 0, y: 0)
+        //mainview=UIView(frame:self.view.frame)
+        scrollView.alwaysBounceHorizontal=true
+        self.view.addSubview(scrollView)
+    }
+    
+    func schedule_cell_print(mview:UIView,course:[Kebiao]) {
+                for i in 0..<course.count{
+                    schedule_cell_generate(mview:mview,week: Int(course[i].xingqi!)!,jieci: Int(course[i].jieci!)!, color: cell_color[(i%cell_color.count)],course: course[i].kecheng!+"\n@"+course[i].location!)
+                }
     }
     func drawtable()  {
         
@@ -30,9 +136,9 @@ class ViewControllerEducationSchedule: UIViewController {
         
         myView.backgroundColor=UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         
-        mainview.addSubview(myView)
-        
-        self.view.addSubview(mainview)
+//        mainview.addSubview(myView)
+//        
+//        self.view.addSubview(mainview)
         
         
         // 3. add action to myView
@@ -41,30 +147,31 @@ class ViewControllerEducationSchedule: UIViewController {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.someAction))
         
         //self.myView.addGestureRecognizer(gesture)
+        
         myView.addGestureRecognizer(gesture)
     }
-    func schedule_draw_head() {
+    func schedule_draw_head(mview:UIView) {
         //画月份格子
         var base=CGRect.init(x: 0, y: 0, width: 20, height: 40)
-        schedule_head_cell_draw(frame: CGRect.init(x: 0, y: 0, width: base.width, height: base.height))
-        schedule_head_label(frame: CGRect.init(x: 3, y: 4, width: 20, height: 40),text:"8月")
+        schedule_head_cell_draw(mview:mview,frame: CGRect.init(x: 0, y: 0, width: base.width, height: base.height))
+        schedule_head_label(mview:mview,frame: CGRect.init(x: 3, y: 4, width: 20, height: 40),text:"8月")
         var extraheight = UIApplication.shared.statusBarFrame.height +
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
         
         //画节次格子
         var jieci_height=(self.view.frame.height-base.height-extraheight)/12
         for i in 0 ..< 12{
-            schedule_head_cell_draw(frame: CGRect.init(x: 0, y: jieci_height*CGFloat(i)+base.height, width: base.width, height: jieci_height))
-            schedule_head_label(frame: CGRect.init(x: 7, y: jieci_height*CGFloat(i)+base.height+14, width: base.width, height: jieci_height),text:String(i+1))//周次
+            schedule_head_cell_draw(mview:mview,frame: CGRect.init(x: 0, y: jieci_height*CGFloat(i)+base.height, width: base.width, height: jieci_height))
+            schedule_head_label(mview:mview,frame: CGRect.init(x: 7, y: jieci_height*CGFloat(i)+base.height+14, width: base.width, height: jieci_height),text:String(i+1))//周次
         }
         
         
         //画星期格子
         var xingqi_width=(self.view.frame.width-base.width)/7
         for i in 0..<7{
-            schedule_head_cell_draw(frame: CGRect.init(x: xingqi_width*CGFloat(i)+base.width, y: 0, width: xingqi_width, height: base.height))
-            schedule_head_label(frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/3, y: base.height/2+5, width: xingqi_width, height: base.height),text:num2week(num: i+1))//周次
-            schedule_head_label(frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/2-5, y: base.height/4, width: xingqi_width, height: base.height),text:String(i+1))//日期
+            schedule_head_cell_draw(mview:mview,frame: CGRect.init(x: xingqi_width*CGFloat(i)+base.width, y: 0, width: xingqi_width, height: base.height))
+            schedule_head_label(mview:mview,frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/3, y: base.height/2+5, width: xingqi_width, height: base.height),text:num2week(num: i+1))//周次
+            schedule_head_label(mview:mview,frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/2-5, y: base.height/4, width: xingqi_width, height: base.height),text:String(i+1))//日期
 
             
         }
@@ -72,15 +179,20 @@ class ViewControllerEducationSchedule: UIViewController {
         //画叉叉
         for i in 1..<7{
             for j in 1..<12{
-                schedule_cross_draw(location: CGPoint.init(x: xingqi_width*CGFloat(i)+base.width-3, y: jieci_height*CGFloat(j)+base.height-3))
+                schedule_cross_draw(mview:mview,location: CGPoint.init(x: xingqi_width*CGFloat(i)+base.width-3, y: jieci_height*CGFloat(j)+base.height-3))
             }
         
         }
+//        mzhengfang.JumpToSelectClass()
+//        result_schedule=mzhengfang.ScheduleLookup("1", year: "2016-2017", semester: "1")
+//
+//        for i in 0..<result_schedule.count{
+//            schedule_cell_generate(week: Int(result_schedule[i].xingqi!)!,jieci: Int(result_schedule[i].jieci!)!, color: cell_color[(i%cell_color.count)],course: result_schedule[i].kecheng!+"\n  @"+result_schedule[i].location!)
+//        }
         
-        schedule_cell_generate(week: 4,jieci: 5, color: UIColor(red:132/255, green: 213/255, blue: 148/255, alpha: 0.7),course: "大学生心理健康教育\n@J14-321室")
         
     }
-    func schedule_cell_generate(week:Int,jieci:Int,color:UIColor,course:String) {
+    func schedule_cell_generate(mview:UIView,week:Int,jieci:Int,color:UIColor,course:String) {
         var view_single=UIView()
         let interval:CGFloat=2
         var base=CGRect.init(x: 0, y: 0, width: 20, height: 40)
@@ -93,14 +205,14 @@ class ViewControllerEducationSchedule: UIViewController {
         view_single.frame=CGRect.init(x: (CGFloat(week)-1)*cell_width+base.width+interval, y: (CGFloat(jieci)-1)*cell_height+base.height+interval, width: cell_width, height: cell_height)
         
         
-        schedule_cell_draw(view: view_single, color: color)
+        schedule_cell_draw(mview: view_single, color: color)
         
         
         var label_single=UILabel()
         let label_interval_y:CGFloat=5
         let label_interval_x:CGFloat=2
         label_single.textColor=UIColor.white
-        label_single.frame=CGRect.init(x: label_interval_x, y: label_interval_y, width: cell_width-2*label_interval_x, height: cell_height-2*label_interval_y)
+        label_single.frame=CGRect.init(x: label_interval_x, y: label_interval_y, width: cell_width-2*label_interval_x-interval*2, height: cell_height-2*label_interval_y-interval*2)
         label_single.font = UIFont.systemFont(ofSize: 9, weight: UIFontWeightBold)
         label_single.textColor=UIColor.white
         label_single.text=course
@@ -112,16 +224,16 @@ class ViewControllerEducationSchedule: UIViewController {
         
         
         
-        mainview.addSubview(view_single)
+        mview.addSubview(view_single)
         
     }
-    func schedule_cell_label(view:UIView,week:Int,jieci:Int,course:String) {
+    func schedule_cell_label(mview:UIView,week:Int,jieci:Int,course:String) {
         
         
         
         
     }
-    func schedule_cross_draw(location:CGPoint) {
+    func schedule_cross_draw(mview:UIView,location:CGPoint) {
         var length:CGFloat=6
         let layer = CAShapeLayer()
         var path = UIBezierPath()
@@ -140,10 +252,10 @@ class ViewControllerEducationSchedule: UIViewController {
 
         layer.lineWidth=0.5
         
-        mainview.layer.addSublayer(layer)
+        mview.layer.addSublayer(layer)
         
     }
-    func schedule_cell_draw(view:UIView,color:UIColor){
+    func schedule_cell_draw(mview:UIView,color:UIColor){
         var base=CGRect.init(x: 0, y: 0, width: 20, height: 40)
         var extraheight = UIApplication.shared.statusBarFrame.height +
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
@@ -211,10 +323,10 @@ class ViewControllerEducationSchedule: UIViewController {
         layer.strokeColor = color.cgColor
         layer.lineWidth=0
         
-        view.layer.addSublayer(layer)
+        mview.layer.addSublayer(layer)
         
     }
-    func schedule_head_cell_draw(frame:CGRect) {
+    func schedule_head_cell_draw(mview:UIView,frame:CGRect) {
         let layer = CAShapeLayer()
         layer.frame=frame
         //layer.frame = CGRect.init(x: 0, y: 0, width: 10, height: 10)
@@ -225,7 +337,7 @@ class ViewControllerEducationSchedule: UIViewController {
         layer.strokeColor = UIColor(red:125/255, green: 184/255, blue: 215/255, alpha: 1).cgColor
         layer.lineWidth=0.5
         
-        mainview.layer.addSublayer(layer)
+        mview.layer.addSublayer(layer)
     
     }
     func num2week(num:Int) -> String {
@@ -249,14 +361,14 @@ class ViewControllerEducationSchedule: UIViewController {
             return "error"
         }
     }
-    func schedule_head_label(frame:CGRect,text:String) {
+    func schedule_head_label(mview:UIView,frame:CGRect,text:String) {
         let label = UILabel()
         label.frame=frame
         label.font = UIFont.systemFont(ofSize: 9, weight: UIFontWeightBold)
         label.textColor=UIColor(red:52/255, green: 109/255, blue: 183/255, alpha: 1)
         label.text=text
         label.sizeToFit()
-        mainview.addSubview(label)
+        mview.addSubview(label)
     }
     func someAction(sender:UITapGestureRecognizer){
         print("test")

@@ -58,6 +58,7 @@ class SchoolCardChangePass: UIViewController {
         thread_newpass=textfield_newpass.text
         thread_identity=textfield_identity.text
         serialQueue.async(execute: thread_changepass)
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.show()
     }
     

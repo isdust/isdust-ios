@@ -15,19 +15,27 @@ class Zhengfang{
     var url_xuanke:String=""
     var url_chengji:String=""
     var method_score_lookup:String=""
+    var isjump:Bool=false
     init(){
         method_score_lookup="zhengfang"
         mhttp=Http();
         mhttp.setencoding(1);
     }
-        func JumpToSelectClass() {
+    
+    
+    func JumpToSelectClass() {
+        if(isjump==true){
+            
+            return
+        }
         mhttp.setencoding(1);
         let text_web=mhttp.get(mhttp.urlencode(url_xuanke) );
         url_xuanke=mhttp.getMiddleText(text_web, "<a target=\"_top\" href=\"", "\">如果您的浏览器没有跳转，请点这里</a>");
         mhttp.get(url_xuanke);
-
+        isjump=true
     }
     func Login(_ username:String,password:String)->String{
+        isjump=false
         mhttp.setencoding(1);
         var text_web=mhttp.get(location_zhengfang+"default_ysdx.aspx");
         var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
@@ -60,7 +68,7 @@ class Zhengfang{
         //print(text_web)
         return "未知错误"
     }
-
+    
     func AllScoreLookUp()->[[String]]{
         mhttp.setencoding(1);
         var text_web="";
@@ -99,7 +107,7 @@ class Zhengfang{
             break;
         }
         return [[""]]
-    
+        
     }
     func ScoreAnalyzeZhengfang(_ text:String) -> [[String]] {
         let expression = "<tr[\\s\\S]*?>[\\s\\S]*?<td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td>[\\S\\s]*?</tr>"
@@ -107,12 +115,12 @@ class Zhengfang{
         var result=[[String]]();
         let res = regex.matches(in: text, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, text.characters.count))
         for i in 1 ..< res.count{
-             var temp=[String]()
+            var temp=[String]()
             for j in 1 ..< res[i].numberOfRanges{
                 
                 let str = (text as NSString).substring(with: res[i].rangeAt( j))
                 temp.append(str)
-            
+                
             }
             result.append(temp)
         }
@@ -140,12 +148,17 @@ class Zhengfang{
                     temp.jieci=String(i+1)
                     temp.xingqi=String(j)
                     str=str.replacingOccurrences(of: "<b class=\"newCourse\">", with: "").replacingOccurrences(of: "</b>", with: "")
-                    temp.kecheng=str
+                    str=str.replacingOccurrences(of: " ", with: "")
+                    temp.raw=str
+                    let temp_array=str.components(separatedBy: "<br>")
+                    temp.kecheng=temp_array[0]
+                    temp.teacher=temp_array[2]
+                    temp.location=temp_array[3]
                     temp.zhoushu=week
                     result.append(temp)
                     
-                
-                
+                    
+                    
                 }
                 
             }

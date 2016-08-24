@@ -8,12 +8,19 @@
 
 import Foundation
 struct Kebiao {
-    var zhoushu:String
-    var xingqi:String
-    var jieci:String
-    var kecheng:String
-    var location:String
-    var teacher:String
+    var zhoushu:String?
+    var xingqi:String?
+    var jieci:String?
+    var kecheng:String?
+    var location:String?
+    var teacher:String?
+    var raw:String?
+    init(mzhoushu:String,mxingqi:String,mjieci:String,mraw:String) {
+        zhoushu=mzhoushu
+        xingqi=mxingqi
+        raw=mraw
+        jieci=mjieci
+    }
     init(){
         zhoushu=""
         xingqi=""
@@ -21,6 +28,7 @@ struct Kebiao {
         kecheng=""
         location=""
         teacher=""
+        raw=""
     }
 }
 struct Transaction{

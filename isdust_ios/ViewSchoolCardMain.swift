@@ -294,6 +294,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
             edit_user.endEditing(true)
             edit_pass.endEditing(true)
             serialQueue.async(execute: thread_login)
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             SVProgressHUD.show()
         }
     }
@@ -316,6 +317,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
             view_login.isHidden=true
             view_table.isHidden=false
             serialQueue.async(execute: thread_login)
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             SVProgressHUD.show()
         
         }

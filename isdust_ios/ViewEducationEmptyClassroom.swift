@@ -112,9 +112,9 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
         let cell:TableViewEmptyClassroom=tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewEmptyClassroom
         
         cell.label_location.text=emtpyclassroom_detail[indexPath.row].location
-        cell.label_schooldate.text="第"+emtpyclassroom_detail[indexPath.row].zhoushu+"周"
-        cell.label_week.text=data_week[Int(emtpyclassroom_detail[indexPath.row].xingqi)!-1]
-        cell.label_jieci.text=data_jici[Int(emtpyclassroom_detail[indexPath.row].jieci)!-1]
+        cell.label_schooldate.text="第"+emtpyclassroom_detail[indexPath.row].zhoushu!+"周"
+        cell.label_week.text=data_week[Int(emtpyclassroom_detail[indexPath.row].xingqi!)!-1]
+        cell.label_jieci.text=data_jici[Int(emtpyclassroom_detail[indexPath.row].jieci!)!-1]
    
         return cell
     }

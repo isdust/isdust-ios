@@ -49,6 +49,7 @@ class ViewSchoolCardReportLoss: UIViewController {
         thread_pass=textfield_pass.text
         thread_identity=textfield_identity.text
         serialQueue.async(execute: thread_reportloss)
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
         SVProgressHUD.show()
     }
     

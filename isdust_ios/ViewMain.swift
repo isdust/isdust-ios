@@ -11,6 +11,16 @@ class ViewMain: UIViewController {
     @IBOutlet weak var imageview: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        var d=ScheduleManage()
+        //d.droptable()
+        //d=ScheduleManage()
+//        //var test:[Kebiao]=[
+////            Kebiao(mzhoushu: "1",mxingqi: "1",mjieci: "1",mraw: "1"),
+////            Kebiao(mzhoushu: "1",mxingqi: "2",mjieci: "1",mraw: "tests")
+//        ]
+//        //d.importclass(course: test)
+//        var a=d.getcourse(week: 1)
+//        print(d.getcount())
 //        var d=Library()
 //        d.getStorage(bookrecno: "1900605908")
 //        var a = d.findBookByName(Name: "swift")

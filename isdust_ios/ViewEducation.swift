@@ -46,6 +46,13 @@ class ViewEducation: UIViewController {
             SchoolCardChangePassController.mzhengfang=self.mzhengfang
             
         }
+        if segue.identifier=="schedule" {
+            let mViewControllerEducationSchedule=segue.destination as! ViewControllerEducationSchedule
+            mViewControllerEducationSchedule.mzhengfang=self.mzhengfang
+            
+        }
+        
+        
     }
 
     override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
@@ -126,6 +133,7 @@ class ViewEducation: UIViewController {
 //            view_login.isHidden=true
 //            view_table.isHidden=false
             serialQueue.async(execute: thread_login)
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             SVProgressHUD.show()
             
         }
@@ -140,6 +148,7 @@ class ViewEducation: UIViewController {
             edit_user.endEditing(true)
             edit_pass.endEditing(true)
             serialQueue.async(execute: thread_login)
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             //let alert = UIAlertController(title: nil, message: "正在登录", preferredStyle: .alert)
             SVProgressHUD.show()
             
