@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
+class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,ViewControllerEducationScheduleDelegate {
     var serialQueue:DispatchQueue!
     var info_year="2016-2017"
     var info_semester="1"
@@ -84,6 +84,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
         scrollView.isPagingEnabled = true
         scrollView.isScrollEnabled=true
         scrollView.delegate=self
+        scrollView.alwaysBounceHorizontal=true
         serialQueue = DispatchQueue(label: "queuename", attributes: [])
         if(manager.getcount()==0){
             SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
@@ -108,24 +109,26 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
     }
     func schedule_table_all()  {
         for i in 1..<23{
-            let mview=UIView(frame:self.view.frame)
-            let course=manager.getcourse(week: i)
-            mview.frame=CGRect.init(x: view.frame.size.width*CGFloat(i-1), y: 0, width: view.frame.size.width, height: view.frame.size.height)
-            schedule_draw_head(mview: mview)
-            schedule_cell_print(mview: mview,course: course)
-            scrollView.addSubview(mview)
-            mainview.append(mview)
+            reloadschedule(week: i)
+//            let mview=UIView(frame:self.view.frame)
+//            let course=manager.getcourse(week: i)
+//            mview.frame=CGRect.init(x: view.frame.size.width*CGFloat(i-1), y: 0, width: view.frame.size.width, height: view.frame.size.height)
+//            schedule_draw_head(mview: mview)
+//            schedule_cell_print(mview: mview,course: course)
+//            scrollView.addSubview(mview)
+//            mview.tag=i
+            //mainview.append(mview)
         }
-        scrollView.didMoveToWindow()
-        scrollView.contentOffset=CGPoint.init(x: 0, y: 0)
+        
+        //scrollView.didMoveToWindow()
         //mainview=UIView(frame:self.view.frame)
-        scrollView.alwaysBounceHorizontal=true
+        
         self.view.addSubview(scrollView)
     }
     
     func schedule_cell_print(mview:UIView,course:[Kebiao]) {
                 for i in 0..<course.count{
-                    schedule_cell_generate(mview:mview,week: Int(course[i].xingqi!)!,jieci: Int(course[i].jieci!)!, color: cell_color[(i%cell_color.count)],course: course[i].kecheng!+"\n@"+course[i].location!)
+                    schedule_cell_generate(mview:mview,color: cell_color[(i%cell_color.count)],course:course[i])
                 }
     }
     func drawtable()  {
@@ -144,11 +147,11 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
         // 3. add action to myView
         myView.isUserInteractionEnabled=true
         
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.someAction))
+        //let gesture = UITapGestureRecognizer(target: self, action: #selector(self.someAction))
         
         //self.myView.addGestureRecognizer(gesture)
         
-        myView.addGestureRecognizer(gesture)
+        //myView.addGestureRecognizer(gesture)
     }
     func schedule_draw_head(mview:UIView) {
         //画月份格子
@@ -170,7 +173,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
         var xingqi_width=(self.view.frame.width-base.width)/7
         for i in 0..<7{
             schedule_head_cell_draw(mview:mview,frame: CGRect.init(x: xingqi_width*CGFloat(i)+base.width, y: 0, width: xingqi_width, height: base.height))
-            schedule_head_label(mview:mview,frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/3, y: base.height/2+5, width: xingqi_width, height: base.height),text:num2week(num: i+1))//周次
+            schedule_head_label(mview:mview,frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/3, y: base.height/2+5, width: xingqi_width, height: base.height),text:SchoolTime.num2week(num: i+1))//周次
             schedule_head_label(mview:mview,frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/2-5, y: base.height/4, width: xingqi_width, height: base.height),text:String(i+1))//日期
 
             
@@ -192,8 +195,9 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
         
         
     }
-    func schedule_cell_generate(mview:UIView,week:Int,jieci:Int,color:UIColor,course:String) {
-        var view_single=UIView()
+    func schedule_cell_generate(mview:UIView,color:UIColor,course:Kebiao) {
+        var view_single=ViewCourseCell()
+        
         let interval:CGFloat=2
         var base=CGRect.init(x: 0, y: 0, width: 20, height: 40)
         var extraheight = UIApplication.shared.statusBarFrame.height +
@@ -202,12 +206,12 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
         var cell_height=(self.view.frame.height-base.height-extraheight)/12
         cell_height*=2
         var cell_width=(self.view.frame.width-base.width)/7
-        view_single.frame=CGRect.init(x: (CGFloat(week)-1)*cell_width+base.width+interval, y: (CGFloat(jieci)-1)*cell_height+base.height+interval, width: cell_width, height: cell_height)
+        view_single.frame=CGRect.init(x: (CGFloat(Int(course.xingqi!)!)-1)*cell_width+base.width+interval, y: (CGFloat(Int(course.jieci!)!)-1)*cell_height+base.height+interval, width: cell_width, height: cell_height)
         
         
-        schedule_cell_draw(mview: view_single, color: color)
+        schedule_cell_draw(mview: view_single, color: color)//画背景格子
         
-        
+        //显示课表文字
         var label_single=UILabel()
         let label_interval_y:CGFloat=5
         let label_interval_x:CGFloat=2
@@ -215,7 +219,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
         label_single.frame=CGRect.init(x: label_interval_x, y: label_interval_y, width: cell_width-2*label_interval_x-interval*2, height: cell_height-2*label_interval_y-interval*2)
         label_single.font = UIFont.systemFont(ofSize: 9, weight: UIFontWeightBold)
         label_single.textColor=UIColor.white
-        label_single.text=course
+        label_single.text=course.kecheng!+"\n@"+course.location!
         label_single.adjustsFontSizeToFitWidth=true
         label_single.numberOfLines=9
         label_single.sizeToFit()
@@ -224,8 +228,21 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
         
         
         
+        //添加
+        view_single.course=course
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.ViewCourseClick))
+        view_single.addGestureRecognizer(gesture)
+        
         mview.addSubview(view_single)
         
+    }
+    func ViewCourseClick(sender:UITapGestureRecognizer){
+        
+        let view_course=sender.view as! ViewCourseCell
+        self.performSegue(withIdentifier: "coursedetail", sender: view_course.course)
+        
+        //print("test")
+        // do other task
     }
     func schedule_cell_label(mview:UIView,week:Int,jieci:Int,course:String) {
         
@@ -340,27 +357,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
         mview.layer.addSublayer(layer)
     
     }
-    func num2week(num:Int) -> String {
-        switch num {
-        case 1:
-            return "周一"
-        case 2:
-            return "周二"
-        case 3:
-            return "周三"
-        case 4:
-            return "周四"
-        case 5:
-            return "周五"
-        case 6:
-            return "周六"
-        case 7:
-            return "周日"
-            
-        default:
-            return "error"
-        }
-    }
+
     func schedule_head_label(mview:UIView,frame:CGRect,text:String) {
         let label = UILabel()
         label.frame=frame
@@ -370,16 +367,20 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
         label.sizeToFit()
         mview.addSubview(label)
     }
-    func someAction(sender:UITapGestureRecognizer){
-        print("test")
-        // do other task
-    }
+
     override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool) {
         print(1)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier=="coursedetail" {
+            let mViewControllerCourseDetail=segue.destination as! ViewControllerCourseDetail
+            mViewControllerCourseDetail.course=sender as! Kebiao
+            mViewControllerCourseDetail.delegate = self
+        }
     }
     
 
@@ -392,5 +393,19 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    func reloadschedule(week: Int) {
+        let viewWithTag = scrollView.viewWithTag(week)
+        viewWithTag?.removeFromSuperview()
+        let mview=UIView(frame:self.view.frame)
+        let course=manager.getcourse(week: week)
+        mview.frame=CGRect.init(x: view.frame.size.width*CGFloat(week-1), y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        schedule_draw_head(mview: mview)
+        schedule_cell_print(mview: mview,course: course)
+        scrollView.addSubview(mview)
+        mview.tag=week
+    }
 
+}
+public protocol ViewControllerEducationScheduleDelegate:class{
+    func reloadschedule(week:Int)
 }

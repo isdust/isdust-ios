@@ -7,13 +7,14 @@
 //
 
 import UIKit
-class ViewMain: UIViewController {
+class ViewMain: UIViewController,UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var imageview: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        var d=ScheduleManage()
-        //d.droptable()
-        //d=ScheduleManage()
+
+//        
+//        var d=ScheduleManage()
+//        d.droptable()
 //        //var test:[Kebiao]=[
 ////            Kebiao(mzhoushu: "1",mxingqi: "1",mjieci: "1",mraw: "1"),
 ////            Kebiao(mzhoushu: "1",mxingqi: "2",mjieci: "1",mraw: "tests")
@@ -27,7 +28,38 @@ class ViewMain: UIViewController {
 //        var a=Zhengfang();
 //        a.Login("201501060225", password: "960826wang")
     }
-
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        //return UIModalPresentationStyle.fullScreen
+        return UIModalPresentationStyle.none
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        let vc = ViewCourseEditWeek.init(frame: self.view.frame)
+        vc.modalPresentationStyle = UIModalPresentationStyle.popover
+        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+        //popover.barButtonItem = sender
+        popover.delegate = self
+        popover.sourceView=self.view
+        popover.sourceRect=CGRect.init(x: 0, y: 100, width: view.frame.width, height: 200)
+        
+        
+        popover.permittedArrowDirections=UIPopoverArrowDirection(rawValue: 0)
+        popover.containerView?.superview?.layer.cornerRadius=0
+//        popover.preferredContentSize = CGSize.init(width: view.frame.width, height: 200)
+        present(vc, animated: true, completion:nil)
+        //vc.test()
+        //self.present(d, animated: true, completion: nil)
+        
+        
+    }
+//    override var preferredContentSize: CGSize{
+//        
+//        get {
+//            
+//            return CGSize.init(width: view.frame.width, height: 200)
+//
+//        }
+//        set { super.preferredContentSize = newValue }
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

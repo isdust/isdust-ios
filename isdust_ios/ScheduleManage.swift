@@ -42,6 +42,9 @@ class ScheduleManage{
     func deleteclass(zhoushu:Int,xingqi:Int,jieci:Int) {
         try!db.executeUpdate("DELETE FROM schedule WHERE zhoushu=? and xingqi=? and jieci=?", values: [zhoushu,xingqi,jieci])
     }
+    func deleteclass(couser:Kebiao) {
+        try!db.executeUpdate("DELETE FROM schedule WHERE zhoushu=? and xingqi=? and jieci=?", values: [couser.zhoushu!,couser.xingqi!,couser.jieci!])
+    }
     func getcourse(week:Int) -> [Kebiao] {
         var result = [Kebiao] ()
         
@@ -63,6 +66,27 @@ class ScheduleManage{
         return result
         
     }
+    func getcourse(xingqi:Int,jieci:Int,kecheng:String) -> [Kebiao] {
+        var result = [Kebiao] ()
+        
+        var query=try!db.executeQuery("SELECT * FROM schedule WHERE xingqi=? and jieci=? and kecheng=?", values: [xingqi,jieci,kecheng])
+        while query.next() {
+            var temp=Kebiao()
+            print(query.int(forColumnIndex: query.columnIndex(forName: "zhoushu")))
+            
+            temp.zhoushu=String(query.long(forColumn: "zhoushu"))
+            temp.xingqi=String(query.long(forColumn: "xingqi"))
+            temp.jieci=String(query.long(forColumn: "jieci"))
+            temp.raw=query.string(forColumn: "kecheng")
+            let temp_array=temp.raw?.components(separatedBy: "<br>")
+            temp.kecheng=temp_array?[0]
+            temp.teacher=temp_array?[2]
+            temp.location=temp_array?[3]
+            result.append(temp)
+        }
+        return result
+    }
+
     
     
 }
