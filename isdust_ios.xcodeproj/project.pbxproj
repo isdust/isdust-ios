@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		750829841D7033B700E05C80 /* ViewControllerCourseEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750829831D7033B700E05C80 /* ViewControllerCourseEdit.swift */; };
+		750829861D70A5EF00E05C80 /* ViewCourseEditJieci.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750829851D70A5EF00E05C80 /* ViewCourseEditJieci.swift */; };
 		750A197B1D6955D9006E619E /* TableViewCellBorrowedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A197A1D6955D9006E619E /* TableViewCellBorrowedBook.swift */; };
 		750A197D1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A197C1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift */; };
 		751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B61D4354B500A26D45 /* AppDelegate.swift */; };
@@ -130,6 +131,7 @@
 
 /* Begin PBXFileReference section */
 		750829831D7033B700E05C80 /* ViewControllerCourseEdit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerCourseEdit.swift; sourceTree = "<group>"; };
+		750829851D70A5EF00E05C80 /* ViewCourseEditJieci.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCourseEditJieci.swift; sourceTree = "<group>"; };
 		750A197A1D6955D9006E619E /* TableViewCellBorrowedBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellBorrowedBook.swift; sourceTree = "<group>"; };
 		750A197C1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerEducationSchedule.swift; sourceTree = "<group>"; };
 		751C35B31D4354B500A26D45 /* isdust_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = isdust_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -471,6 +473,7 @@
 				75BBB6341D6E756100568333 /* ViewCourseCell.swift */,
 				75BBB6361D6E7A6E00568333 /* ViewControllerCourseDetail.swift */,
 				75BBB63B1D6EE2A600568333 /* ViewCourseEditWeek.swift */,
+				750829851D70A5EF00E05C80 /* ViewCourseEditJieci.swift */,
 				750829831D7033B700E05C80 /* ViewControllerCourseEdit.swift */,
 			);
 			name = Schedule;
@@ -731,6 +734,7 @@
 				7578EAFF1D52491600F0A538 /* SVRadialGradientLayer.m in Sources */,
 				757BEB101D508B3900432695 /* NirKxMenu.m in Sources */,
 				75A0D51F1D58266C00E0C122 /* TableViewEmptyClassroom.swift in Sources */,
+				750829861D70A5EF00E05C80 /* ViewCourseEditJieci.swift in Sources */,
 				753B87A81D684BAD00A0218C /* TableViewCellLibrarySearch.swift in Sources */,
 				757BEB121D51513E00432695 /* TableViewSchoolCard.swift in Sources */,
 				75CC0CB31D63F4930002E113 /* QRCodeReaderResult.swift in Sources */,

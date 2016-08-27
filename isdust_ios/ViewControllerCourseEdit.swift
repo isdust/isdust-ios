@@ -25,21 +25,13 @@ class ViewControllerCourseEdit: UIViewController,UIPopoverPresentationController
 
     
     @IBAction func button_zhoushu_click(_ sender: AnyObject) {
-        let vc = ViewCourseEditWeek.init(frame: self.view.frame)
-        vc.modalPresentationStyle = UIModalPresentationStyle.popover
+        let vc = ViewCourseEditWeek.init(frame: (self.view.window?.rootViewController?.view.frame)!)
+//        vc.modalPresentationStyle = UIModalPresentationStyle.popover
         vc.weeks=weeks
         vc.delegate=self
-        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
-        //popover.barButtonItem = sender
-        popover.delegate = self
-        popover.sourceView=self.view
-//        popover.sourceRect=CGRect.init(x: 0, y: 100, width: view.frame.width, height: 200)
-        
-        
-        popover.permittedArrowDirections=UIPopoverArrowDirection(rawValue: 0)
-//        popover.containerView?.superview?.layer.cornerRadius=0
-        //        popover.preferredContentSize = CGSize.init(width: view.frame.width, height: 200)
-        present(vc, animated: true, completion:nil)
+        vc.config()
+        view.window?.rootViewController?.view.addSubview(vc)
+        //present(vc, animated: true, completion:nil)
         
         
     }
@@ -91,7 +83,7 @@ class ViewControllerCourseEdit: UIViewController,UIPopoverPresentationController
             return "\(nums[0])-\(nums[nums.count-1])周"
         }
         var result=""
-        nums.map({result+=String($0)})
+        nums.map({result+=String($0)+","})
         result+="周"
         return result
         

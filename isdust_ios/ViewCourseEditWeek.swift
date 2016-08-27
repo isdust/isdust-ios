@@ -7,12 +7,13 @@
 //
 
 import Foundation
-class ViewCourseEditWeek:UIViewController{
+class ViewCourseEditWeek:UIView{
      var weeks:[Int]=[Int]()
      var delegate:ViewCourseEditWeekDelegate!
 
     var frame_self:CGRect!
-    let view_self:UIView=UIView()
+    let contentview:UIView=UIView()
+     var maskview:UIView!
      var view_table:UIView!
     let head_height:CGFloat=50
     let back_height:CGFloat=200
@@ -21,11 +22,7 @@ class ViewCourseEditWeek:UIViewController{
      var offset_head:CGRect!
      var segment:UISegmentedControl!
      var view_cell:[ViewCourseWeekCell]=[ViewCourseWeekCell]()
-
-     override func viewDidAppear(_ animated: Bool) {
-          view_cell.filter(isin).map({$0.choose()})
-
-     }
+     
      func isin(mview:ViewCourseWeekCell) -> Bool {
           
           if( weeks.contains(mview.tag) ){
@@ -34,103 +31,80 @@ class ViewCourseEditWeek:UIViewController{
           }
           return false
      }
-     
-    init(frame: CGRect){
-        super.init(nibName: nil, bundle: nil)
-//
-        self.modalPresentationStyle = UIModalPresentationStyle.popover
-     view.frame=CGRect.init(x: frame.origin.x, y: 0, width: frame.width, height: 400)
-     view.backgroundColor=UIColor.white
-     self.preferredContentSize = view.frame.size
-
+     override func didAddSubview(_ subview: UIView) {
+          UIView.animate(withDuration: 0.6, animations: {
+               self.contentview.frame=CGRect.init(x: 0, y: self.frame_self.height-320, width: self.frame_self.width, height: 320)
+          })
+     }
+     func config() {
+          view_cell.filter(isin).map({$0.choose()})
+     }
+    override init(frame: CGRect){
+     super.init(frame: frame)
      frame_self=frame
+     contentview.frame=CGRect.init(x: 0, y: frame_self.height, width: frame_self.width, height: 320)
+     contentview.backgroundColor=UIColor.white
+     
+     maskview=UIView.init(frame: frame)
+     maskview.backgroundColor=UIColor.black.withAlphaComponent(0.7)
+      let gesture = UITapGestureRecognizer(target: self, action: #selector(self.disappear))
+     maskview.addGestureRecognizer(gesture)
      draw_head_background()
-     draw_head_title(text: "选择上课周数")
      drawcellbackground()
      for i in 0..<25{
           draw_singlecell_back(position: CGFloat(i))
-     
+
      }
      draw_segment()
-     draw_button()
-    }
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        
-//    }
-    func setframe(frame: CGRect) {
-        //super.init(frame: frame)
-        
-        frame_self=frame
-        draw_head_background()
+     //draw_button()
+     self.backgroundColor=UIColor.init(red: 1, green: 1, blue: 1, alpha: 0)
 
-        
+     self.addSubview(maskview)
+
+     self.addSubview(contentview)
     }
     func draw_head_background() {
-        
-        let layer = CAShapeLayer()
-        var path = UIBezierPath()
-        path.move(to: CGPoint.init(x: 0, y: 0))
-        path.addLine(to: CGPoint.init(x: frame_self.width, y: 0))
-        path.addLine(to: CGPoint.init(x: frame_self.width, y: head_height))
-        path.addLine(to: CGPoint.init(x: 0, y: head_height))
-        path.addLine(to: CGPoint.init(x: 0, y: 0))
-     
+     let view_head=UINavigationBar()
+     view_head.frame=CGRect.init(x: 0, y: 0, width: frame_self.width, height: head_height)
+     offset_head=view_head.frame
+     view_head.backgroundColor=UIColor.init(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+     //view_head.topItem=UINavigationItem()
+     let navItem = UINavigationItem(title: "选择上课节数")
+     let doneItem=UIBarButtonItem.init(title: "完成", style: .done, target: nil, action: #selector(self.button_click))
+     navItem.rightBarButtonItem = doneItem;
+     view_head.setItems([navItem], animated: false)
 
-        path.close()
-        layer.path=path.cgPath
-        layer.frame=CGRect.init(x: 0, y: 0, width: frame_self.width, height: head_height)
-        offset_head = layer.frame
-        
-        layer.fillColor=UIColor.init(red: 245/255, green: 245/255, blue: 245/255, alpha: 1).cgColor
-
-//        layer.strokeColor = UIColor.black.cgColor
-        layer.strokeColor = UIColor(red:214/255, green: 214/255, blue: 214/255, alpha: 1).cgColor
-//        layer.backgroundColor=UIColor.black.cgColor
-        
-        layer.lineWidth=1
-        self.view.layer.addSublayer(layer)
+     contentview.addSubview(view_head)
 
     }
-    func draw_head_title(text:String){
-        var label_title=UILabel()
-        label_title.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightBold)
-        label_title.textColor=UIColor(red:83/255, green: 83/255, blue: 83/255, alpha: 1)
-        label_title.text=text
-        
-        label_title.sizeToFit()
-        let location_x=(self.view.frame.size.width-label_title.frame.size.width)/2
-        label_title.frame=CGRect.init(x: location_x-20, y: 10, width: label_title.frame.size.width, height: label_title.frame.size.height)
-        view.addSubview(label_title)
-    
-    }
+
      func draw_button()   {
           let button=UIButton()
-          button.setTitle("保存", for: .normal)
+          button.setTitle("完成", for: .normal)
           button.sizeToFit()
-          button.frame.origin.x=offset_head.width-button.frame.width-5-20
+          button.frame.origin.x=offset_head.width-button.frame.width-5
           button.frame.origin.y=10
           button.setTitleColor(UIColor.init(red: 10/255, green: 96/255, blue: 255/255, alpha: 1), for: .normal)
           button.addTarget(self, action: #selector(self.button_click), for: .touchUpInside)
-          view.addSubview(button)
+          contentview.addSubview(button)
           
      }
      func button_click(sender:UIButton!) {
           var zhoushu:[Int]=[Int]()
           view_cell.filter(isselect).map({zhoushu.append($0.week)})
           delegate.reloadschedule(week: zhoushu)
-          self.dismiss(animated: true, completion: nil)
+          disappear()
      }
      func drawcellbackground()  {
           let interval:CGFloat=15
-          back_width=view.frame.size.width-2*interval-20
+          back_width=contentview.frame.size.width-2*interval
           let layer = CAShapeLayer()
           var path = UIBezierPath()
           view_table=UIView()
           view_table.backgroundColor=UIColor.init(red: 186/255, green: 195/255, blue: 203/255, alpha: 1)
           view_table.frame=CGRect.init(x: interval, y: interval+offset_head.height, width: back_width, height: back_height)
 
-          self.view.addSubview(view_table)
+          contentview.addSubview(view_table)
      }
      func draw_singlecell_back(position:CGFloat)  {
           let interval:CGFloat=3
@@ -161,12 +135,17 @@ class ViewCourseEditWeek:UIViewController{
           
           view_cell.append(singleview)
           self.view_table.addSubview(singleview)
-          
 
-//
-//
-          
-          
+     }
+     func disappear()  {
+          UIView.animate(withDuration: 0.6, animations: {
+               self.contentview.frame=CGRect.init(x: 0, y: self.frame_self.height, width: self.frame_self.width, height: 320)
+               },completion:{(finished: Bool) -> Void in
+                    if(finished==true){
+                         self.removeFromSuperview()
+                    }
+          })
+
      }
      func draw_segment()  {
           let interval:CGFloat=5
@@ -178,7 +157,7 @@ class ViewCourseEditWeek:UIViewController{
           let corordinate_x=(frame_self.width-segment.frame.width)/2
           
           segment.frame=CGRect.init(x: corordinate_x, y:view_table.frame.origin.y+view_table.frame.height+interval , width: segment.frame.width, height: segment.frame.height)
-          view.addSubview(segment)
+          contentview.addSubview(segment)
      }
      func iseven(mview:ViewCourseWeekCell)->Bool{
           if(mview.tag%2==0){
@@ -251,13 +230,18 @@ class ViewCourseEditWeek:UIViewController{
         // Return no adaptive presentation style, use default presentation behaviour
         return .none
     }
-
-     override func viewWillAppear(_ animated: Bool) {
-          view.superview?.layer.cornerRadius=0
-          //view.superview?.frame=view.frame
-          popoverPresentationController?.sourceRect=view.frame
-          print(view.superview?.frame)
-     }
+//
+//     override func viewWillAppear(_ animated: Bool) {
+//          //view.superview?.backgroundColor=UIColor.init(red: 1, green: 1, blue: 1, alpha: 1)
+//          
+//          //preferredContentSize=CGSize.init(width: 100, height: 100)
+//          
+////          view.superview?.layer.cornerRadius=0
+//          //view.superview?.frame=CGRect.init(x: 100, y: 100, width: 100, height: 100)
+////          popoverPresentationController?.sourceRect=view.frame
+//          //view.superview?.frame.origin.y=200
+////          print(view.superview?.frame)
+//     }
      
 }
 class ViewCourseWeekCell:UIView{

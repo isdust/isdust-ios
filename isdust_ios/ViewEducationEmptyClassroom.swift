@@ -11,7 +11,7 @@ import Foundation
 class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDelegate, UITableViewDataSource {
     let data_building:[String]=["J1", "Js1","J3","J5","J7","J11","J14","J15"]
     var data_schooldate:[String] = [String]()
-    let data_week:[String]=["星期一", "星期二","星期三","星期四","星期五","星期六","星期天"]
+    let data_week:[String]=["周一", "周二","周三","周四","周五","周六","周日"]
     let data_jici:[String]=["第一、二节", "第三、四节","第五、六节","第七、八节","第九、十节"]
     var serialQueue:DispatchQueue!
     var thread_building:String!

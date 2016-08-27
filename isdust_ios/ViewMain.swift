@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class ViewMain: UIViewController,UIPopoverPresentationControllerDelegate {
+class ViewMain: UIViewController {
     @IBOutlet weak var imageview: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,27 +28,20 @@ class ViewMain: UIViewController,UIPopoverPresentationControllerDelegate {
 //        var a=Zhengfang();
 //        a.Login("201501060225", password: "960826wang")
     }
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        //return UIModalPresentationStyle.fullScreen
-        return UIModalPresentationStyle.none
-    }
+//    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+//        //return UIModalPresentationStyle.fullScreen
+//        return UIModalPresentationStyle.none
+//    }
     override func viewDidAppear(_ animated: Bool) {
         let vc = ViewCourseEditWeek.init(frame: self.view.frame)
-        vc.modalPresentationStyle = UIModalPresentationStyle.popover
-        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
-        //popover.barButtonItem = sender
-        popover.delegate = self
-        popover.sourceView=self.view
-        popover.sourceRect=CGRect.init(x: 0, y: 100, width: view.frame.width, height: 200)
+        view.window?.rootViewController?.view.addSubview(vc)
         
-        
-        popover.permittedArrowDirections=UIPopoverArrowDirection(rawValue: 0)
-        popover.containerView?.superview?.layer.cornerRadius=0
-//        popover.preferredContentSize = CGSize.init(width: view.frame.width, height: 200)
-        present(vc, animated: true, completion:nil)
-        //vc.test()
-        //self.present(d, animated: true, completion: nil)
-        
+        //vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        //vc.view.bounds=CGRect.init(x: 0, y: 0, width: 100, height: 100)
+//        vc.preferredContentSize=CGSize.init(width: 200, height: 200)
+//        vc.presentedViewController?.view.frame.size=CGSize.init(width: 200, height: 200)
+
+        //view.addSubview(vc)
         
     }
 //    override var preferredContentSize: CGSize{
