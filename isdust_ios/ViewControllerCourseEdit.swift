@@ -8,10 +8,14 @@
 
 import UIKit
 
-class ViewControllerCourseEdit: UIViewController,UIPopoverPresentationControllerDelegate ,ViewCourseEditWeekDelegate{
+class ViewControllerCourseEdit: UIViewController,ViewCourseEditWeekDelegate ,ViewCourseEditJieciDelegate{
     var course:Kebiao!
     var weeks:[Int]!
-
+    var jieci_edit = -1
+    var xingqi_edit = -1
+    var delegate:ViewControllerCourseDetailDelegate!
+    var type:String!
+    
     @IBOutlet weak var textfield_kecheng: UITextField!
     
     @IBOutlet weak var textfield_teacher: UITextField!
@@ -21,30 +25,84 @@ class ViewControllerCourseEdit: UIViewController,UIPopoverPresentationController
     @IBOutlet weak var textfield_location: UITextField!
     
     @IBAction func button_jieci_click(_ sender: AnyObject) {
+        view.endEditing(true)
+        
+        let vc = ViewCourseEditJieci()
+        vc.delegate=self
+        if(type=="edit"){
+            vc.xingqi = Int(course.xingqi!)
+            vc.jieci=Int(course.jieci!)
+        }
+        view.window?.rootViewController?.view.addSubview(vc)
+
     }
 
     
     @IBAction func button_zhoushu_click(_ sender: AnyObject) {
-        let vc = ViewCourseEditWeek.init(frame: (self.view.window?.rootViewController?.view.frame)!)
-//        vc.modalPresentationStyle = UIModalPresentationStyle.popover
+        view.endEditing(true)
+        let vc = ViewCourseEditWeek()
+        if(type=="edit"){
         vc.weeks=weeks
+        }
         vc.delegate=self
         vc.config()
         view.window?.rootViewController?.view.addSubview(vc)
+        
         //present(vc, animated: true, completion:nil)
         
         
     }
     
+    
+    @IBAction func button_save_click(_ sender: AnyObject) {
+        let alert = UIAlertView()
+        alert.title = "提示"
+        
+        alert.addButton(withTitle: "确定")
+        alert.delegate=self
+//
+        if(textfield_kecheng.text==""){
+            alert.message = "请输入课程名称"
+            alert.show()
+            return
+        }
+        
+        if(type=="add"){
+            if(xingqi_edit == -1){
+                alert.message = "请选择星期和节次"
+                alert.show()
+                return
+            }
+            if(weeks.count==0){
+                alert.message = "请选择周次"
+                alert.show()
+                return
+            
+            }
+            
+            update_add()
+        }else{
+            update_edit()
+        }
+        
+        self.navigationController?.popViewController(animated: true)
+        delegate.saveschedule()
+
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if(type=="add"){
+            return
+        }
         textfield_kecheng.text=course.kecheng
         textfield_teacher.text=course.teacher
         textfield_location.text=course.location
         weeks=getweek()
         button_zhoushu.setTitle(judegweek(nums: weeks), for: .normal)
-        
+        button_jieci.setTitle(getxingqi(num: Int(course.xingqi!)!)+"  "+getjieci(num: Int(course.jieci!)!), for: .normal)
         
 
         // Do any additional setup after loading the view.
@@ -70,14 +128,20 @@ class ViewControllerCourseEdit: UIViewController,UIPopoverPresentationController
     func judegweek(nums:[Int]) -> String {
         let num_even=nums.filter(iseven)
         let num_odd=nums.filter(isodd)
-        if(nums.count==num_even.count){
-            return "\(nums[0])-\(nums[nums.count-1])周(双周)"
-        }
-        if(nums.count==num_odd.count){
-            return "\(nums[0])-\(nums[nums.count-1])周(单周)"
-        }
         let sum_even=num_even.reduce(0, {$0+$1})
         let sum_odd=num_odd.reduce(0, {$0+$1})
+        if(nums.count==num_even.count){
+            if(sum_even==(num_even[0]*num_even.count+num_even.count*(num_even.count-1))){
+                return "\(nums[0])-\(nums[nums.count-1])周(双周)"
+
+            }
+        }
+        if(nums.count==num_odd.count){
+            if(sum_odd==(num_odd[0]*num_odd.count+num_odd.count*(num_odd.count-1))){
+                return "\(nums[0])-\(nums[nums.count-1])周(单周)"
+            }
+        }
+
         let delta=abs(sum_even-sum_odd)
         if(delta*2==nums.count||(delta*2-1)==nums.count){
             return "\(nums[0])-\(nums[nums.count-1])周"
@@ -95,25 +159,73 @@ class ViewControllerCourseEdit: UIViewController,UIPopoverPresentationController
         return weeks
         
     }
+    func getxingqi(num:Int) -> String {
+        let datasource_week:[String]=["周一","周二","周三","周四","周五","周六","周日"]
+        return datasource_week[num-1]
+    }
+    func getjieci(num:Int) -> String {
+        let datasource_jieci:[String]=["第一、二节","第三、四节","第五、六节","第七、八节","第九、十节"]
+        return datasource_jieci[num-1]
+    }
+    func update_edit() {
+        let mxingqi:Int = ((xingqi_edit == -1) ? Int(course.xingqi!)! : xingqi_edit)
+        let mjieci:Int = ((jieci_edit == -1) ? Int(course.jieci!)! : jieci_edit)
+        let mkecheng = textfield_kecheng.text!+"<br>"+""+"<br>"+textfield_teacher.text!+"<br>"+textfield_location.text!
+
+        ScheduleManage().deleteclass(xingqi: Int(course.xingqi!)!, jieci: Int(course.jieci!)!, kecheng: course.raw!)
+        var result=[Kebiao]()
+        for i in weeks{
+            var temp=Kebiao()
+            temp.jieci=String(mjieci)
+            temp.raw=mkecheng
+            temp.xingqi=String(mxingqi)
+            temp.zhoushu=String(i)
+            result.append(temp)
+        
+        }
+        ScheduleManage().importclass(course: result)
+        
+        
+    }
+    func update_add()  {
+        let mxingqi:Int = xingqi_edit
+        let mjieci:Int = jieci_edit
+                let mkecheng = textfield_kecheng.text!+"<br>"+""+"<br>"+textfield_teacher.text!+"<br>"+textfield_location.text!
+        var result=[Kebiao]()
+        for i in weeks{
+            var temp=Kebiao()
+            temp.jieci=String(mjieci)
+            temp.raw=mkecheng
+            temp.xingqi=String(mxingqi)
+            temp.zhoushu=String(i)
+            result.append(temp)
+            
+        }
+        ScheduleManage().importclass(course: result)
+
+    }
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         //return UIModalPresentationStyle.fullScreen
         return UIModalPresentationStyle.none
     }
-    func reloadschedule(week:[Int]){
+    func editweek(week:[Int]){
         weeks=week
         button_zhoushu.setTitle(judegweek(nums: weeks), for: .normal)
 
     
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func editjieci(jieci: Int) {
+        jieci_edit = jieci
     }
-    */
+    func editxingqi(xingqi: Int) {
+        xingqi_edit = xingqi
+    }
+    func reload_jieci_xingqi() {
+        button_jieci.setTitle(getxingqi(num: xingqi_edit)+"  "+getjieci(num: jieci_edit), for: .normal)
+
+    }
+    
+
 
 }

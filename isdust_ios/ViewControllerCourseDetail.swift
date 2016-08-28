@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewControllerCourseDetail: UIViewController {
+class ViewControllerCourseDetail: UIViewController,ViewControllerCourseDetailDelegate {
     var course:Kebiao!
     public weak var delegate: ViewControllerEducationScheduleDelegate?
 
@@ -64,8 +64,10 @@ class ViewControllerCourseDetail: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "CourseEdit":
-            var controllerl=segue.destination as! ViewControllerCourseEdit
-            controllerl.course=course
+            var controllerler=segue.destination as! ViewControllerCourseEdit
+            controllerler.delegate=self
+            controllerler.type="edit"
+            controllerler.course=course
             break
         default:
             break
@@ -81,5 +83,18 @@ class ViewControllerCourseDetail: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    func saveschedule() {
+        for i in 1..<23{
+        
+            self.delegate?.reloadschedule(week: i)
+
+        }
+        self.navigationController?.popViewController(animated: true)
+
+    }
+}
+public protocol ViewControllerCourseDetailDelegate{
+    func saveschedule()
 
 }

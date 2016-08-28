@@ -42,6 +42,9 @@ class ScheduleManage{
     func deleteclass(zhoushu:Int,xingqi:Int,jieci:Int) {
         try!db.executeUpdate("DELETE FROM schedule WHERE zhoushu=? and xingqi=? and jieci=?", values: [zhoushu,xingqi,jieci])
     }
+    func deleteclass(xingqi:Int,jieci:Int,kecheng:String) {
+        try!db.executeUpdate("DELETE FROM schedule WHERE xingqi=? and jieci=? and kecheng=?", values: [xingqi,jieci,kecheng])
+    }
     func deleteclass(couser:Kebiao) {
         try!db.executeUpdate("DELETE FROM schedule WHERE zhoushu=? and xingqi=? and jieci=?", values: [couser.zhoushu!,couser.xingqi!,couser.jieci!])
     }
@@ -51,7 +54,7 @@ class ScheduleManage{
         var query=try!db.executeQuery("SELECT * FROM schedule WHERE `zhoushu`=?", values: [week])
         while query.next() {
             var temp=Kebiao()
-            print(query.int(forColumnIndex: query.columnIndex(forName: "zhoushu")))
+            //print(query.int(forColumnIndex: query.columnIndex(forName: "zhoushu")))
             
             temp.zhoushu=String(query.long(forColumn: "zhoushu"))
             temp.xingqi=String(query.long(forColumn: "xingqi"))
@@ -72,7 +75,7 @@ class ScheduleManage{
         var query=try!db.executeQuery("SELECT * FROM schedule WHERE xingqi=? and jieci=? and kecheng=?", values: [xingqi,jieci,kecheng])
         while query.next() {
             var temp=Kebiao()
-            print(query.int(forColumnIndex: query.columnIndex(forName: "zhoushu")))
+            //print(query.int(forColumnIndex: query.columnIndex(forName: "zhoushu")))
             
             temp.zhoushu=String(query.long(forColumn: "zhoushu"))
             temp.xingqi=String(query.long(forColumn: "xingqi"))

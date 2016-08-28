@@ -11,17 +11,19 @@ class ViewCourseEditWeek:UIView{
      var weeks:[Int]=[Int]()
      var delegate:ViewCourseEditWeekDelegate!
 
-    var frame_self:CGRect!
-    let contentview:UIView=UIView()
+     var frame_self:CGRect!
+     let contentview:UIView=UIView()
      var maskview:UIView!
      var view_table:UIView!
-    let head_height:CGFloat=50
-    let back_height:CGFloat=200
-    var back_width:CGFloat!
+     let head_height:CGFloat=50
+     let back_height:CGFloat=200
+     var back_width:CGFloat!
      var back_frame:CGRect!
      var offset_head:CGRect!
      var segment:UISegmentedControl!
      var view_cell:[ViewCourseWeekCell]=[ViewCourseWeekCell]()
+     
+     var finished=0
      
      func isin(mview:ViewCourseWeekCell) -> Bool {
           
@@ -39,31 +41,38 @@ class ViewCourseEditWeek:UIView{
      func config() {
           view_cell.filter(isin).map({$0.choose()})
      }
-    override init(frame: CGRect){
-     super.init(frame: frame)
-     frame_self=frame
-     contentview.frame=CGRect.init(x: 0, y: frame_self.height, width: frame_self.width, height: 320)
-     contentview.backgroundColor=UIColor.white
-     
-     maskview=UIView.init(frame: frame)
-     maskview.backgroundColor=UIColor.black.withAlphaComponent(0.7)
-      let gesture = UITapGestureRecognizer(target: self, action: #selector(self.disappear))
-     maskview.addGestureRecognizer(gesture)
-     draw_head_background()
-     drawcellbackground()
-     for i in 0..<25{
-          draw_singlecell_back(position: CGFloat(i))
-
+     override func didMoveToSuperview() {
+          if(finished==1){
+          return
+          
+          }
+          self.frame=(self.window?.rootViewController?.view.frame)!
+          frame_self=self.frame
+          
+          contentview.frame=CGRect.init(x: 0, y: frame_self.height, width: frame_self.width, height: 320)
+          contentview.backgroundColor=UIColor.white
+          
+          maskview=UIView.init(frame: frame)
+          maskview.backgroundColor=UIColor.black.withAlphaComponent(0.7)
+          let gesture = UITapGestureRecognizer(target: self, action: #selector(self.disappear))
+          maskview.addGestureRecognizer(gesture)
+          draw_head()
+          drawcellbackground()
+          for i in 0..<25{
+               draw_singlecell_back(position: CGFloat(i))
+               
+          }
+          draw_segment()
+          self.backgroundColor=UIColor.init(red: 1, green: 1, blue: 1, alpha: 0)
+          self.addSubview(maskview)
+          self.addSubview(contentview)
+          config()
      }
-     draw_segment()
-     //draw_button()
-     self.backgroundColor=UIColor.init(red: 1, green: 1, blue: 1, alpha: 0)
+     init(){
+     super.init(frame: CGRect.zero)
 
-     self.addSubview(maskview)
-
-     self.addSubview(contentview)
     }
-    func draw_head_background() {
+    func draw_head() {
      let view_head=UINavigationBar()
      view_head.frame=CGRect.init(x: 0, y: 0, width: frame_self.width, height: head_height)
      offset_head=view_head.frame
@@ -92,7 +101,7 @@ class ViewCourseEditWeek:UIView{
      func button_click(sender:UIButton!) {
           var zhoushu:[Int]=[Int]()
           view_cell.filter(isselect).map({zhoushu.append($0.week)})
-          delegate.reloadschedule(week: zhoushu)
+          delegate.editweek(week: zhoushu)
           disappear()
      }
      func drawcellbackground()  {
@@ -145,6 +154,7 @@ class ViewCourseEditWeek:UIView{
                          self.removeFromSuperview()
                     }
           })
+          finished=1
 
      }
      func draw_segment()  {
@@ -272,5 +282,5 @@ class ViewCourseWeekCell:UIView{
 
 }
 public protocol ViewCourseEditWeekDelegate:class{
-     func reloadschedule(week:[Int])
+     func editweek(week:[Int])
 }

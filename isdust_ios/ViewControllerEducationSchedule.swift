@@ -8,18 +8,81 @@
 
 import UIKit
 
-class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,ViewControllerEducationScheduleDelegate {
+class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,ViewControllerEducationScheduleDelegate,ViewControllerCourseDetailDelegate {
     var serialQueue:DispatchQueue!
     var info_year="2016-2017"
     var info_semester="1"
     var manager=ScheduleManage()
+    
+    @IBAction func testa(_ sender: AnyObject) {
+        for i in 1..<23{
+            reloadschedule(week: i)
+            
+        }
+    }
+    @IBAction func button_menu_click(_ sender: AnyObject) {
+        let menuArray:[AnyObject] = [
+            KxMenuItem.init("添加课程", image: UIImage(named: "item_key"), target: self, action:#selector(ViewControllerEducationSchedule.menu_addcourse)),
+            KxMenuItem.init("重新加载课程", image: UIImage(named: "item_heartbroken"), target: self, action: #selector(ViewControllerEducationSchedule.menu_reload)),
+        ]
+        
+        //配置一：基础配置
+        KxMenu.setTitleFont(UIFont(name: "HelveticaNeue", size: 15))
+        
+        //配置二：拓展配置
+        let options = OptionalConfiguration(arrowSize: 9,  //指示箭头大小
+            marginXSpacing: 7,  //MenuItem左右边距
+            marginYSpacing: 9,  //MenuItem上下边距
+            intervalSpacing: 25,  //MenuItemImage与MenuItemTitle的间距
+            menuCornerRadius: 6.5,  //菜单圆角半径
+            maskToBackground: true,  //是否添加覆盖在原View上的半透明遮罩
+            shadowOfMenu: false,  //是否添加菜单阴影
+            hasSeperatorLine: true,  //是否设置分割线
+            seperatorLineHasInsets: false,  //是否在分割线两侧留下Insets
+            textColor: Color(R: 0, G: 0, B: 0),  //menuItem字体颜色
+            menuBackgroundColor: Color(R: 1, G: 1, B: 1)  //菜单的底色
+        )
+        let barButtonItem = self.navigationItem.rightBarButtonItem!
+        let buttonItemView = barButtonItem.value(forKey: "view")
+        var a=self.navigationController?.view.frame
+        a?.size.height=60
+        a?.size.width*=2
+        a?.size.width-=60
+        KxMenu.show(in: self.navigationController?.view, from: a!, menuItems:menuArray, withOptions: options)
+    }
+    func menu_addcourse() {
+        self.performSegue(withIdentifier: "CourseEditAdd", sender: nil)
+    }
+    func menu_reload() {
+        let alertController = UIAlertController(title: "提示", message: "重新加载课表，原课表将会清除，重新加载?", preferredStyle: .alert)
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            ScheduleManage().droptable()
+            self.manager=ScheduleManage()
+            self.serialQueue.async(execute: self.thread_downloadtable)
+
+
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     func thread_downloadtable()  {
         mzhengfang.JumpToSelectClass()
         manager.droptable()
+        
         for i in 1..<23{
-            self.performSelector(onMainThread: Selector(("schedule_download_progress")), with: i, waitUntilDone: false, modes: nil)
             var kecheng=mzhengfang.ScheduleLookup(String(i), year: info_year, semester: info_semester)
             manager.importclass(course: kecheng)
+            self.performSelector(onMainThread: Selector(("schedule_download_progress")), with: i, waitUntilDone: false, modes: nil)
+
         }
         self.performSelector(onMainThread: Selector(("schedule_download_finish")), with: nil, waitUntilDone: false, modes: nil)
 
@@ -31,22 +94,32 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
             switch aSelector {
             case Selector("schedule_download_progress"):
                 let result=arg as! Int
+               //self.reloadschedule(week: result)
+                
+                
+                self.reloadschedule(week: result)
+                    
+                
                 SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
-
                 SVProgressHUD.showProgress(Float(result)/22, status: "正在下载课表")
+                //self.schedule_table_all()
                 break
             case Selector("schedule_download_finish"):
+
 //                let result=arg as! Int
                 SVProgressHUD.dismiss()
                 //self.table_emptyclassroom.reloadData()
                 break
-                
+
+
                 
             default:
                 break
                 
             }
-            print(aSelector)}
+        
+        
+        }
     }
     
     
@@ -85,6 +158,10 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         scrollView.isScrollEnabled=true
         scrollView.delegate=self
         scrollView.alwaysBounceHorizontal=true
+        
+        
+        
+        //scrollView.alwaysBounceVertical=true
         serialQueue = DispatchQueue(label: "queuename", attributes: [])
         if(manager.getcount()==0){
             SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
@@ -96,10 +173,13 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         
         }
         
-        schedule_table_all()
+       
 //myView.gest
 
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+         schedule_table_all()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -110,16 +190,9 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
     func schedule_table_all()  {
         for i in 1..<23{
             reloadschedule(week: i)
-//            let mview=UIView(frame:self.view.frame)
-//            let course=manager.getcourse(week: i)
-//            mview.frame=CGRect.init(x: view.frame.size.width*CGFloat(i-1), y: 0, width: view.frame.size.width, height: view.frame.size.height)
-//            schedule_draw_head(mview: mview)
-//            schedule_cell_print(mview: mview,course: course)
-//            scrollView.addSubview(mview)
-//            mview.tag=i
-            //mainview.append(mview)
+
         }
-        
+
         //scrollView.didMoveToWindow()
         //mainview=UIView(frame:self.view.frame)
         
@@ -160,9 +233,9 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         schedule_head_label(mview:mview,frame: CGRect.init(x: 3, y: 4, width: 20, height: 40),text:"8月")
         var extraheight = UIApplication.shared.statusBarFrame.height +
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
-        
+        //print(<#T##items: Any...##Any#>)
         //画节次格子
-        var jieci_height=(self.view.frame.height-base.height-extraheight)/12
+        var jieci_height=(self.view.frame.height-base.height-extraheight+self.view.frame.origin.y)/12
         for i in 0 ..< 12{
             schedule_head_cell_draw(mview:mview,frame: CGRect.init(x: 0, y: jieci_height*CGFloat(i)+base.height, width: base.width, height: jieci_height))
             schedule_head_label(mview:mview,frame: CGRect.init(x: 7, y: jieci_height*CGFloat(i)+base.height+14, width: base.width, height: jieci_height),text:String(i+1))//周次
@@ -203,7 +276,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         var extraheight = UIApplication.shared.statusBarFrame.height +
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
         
-        var cell_height=(self.view.frame.height-base.height-extraheight)/12
+        var cell_height=(self.view.frame.height+self.view.frame.origin.y-base.height-extraheight)/12
         cell_height*=2
         var cell_width=(self.view.frame.width-base.width)/7
         view_single.frame=CGRect.init(x: (CGFloat(Int(course.xingqi!)!)-1)*cell_width+base.width+interval, y: (CGFloat(Int(course.jieci!)!)-1)*cell_height+base.height+interval, width: cell_width, height: cell_height)
@@ -278,7 +351,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
         
         let interval:CGFloat=2
-        var cell_height=(self.view.frame.height-base.height-extraheight)/12
+        var cell_height=(self.view.frame.height+self.view.frame.origin.y-base.height-extraheight)/12
         cell_height*=2
         cell_height=cell_height-2*interval
         var cell_width=(self.view.frame.width-base.width)/7
@@ -368,9 +441,9 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         mview.addSubview(label)
     }
 
-    override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool) {
-        print(1)
-    }
+//    override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool) {
+//        print(122)
+//    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -380,6 +453,12 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
             let mViewControllerCourseDetail=segue.destination as! ViewControllerCourseDetail
             mViewControllerCourseDetail.course=sender as! Kebiao
             mViewControllerCourseDetail.delegate = self
+        }
+        if segue.identifier=="CourseEditAdd"{
+            let mViewControllerCourseDetail=segue.destination as! ViewControllerCourseEdit
+            mViewControllerCourseDetail.type="add"
+            mViewControllerCourseDetail.delegate = self
+        
         }
     }
     
@@ -396,13 +475,30 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
     func reloadschedule(week: Int) {
         let viewWithTag = scrollView.viewWithTag(week)
         viewWithTag?.removeFromSuperview()
+//        print(self.view.frame)
+//        self.view.frame.size.height=scrollView.frame.height
+//        self.view.frame.origin.y=0
+        //print(scrollView.frame)
+        //scrollView.frame.origin.y=0
         let mview=UIView(frame:self.view.frame)
         let course=manager.getcourse(week: week)
-        mview.frame=CGRect.init(x: view.frame.size.width*CGFloat(week-1), y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        mview.frame=CGRect.init(x: view.frame.size.width*CGFloat(week-1), y: 0, width: view.frame.size.width, height: scrollView.frame.height)
+        print((navigationController?.navigationBar.frame.height)!)
+        //print(scrollView.bounds)
+        
         schedule_draw_head(mview: mview)
         schedule_cell_print(mview: mview,course: course)
         scrollView.addSubview(mview)
         mview.tag=week
+    }
+    func saveschedule() {
+        for i in 1..<23{
+            
+            reloadschedule(week: i)
+            
+        }
+        self.navigationController?.popViewController(animated: true)
+    
     }
 
 }

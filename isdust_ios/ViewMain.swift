@@ -33,7 +33,7 @@ class ViewMain: UIViewController {
 //        return UIModalPresentationStyle.none
 //    }
     override func viewDidAppear(_ animated: Bool) {
-        let vc = ViewCourseEditWeek.init(frame: self.view.frame)
+        let vc = ViewCourseEditJieci()
         view.window?.rootViewController?.view.addSubview(vc)
         
         //vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen

@@ -70,7 +70,7 @@ class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITab
             case Selector(("renewall")):
                 let result=arg as! String
                 let alert = UIAlertView()
-                alert.title = "图书馆-登录"
+                alert.title = "图书馆"
                 alert.message = result
                 alert.addButton(withTitle: "确定")
                 alert.delegate=self
@@ -111,8 +111,8 @@ class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITab
     @IBOutlet weak var menu_plus: UIBarButtonItem!
     @IBAction func menu_plus_click(_ sender: AnyObject) {
         let menuArray:[AnyObject] = [
-            KxMenuItem.init("一键续借", image: UIImage(named: "item_heartbroken"), target: self, action: Selector(("menu_renew"))),
-            KxMenuItem.init("注销", image: UIImage(named: "item_logout"), target: self, action: Selector(("menu_logout")))
+            KxMenuItem.init("一键续借", image: UIImage(named: "item_heartbroken"), target: self, action: #selector(ViewControllerLibraryPersonal.menu_renew)),
+            KxMenuItem.init("注销", image: UIImage(named: "item_logout"), target: self, action: #selector(ViewControllerLibraryPersonal.menu_logout))
         ]
         
         //配置一：基础配置

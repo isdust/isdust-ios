@@ -181,9 +181,6 @@ func numberOfSections(in tableView: UITableView) -> Int {
         a.size.height=60
         a.size.width*=2
         a.size.width-=60
-        //let temp = sender.accessibilityFrame
-        //var frame = (buttonItemView as AnyObject).frame
-        //frame?.origin.y+=30
         KxMenu.show(in: self.navigationController?.view, from: a, menuItems:menuArray, withOptions: options)
         
         

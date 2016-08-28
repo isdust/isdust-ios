@@ -138,8 +138,10 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //print(picker_data.subviews.count)
         self.picker_data.delegate = self
         self.picker_data.dataSource = self
+        
         self.table_emptyclassroom.delegate=self
         self.table_emptyclassroom.dataSource=self
         picker_data.autoresizingMask = .flexibleWidth
