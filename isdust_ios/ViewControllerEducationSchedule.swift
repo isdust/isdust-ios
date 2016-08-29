@@ -180,12 +180,21 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
     }
     override func viewWillAppear(_ animated: Bool) {
          schedule_table_all()
+        schedule_goto(week: SchoolTime.gettodayweek())
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        var week=scrollView.bounds.origin.x/scrollView.bounds.width
-        self.navigationItem.title="第"+"\(week )"+"周"
-        //print(scrollView.bounds)
+        schedule_settitle()
+        
+    }
+    func schedule_settitle()  {
+        var week=Int(scrollView.bounds.origin.x/scrollView.bounds.width)+1
+        self.navigationItem.title="第"+"\(week)"+"周"
+    }
+    func schedule_goto(week:Int) {
+        scrollView.bounds.origin.x=(scrollView.bounds.width)*CGFloat(week-1)
+        schedule_settitle()
+        
     }
     func schedule_table_all()  {
         for i in 1..<23{
@@ -226,11 +235,12 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         
         //myView.addGestureRecognizer(gesture)
     }
-    func schedule_draw_head(mview:UIView) {
+    func schedule_draw_head(week: Int,mview:UIView) {
+        var date_week=SchoolTime.getdayarray(week: week)
         //画月份格子
-        var base=CGRect.init(x: 0, y: 0, width: 20, height: 40)
+        var base=CGRect.init(x: 0, y: 0, width: 25, height: 40)
         schedule_head_cell_draw(mview:mview,frame: CGRect.init(x: 0, y: 0, width: base.width, height: base.height))
-        schedule_head_label(mview:mview,frame: CGRect.init(x: 3, y: 4, width: 20, height: 40),text:"8月")
+        schedule_head_label(mview:mview,frame: CGRect.init(x: 3, y: 4, width: 25, height: 40),text:date_week[0])
         var extraheight = UIApplication.shared.statusBarFrame.height +
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
         //print(<#T##items: Any...##Any#>)
@@ -247,7 +257,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         for i in 0..<7{
             schedule_head_cell_draw(mview:mview,frame: CGRect.init(x: xingqi_width*CGFloat(i)+base.width, y: 0, width: xingqi_width, height: base.height))
             schedule_head_label(mview:mview,frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/3, y: base.height/2+5, width: xingqi_width, height: base.height),text:SchoolTime.num2week(num: i+1))//周次
-            schedule_head_label(mview:mview,frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/2-5, y: base.height/4, width: xingqi_width, height: base.height),text:String(i+1))//日期
+            schedule_head_label(mview:mview,frame:CGRect.init(x: xingqi_width*CGFloat(i)+base.width+xingqi_width/2-5, y: base.height/4, width: xingqi_width, height: base.height),text:date_week[i+1])//日期
 
             
         }
@@ -272,7 +282,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         var view_single=ViewCourseCell()
         
         let interval:CGFloat=2
-        var base=CGRect.init(x: 0, y: 0, width: 20, height: 40)
+        var base=CGRect.init(x: 0, y: 0, width: 25, height: 40)
         var extraheight = UIApplication.shared.statusBarFrame.height +
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
         
@@ -346,7 +356,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         
     }
     func schedule_cell_draw(mview:UIView,color:UIColor){
-        var base=CGRect.init(x: 0, y: 0, width: 20, height: 40)
+        var base=CGRect.init(x: 0, y: 0, width: 25, height: 40)
         var extraheight = UIApplication.shared.statusBarFrame.height +
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
         
@@ -486,7 +496,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         print((navigationController?.navigationBar.frame.height)!)
         //print(scrollView.bounds)
         
-        schedule_draw_head(mview: mview)
+        schedule_draw_head(week:week, mview: mview)
         schedule_cell_print(mview: mview,course: course)
         scrollView.addSubview(mview)
         mview.tag=week

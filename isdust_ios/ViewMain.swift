@@ -11,7 +11,10 @@ class ViewMain: UIViewController {
     @IBOutlet weak var imageview: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        for i in 1..<22{
+//            print(SchoolTime.gettodayweek())
+//
+//        }
 //        
 //        var d=ScheduleManage()
 //        d.droptable()
