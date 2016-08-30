@@ -183,7 +183,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         schedule_goto(week: SchoolTime.gettodayweek())
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    func scrollViewDidEndDeallcelerating(_ scrollView: UIScrollView) {
         schedule_settitle()
         
     }

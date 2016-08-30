@@ -36,8 +36,8 @@ class ViewMain: UIViewController {
 //        return UIModalPresentationStyle.none
 //    }
     override func viewDidAppear(_ animated: Bool) {
-        let vc = ViewCourseEditJieci()
-        view.window?.rootViewController?.view.addSubview(vc)
+//        let vc = ViewCourseEditJieci()
+//        view.window?.rootViewController?.view.addSubview(vc)
         
         //vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         //vc.view.bounds=CGRect.init(x: 0, y: 0, width: 100, height: 100)
