@@ -11,6 +11,10 @@ class ViewMain: UIViewController {
     @IBOutlet weak var imageview: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let location="http://card.proxy.isdust.com:3100/"
+        var a=Http()
+        a.setencoding(1)
+//        print(a.get(location+"loginstudent.action"))
 //        for i in 1..<22{
 //            print(SchoolTime.gettodayweek())
 //

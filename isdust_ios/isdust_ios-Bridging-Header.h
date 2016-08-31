@@ -2,7 +2,7 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
-#import "Http.h"
+//#import "Http.h"
 #import "NirKxMenu.h"
 #import "SVProgressHUD.h"
 //#import "FMDB.h"

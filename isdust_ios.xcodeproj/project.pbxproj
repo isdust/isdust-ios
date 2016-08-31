@@ -33,6 +33,7 @@
 		753B87AC1D6856F000A0218C /* TableViewCellStorageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B87AB1D6856F000A0218C /* TableViewCellStorageSearch.swift */; };
 		753B87B01D68593400A0218C /* TableViewControllerSrorageSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B87AF1D68593400A0218C /* TableViewControllerSrorageSearchResult.swift */; };
 		753B87B81D694B5C00A0218C /* ViewControllerLibraryPersonal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B87B71D694B5C00A0218C /* ViewControllerLibraryPersonal.swift */; };
+		753D62F61D75E43000253990 /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753D62F51D75E43000253990 /* Http.swift */; };
 		754043DD1D50706D00F6B957 /* ViewSchoolCardChangePass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754043DC1D50706D00F6B957 /* ViewSchoolCardChangePass.swift */; };
 		7544D4661D55E46D00642A2E /* ViewNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D4651D55E46D00642A2E /* ViewNetwork.swift */; };
 		7544D4681D56388200642A2E /* ViewSchoolCardReportLoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D4671D56388200642A2E /* ViewSchoolCardReportLoss.swift */; };
@@ -167,6 +168,7 @@
 		753B87AB1D6856F000A0218C /* TableViewCellStorageSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellStorageSearch.swift; sourceTree = "<group>"; };
 		753B87AF1D68593400A0218C /* TableViewControllerSrorageSearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerSrorageSearchResult.swift; sourceTree = "<group>"; };
 		753B87B71D694B5C00A0218C /* ViewControllerLibraryPersonal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLibraryPersonal.swift; sourceTree = "<group>"; };
+		753D62F51D75E43000253990 /* Http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
 		754043D21D502DB800F6B957 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = isdust_ios/openssl/arm/libcrypto.a; sourceTree = "<group>"; };
 		754043D31D502DB800F6B957 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = isdust_ios/openssl/arm/libssl.a; sourceTree = "<group>"; };
 		754043DC1D50706D00F6B957 /* ViewSchoolCardChangePass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolCardChangePass.swift; sourceTree = "<group>"; };
@@ -322,7 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				751C35E51D4354DF00A26D45 /* Http.h */,
-				751C35E71D4354F600A26D45 /* Http.m */,
 				75F675EC1D4905F0004164D0 /* base64.h */,
 				751C35E61D4354F500A26D45 /* isdust_ios-Bridging-Header.h */,
 				75985B2B1D46784600388278 /* rsa.c */,
@@ -334,6 +335,8 @@
 				7521C52D1D4A5CFB001E0CC0 /* Library.swift */,
 				75AB61BE1D6C86360047D4F4 /* ScheduleManage.swift */,
 				75BBB6381D6E7E2900568333 /* SchoolTime.swift */,
+				751C35E71D4354F600A26D45 /* Http.m */,
+				753D62F51D75E43000253990 /* Http.swift */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				7521C52E1D4A5CFB001E0CC0 /* Library.swift in Sources */,
 				7578EAFE1D52491600F0A538 /* SVProgressHUD.m in Sources */,
 				753B87AC1D6856F000A0218C /* TableViewCellStorageSearch.swift in Sources */,
+				753D62F61D75E43000253990 /* Http.swift in Sources */,
 				7544D46A1D56C36100642A2E /* ViewEducation.swift in Sources */,
 				751C35EB1D43551D00A26D45 /* Zhengfang.swift in Sources */,
 				75CC0CB41D63F4930002E113 /* QRCodeViewController.swift in Sources */,

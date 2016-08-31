@@ -57,7 +57,7 @@ class SchoolCard{
     func day_get() -> String {
         return DateFormatter.string(from: date)
     }
-    func recognize(_ image:UIImage) -> Void {
+    func recognize(_ image:UIImage)throws -> Void {
         var tmp_image=ImageProcess();
         tmp_image.loadimage(image)
         tmp_image.binarize()
@@ -100,24 +100,24 @@ class SchoolCard{
         return result;
         
     }
-    func login(_ username:String,password:String) -> String {
+    func login(_ username:String,password:String)throws -> String {
         
-        recognize(mhttp.get_picture(location+"getpasswdPhoto.action"))
-        mhttp.get_picture(location+"getCheckpic.action?rand=6520.280869641985");
+     try recognize(mhttp.get_picture(location+"getpasswdPhoto.action"))
+        try mhttp.get_picture(location+"getCheckpic.action?rand=6520.280869641985");
         mhttp.setencoding(1)
         var mpassword=translate(password);
-        var text_web=mhttp.post(location+"loginstudent.action", "name=" + username + "&userType=1&passwd=" + mpassword + "&loginType=2&rand=6520&imageField.x=39&imageField.y=10")
-        if((text_web?.contains("持卡人")) == true){
+        var text_web = try mhttp.post(location+"loginstudent.action", "name=" + username + "&userType=1&passwd=" + mpassword + "&loginType=2&rand=6520&imageField.x=39&imageField.y=10")
+        if((text_web.contains("持卡人")) == true){
             mhttp.setencoding(0)
-            text_web=mhttp.get(location+"accountcardUser.action")
+            text_web=try mhttp.get(location+"accountcardUser.action")
             var expression="<div align=\"left\">([\\S\\s]*?)</div>"
             var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
-            var res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
+            var res = regex.matches(in: text_web, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web.characters.count)))
             var temp_stuinfo=[String]()
             
             for i in 0 ..< res.count{
                 
-                let temp_string=(text_web! as NSString).substring(with:res[i].rangeAt(1))
+                let temp_string=(text_web as NSString).substring(with:res[i].rangeAt(1))
                 temp_stuinfo.append(temp_string)
             }
             
@@ -131,48 +131,48 @@ class SchoolCard{
             mPersonInfo.password=password
             expression="<td class=\"neiwen\">([-]*?[0-9]*.[0-9]*)元\\（卡余额\\）([-]*?[0-9]*.[0-9]*)元\\(当前过渡余额\\)([-]*?[0-9]*.[0-9]*)元\\(上次过渡余额\\)</td>"
             regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
-            res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
-            mPersonInfo.balance_split.append(Float((text_web! as NSString).substring(with: res[0].rangeAt(1)))!)
-            mPersonInfo.balance_split.append(Float((text_web! as NSString).substring(with: res[0].rangeAt( 2)))!)
-            mPersonInfo.balance_split.append(Float((text_web! as NSString).substring(with: res[0].rangeAt( 3)))!)
+            res = regex.matches(in: text_web, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web.characters.count)))
+            mPersonInfo.balance_split.append(Float((text_web as NSString).substring(with: res[0].rangeAt(1)))!)
+            mPersonInfo.balance_split.append(Float((text_web as NSString).substring(with: res[0].rangeAt( 2)))!)
+            mPersonInfo.balance_split.append(Float((text_web as NSString).substring(with: res[0].rangeAt( 3)))!)
             mPersonInfo.balance_total=mPersonInfo.balance_split[0]+mPersonInfo.balance_split[1]
-            mkey=getkey()
+            mkey = try getkey()
             return "登陆成功"
-        }else if((text_web?.contains("登陆失败，无此用户名称")) == true){
+        }else if((text_web.contains("登陆失败，无此用户名称")) == true){
             return "无此用户名称"
             
-        }else if((text_web?.contains("登陆失败，密码错误")) == true){
+        }else if((text_web.contains("登陆失败，密码错误")) == true){
             return "密码错误"
         }
         return "未知错误"
     }
-    func getkey() -> String {
+    func getkey()throws -> String {
         mhttp.setencoding(1)
-        var text_web=mhttp.get(location+"accounthisTrjn.action")
+        var text_web=try mhttp.get(location+"accounthisTrjn.action")
         var expression="\"/accounthisTrjn.action\\?__continue=([\\s\\S]*?)\""
         var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
-        var res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
+        var res = regex.matches(in: text_web, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web.characters.count)))
         
-        var key_init=(text_web! as NSString).substring(with: res[0].rangeAt( 1))
-        text_web=mhttp.post(location+"accounthisTrjn.action?__continue="+key_init, "account="+mPersonInfo.id+"&inputObject=all&Submit=+%C8%B7+%B6%A8+")
-        res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
-        var result=(text_web! as NSString).substring(with: res[0].rangeAt(1))
+        var key_init=(text_web as NSString).substring(with: res[0].rangeAt( 1)) as String
+        text_web=try mhttp.post(location+"accounthisTrjn.action?__continue="+key_init, "account="+mPersonInfo.id+"&inputObject=all&Submit=+%C8%B7+%B6%A8+")
+        res = regex.matches(in: text_web, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web.characters.count)))
+        var result=(text_web as NSString).substring(with: res[0].rangeAt(1))
         return result
         
         
     }
-    func LookUpHistory(_ inputStartDate:String,inputEndDate:String,page:Int) -> [[String]] {
+    func LookUpHistory(_ inputStartDate:String,inputEndDate:String,page:Int)throws -> [[String]] {
         mhttp.setencoding(1)
-        mkey=getkey()
-        var text_web = mhttp.post(location+"accounthisTrjn.action?__continue=" + mkey, "inputStartDate=" + inputStartDate + "&inputEndDate=" + inputEndDate + "&pageNum="+String(page))
+        mkey = try getkey()
+        var text_web = try mhttp.post(location+"accounthisTrjn.action?__continue=" + mkey, "inputStartDate=" + inputStartDate + "&inputEndDate=" + inputEndDate + "&pageNum="+String(page))
         var expression="<form id=\"\\?__continue=([\\S\\s]*?)\" name=\"form1\" "
         var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
-        var res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
+        var res = regex.matches(in: text_web, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web.characters.count)))
         page_current=page;
         day_current=inputStartDate;
         
-        var msearchkey=(text_web! as NSString).substring(with: res[0].rangeAt(1))
-        var result:[[String]]=AnalyzeHistory(mhttp.get(location+"accounthisTrjn.action?__continue=" + msearchkey))
+        var msearchkey=(text_web as NSString).substring(with: res[0].rangeAt(1))
+        var result:[[String]]=AnalyzeHistory(try mhttp.get(location+"accounthisTrjn.action?__continue=" + msearchkey))
 
         return result
         
@@ -194,7 +194,7 @@ class SchoolCard{
             result.append(temp)
             
         }
-        page_total = Int(mhttp.getMiddleText(text, "&nbsp;&nbsp;共", "页&nbsp;&nbsp;"))!;
+        page_total = Int(try mhttp.getMiddleText(text, "&nbsp;&nbsp;共", "页&nbsp;&nbsp;"))!;
         return result
         
         
@@ -202,8 +202,8 @@ class SchoolCard{
     func LookUpToday() -> [[String]] {
         mhttp.setencoding(1)
         page_current=0
-        let text_temp=mhttp.post(location+"accounttodatTrjnObject.action", "account=" + mPersonInfo.id + "&inputObject=all&Submit=+%C8%B7+%B6%A8+")
-        let result:[[String]]=AnalyzeToday(text_temp!)
+        let text_temp=try mhttp.post(location+"accounttodatTrjnObject.action", "account=" + mPersonInfo.id + "&inputObject=all&Submit=+%C8%B7+%B6%A8+")
+        let result:[[String]]=AnalyzeToday(text_temp)
         return result
         
     }
@@ -230,28 +230,28 @@ class SchoolCard{
     }
     
     func LookUpHistoryNext(_ inputStartDate:String,inputEndDate:String,page:Int) -> [[String]] {
-        let text_web=mhttp.post(location+"accountconsubBrows.action", "inputStartDate="+inputStartDate+"&inputEndDate="+inputEndDate+"&pageNum="+String(page))
-        let result:[[String]]=AnalyzeHistory(text_web!)
+        let text_web=try mhttp.post(location+"accountconsubBrows.action", "inputStartDate="+inputStartDate+"&inputEndDate="+inputEndDate+"&pageNum="+String(page))
+        let result:[[String]]=AnalyzeHistory(text_web)
         return result
         
     }
     
-    func ChangePassword(_ oldpassword:String,newpassword:String,identity:String) -> String {
+    func ChangePassword(_ oldpassword:String,newpassword:String,identity:String)  -> String {
         if(identity != mPersonInfo.identity){
             return "身份证号码错误"
         }
-        recognize(mhttp.get_picture(location+"getpasswdPhoto.action"))
+        try!recognize(try mhttp.get_picture(location+"getpasswdPhoto.action"))
         let moldpassword=translate(oldpassword)
         let mnewpassword=translate(newpassword)
         let submit="account=" +  mPersonInfo.id + "&passwd=" + moldpassword + "&newpasswd="+mnewpassword + "&newpasswd2=" + mnewpassword
-        let text_web=mhttp.post(location+"accountDocpwd.action",submit)
-        if((text_web?.contains("操作成功")) == true){
+        let text_web=try mhttp.post(location+"accountDocpwd.action",submit)
+        if((text_web.contains("操作成功")) == true){
             return "修改密码成功"
             
-        }else if((text_web?.contains("密码错误")) == true){
+        }else if((text_web.contains("密码错误")) == true){
             return "原始密码错误"
             
-        }else if((text_web?.contains("本日业务已结束")) == true){
+        }else if((text_web.contains("本日业务已结束")) == true){
             return "本日业务已结束"
         }
         return "未知错误"
@@ -260,22 +260,22 @@ class SchoolCard{
         if(identity != mPersonInfo.identity){
             return "身份证号码错误"
         }
-        recognize(mhttp.get_picture(location+"getpasswdPhoto.action"))
+        try!recognize(try mhttp.get_picture(location+"getpasswdPhoto.action"))
         let mpassword=translate(password)
         let submit="account=" + mPersonInfo.id + "&passwd=" + mpassword
-        let text_web=mhttp.post(location+"accountDoLoss.action",submit)
-        if((text_web?.contains("持卡人已挂失")) == true){
+        let text_web=try mhttp.post(location+"accountDoLoss.action",submit)
+        if((text_web.contains("持卡人已挂失")) == true){
             return "持卡人已挂失，无需再次挂失"
             
-        }else if((text_web?.contains("密码错误")) == true){
+        }else if((text_web.contains("密码错误")) == true){
             return "密码错误"
             
-        }else if((text_web?.contains("操作成功")) == true){
+        }else if((text_web.contains("操作成功")) == true){
             return "操作成功"
         }
         return "未知错误"
     }
-    func NextPage() -> [[String]] {
+    func NextPage()throws -> [[String]] {
         page_current=page_current+1
         if (page_current>page_total){
             
@@ -284,19 +284,19 @@ class SchoolCard{
             day_minus()
             day_current=day_get()
             
-            return LookUpHistory(day_current,inputEndDate: day_last,page: page_current)
+            return try LookUpHistory(day_current,inputEndDate: day_last,page: page_current)
         }
-        return LookUpHistoryNext(day_current, inputEndDate: day_last, page: page_current);
+        return try LookUpHistoryNext(day_current, inputEndDate: day_last, page: page_current);
     }
     func ResetFlag()  {
         flag_first=0
         date=Date()
     }
-    func GetTransaction() -> [Transaction] {
+    func GetTransaction()throws -> [Transaction] {
         var result:[Transaction]=[Transaction]()
         if(flag_first==0){
             var data_today=LookUpToday()
-            var data_history=NextPage()
+            var data_history=try NextPage()
             for i in data_today{
                 var temp_transaction:Transaction=Transaction()
                 temp_transaction.FormatFromString(i)
@@ -312,7 +312,7 @@ class SchoolCard{
             flag_first=1
         
         }else{
-            var data_history=NextPage()
+            var data_history=try NextPage()
             for i in data_history{
                 var temp_transaction:Transaction=Transaction()
                 temp_transaction.FormatFromString(i)

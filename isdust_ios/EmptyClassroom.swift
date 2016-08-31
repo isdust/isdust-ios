@@ -36,7 +36,7 @@ class EmptyClassroom{
         submit=mhttp.postencode(submit)
         var text_web=mhttp.post("http://kzxs.isdust.com/chaxun_new.php","data="+submit+"&verification="+mmd5_2+"&time="+time)
         
-        return analyze(text_web: text_web!)
+        return analyze(text_web: text_web)
     }
     func analyze(text_web:String) -> [Kebiao] {
         var result=[Kebiao]()

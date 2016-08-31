@@ -35,17 +35,17 @@ class Library{
     func login(user:String,password:String) -> String {
         var msubmit="rdid="+user+"&rdPasswd="+md5(data: password)+"&returnUrl=&password="
         var text_web = mhttp.post("http://interlib.sdust.edu.cn/opac/reader/doLogin",msubmit)
-        print(text_web?.contains("用户名或密码错误!"))
-        if((text_web?.contains("用户名或密码错误!")) == true){
+        print(text_web.contains("用户名或密码错误!"))
+        if((text_web.contains("用户名或密码错误!")) == true){
             return "账号或密码错误";
         
         }
         var expression="<font class=\"space_font\">([\\S\\s]*?)</font>"
         var regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
-        var res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
+        var res = regex.matches(in: text_web, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web.characters.count)))
         var temp_array=[String]()
         for i in res{
-            temp_array.append((text_web! as NSString).substring(with: i.rangeAt(1)))
+            temp_array.append((text_web as NSString).substring(with: i.rangeAt(1)))
         
         }
         mPersonalInfo.name=temp_array[1]
@@ -60,12 +60,12 @@ class Library{
         var text_web=mhttp.get("http://interlib.sdust.edu.cn/opac/loan/renewList")
         var expression="<td width=\"40\"><input type=\"checkbox\" name=\"barcodeList\" value=\"([0-9]*?)\" />[\\s\\S]*?target=\"_blank\">([\\S\\s]*?)</a></td>[\\S\\s]*?<td width=\"100\">([0-9]{4}-[0-9]{2}-[0-9]{2})[\\S\\s]*?<td width=\"100\">([0-9]{4}-[0-9]{2}-[0-9]{2})"
         let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
-        var res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, text_web!.characters.count))
+        var res = regex.matches(in: text_web, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, text_web.characters.count))
         
         for i in res{
             var temp=[String](repeating:"",count:4)
             for j in 0..<4{
-                temp[j]=(text_web! as NSString).substring(with: i.rangeAt( j+1))
+                temp[j]=(text_web as NSString).substring(with: i.rangeAt( j+1))
                 
             }
             result.append(temp)
@@ -111,14 +111,14 @@ class Library{
         var text_web=mhttp.post("http://interlib.sdust.edu.cn/opac/loan/doRenew","furl=%2Fopac%2Floan%2FrenewList&renewAll=all" )
         var content=mhttp.getMiddleText(text_web, "<div style=\"margin:20px auto; width:50%; height:auto!important; min-height:200px; border:2px dashed #ccc;\">", "<input")
         
-        content=content?.replacingOccurrences(of: "\t", with: "")
-        content=content?.replacingOccurrences(of: "\n", with: "")
-        content=content?.replacingOccurrences(of: "\r", with: "")
-        var temp_array=content?.components(separatedBy: "<br/>")
-        var len=(temp_array?.count)!-1
+        content=content.replacingOccurrences(of: "\t", with: "")
+        content=content.replacingOccurrences(of: "\n", with: "")
+        content=content.replacingOccurrences(of: "\r", with: "")
+        var temp_array=content.components(separatedBy: "<br/>")
+        var len=(temp_array.count)-1
         var result=""
         for i in 1..<len{
-            result+=(temp_array?[i])!
+            result+=(temp_array[i])
         }
         return result
     }
@@ -149,7 +149,7 @@ class Library{
             temp[1]=temp_json["barcode"] as! String
             temp[2]=getState(text:String( temp_json["state"] as! Int))
             if(temp[2]=="借出"){
-            temp[3]=TimeStamp2Date(timeStamp: getReturnDate(source: raw_borrowinfo!,barcode: temp[1] ));
+            temp[3]=TimeStamp2Date(timeStamp: getReturnDate(source: raw_borrowinfo,barcode: temp[1] ));
             }else{
             temp[3]=""
             }
@@ -209,24 +209,24 @@ class Library{
         
         for i in 0 ..< result.count{
             var temp_book=result[i]
-            result[i].Suoshuhao=xml_getSuoshuhao(raw: raw_suoshuhao!,bookrecno: temp_book.bookrecno)
+            result[i].Suoshuhao=xml_getSuoshuhao(raw: raw_suoshuhao,bookrecno: temp_book.bookrecno)
         
         }
         return  result
     }
     func findBookByISBN(ISBN:String) -> [Book] {
         var text_web=mhttp.get("http://interlib.sdust.edu.cn/opac/search?rows=100&hasholding=1&searchWay0=marc&q0=&logical0=AND&q=" + ISBN + "&searchWay=isbn&scWay=dim&searchSource=reader")
-        var result=AnalyzeSearch(text: text_web!)
+        var result=AnalyzeSearch(text: text_web)
         return result
     }
     func findBookByName(Name:String) -> [Book] {
         var text_web=mhttp.get("http://interlib.sdust.edu.cn/opac/search?rows=100&hasholding=1&searchWay0=marc&q0=&logical0=AND&q="+Name+"&searchWay=title&searchSource=reader")
-        var result=AnalyzeSearch(text: text_web!)
+        var result=AnalyzeSearch(text: text_web)
         return result
     }
     func getStorage(bookrecno:String) -> [[String]] {
         var text_web=mhttp.get("http://interlib.sdust.edu.cn/opac/api/holding/"+bookrecno)
-        var result=AnalyzeStorage(text: text_web!)
+        var result=AnalyzeStorage(text: text_web)
         return result
     }
 }

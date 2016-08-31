@@ -41,12 +41,12 @@ class Zhengfang{
         var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
         VIEWSTATE=mhttp.postencode(VIEWSTATE);
         //        VIEWSTATE=VIEWSTATE?.replacingOccurrences(of: <#T##String#>, with: "%3D")
-        var submit="__VIEWSTATE=" + VIEWSTATE! + "&TextBox1=" + username + "&TextBox2=" + mhttp.postencode(password)
+        var submit="__VIEWSTATE=" + VIEWSTATE + "&TextBox1=" + username + "&TextBox2=" + mhttp.postencode(password)
         submit=submit+"&RadioButtonList1=%d1%a7%c9%fa&Button1=++%b5%c7%c2%bc++"
         text_web=mhttp.post(location_zhengfang+"default_ysdx.aspx",submit)
-        if((text_web?.contains("<script>window.open('xs_main.aspx?xh=2")) == true){
+        if((text_web.contains("<script>window.open('xs_main.aspx?xh=2")) == true){
             var url_login_zhengfang=mhttp.getMiddleText(text_web,  "<script>window.open('","','_parent');</script>")
-            url_login_zhengfang=location_zhengfang+url_login_zhengfang!;
+            url_login_zhengfang=location_zhengfang+url_login_zhengfang;
             text_web=mhttp.get(url_login_zhengfang)
             url_xuanke=mhttp.getMiddleText(text_web, "信息员意见反馈</a></li><li><a href=\"", "\" target='zhuti' onclick=\"GetMc('激活选课平台帐户');");
             url_xuanke=location_zhengfang+url_xuanke;
@@ -57,11 +57,11 @@ class Zhengfang{
             
             
         }
-        else if((text_web?.contains("密码错误")) == true){
+        else if((text_web.contains("密码错误")) == true){
             return "密码错误"
             
         }
-        else if((text_web?.contains("用户名不存在")) == true){
+        else if((text_web.contains("用户名不存在")) == true){
             return "用户名不存在"
             
         }
@@ -77,7 +77,7 @@ class Zhengfang{
         text_web=mhttp.get(mhttp.urlencode(url_chengji) );
         var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
         VIEWSTATE=mhttp.postencode(VIEWSTATE);
-        submit = "__VIEWSTATE=" + VIEWSTATE!+"&ddlXN=&ddlXQ=&btn_zcj=C0%FA%C4%EA%B3%C9%BC%A8"
+        submit = "__VIEWSTATE=" + VIEWSTATE+"&ddlXN=&ddlXQ=&btn_zcj=C0%FA%C4%EA%B3%C9%BC%A8"
         text_web=mhttp.post(mhttp.urlencode(url_chengji), submit);
         return ScoreAnalyzeZhengfang(text_web)
         
@@ -93,7 +93,7 @@ class Zhengfang{
             text_web=mhttp.get(mhttp.urlencode(url_chengji) );
             var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
             VIEWSTATE=mhttp.postencode(VIEWSTATE);
-            submit = "__VIEWSTATE=" + VIEWSTATE!+"&ddlXN=" + year + "&ddlXQ=" + semester + "&btn_xq=%d1%a7%c6%da%b3%c9%bc%a8"
+            submit = "__VIEWSTATE=" + VIEWSTATE+"&ddlXN=" + year + "&ddlXQ=" + semester + "&btn_xq=%d1%a7%c6%da%b3%c9%bc%a8"
             text_web=mhttp.post(mhttp.urlencode(url_chengji), submit);
             return ScoreAnalyzeZhengfang(text_web)
             break;
@@ -130,19 +130,19 @@ class Zhengfang{
     func ScheduleLookup(_ week:String,year:String,semester:String) -> [Kebiao] {
         mhttp.setencoding(0);
         var text_web=mhttp.get(location_xuanke+"?zhou="+week+"&xn="+year+"&xq="+semester)
-        text_web=text_web?.replacingOccurrences(of: " rowspan=\"2\" ", with: "")
+        text_web=text_web.replacingOccurrences(of: " rowspan=\"2\" ", with: "")
         let expression="<td  class=\"leftheader\">第[1,3,5,7,9]节</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>"
         // - 2、创建正则表达式对象
         let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
         // - 3、开始匹配
         var result=[Kebiao]();
-        let res = regex.matches(in: text_web!, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web?.characters.count)!))
+        let res = regex.matches(in: text_web, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, (text_web.characters.count)))
         for i in 0 ..< res.count{
             //print((text_web as NSString).substringWithRange(res[i].rangeAtIndex(0)))
             for j in 1 ..< 7{
                 
                 
-                var str = (text_web! as NSString).substring(with: res[i].rangeAt(j))
+                var str = (text_web as NSString).substring(with: res[i].rangeAt(j))
                 if(!(str=="&nbsp;")){
                     var temp=Kebiao()
                     temp.jieci=String(i+1)
@@ -174,7 +174,7 @@ class Zhengfang{
         text_web=mhttp.get(mhttp.urlencode(url_chengji) );
         var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
         VIEWSTATE=mhttp.postencode(VIEWSTATE);
-        submit = "__VIEWSTATE=" + VIEWSTATE!+"&ddlXN=&ddlXQ=&Button1=%B3%C9%BC%A8%CD%B3%BC%C6"
+        submit = "__VIEWSTATE=" + VIEWSTATE+"&ddlXN=&ddlXQ=&Button1=%B3%C9%BC%A8%CD%B3%BC%C6"
         text_web=mhttp.post(mhttp.urlencode(url_chengji), submit);
         var temp:String
         

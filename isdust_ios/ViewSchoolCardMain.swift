@@ -270,12 +270,31 @@ func numberOfSections(in tableView: UITableView) -> Int {
     }
 
     func thread_login() {
-        let result=mschoolcard.login(thread_user!, password: thread_password!)
+        
+        var result:String!
+        do{
+            result=try mschoolcard.login(thread_user!, password: thread_password!)
+            print("test")
+        }
+        catch let error{
+            print(error)
+        
+        
+        }
         self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
     }
     func thread_getdetail()  {
-        let data=mschoolcard.NextPage()
+        do{
+            //try mschoolcard.NextPage()
+        var data =  try mschoolcard.NextPage()
         self.performSelector(onMainThread: Selector(("detail")), with: data as AnyObject, waitUntilDone: false, modes: nil)
+        }catch {
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+
+        
+        }
+        
+
     }
     @IBOutlet weak var view_login: UIView!
     @IBOutlet var view_main: UIView!

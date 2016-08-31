@@ -153,6 +153,10 @@
     dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
 
     UIImage *image = [[UIImage alloc]initWithData:result];
+    if(image==nil){
+        [NSException raise:@"Invalid foo value" format:@"foo of  is invalid"];
+
+    }
     return image;
 }
 @end
