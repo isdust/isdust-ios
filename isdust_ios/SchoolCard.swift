@@ -199,7 +199,7 @@ class SchoolCard{
         
         
     }
-    func LookUpToday() -> [[String]] {
+    func LookUpToday()throws -> [[String]] {
         mhttp.setencoding(1)
         page_current=0
         let text_temp=try mhttp.post(location+"accounttodatTrjnObject.action", "account=" + mPersonInfo.id + "&inputObject=all&Submit=+%C8%B7+%B6%A8+")
@@ -229,14 +229,14 @@ class SchoolCard{
         
     }
     
-    func LookUpHistoryNext(_ inputStartDate:String,inputEndDate:String,page:Int) -> [[String]] {
+    func LookUpHistoryNext(_ inputStartDate:String,inputEndDate:String,page:Int) throws -> [[String]] {
         let text_web=try mhttp.post(location+"accountconsubBrows.action", "inputStartDate="+inputStartDate+"&inputEndDate="+inputEndDate+"&pageNum="+String(page))
         let result:[[String]]=AnalyzeHistory(text_web)
         return result
         
     }
     
-    func ChangePassword(_ oldpassword:String,newpassword:String,identity:String)  -> String {
+    func ChangePassword(_ oldpassword:String,newpassword:String,identity:String) throws  -> String {
         if(identity != mPersonInfo.identity){
             return "身份证号码错误"
         }
@@ -256,7 +256,7 @@ class SchoolCard{
         }
         return "未知错误"
     }
-    func ReportLoss(_ password:String,identity:String) -> String {
+    func ReportLoss(_ password:String,identity:String)throws -> String {
         if(identity != mPersonInfo.identity){
             return "身份证号码错误"
         }
@@ -295,7 +295,7 @@ class SchoolCard{
     func GetTransaction()throws -> [Transaction] {
         var result:[Transaction]=[Transaction]()
         if(flag_first==0){
-            var data_today=LookUpToday()
+            var data_today=try LookUpToday()
             var data_history=try NextPage()
             for i in data_today{
                 var temp_transaction:Transaction=Transaction()

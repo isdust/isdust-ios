@@ -54,8 +54,17 @@ class ViewSchoolCardReportLoss: UIViewController {
     }
     
     func thread_reportloss() {
-        let result=mschoolcard.ReportLoss(thread_pass, identity: thread_identity)
-        self.performSelector(onMainThread: Selector(("reportloss")), with: result as AnyObject, waitUntilDone: false)
+        do{
+            let result=try mschoolcard.ReportLoss(thread_pass, identity: thread_identity)
+            self.performSelector(onMainThread: Selector(("reportloss")), with: result as AnyObject, waitUntilDone: false)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+        }catch{
+            
+            
+        }
+
     }
     override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
         DispatchQueue.main.async(){
@@ -79,6 +88,15 @@ class ViewSchoolCardReportLoss: UIViewController {
                 alert.message = message
                 alert.show()
                 
+                break
+            case Selector(("ErrorNetwork")):
+                SVProgressHUD.dismiss()
+                let alert = UIAlertView()
+                alert.title = "错误"
+                alert.message = "网络超时"
+                alert.addButton(withTitle: "确定")
+                alert.delegate=self
+                alert.show()
                 break
             default:
                 break

@@ -33,10 +33,19 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
     }
 
     func thread_search() {
-        var result:[Kebiao] = memptyclassroom.getEmptyClassroom(building: thread_building, schooldate: thread_schooldate, week: thread_week, jieci: thread_jieci)
-        self.emtpyclassroom_detail=result
-//        self.performSelector(onMainThread: Selector(("emptyclassroom_search")), with:nil, waitUntilDone: false)
-        self.performSelector(onMainThread: Selector(("emptyclassroom_search")), with: nil, waitUntilDone: false, modes: nil)
+        do{
+            var result:[Kebiao] = try memptyclassroom.getEmptyClassroom(building: thread_building, schooldate: thread_schooldate, week: thread_week, jieci: thread_jieci)
+            self.emtpyclassroom_detail=result
+            //        self.performSelector(onMainThread: Selector(("emptyclassroom_search")), with:nil, waitUntilDone: false)
+            self.performSelector(onMainThread: Selector(("emptyclassroom_search")), with: nil, waitUntilDone: false, modes: nil)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+        }catch{
+            
+            
+        }
+
 
     }
     
@@ -129,7 +138,15 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
                 break
                 
                 
-  
+            case Selector(("ErrorNetwork")):
+                SVProgressHUD.dismiss()
+                let alert = UIAlertView()
+                alert.title = "错误"
+                alert.message = "网络超时"
+                alert.addButton(withTitle: "确定")
+                alert.delegate=self
+                alert.show()
+                break
             default:
                 break
                 

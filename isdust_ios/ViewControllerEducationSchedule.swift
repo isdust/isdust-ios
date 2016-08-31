@@ -75,18 +75,29 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
     }
     
     func thread_downloadtable()  {
-        mzhengfang.JumpToSelectClass()
+
+
+        
+        
+        do{
+        try mzhengfang.JumpToSelectClass()
         manager.droptable()
         
         for i in 1..<23{
-            var kecheng=mzhengfang.ScheduleLookup(String(i), year: info_year, semester: info_semester)
+            var kecheng=try mzhengfang.ScheduleLookup(String(i), year: info_year, semester: info_semester)
             manager.importclass(course: kecheng)
             self.performSelector(onMainThread: Selector(("schedule_download_progress")), with: i, waitUntilDone: false, modes: nil)
 
         }
         self.performSelector(onMainThread: Selector(("schedule_download_finish")), with: nil, waitUntilDone: false, modes: nil)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
 
-        
+        }
+        catch{
+            
+        }
     }
     
     override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
@@ -109,6 +120,15 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
 //                let result=arg as! Int
                 SVProgressHUD.dismiss()
                 //self.table_emptyclassroom.reloadData()
+                break
+            case Selector(("ErrorNetwork")):
+                SVProgressHUD.dismiss()
+                let alert = UIAlertView()
+                alert.title = "错误"
+                alert.message = "网络超时"
+                alert.addButton(withTitle: "确定")
+                alert.delegate=self
+                alert.show()
                 break
 
 

@@ -23,31 +23,31 @@ class Zhengfang{
     }
     
     
-    func JumpToSelectClass() {
+    func JumpToSelectClass()throws {
         if(isjump==true){
             
             return
         }
         mhttp.setencoding(1);
-        let text_web=mhttp.get(mhttp.urlencode(url_xuanke) );
+        let text_web=try mhttp.get(mhttp.urlencode(url_xuanke) );
         url_xuanke=mhttp.getMiddleText(text_web, "<a target=\"_top\" href=\"", "\">如果您的浏览器没有跳转，请点这里</a>");
-        mhttp.get(url_xuanke);
+        try mhttp.get(url_xuanke);
         isjump=true
     }
-    func Login(_ username:String,password:String)->String{
+    func Login(_ username:String,password:String)throws->String{
         isjump=false
         mhttp.setencoding(1);
-        var text_web=mhttp.get(location_zhengfang+"default_ysdx.aspx");
+        var text_web=try mhttp.get(location_zhengfang+"default_ysdx.aspx");
         var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
         VIEWSTATE=mhttp.postencode(VIEWSTATE);
         //        VIEWSTATE=VIEWSTATE?.replacingOccurrences(of: <#T##String#>, with: "%3D")
         var submit="__VIEWSTATE=" + VIEWSTATE + "&TextBox1=" + username + "&TextBox2=" + mhttp.postencode(password)
         submit=submit+"&RadioButtonList1=%d1%a7%c9%fa&Button1=++%b5%c7%c2%bc++"
-        text_web=mhttp.post(location_zhengfang+"default_ysdx.aspx",submit)
+        text_web=try mhttp.post(location_zhengfang+"default_ysdx.aspx",submit)
         if((text_web.contains("<script>window.open('xs_main.aspx?xh=2")) == true){
             var url_login_zhengfang=mhttp.getMiddleText(text_web,  "<script>window.open('","','_parent');</script>")
             url_login_zhengfang=location_zhengfang+url_login_zhengfang;
-            text_web=mhttp.get(url_login_zhengfang)
+            text_web=try mhttp.get(url_login_zhengfang)
             url_xuanke=mhttp.getMiddleText(text_web, "信息员意见反馈</a></li><li><a href=\"", "\" target='zhuti' onclick=\"GetMc('激活选课平台帐户');");
             url_xuanke=location_zhengfang+url_xuanke;
             url_xuanke=url_xuanke.replacingOccurrences(of: "192.168.109.142", with: "xuanke.proxy.isdust.com:3100")
@@ -69,37 +69,37 @@ class Zhengfang{
         return "未知错误"
     }
     
-    func AllScoreLookUp()->[[String]]{
+    func AllScoreLookUp()throws->[[String]]{
         mhttp.setencoding(1);
         var text_web="";
         var submit=""
         var result:[[String]]
-        text_web=mhttp.get(mhttp.urlencode(url_chengji) );
+        text_web=try mhttp.get(mhttp.urlencode(url_chengji) );
         var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
         VIEWSTATE=mhttp.postencode(VIEWSTATE);
         submit = "__VIEWSTATE=" + VIEWSTATE+"&ddlXN=&ddlXQ=&btn_zcj=C0%FA%C4%EA%B3%C9%BC%A8"
-        text_web=mhttp.post(mhttp.urlencode(url_chengji), submit);
-        return ScoreAnalyzeZhengfang(text_web)
+        text_web=try mhttp.post(mhttp.urlencode(url_chengji), submit);
+        return try ScoreAnalyzeZhengfang(text_web)
         
         
     }
-    func ScoreLookUp(_ year:String,semester:String)->[[String]]{
+    func ScoreLookUp(_ year:String,semester:String)throws->[[String]]{
         mhttp.setencoding(1);
         var text_web="";
         var submit=""
         var result:[[String]]
         switch method_score_lookup {
         case "zhengfang":
-            text_web=mhttp.get(mhttp.urlencode(url_chengji) );
+            text_web=try mhttp.get(mhttp.urlencode(url_chengji) );
             var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
             VIEWSTATE=mhttp.postencode(VIEWSTATE);
             submit = "__VIEWSTATE=" + VIEWSTATE+"&ddlXN=" + year + "&ddlXQ=" + semester + "&btn_xq=%d1%a7%c6%da%b3%c9%bc%a8"
-            text_web=mhttp.post(mhttp.urlencode(url_chengji), submit);
-            return ScoreAnalyzeZhengfang(text_web)
+            text_web=try mhttp.post(mhttp.urlencode(url_chengji), submit);
+            return try ScoreAnalyzeZhengfang(text_web)
             break;
         case "xuanke":
-            JumpToSelectClass()
-            text_web=mhttp.get("http://192.168.109.142/Home/About");
+            try JumpToSelectClass()
+            text_web=try mhttp.get("http://192.168.109.142/Home/About");
             text_web=text_web.replacingOccurrences(of: "class=\"selected\"", with: "")
             
             break;
@@ -109,7 +109,7 @@ class Zhengfang{
         return [[""]]
         
     }
-    func ScoreAnalyzeZhengfang(_ text:String) -> [[String]] {
+    func ScoreAnalyzeZhengfang(_ text:String)throws -> [[String]] {
         let expression = "<tr[\\s\\S]*?>[\\s\\S]*?<td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td><td>([\\s\\S]*?)</td>[\\S\\s]*?</tr>"
         let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
         var result=[[String]]();
@@ -127,9 +127,9 @@ class Zhengfang{
         
         return result
     }
-    func ScheduleLookup(_ week:String,year:String,semester:String) -> [Kebiao] {
+    func ScheduleLookup(_ week:String,year:String,semester:String) throws-> [Kebiao] {
         mhttp.setencoding(0);
-        var text_web=mhttp.get(location_xuanke+"?zhou="+week+"&xn="+year+"&xq="+semester)
+        var text_web = try mhttp.get(location_xuanke+"?zhou="+week+"&xn="+year+"&xq="+semester)
         text_web=text_web.replacingOccurrences(of: " rowspan=\"2\" ", with: "")
         let expression="<td  class=\"leftheader\">第[1,3,5,7,9]节</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>[\\S\\s]*?<td >([\\S\\s]*?)</td>"
         // - 2、创建正则表达式对象
@@ -166,16 +166,16 @@ class Zhengfang{
         return result
         
     }
-    func JidianLookup()->[String] {
+    func JidianLookup()throws->[String] {
         mhttp.setencoding(1);
         var text_web="";
         var submit=""
         var result:[String] = [String] ()
-        text_web=mhttp.get(mhttp.urlencode(url_chengji) );
-        var VIEWSTATE=mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
+        text_web=try mhttp.get(mhttp.urlencode(url_chengji) );
+        var VIEWSTATE = mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
         VIEWSTATE=mhttp.postencode(VIEWSTATE);
         submit = "__VIEWSTATE=" + VIEWSTATE+"&ddlXN=&ddlXQ=&Button1=%B3%C9%BC%A8%CD%B3%BC%C6"
-        text_web=mhttp.post(mhttp.urlencode(url_chengji), submit);
+        text_web=try mhttp.post(mhttp.urlencode(url_chengji), submit);
         var temp:String
         
         temp=mhttp.getMiddleText(text_web,"<span id=\"pjxfjd\"><b>所有课程平均学分绩点：" , "</b></span>")

@@ -17,8 +17,17 @@ class TableViewControllerLibrarySearchResult: UITableViewController {
     var thread_bookrecno:String!
     var thread_result_storage:[[String]]!
     func thread_search(){
-        thread_result_storage=mlibrary.getStorage(bookrecno: thread_bookrecno)
-        performSelector(onMainThread: Selector("search"), with: nil, waitUntilDone: false)
+        do{
+            thread_result_storage=try mlibrary.getStorage(bookrecno: thread_bookrecno)
+            performSelector(onMainThread: Selector("search"), with: nil, waitUntilDone: false)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+        }catch{
+            
+            
+        }
+
         
     }
     
@@ -37,6 +46,15 @@ class TableViewControllerLibrarySearchResult: UITableViewController {
                     return
                 }
                 self.performSegue(withIdentifier: "StorageSearchResult", sender: nil)
+                break
+            case Selector(("ErrorNetwork")):
+                SVProgressHUD.dismiss()
+                let alert = UIAlertView()
+                alert.title = "错误"
+                alert.message = "网络超时"
+                alert.addButton(withTitle: "确定")
+                alert.delegate=self
+                alert.show()
                 break
             default:
                 break

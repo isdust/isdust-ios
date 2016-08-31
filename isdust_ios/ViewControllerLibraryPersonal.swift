@@ -17,16 +17,44 @@ class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITab
     var thread_password:String?
     var thread_borrowdetail:[[String]]=[[String]]()
     func thread_login() {
-        let result=mlibrary.login(user: thread_user!, password: thread_password!)
-        self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        do{
+            let result=try mlibrary.login(user: thread_user!, password: thread_password!)
+            self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+        }catch{
+            
+            
+        }
+        
+
     }
     func thread_borrwingdetail()  {
-        thread_borrowdetail=mlibrary.get_borrwingdetail()
-        self.performSelector(onMainThread: Selector(("borrwingdetail")), with: nil, waitUntilDone: false, modes: nil)
+        do{
+            thread_borrowdetail=try mlibrary.get_borrwingdetail()
+            self.performSelector(onMainThread: Selector(("borrwingdetail")), with: nil, waitUntilDone: false, modes: nil)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+        }catch{
+            
+            
+        }
+
     }
     func thread_renewall()  {
-        let data=mlibrary.renew_all()
-        self.performSelector(onMainThread: Selector(("renewall")), with: data as AnyObject, waitUntilDone: false, modes: nil)
+        do{
+            let data=try mlibrary.renew_all()
+            self.performSelector(onMainThread: Selector(("renewall")), with: data as AnyObject, waitUntilDone: false, modes: nil)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+        }catch{
+            
+            
+        }
+
     }
 //    override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool) {
 //        print(arg)
@@ -83,7 +111,15 @@ class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITab
                 self.menu_logout()
                 
                 break
-                
+            case Selector(("ErrorNetwork")):
+                SVProgressHUD.dismiss()
+                let alert = UIAlertView()
+                alert.title = "错误"
+                alert.message = "网络超时"
+                alert.addButton(withTitle: "确定")
+                alert.delegate=self
+                alert.show()
+                break
             default:
                 break
                 

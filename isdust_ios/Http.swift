@@ -23,7 +23,7 @@ class Http{
     func setencoding(_ num:Int) {
         data_encoding=num
     }
-    func get(_ url:String)  -> String {
+    func get(_ url:String) throws  -> String {
         let murl=URL.init(string: url)!
         let sem=DispatchSemaphore.init(value: 0)
         var result:Data!
@@ -37,7 +37,7 @@ class Http{
         task.resume()
         sem.wait()
         if result==nil{
-            //throw merror
+            throw IsdustError.Network
         }
         var enc2:UInt!
         switch data_encoding {
@@ -59,7 +59,7 @@ class Http{
         return str
         
     }
-    func post(_ url:String,_ data:String) -> String {
+    func post(_ url:String,_ data:String)throws -> String {
         var enc2:UInt!
         switch data_encoding {
         case 0:
@@ -95,7 +95,8 @@ class Http{
         task.resume()
         sem.wait()
         if result==nil{
-            
+            throw IsdustError.Network
+
         }
 
         let str:String=NSString.init(data: result, encoding: enc2)! as String

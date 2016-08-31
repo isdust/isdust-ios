@@ -29,15 +29,36 @@ class ViewEducation: UIViewController {
     var thread_password:String?
     
     func thread_login() {
-        let result=mzhengfang.Login(thread_user!, password: thread_password!)
         
-        self.performSelector(onMainThread: Selector(("zhengfang_login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        do{
+            let result=try mzhengfang.Login(thread_user!, password: thread_password!)
+            
+            self.performSelector(onMainThread: Selector(("zhengfang_login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+            
+        }
+        catch{
+            
+        }
+        
+
 //        self.performSelector(onMainThread: Selector(("zhengfang_login")), with: result as AnyObject, waitUntilDone: false)
     }
     func thread_AllScoreLookup() {
-        let result=mzhengfang.AllScoreLookUp()
-//        self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false)
-        self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        do{
+            let result=try mzhengfang.AllScoreLookUp()
+            self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+            
+        }
+        catch{
+            
+        }
+
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,6 +128,15 @@ class ViewEducation: UIViewController {
                 
                 let message=arg as! [[String]]
                 //print(message)
+                break
+            case Selector(("ErrorNetwork")):
+                SVProgressHUD.dismiss()
+                let alert = UIAlertView()
+                alert.title = "错误"
+                alert.message = "网络超时"
+                alert.addButton(withTitle: "确定")
+                alert.delegate=self
+                alert.show()
                 break
             default:
                 break

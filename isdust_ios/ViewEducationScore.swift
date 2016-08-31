@@ -88,16 +88,34 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
         return cell
     }
     func thread_AllScoreLookup() {
-        let result=mzhengfang.AllScoreLookUp()
-//        self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false)
-        self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        do{
+            let result = try mzhengfang.AllScoreLookUp()
+            self.performSelector(onMainThread: Selector(("zhengfang_scorelookup")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+            
+        }
+        catch{
+            
+        }
+
 
         
     }
     func thread_jidianLookup() {
-        let result=mzhengfang.JidianLookup()
-//        self.performSelector(onMainThread: Selector(("zhengfang_jidianlookup")), with: result as AnyObject, waitUntilDone: false)
-        self.performSelector(onMainThread: Selector(("zhengfang_jidianlookup")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        do{
+            let result=try mzhengfang.JidianLookup()
+            self.performSelector(onMainThread: Selector(("zhengfang_jidianlookup")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+            
+        }
+        catch{
+            
+        }
+
 
     }
     override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
@@ -121,6 +139,15 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
                 self.textfield_Averagejidian.text=message[0]
                 self.textfield_Totaljidian.text=message[1]
                 SVProgressHUD.dismiss()
+                break
+            case Selector(("ErrorNetwork")):
+                SVProgressHUD.dismiss()
+                let alert = UIAlertView()
+                alert.title = "错误"
+                alert.message = "网络超时"
+                alert.addButton(withTitle: "确定")
+                alert.delegate=self
+                alert.show()
                 break
             default:
                 break

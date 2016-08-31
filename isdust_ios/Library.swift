@@ -32,9 +32,9 @@ class Library{
         let b = String.init(cString: openssl_md5(buffer))
         return b.lowercased();
     }
-    func login(user:String,password:String) -> String {
+    func login(user:String,password:String) throws -> String {
         var msubmit="rdid="+user+"&rdPasswd="+md5(data: password)+"&returnUrl=&password="
-        var text_web = mhttp.post("http://interlib.sdust.edu.cn/opac/reader/doLogin",msubmit)
+        var text_web = try mhttp.post("http://interlib.sdust.edu.cn/opac/reader/doLogin",msubmit)
         print(text_web.contains("用户名或密码错误!"))
         if((text_web.contains("用户名或密码错误!")) == true){
             return "账号或密码错误";
@@ -55,9 +55,9 @@ class Library{
         
         
     }
-    func get_borrwingdetail() -> [[String]] {
+    func get_borrwingdetail() throws -> [[String]] {
         var result:[[String]] = [[String]] ()
-        var text_web=mhttp.get("http://interlib.sdust.edu.cn/opac/loan/renewList")
+        var text_web=try mhttp.get("http://interlib.sdust.edu.cn/opac/loan/renewList")
         var expression="<td width=\"40\"><input type=\"checkbox\" name=\"barcodeList\" value=\"([0-9]*?)\" />[\\s\\S]*?target=\"_blank\">([\\S\\s]*?)</a></td>[\\S\\s]*?<td width=\"100\">([0-9]{4}-[0-9]{2}-[0-9]{2})[\\S\\s]*?<td width=\"100\">([0-9]{4}-[0-9]{2}-[0-9]{2})"
         let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
         var res = regex.matches(in: text_web, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, text_web.characters.count))
@@ -107,8 +107,8 @@ class Library{
         let temp1=temp.decimalValue/1000
         return "\(temp1)"
     }
-    func renew_all() -> String {
-        var text_web=mhttp.post("http://interlib.sdust.edu.cn/opac/loan/doRenew","furl=%2Fopac%2Floan%2FrenewList&renewAll=all" )
+    func renew_all() throws -> String {
+        var text_web=try mhttp.post("http://interlib.sdust.edu.cn/opac/loan/doRenew","furl=%2Fopac%2Floan%2FrenewList&renewAll=all" )
         var content=mhttp.getMiddleText(text_web, "<div style=\"margin:20px auto; width:50%; height:auto!important; min-height:200px; border:2px dashed #ccc;\">", "<input")
         
         content=content.replacingOccurrences(of: "\t", with: "")
@@ -175,7 +175,7 @@ class Library{
         }
         return ""
     }
-    func AnalyzeSearch(text:String) -> [Book] {
+    func AnalyzeSearch(text:String) throws -> [Book] {
         var result:[Book]=[Book]()
         var expression_all="<td class=\"bookmetaTD\" style=\"background-color([\\s\\S]*?)<div id=\"bookSimpleDetailDiv_"
         var expression_name="<a href=\"book/[\\s\\S]*?\\?globalSearchWay=[\\s\\S]*?\" id=\"title_[\\s\\S]*?\" target=\"_blank\">([\\S\\s]*?)</a>"
@@ -205,7 +205,7 @@ class Library{
         
         }
         
-        var raw_suoshuhao=mhttp.get(url_suoshuhao)
+        var raw_suoshuhao=try mhttp.get(url_suoshuhao)
         
         for i in 0 ..< result.count{
             var temp_book=result[i]
@@ -214,18 +214,18 @@ class Library{
         }
         return  result
     }
-    func findBookByISBN(ISBN:String) -> [Book] {
-        var text_web=mhttp.get("http://interlib.sdust.edu.cn/opac/search?rows=100&hasholding=1&searchWay0=marc&q0=&logical0=AND&q=" + ISBN + "&searchWay=isbn&scWay=dim&searchSource=reader")
-        var result=AnalyzeSearch(text: text_web)
+    func findBookByISBN(ISBN:String) throws-> [Book] {
+        var text_web=try mhttp.get("http://interlib.sdust.edu.cn/opac/search?rows=100&hasholding=1&searchWay0=marc&q0=&logical0=AND&q=" + ISBN + "&searchWay=isbn&scWay=dim&searchSource=reader")
+        var result=try AnalyzeSearch(text: text_web)
         return result
     }
-    func findBookByName(Name:String) -> [Book] {
-        var text_web=mhttp.get("http://interlib.sdust.edu.cn/opac/search?rows=100&hasholding=1&searchWay0=marc&q0=&logical0=AND&q="+Name+"&searchWay=title&searchSource=reader")
-        var result=AnalyzeSearch(text: text_web)
+    func findBookByName(Name:String) throws -> [Book] {
+        var text_web=try mhttp.get("http://interlib.sdust.edu.cn/opac/search?rows=100&hasholding=1&searchWay0=marc&q0=&logical0=AND&q="+Name+"&searchWay=title&searchSource=reader")
+        var result=try AnalyzeSearch(text: text_web)
         return result
     }
-    func getStorage(bookrecno:String) -> [[String]] {
-        var text_web=mhttp.get("http://interlib.sdust.edu.cn/opac/api/holding/"+bookrecno)
+    func getStorage(bookrecno:String) throws -> [[String]] {
+        var text_web=try mhttp.get("http://interlib.sdust.edu.cn/opac/api/holding/"+bookrecno)
         var result=AnalyzeStorage(text: text_web)
         return result
     }

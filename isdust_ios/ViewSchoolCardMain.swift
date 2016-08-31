@@ -262,6 +262,16 @@ func numberOfSections(in tableView: UITableView) -> Int {
         case #selector(ViewSchoolCardMain.menu_logout):
             self.menu_logout()
             break
+        case Selector(("ErrorNetwork")):
+            SVProgressHUD.dismiss()
+            let alert = UIAlertView()
+            alert.title = "错误"
+            alert.message = "网络超时"
+            alert.addButton(withTitle: "确定")
+            alert.delegate=self
+            alert.show()
+            break
+            
         default:
             break
             
@@ -271,26 +281,27 @@ func numberOfSections(in tableView: UITableView) -> Int {
 
     func thread_login() {
         
-        var result:String!
         do{
+            var result:String!
             result=try mschoolcard.login(thread_user!, password: thread_password!)
-            print("test")
+            self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
         }
-        catch let error{
-            print(error)
-        
-        
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+        }catch{
+            
+            
         }
-        self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
     }
     func thread_getdetail()  {
         do{
             //try mschoolcard.NextPage()
         var data =  try mschoolcard.NextPage()
         self.performSelector(onMainThread: Selector(("detail")), with: data as AnyObject, waitUntilDone: false, modes: nil)
-        }catch {
+        }catch IsdustError.Network{
             self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
-
+        }catch{
+        
         
         }
         

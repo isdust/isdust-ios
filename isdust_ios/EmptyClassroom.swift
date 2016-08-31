@@ -25,7 +25,7 @@ class EmptyClassroom{
         let b = String.init(cString: openssl_md5(buffer))
         return b;
     }
-    func getEmptyClassroom(building:String,schooldate:Int,week:Int,jieci:Int) -> [Kebiao] {
+    func getEmptyClassroom(building:String,schooldate:Int,week:Int,jieci:Int) throws -> [Kebiao] {
         let id="ios"
     
         var time=String(Int(NSDate().timeIntervalSince1970))
@@ -34,7 +34,7 @@ class EmptyClassroom{
         var submit=rsa_encrypt(data: submit_pre)
         var mmd5_2=md5(data: submit+"dsfwedsdv"+time).lowercased()
         submit=mhttp.postencode(submit)
-        var text_web=mhttp.post("http://kzxs.isdust.com/chaxun_new.php","data="+submit+"&verification="+mmd5_2+"&time="+time)
+        var text_web=try mhttp.post("http://kzxs.isdust.com/chaxun_new.php","data="+submit+"&verification="+mmd5_2+"&time="+time)
         
         return analyze(text_web: text_web)
     }
