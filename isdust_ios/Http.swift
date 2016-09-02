@@ -31,7 +31,7 @@ class Http{
         var task=session.dataTask(with: murl, completionHandler: {
         data, response, error in
             result=data
-            merror=error!
+            merror=error
             sem.signal()
         })
         task.resume()

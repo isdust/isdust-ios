@@ -9,13 +9,22 @@
 import Foundation
 
 class TableViewSchoolCard: UITableViewCell {
-    @IBOutlet weak var label_type: UILabel!
-    
-    @IBOutlet weak var label_detail: UILabel!
-
     @IBOutlet weak var label_balance: UILabel!
     @IBOutlet weak var label_deposit: UILabel!
-    @IBOutlet weak var label_time: UILabel!
+    
+    @IBOutlet weak var label_location: UILabel!
+    
+    @IBOutlet weak var label_time_week: UILabel!
+    @IBOutlet weak var label_time_date: UILabel!
+
+    @IBOutlet weak var image_location: UIImageView!
+    
+//    @IBOutlet weak var label_type: UILabel!
+//    
+//
+//
+//    @IBOutlet weak var label_deposit: UILabel!
+//    @IBOutlet weak var label_time: UILabel!
     required init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)!
     }

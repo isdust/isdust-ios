@@ -323,6 +323,30 @@ class SchoolCard{
         }
         return result
     }
+    static func getlocationimage(location:String) -> UIImage {
+        switch location {
+        case "学苑餐厅":
+            return #imageLiteral(resourceName: "canteenA")
+        case "学苑餐厅二楼":
+            return #imageLiteral(resourceName: "canteenA")
+        case "学海餐厅":
+            return #imageLiteral(resourceName: "canteenB")
+        case "学海餐厅二楼":
+            return #imageLiteral(resourceName: "canteenB")
+        case "学者餐厅":
+            return #imageLiteral(resourceName: "canteenC")
+        case "学者餐厅二楼":
+            return #imageLiteral(resourceName: "canteenC")
+        case "田园超市":
+            return #imageLiteral(resourceName: "marketTianyuan")
+        case "A餐水果店":
+            return #imageLiteral(resourceName: "fruit")
+        default:
+            return #imageLiteral(resourceName: "canteenB")
+        }
+        
+        
+    }
     
     
 

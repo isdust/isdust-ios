@@ -18,7 +18,7 @@ class SchoolTime{
         DateFormatter_input.dateFormat = "yyyyMMdd"
         var date_firstweek=DateFormatter_input.date(from: self.date_firstweek)!
         var date_today=Date()
-        let calendar = Calendar.current
+       // let calendar = Calendar.current
         
 //        let components = calendar.components(.weekday, fromDate: date_firstweek, toDate: date_today)
         
@@ -124,6 +124,95 @@ class SchoolTime{
         }
     
     
+    }
+    static func date2week(date:String)->String{
+        var DateFormatter_input:Foundation.DateFormatter!
+        DateFormatter_input=Foundation.DateFormatter()
+        var date1:Date!
+        var result:[String]=["周日","周一","周二","周三","周四","周五","周六"]
+
+        DateFormatter_input.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        date1=DateFormatter_input.date(from: date)
+        let components = Calendar.current.dateComponents([.weekday], from: date1)
+        let week=components.weekday
+        
+        return result[Int(week!)-1]
+
+    }
+    static func date2day(date:String)->String?{//返回今天，昨天
+        var DateFormatter_input:Foundation.DateFormatter!
+        DateFormatter_input=Foundation.DateFormatter()
+        
+        var date1:Date!
+        var date2:Date!=Date()
+        DateFormatter_input.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        date1=DateFormatter_input.date(from: date)!
+        let components = Calendar.current.dateComponents([.day], from: date1, to: date2)
+        if(components.day==0){
+            return "今天"
+        }else if(components.day==1){
+            return "昨天"
+        }
+        
+        
+        return nil
+        
+    }
+    static func date2day_card(date:String)->String{
+        var result:String?
+        if let result=date2day(date: date){
+            return result
+        }
+        return date2week(date: date)
+    
+    }
+    static func date2month(date:String)->String{
+        var DateFormatter_input:Foundation.DateFormatter!
+        DateFormatter_input=Foundation.DateFormatter()
+        
+        var date1:Date!
+        DateFormatter_input.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        date1=DateFormatter_input.date(from: date)!
+        let components = Calendar.current.dateComponents([.month], from: date1)
+        return String(components.month!)
+        
+    }
+    static func date2time(date:String)->String{
+        var DateFormatter_input:Foundation.DateFormatter!
+        var DateFormatter_output_time:Foundation.DateFormatter!
+
+        DateFormatter_input=Foundation.DateFormatter()
+        
+        var date1:Date!
+        DateFormatter_input.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        DateFormatter_output_time.dateFormat="HH:mm"
+        
+        date1=DateFormatter_input.date(from: date)!
+        
+        return DateFormatter_output_time.string(from: date1)
+    
+    }
+    static func date2daymonth(date:String)->String{
+        var DateFormatter_input:Foundation.DateFormatter!
+        var DateFormatter_output_time:Foundation.DateFormatter!
+        
+        DateFormatter_input=Foundation.DateFormatter()
+        DateFormatter_output_time=Foundation.DateFormatter()
+        var date1:Date!
+        DateFormatter_input.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        DateFormatter_output_time.dateFormat="MM-dd"
+        
+        date1=DateFormatter_input.date(from: date)!
+        
+        return DateFormatter_output_time.string(from: date1)
+    }
+    static func date2time_card(date:String)->String{
+    
+//        var result:String?
+        if let result=date2day(date: date){
+            return date2time(date: date)
+        }
+        return date2daymonth(date: date)
     }
 
 }

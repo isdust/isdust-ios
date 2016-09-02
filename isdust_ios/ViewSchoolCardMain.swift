@@ -38,15 +38,17 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var total:Float=0
         
-        for i in purchase_detail{
-            if(i[0].contains(self.purchase_section[section ])==true){
-                total+=Float(i[4])!
-            }
+//        for i in purchase_detail{
+//            if(i[0].contains(self.purchase_section[section ])==true){
+//                total+=Float(i[4])!
+//            }
+//        
+//        }
         
-        }
         
-        
-        return self.purchase_section[section ] + "     收入:" + String(total)
+//        return self.purchase_section[section ] + "     收入:" + String(total)
+        return self.purchase_section[section ] + "月"
+
         
     }
     
@@ -59,7 +61,8 @@ func numberOfSections(in tableView: UITableView) -> Int {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count=0
         for i in purchase_detail{
-            if(i[0].contains(purchase_section[section])==true){
+            
+            if(SchoolTime.date2month(date: i[0])==purchase_section[section]){
                 count+=1
             }
         
@@ -86,24 +89,32 @@ func numberOfSections(in tableView: UITableView) -> Int {
         let cell:TableViewSchoolCard=tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewSchoolCard
         var record=0
         for j in  0..<purchase_detail.count{
-            if(purchase_detail[j][0].contains(purchase_section[indexPath.section])==true) {
+            
+            if(SchoolTime.date2month(date: purchase_detail[j][0])==purchase_section[indexPath.section]) {
                 record=j
                 break
             }
         }
 
-        cell.label_detail.text=purchase_detail[indexPath.row+record][1]
-        cell.label_type.text=purchase_detail[indexPath.row+record][2].replacingOccurrences(of: "(可备..", with: "楼")
+        //cell.label_detail.text=purchase_detail[indexPath.row+record][1]
+        //cell.label_type.text=purchase_detail[indexPath.row+record][2].replacingOccurrences(of: "(可备..", with: "楼")
         
         
         cell.label_deposit.text=purchase_detail[indexPath.row+record][4]
         cell.label_balance.text=purchase_detail[indexPath.row+record][5]
+        cell.label_time_week.text=SchoolTime.date2day_card(date:purchase_detail[indexPath.row+record][0])
+        cell.label_time_date.text=SchoolTime.date2time_card(date: purchase_detail[indexPath.row+record][0])
+        cell.label_time_date.sizeToFit()
+        let temp_location=purchase_detail[indexPath.row+record][2].replacingOccurrences(of: "(可备..", with: "楼")
+
+        cell.image_location.image=SchoolCard.getlocationimage(location: temp_location)
+        cell.label_location.text=temp_location
         
         var i=purchase_detail[indexPath.row+record]
         var index=i[0].index(i[0].endIndex, offsetBy: -8)
         
         var date=i[0].substring(from: index)
-        cell.label_time.text=date
+        //cell.label_time.text=date
         
         
         return cell
@@ -240,8 +251,9 @@ func numberOfSections(in tableView: UITableView) -> Int {
             let message=arg as! [[String]]
             for i in message{
                // var index=i[0][startIndex...string.index(startIndex, offsetBy: 4)]
-                var date=i[0][i[0].startIndex...i[0].index(i[0].startIndex, offsetBy: 9)]
-
+//                var date=i[0][i[0].startIndex...i[0].index(i[0].startIndex, offsetBy: 9)]
+                //var date=i[0][i[0].startIndex...i[0].index(i[0].startIndex, offsetBy: 9)]
+                var date=SchoolTime.date2month(date: i[0])
                 if !self.purchase_section.contains(date){
                     self.purchase_section.append(date)
                 }
