@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ViewSchoolCardReportLoss: UIViewController {
+class ViewSchoolCardReportLoss: UITableViewController {
     var mschoolcard:SchoolCard!
     var thread_pass:String!
     var thread_identity:String!

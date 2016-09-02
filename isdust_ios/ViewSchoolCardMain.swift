@@ -37,22 +37,18 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var total:Float=0
+        for i in purchase_detail{
+            if(SchoolTime.date2month(date: i[0])==purchase_section[section]){
+                if(Float(i[4])!<0){
+                total+=Float(i[4])!
+                }
+            }
         
-//        for i in purchase_detail{
-//            if(i[0].contains(self.purchase_section[section ])==true){
-//                total+=Float(i[4])!
-//            }
-//        
-//        }
-        
-        
-//        return self.purchase_section[section ] + "     收入:" + String(total)
-        return self.purchase_section[section ] + "月"
-
-        
+        }
+        return self.purchase_section[section ] + "月      总支出:" + String(-total)
     }
     
-func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         
         return self.purchase_section.count
@@ -75,17 +71,17 @@ func numberOfSections(in tableView: UITableView) -> Int {
 //        return purchase_detail.count
 //    }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if !loadingData && indexPath.section == purchase_section.count - 1 {
+        let count=UITableView_detail.numberOfRows(inSection: indexPath.section)
+        let num=UITableView_detail.indexPathsForVisibleRows?.last
+        if !loadingData && indexPath.section == purchase_section.count - 1 && count-1 == num?.row {
             spinner.startAnimating()
+            spinner.isHidden=false
             loadingData = true
             refreshData()
-            //refreshResults2()
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-//        let cell:UITableViewCell=UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
-        
         let cell:TableViewSchoolCard=tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewSchoolCard
         var record=0
         for j in  0..<purchase_detail.count{
@@ -94,11 +90,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
                 record=j
                 break
             }
-        }
-
-        //cell.label_detail.text=purchase_detail[indexPath.row+record][1]
-        //cell.label_type.text=purchase_detail[indexPath.row+record][2].replacingOccurrences(of: "(可备..", with: "楼")
-        
+        }        
         
         cell.label_deposit.text=purchase_detail[indexPath.row+record][4]
         cell.label_balance.text=purchase_detail[indexPath.row+record][5]
@@ -261,6 +253,7 @@ func numberOfSections(in tableView: UITableView) -> Int {
             self.purchase_detail.append(contentsOf: message)
             self.UITableView_detail.reloadData()
             self.refreshControl.endRefreshing()
+            self.spinner.isHidden=true
             self.spinner.stopAnimating()
             self.loadingData = false
 

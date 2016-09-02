@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SchoolCardChangePass: UIViewController {
+class SchoolCardChangePass: UITableViewController {
     var mschoolcard:SchoolCard!
     var thread_rawpass:String!
     var thread_newpass:String!

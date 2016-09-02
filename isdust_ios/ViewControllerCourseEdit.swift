@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewControllerCourseEdit: UIViewController,ViewCourseEditWeekDelegate ,ViewCourseEditJieciDelegate{
+class ViewControllerCourseEdit: UITableViewController,ViewCourseEditWeekDelegate ,ViewCourseEditJieciDelegate{
     var course:Kebiao!
     var weeks:[Int]!
     var jieci_edit = -1
