@@ -177,7 +177,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         scrollView.isPagingEnabled = true
         scrollView.isScrollEnabled=true
         scrollView.delegate=self
-        scrollView.alwaysBounceHorizontal=true
+        //scrollView.alwaysBounceHorizontal=true
         
         
         
@@ -203,7 +203,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         schedule_goto(week: SchoolTime.gettodayweek())
     }
     
-    func scrollViewDidEndDeallcelerating(_ scrollView: UIScrollView) {
+    @objc(scrollViewDidEndDecelerating:) func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         schedule_settitle()
         
     }

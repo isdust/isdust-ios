@@ -7,11 +7,35 @@
 //
 
 import UIKit
-class ViewMain: UIViewController {
+class ViewMain: UIViewController,AdBarDelegate {
     @IBOutlet weak var imageview: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(SchoolTime.date2month(date: "2016/09/01 15:00:00"))
+//        print(SchoolTime.date2month(date: "2016/09/01 15:00:00"))
+        let width=view.frame.size.width
+        var mframe=CGRect.init(x: 0, y: 64, width: width, height: 172)
+//        var imagesURL=[
+//            "https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
+//             "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg",
+//              "http://pic14.nipic.com/20110522/7411759_164157418126_2.jpg"
+//        ]
+//        var titles = ["感谢您的支持，如果下载的",
+//        "代码在使用过程中出现问题",
+//        "您可以发邮件到qzycoder@163.com",
+//        ]
+//        var adView:AdView=AdView.adScroll(withFrame: mframe, imageLinkURL: imagesURL, placeHoderImageName: "placeHoder.jpg", pageControlShowStyle: UIPageControlShowStyle.left) as! AdView
+//       adView.setAdTitleArray(titles, with: .right)
+        let a=AdBar.init(frame: mframe, num: 10)
+        a.delegate=self
+        //a.backgroundColor=UIColor.blue
+       // a.bringSubview(toFront: a.mUIPageControl)
+        
+        
+//        adView.adTitleArray=titles
+//        adView.adTitleStyle = .right
+        //adView.setAdTitleArray(titles, with: 0)
+        view.addSubview(a)
+        
 //        let location="http://card.proxy.isdust.com:3100/"
 //        var a=Http()
 //        a.setencoding(1)
@@ -61,6 +85,9 @@ class ViewMain: UIViewController {
 //        }
 //        set { super.preferredContentSize = newValue }
 //    }
+    func AdImageClick(url: String) {
+        print(url)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
