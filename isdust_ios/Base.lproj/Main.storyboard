@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Main-->
+        <!--首页-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewMain" customModule="isdust_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,14 +31,17 @@
                             <outletCollection property="gestureRecognizers" destination="OOM-Ax-ZH5" appends="YES" id="BeP-fi-Lep"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="RmU-Dz-2dt"/>
+                    <navigationItem key="navigationItem" title="首页" id="RmU-Dz-2dt"/>
+                    <connections>
+                        <segue destination="3Af-ne-Kg1" kind="push" identifier="webview" id="8nQ-mx-F4f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <pinchGestureRecognizer id="OOM-Ax-ZH5"/>
             </objects>
             <point key="canvasLocation" x="838" y="44"/>
         </scene>
-        <!--图书馆-->
+        <!--校园服务-->
         <scene sceneID="DcB-Vx-nph">
             <objects>
                 <tableViewController id="7zu-z6-0sm" sceneMemberID="viewController">
@@ -248,7 +251,7 @@
                             <outlet property="delegate" destination="7zu-z6-0sm" id="j09-DZ-R2W"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="图书馆" id="l75-gr-XK1"/>
+                    <navigationItem key="navigationItem" title="校园服务" id="l75-gr-XK1"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gfI-oN-uye" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1677,10 +1680,10 @@
             </objects>
             <point key="canvasLocation" x="1781" y="-716"/>
         </scene>
-        <!--View Controller-->
+        <!--View Web-->
         <scene sceneID="Cri-qi-Ws8">
             <objects>
-                <viewController id="3Af-ne-Kg1" sceneMemberID="viewController">
+                <viewController id="3Af-ne-Kg1" customClass="ViewWeb" customModule="isdust_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l1u-gC-kUi"/>
                         <viewControllerLayoutGuide type="bottom" id="0xs-Yh-k6J"/>
@@ -1689,24 +1692,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X44-Cr-glE">
-                                <frame key="frameInset" minY="53" width="240" height="128"/>
+                            <webView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X44-Cr-glE">
+                                <frame key="frameInset" minY="57" width="414" height="623"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="nvd-rr-7RY"/>
+                    <connections>
+                        <outlet property="mwebview" destination="X44-Cr-glE" id="TZa-7p-3vl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idf-2k-IHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-401" y="-865"/>
         </scene>
-        <!--图书馆-->
+        <!--校园服务-->
         <scene sceneID="zrH-1X-BPG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iWT-4C-qEZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="图书馆" image="item_library" id="ji8-vU-cs9"/>
+                    <tabBarItem key="tabBarItem" title="校园服务" image="item_library" id="ji8-vU-cs9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="91e-Bn-8jK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2083,6 +2091,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dHB-Ab-C9b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0051663019689999999" green="0.66427212950000003" blue="0.95733886960000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

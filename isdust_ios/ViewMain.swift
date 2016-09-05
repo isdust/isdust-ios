@@ -25,7 +25,8 @@ class ViewMain: UIViewController,AdBarDelegate {
 //        ]
 //        var adView:AdView=AdView.adScroll(withFrame: mframe, imageLinkURL: imagesURL, placeHoderImageName: "placeHoder.jpg", pageControlShowStyle: UIPageControlShowStyle.left) as! AdView
 //       adView.setAdTitleArray(titles, with: .right)
-        let a=AdBar.init(frame: mframe, num: 10)
+        let a=AdBar.init(frame: mframe, num: 2)
+        a.load(index: 0, imagea: #imageLiteral(resourceName: "ad_1"), title: "新生入校", url: "http://www.wzq.hk")
         a.delegate=self
         //a.backgroundColor=UIColor.blue
        // a.bringSubview(toFront: a.mUIPageControl)
@@ -85,8 +86,15 @@ class ViewMain: UIViewController,AdBarDelegate {
 //        }
 //        set { super.preferredContentSize = newValue }
 //    }
-    func AdImageClick(url: String) {
-        print(url)
+    func AdImageClick(urla: String,titlea:String) {
+        performSegue(withIdentifier: "webview", sender: [urla,titlea])
+        
+//        var mcontroller=ViewWeb()
+//        mcontroller.mtitle=titlea
+//        mcontroller.murl=urla
+//        present(mcontroller, animated: true, completion: nil)
+        
+        print(urla)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -121,6 +129,15 @@ class ViewMain: UIViewController,AdBarDelegate {
       //  d.xml_getSuoshuhao(raw: "<records><record><bookrecno>1900802816</bookrecno><callno><![CDATA[ TN929.53/450 ]]></callno></record><record><bookrecno>1900786499</bookrecno><callno><![CDATA[ TP312/265 ]]></callno><callno><![CDATA[ TP312SW/1 ]]></callno></record></records>", bookrecno: "1900802816")
 //        d.login(user: "1501060225", password: "1501060225")
 //        d.get_borrwingdetail()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier=="webview"){
+            var mcontroller = segue.destination as! ViewWeb
+            mcontroller.title=(sender as! [String])[1]
+            mcontroller.murl=(sender as! [String])[0]
+            
+        
+        }
     }
 
  

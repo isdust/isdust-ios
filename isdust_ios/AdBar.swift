@@ -11,9 +11,11 @@ class AdBar:UIView,UIScrollViewDelegate{
     var mScrollView:UIScrollView!
     var num_image:Int!
     var mUIImageView:[UIImageView]!
+    var image_end:UIImageView!
     var mUIPageControl:UIPageControl!
     var page_current:Int=0
     var urls:[String]!
+    var titles:[String]!
     var delegate:AdBarDelegate!
     init(frame: CGRect,num:Int) {
         super.init(frame: frame)
@@ -31,9 +33,11 @@ class AdBar:UIView,UIScrollViewDelegate{
         mScrollView.delegate=self
         mUIImageView=[UIImageView]()
         urls=[String]()
+        titles=[String]()
         for i in 0..<num{
             mUIImageView.append(UIImageView.init(frame: frame))
             urls.append("")
+            titles.append("")
             mUIImageView[i].frame=CGRect.init(x: frame.size.width*CGFloat(i), y: 0, width:frame.size.width , height: frame.size.height)
             mUIImageView[i].tag=i
             mUIImageView[i].contentMode = .scaleAspectFill
@@ -45,7 +49,7 @@ class AdBar:UIView,UIScrollViewDelegate{
             mScrollView.addSubview(mUIImageView[i])
         }
         
-        var image_end:UIImageView=UIImageView.init(image: mUIImageView[0].image)
+        image_end=UIImageView.init(image: mUIImageView[0].image)
         image_end.frame = CGRect.init(x: frame.size.width*CGFloat(num), y: 0, width:frame.size.width , height: frame.size.height)
         image_end.contentMode = .scaleAspectFill
         mScrollView.addSubview(image_end)
@@ -59,20 +63,27 @@ class AdBar:UIView,UIScrollViewDelegate{
         self.addSubview(mScrollView)
         self.addSubview(mUIPageControl)
         num_image=num
-        var timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(AdBar.nextpage), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(AdBar.nextpage), userInfo: nil, repeats: true)
 
     }
     
-    func loadimage(imagea:[UIImage])  {
-        for i in 0..<imagea.count{
-        mUIImageView[i].image=imagea[i]
+//    func loadimage(imagea:[UIImage])  {
+//        for i in 0..<imagea.count{
+//        mUIImageView[i].image=imagea[i]
+//        }
+//    }
+    func load(index:Int,imagea:UIImage,title:String,url:String) {
+        mUIImageView[index].image=imagea
+        titles[index]=title
+        urls[index]=url
+        if(index==0){
+            image_end.image=imagea
+            //mUIImageView[num_image].image=imagea
         }
-        
-        
     }
     func imageclick(_ sender:UITapGestureRecognizer) {
         //print(])
-        delegate.AdImageClick(url: urls[(sender.view?.tag)!])
+        delegate.AdImageClick(urla: urls[(sender.view?.tag)!],titlea: titles[(sender.view?.tag)!])
     }
     func nextpage()  {
         page_current=page_current+1
@@ -117,7 +128,6 @@ class AdBar:UIView,UIScrollViewDelegate{
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         //print(1)
         page_current=Int(mScrollView.bounds.origin.x/mScrollView.bounds.width)
-
         if(page_current==num_image){
             self.mScrollView.bounds.origin.x=0
         
@@ -134,5 +144,5 @@ class AdBar:UIView,UIScrollViewDelegate{
     }
 }
 public protocol AdBarDelegate{
-    func AdImageClick(url:String)
+    func AdImageClick(urla:String,titlea:String)
 }
