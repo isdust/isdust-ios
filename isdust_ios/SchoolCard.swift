@@ -172,13 +172,13 @@ class SchoolCard{
         day_current=inputStartDate;
         
         var msearchkey=(text_web as NSString).substring(with: res[0].rangeAt(1))
-        var result:[[String]]=AnalyzeHistory(try mhttp.get(location+"accounthisTrjn.action?__continue=" + msearchkey))
+        var result:[[String]]=try AnalyzeHistory(try mhttp.get(location+"accounthisTrjn.action?__continue=" + msearchkey))
 
         return result
         
     }
     
-    func AnalyzeHistory(_ text:String) -> [[String]] {
+    func AnalyzeHistory(_ text:String)throws -> [[String]] {
         var result:[[String]]=[[String]]()
         let expression="<tr class=\"listbg[\\s\\S]*?\">[\\s\\S]*?<td  align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td   align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"right\">([\\s\\S]*?)</td>[\\s\\S]*?<td align=\"right\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\">([\\s\\S]*?)</td>[\\s\\S]*?<td  align=\"center\" >([\\s\\S]*?)</td>[\\s\\S]*?</tr>"
         let regex = try! NSRegularExpression(pattern: expression, options: NSRegularExpression.Options.caseInsensitive)
@@ -231,7 +231,7 @@ class SchoolCard{
     
     func LookUpHistoryNext(_ inputStartDate:String,inputEndDate:String,page:Int) throws -> [[String]] {
         let text_web=try mhttp.post(location+"accountconsubBrows.action", "inputStartDate="+inputStartDate+"&inputEndDate="+inputEndDate+"&pageNum="+String(page))
-        let result:[[String]]=AnalyzeHistory(text_web)
+        let result:[[String]]=try AnalyzeHistory(text_web)
         return result
         
     }

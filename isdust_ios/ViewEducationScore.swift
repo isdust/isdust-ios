@@ -78,10 +78,10 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
         cell.label_subject.text=score_detail[indexPath.row+record][3]
         cell.label_score.text="成绩:"+score_detail[indexPath.row+record][8]
         cell.label_credit.text="学分:"+score_detail[indexPath.row+record][6]
-        var i=score_detail[indexPath.row+record]
-        var index=i[0].index(i[0].endIndex, offsetBy: -8)
-        
-        var date=i[0].substring(from: index)
+//        var i=score_detail[indexPath.row+record]
+//        var index=i[0].index(i[0].endIndex, offsetBy: -8)
+//        
+//        var date=i[0].substring(from: index)
 //        cell.label_time.text=date
         
         

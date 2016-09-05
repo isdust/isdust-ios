@@ -162,6 +162,9 @@ class ViewEducation: UIViewController {
         }else{
 //            view_login.isHidden=true
 //            view_table.isHidden=false
+            
+            
+            
             serialQueue.async(execute: thread_login)
             SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             SVProgressHUD.show()

@@ -46,8 +46,8 @@ class EmptyClassroom{
             var temp=Kebiao()
             temp.location=i["location"] as! String
             temp.zhoushu=i["zhoushu"] as! String
-            temp.xingqi=String( i["xingqi"] as! Int)
-            temp.jieci=String(i["jieci"] as! Int)
+            temp.xingqi=( i["xingqi"] as! String)
+            temp.jieci=(i["jieci"] as! String)
             result.append(temp)
         
         }

@@ -122,14 +122,16 @@ class Http{
         let image=UIImage.init(data: result)!
         return image
     }
-    func getMiddleText(_ text:String,_ start:String,_ end:String) -> String {
+    func getMiddleText(_ text:String,_ start:String,_ end:String) throws -> String {
         let range_start=(text as NSString).range(of: start)
         
         
         let range_end=((text as NSString).substring(from: range_start.length+range_start.location)as NSString).range(of: end)
         
         let range_result=NSRange.init(location: range_start.length+range_start.location, length: range_end.location)
-        return (text as NSString).substring(with: range_result) as String!
+        
+        var result=try (text as NSString).substring(with: range_result) as String!
+        return result!
         
     }
     func urlencode(_ encoding:String) -> String {
