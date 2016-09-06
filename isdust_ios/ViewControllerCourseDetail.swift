@@ -10,7 +10,7 @@ import UIKit
 
 class ViewControllerCourseDetail: UIViewController,ViewControllerCourseDetailDelegate {
     var course:Kebiao!
-    public weak var delegate: ViewControllerEducationScheduleDelegate?
+    var delegate: ViewControllerEducationScheduleDelegate!
 
     
     @IBOutlet weak var label_zhoushu: UILabel!

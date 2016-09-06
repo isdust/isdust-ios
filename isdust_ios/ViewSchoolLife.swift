@@ -7,10 +7,15 @@
 //
 
 import Foundation
-class ViewSchoolLife:UITableViewController,ViewLoginDelegate{
+class ViewSchoolLife:UITableViewController,ViewLoginDelegate,ViewSchoolLifeDelegate{
+//    internal func schedule_login(delegate: ViewControllerEducationScheduleDelegate) {
+//        
+//    }
+
     var mzhengfang:Zhengfang!
     var mschoolcard:SchoolCard!
     var mlibrary:Library!
+    var mscheduledelegate:ViewControllerEducationScheduleDelegate!
 
     var serialQueue:DispatchQueue!
     var thread_user:String?
@@ -33,6 +38,11 @@ class ViewSchoolLife:UITableViewController,ViewLoginDelegate{
             var mcontroller=segue.destination as! ViewControllerLibraryPersonal
             mcontroller.mlibrary=mlibrary
         }
+        if(segue.identifier=="Schedule"){
+            var mcontroller=segue.destination as! ViewControllerEducationSchedule
+            mcontroller.mViewSchoolLifeDelegate=self
+        }
+        
 
         
 
@@ -122,12 +132,9 @@ class ViewSchoolLife:UITableViewController,ViewLoginDelegate{
         return true
     }
     func thread_login_zf() {
-        
         do{
             let result=try mzhengfang.Login(thread_user!, password: thread_password!)
-            
             self.performSelector(onMainThread: Selector(("zhengfang_login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
-            
         }
         catch IsdustError.Network{
             self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
@@ -136,9 +143,19 @@ class ViewSchoolLife:UITableViewController,ViewLoginDelegate{
         catch{
             
         }
-        
-        
-        //        self.performSelector(onMainThread: Selector(("zhengfang_login")), with: result as AnyObject, waitUntilDone: false)
+    }
+    func thread_login_schedule() {
+        do{
+            let result=try mzhengfang.Login(thread_user!, password: thread_password!)
+            self.performSelector(onMainThread: Selector(("schedule_login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
+        }
+        catch IsdustError.Network{
+            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
+            
+        }
+        catch{
+            
+        }
     }
     func thread_login_schoolcard() {
         
@@ -174,19 +191,14 @@ class ViewSchoolLife:UITableViewController,ViewLoginDelegate{
                 let key_password="zhengfang_password"
                 let message=arg as! String
                 SVProgressHUD.dismiss()
-                //self.view_login.isHidden=false
                 if(message=="登录成功"){
-
                     UserDefaults.standard.set(self.thread_user, forKey: key_user)
                     UserDefaults.standard.set(self.thread_password, forKey: key_password)
-                    //UserDefaults.standard.set("", forKey: key_password)
-
                     self.performSegue(withIdentifier: "ScoreLookUp", sender: nil)
                     
                     return
                 }else if(message=="用户名不存在"){
                     ShowMessage("正方教务系统-登录",message,self)
-
                 }else if(message=="密码错误"){
                     ShowMessage("正方教务系统-登录",message,self)
                     UserDefaults.standard.set("", forKey: key_password)
@@ -231,9 +243,29 @@ class ViewSchoolLife:UITableViewController,ViewLoginDelegate{
                     
                     
                 }
-                let alert = UIAlertView()
                 ShowMessage("图书馆-登录",message,self)
                 UserDefaults.standard.set("", forKey: key_password)
+                break
+            case Selector(("schedule_login")):
+                let key_user="zhengfang_user"
+                let key_password="zhengfang_password"
+                let message=arg as! String
+                SVProgressHUD.dismiss()
+                if(message=="登录成功"){
+                    UserDefaults.standard.set(self.thread_user, forKey: key_user)
+                    UserDefaults.standard.set(self.thread_password, forKey: key_password)
+                    //UserDefaults.standard.set("", forKey: key_password)
+                    self.mscheduledelegate.finishlogin(zhengfang: self.mzhengfang)
+                    
+                    return
+                }else if(message=="用户名不存在"){
+                    ShowMessage("正方教务系统-登录",message,self)
+                }else if(message=="密码错误"){
+                    ShowMessage("正方教务系统-登录",message,self)
+                    UserDefaults.standard.set("", forKey: key_password)
+                }else if(message=="未知错误"){
+                    ShowMessage("正方教务系统-登录",message,self)
+                }
                 break
             case Selector(("ErrorNetwork")):
                 SVProgressHUD.dismiss()
@@ -270,10 +302,43 @@ class ViewSchoolLife:UITableViewController,ViewLoginDelegate{
             SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
             SVProgressHUD.show(withStatus: "正在登录图书馆系统")
             break
+        case "schedule":
+            thread_user = user
+            thread_password = pass
+            serialQueue.async(execute: thread_login_schedule)
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+            SVProgressHUD.show(withStatus: "正在登录正方教务系统")
+            break
         default:
             break
         }
     }
+    internal func schedule_login(delegate:ViewControllerEducationScheduleDelegate,mview:UIView) {
+        let key_user="zhengfang_user"
+        let key_password="zhengfang_password"
+        mscheduledelegate=delegate
+        thread_user = UserDefaults.standard.string(forKey: key_user)
+        thread_password = UserDefaults.standard.string(forKey: key_password)
+        mzhengfang=Zhengfang()
+        if(thread_user==""||thread_password==""||thread_user==nil||thread_password==nil){
+            
+            let mviewlogin=ViewLogin.init(frame: (mview.frame))
+            mviewlogin.settitle(title: "正方教务系统")
+            mviewlogin.sethint(user: "学号(12位)", pass: "正方教务平台密码")
+            mviewlogin.setchannel(mchannel: "schedule")
+            mviewlogin.delegate=self
+            mview.addSubview(mviewlogin)
+            
+        }else{
+            
+            serialQueue.async(execute: thread_login_schedule)
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+            SVProgressHUD.show(withStatus: "正在登录正方教务系统")
+            
+        }
+    }
 
-
+}
+protocol ViewSchoolLifeDelegate{
+    func schedule_login(delegate:ViewControllerEducationScheduleDelegate,mview:UIView)
 }

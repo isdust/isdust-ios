@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,ViewControllerEducationScheduleDelegate,ViewControllerCourseDetailDelegate {
+
     var serialQueue:DispatchQueue!
     var info_year="2016-2017"
     var info_semester="1"
@@ -53,15 +54,9 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
     }
     func menu_reload() {
         let alertController = UIAlertController(title: "提示", message: "重新加载课表，原课表将会清除，重新加载?", preferredStyle: .alert)
-        
-        // Create the actions
         let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) {
             UIAlertAction in
-            ScheduleManage().droptable()
-            self.manager=ScheduleManage()
-            self.serialQueue.async(execute: self.thread_downloadtable)
-
-
+            self.downloadschedule()
         }
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
@@ -141,6 +136,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
     
     var mainview:[UIView]=[UIView]()
     var mzhengfang:Zhengfang!
+    var mViewSchoolLifeDelegate:ViewSchoolLifeDelegate!
     var result_schedule:[Kebiao]!
     var cell_color:[UIColor]!
     override func viewDidLoad() {
@@ -177,19 +173,37 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         //scrollView.alwaysBounceVertical=true
         serialQueue = DispatchQueue(label: "queuename", attributes: [])
         if(manager.getcount()==0){
-            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+            
+            let alertController = UIAlertController(title: "提示", message: "你还没有下载课表，是否从教务系统下载课表?", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+                    self.downloadschedule()
+            }
+            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) {
+                UIAlertAction in
+                NSLog("Cancel Pressed")
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
 
-            SVProgressHUD.show(withStatus: "正在登录选课平台")
-            serialQueue.async(execute: thread_downloadtable)
         
         
         
         }
-        
-       
-//myView.gest
-
-        // Do any additional setup after loading the view.
+    }
+    func finishlogin(zhengfang:Zhengfang) {
+        mzhengfang=zhengfang
+        downloadschedule()
+    }
+    func downloadschedule() {
+        if(mzhengfang==nil){
+            mViewSchoolLifeDelegate.schedule_login(delegate: self,mview:(view.window?.rootViewController?.view)!)
+            return
+        }
+        ScheduleManage().droptable()
+        manager=ScheduleManage()
+        serialQueue.async(execute: self.thread_downloadtable)
     }
     override func viewWillAppear(_ animated: Bool) {
          schedule_table_all()
@@ -497,16 +511,10 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
     func reloadschedule(week: Int) {
         let viewWithTag = scrollView.viewWithTag(week)
         viewWithTag?.removeFromSuperview()
-//        print(self.view.frame)
-//        self.view.frame.size.height=scrollView.frame.height
-//        self.view.frame.origin.y=0
-        //print(scrollView.frame)
-        //scrollView.frame.origin.y=0
         let mview=UIView(frame:self.view.frame)
         let course=manager.getcourse(week: week)
         mview.frame=CGRect.init(x: view.frame.size.width*CGFloat(week-1), y: 0, width: view.frame.size.width, height: scrollView.frame.height)
-        print((navigationController?.navigationBar.frame.height)!)
-        //print(scrollView.bounds)
+
         
         schedule_draw_head(week:week, mview: mview)
         schedule_cell_print(mview: mview,course: course)
@@ -524,6 +532,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
     }
 
 }
-public protocol ViewControllerEducationScheduleDelegate:class{
+protocol ViewControllerEducationScheduleDelegate{
     func reloadschedule(week:Int)
+    func finishlogin(zhengfang:Zhengfang)
 }
