@@ -96,12 +96,13 @@ class Zhengfang{
         
     }
     func ScoreLookUp(_ year:String,semester:String)throws->[[String]]{
-        mhttp.setencoding(1);
+        
         var text_web="";
         var submit=""
         var result:[[String]]
         switch method_score_lookup {
         case "zhengfang":
+            mhttp.setencoding(1);
             text_web=try mhttp.get(mhttp.urlencode(url_chengji) );
             var VIEWSTATE=try mhttp.getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
             VIEWSTATE=mhttp.postencode(VIEWSTATE);
@@ -111,6 +112,7 @@ class Zhengfang{
             break;
         case "xuanke":
             try JumpToSelectClass()
+            mhttp.setencoding(0);
             text_web=try mhttp.get(location_xuanke+"Home/About");
             text_web=text_web.replacingOccurrences(of: "class=\"selected\"", with: "")
             return ScoreAnalyzeXuanke(text_web)

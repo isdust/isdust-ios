@@ -26,7 +26,7 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
         table_score.dataSource=self
         serialQueue = DispatchQueue(label: "queuename", attributes: [])
         SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
-        SVProgressHUD.show()
+        SVProgressHUD.show(withStatus: "正在加载成绩信息")
         self.serialQueue.async(execute: self.thread_AllScoreLookup)
         self.serialQueue.async(execute: self.thread_jidianLookup)
     }
@@ -142,12 +142,8 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
                 break
             case Selector(("ErrorNetwork")):
                 SVProgressHUD.dismiss()
-                let alert = UIAlertView()
-                alert.title = "错误"
-                alert.message = "网络超时"
-                alert.addButton(withTitle: "确定")
-                alert.delegate=self
-                alert.show()
+
+                ShowMessage("错误","网络超时",self)
                 break
             default:
                 break

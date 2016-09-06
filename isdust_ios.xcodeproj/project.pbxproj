@@ -12,6 +12,8 @@
 		750A197B1D6955D9006E619E /* TableViewCellBorrowedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A197A1D6955D9006E619E /* TableViewCellBorrowedBook.swift */; };
 		750A197D1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A197C1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift */; };
 		7512AC401D7CECE900683233 /* ViewWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512AC3F1D7CECE900683233 /* ViewWeb.swift */; };
+		7512AC491D7D7B8900683233 /* ViewSchoolLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512AC481D7D7B8900683233 /* ViewSchoolLife.swift */; };
+		7512AC511D7EA1EF00683233 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512AC501D7EA1EF00683233 /* Base.swift */; };
 		751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B61D4354B500A26D45 /* AppDelegate.swift */; };
 		751C35B91D4354B500A26D45 /* ViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B81D4354B500A26D45 /* ViewMain.swift */; };
 		751C35BC1D4354B500A26D45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751C35BA1D4354B500A26D45 /* Main.storyboard */; };
@@ -38,7 +40,6 @@
 		754043DD1D50706D00F6B957 /* ViewSchoolCardChangePass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754043DC1D50706D00F6B957 /* ViewSchoolCardChangePass.swift */; };
 		7544D4661D55E46D00642A2E /* ViewNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D4651D55E46D00642A2E /* ViewNetwork.swift */; };
 		7544D4681D56388200642A2E /* ViewSchoolCardReportLoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D4671D56388200642A2E /* ViewSchoolCardReportLoss.swift */; };
-		7544D46A1D56C36100642A2E /* ViewEducation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D4691D56C36100642A2E /* ViewEducation.swift */; };
 		7544D46C1D56EAEB00642A2E /* ViewEducationScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D46B1D56EAEB00642A2E /* ViewEducationScore.swift */; };
 		7544D46E1D56ED2400642A2E /* TableViewScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544D46D1D56ED2400642A2E /* TableViewScore.swift */; };
 		754AE9181D7A9BDC00128384 /* AdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 754AE9171D7A9BDC00128384 /* AdView.m */; };
@@ -157,6 +158,8 @@
 		750A197A1D6955D9006E619E /* TableViewCellBorrowedBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellBorrowedBook.swift; sourceTree = "<group>"; };
 		750A197C1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerEducationSchedule.swift; sourceTree = "<group>"; };
 		7512AC3F1D7CECE900683233 /* ViewWeb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWeb.swift; sourceTree = "<group>"; };
+		7512AC481D7D7B8900683233 /* ViewSchoolLife.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolLife.swift; sourceTree = "<group>"; };
+		7512AC501D7EA1EF00683233 /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		751C35B31D4354B500A26D45 /* isdust_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = isdust_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		751C35B61D4354B500A26D45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		751C35B81D4354B500A26D45 /* ViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMain.swift; sourceTree = "<group>"; };
@@ -196,7 +199,6 @@
 		754043DC1D50706D00F6B957 /* ViewSchoolCardChangePass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolCardChangePass.swift; sourceTree = "<group>"; };
 		7544D4651D55E46D00642A2E /* ViewNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewNetwork.swift; sourceTree = "<group>"; };
 		7544D4671D56388200642A2E /* ViewSchoolCardReportLoss.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolCardReportLoss.swift; sourceTree = "<group>"; };
-		7544D4691D56C36100642A2E /* ViewEducation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewEducation.swift; sourceTree = "<group>"; };
 		7544D46B1D56EAEB00642A2E /* ViewEducationScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewEducationScore.swift; sourceTree = "<group>"; };
 		7544D46D1D56ED2400642A2E /* TableViewScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewScore.swift; sourceTree = "<group>"; };
 		754AE9161D7A9BDC00128384 /* AdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdView.h; path = AdView/AdView/AdView.h; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				751C35E71D4354F600A26D45 /* Http.m */,
 				753D62F51D75E43000253990 /* Http.swift */,
 				754AE9581D7AB20800128384 /* AdBar.swift */,
+				7512AC501D7EA1EF00683233 /* Base.swift */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 		7521C5381D4B321C001E0CC0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7512AC481D7D7B8900683233 /* ViewSchoolLife.swift */,
 				753B87A61D684B0A00A0218C /* Library */,
 				753B87A51D684AF300A0218C /* Education */,
 				753B87A41D684AD500A0218C /* SchoolCard */,
@@ -472,7 +476,6 @@
 			isa = PBXGroup;
 			children = (
 				75BBB62D1D6E736B00568333 /* Schedule */,
-				7544D4691D56C36100642A2E /* ViewEducation.swift */,
 				7544D46B1D56EAEB00642A2E /* ViewEducationScore.swift */,
 				7544D46D1D56ED2400642A2E /* TableViewScore.swift */,
 				75A0D51C1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift */,
@@ -891,6 +894,7 @@
 				75CC0CB31D63F4930002E113 /* QRCodeReaderResult.swift in Sources */,
 				75BBB6391D6E7E2900568333 /* SchoolTime.swift in Sources */,
 				750A197B1D6955D9006E619E /* TableViewCellBorrowedBook.swift in Sources */,
+				7512AC511D7EA1EF00683233 /* Base.swift in Sources */,
 				75985B2D1D46784600388278 /* rsa.c in Sources */,
 				7578EAFC1D52491600F0A538 /* SVProgressAnimatedView.m in Sources */,
 				754AE9491D7A9C0A00128384 /* UIImage+GIF.m in Sources */,
@@ -905,12 +909,12 @@
 				75BBB6371D6E7A6E00568333 /* ViewControllerCourseDetail.swift in Sources */,
 				751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */,
 				754043DD1D50706D00F6B957 /* ViewSchoolCardChangePass.swift in Sources */,
+				7512AC491D7D7B8900683233 /* ViewSchoolLife.swift in Sources */,
 				754AE94A1D7A9C0A00128384 /* UIImage+MultiFormat.m in Sources */,
 				7521C52E1D4A5CFB001E0CC0 /* Library.swift in Sources */,
 				7578EAFE1D52491600F0A538 /* SVProgressHUD.m in Sources */,
 				753B87AC1D6856F000A0218C /* TableViewCellStorageSearch.swift in Sources */,
 				753D62F61D75E43000253990 /* Http.swift in Sources */,
-				7544D46A1D56C36100642A2E /* ViewEducation.swift in Sources */,
 				754AE9471D7A9C0A00128384 /* SDWebImagePrefetcher.m in Sources */,
 				751C35EB1D43551D00A26D45 /* Zhengfang.swift in Sources */,
 				75CC0CB41D63F4930002E113 /* QRCodeViewController.swift in Sources */,

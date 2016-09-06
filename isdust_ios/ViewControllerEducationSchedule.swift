@@ -42,8 +42,6 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
             textColor: Color(R: 0, G: 0, B: 0),  //menuItem字体颜色
             menuBackgroundColor: Color(R: 1, G: 1, B: 1)  //菜单的底色
         )
-        let barButtonItem = self.navigationItem.rightBarButtonItem!
-        let buttonItemView = barButtonItem.value(forKey: "view")
         var a=self.navigationController?.view.frame
         a?.size.height=60
         a?.size.width*=2
@@ -123,12 +121,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
                 break
             case Selector(("ErrorNetwork")):
                 SVProgressHUD.dismiss()
-                let alert = UIAlertView()
-                alert.title = "错误"
-                alert.message = "网络超时"
-                alert.addButton(withTitle: "确定")
-                alert.delegate=self
-                alert.show()
+                ShowMessage("错误","网络超时",self)
                 break
 
 
@@ -431,7 +424,6 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         path.addArc(withCenter: location, radius: radius, startAngle: CGFloat(M_PI)/180*(angle+90), endAngle: (CGFloat(M_PI)/180)*(angle+0), clockwise: false)
         path.addLine(to: CGPoint.init(x: 0, y: radius))
         
-//        path.move(to:  CGPoint.init(x: cell_width-2*radius, y: 0))
         path.close()
         
 //        cell_height=cell_height+2*interval

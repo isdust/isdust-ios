@@ -15,11 +15,11 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
     var purchase_section:[String]=[String]()
     var loadingData = false
 
-    var refreshControl = UIRefreshControl()
     var mschoolcard:SchoolCard!
+
     let key_user="schoolcard_user"
     let key_password="schoolcard_password"
-    var loadMoreText = UILabel()
+
 
     @IBOutlet weak var spinner: UIActivityIndicatorView!
 
@@ -127,17 +127,9 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
         // Create the actions
         let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) {
             UIAlertAction in
-            self.mschoolcard=SchoolCard()
-            self.purchase_detail=[[String]]()
-            self.purchase_section=[String]()
-            self.UITableView_detail.reloadData()
-            self.navigationItem.title="校园卡登录"
             
-            self.edit_user.text=self.thread_user
-            self.thread_password=""
-            UserDefaults.standard.set(self.thread_password, forKey: self.key_password)
-            self.view_table.isHidden=true
-            self.view_login.isHidden=false
+            UserDefaults.standard.set("", forKey: self.key_password)
+            self.navigationController?.popViewController(animated: true)
         }
         let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
@@ -157,9 +149,9 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
 
     @IBAction func menu_plus_click(_ sender: UIBarButtonItem) {
         let menuArray:[AnyObject] = [
-            KxMenuItem.init("修改密码", image: UIImage(named: "item_key"), target: self, action: "menu_changepass"),
-            KxMenuItem.init("挂失", image: UIImage(named: "item_heartbroken"), target: self, action: "menu_reportloss"),
-            KxMenuItem.init("注销", image: UIImage(named: "item_logout"), target: self, action: "menu_logout")
+            KxMenuItem.init("修改密码", image: UIImage(named: "item_key"), target: self, action: #selector(ViewSchoolCardMain.menu_changepass)),
+            KxMenuItem.init("挂失", image: UIImage(named: "item_heartbroken"), target: self, action: #selector(ViewSchoolCardMain.menu_reportloss)),
+            KxMenuItem.init("注销", image: UIImage(named: "item_logout"), target: self, action: #selector(ViewSchoolCardMain.menu_logout))
         ]
         
         //配置一：基础配置
@@ -178,13 +170,12 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
             textColor: Color(R: 0, G: 0, B: 0),  //menuItem字体颜色
             menuBackgroundColor: Color(R: 1, G: 1, B: 1)  //菜单的底色
         )
-        let barButtonItem = self.navigationItem.rightBarButtonItem!
-        let buttonItemView = barButtonItem.value(forKey: "view")
-        var a=self.view.frame
-        a.size.height=60
-        a.size.width*=2
-        a.size.width-=60
-        KxMenu.show(in: self.navigationController?.view, from: a, menuItems:menuArray, withOptions: options)
+
+        var a=self.navigationController?.view.frame
+        a?.size.height=60
+        a?.size.width*=2
+        a?.size.width-=60
+        KxMenu.show(in: self.navigationController?.view, from: a!, menuItems:menuArray, withOptions: options)
         
         
         
@@ -194,57 +185,10 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
     override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
         DispatchQueue.main.async(){
         switch aSelector {
-        case Selector("login"):
-            let message=arg as! String
-            SVProgressHUD.dismiss()
-            self.view_login.isHidden=false
-            if(message=="登陆成功"){
-                
-                self.view_login.isHidden=true
-                self.view_table.isHidden=false
-                self.navigationItem.title="余额:"+String(self.mschoolcard.mPersonInfo.balance_total)
-                UserDefaults.standard.set(self.thread_user, forKey: self.key_user)
-                UserDefaults.standard.set(self.thread_password, forKey: self.key_password)
-                self.serialQueue.async(execute: self.thread_getdetail)
-                self.serialQueue.async(execute: self.thread_getdetail)
-                
-
-
-            }else if(message=="无此用户名称"){
-
-
-                let alert = UIAlertView()
-                alert.title = "校园卡-登录"
-                alert.message = message
-                alert.addButton(withTitle: "确定")
-                alert.delegate=self
-                alert.show()
-                self.edit_user.text=""
-                self.edit_pass.text=""
-            }else if(message=="密码错误"){
-                let alert = UIAlertView()
-                alert.title = "校园卡-登录"
-                alert.message = message
-                alert.addButton(withTitle: "确定")
-                alert.delegate=self
-                alert.show()
-                self.edit_pass.text=""
-                UserDefaults.standard.set("", forKey: self.key_password)
-            }else if(message=="未知错误"){
-                let alert = UIAlertView()
-                alert.title = "校园卡-登录"
-                alert.message = message
-                alert.addButton(withTitle: "确定")
-                alert.delegate=self
-                alert.show()
-            }
-            break
+  
         case Selector(("detail")):
             let message=arg as! [[String]]
             for i in message{
-               // var index=i[0][startIndex...string.index(startIndex, offsetBy: 4)]
-//                var date=i[0][i[0].startIndex...i[0].index(i[0].startIndex, offsetBy: 9)]
-                //var date=i[0][i[0].startIndex...i[0].index(i[0].startIndex, offsetBy: 9)]
                 var date=SchoolTime.date2month(date: i[0])
                 if !self.purchase_section.contains(date){
                     self.purchase_section.append(date)
@@ -252,29 +196,15 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
             }
             self.purchase_detail.append(contentsOf: message)
             self.UITableView_detail.reloadData()
-            self.refreshControl.endRefreshing()
             self.spinner.isHidden=true
             self.spinner.stopAnimating()
             self.loadingData = false
+            SVProgressHUD.dismiss()
 
-            break
-        case #selector(ViewSchoolCardMain.menu_changepass):
-            self.menu_changepass()
-            break
-        case #selector(ViewSchoolCardMain.menu_reportloss):
-            self.menu_reportloss()
-            break
-        case #selector(ViewSchoolCardMain.menu_logout):
-            self.menu_logout()
             break
         case Selector(("ErrorNetwork")):
             SVProgressHUD.dismiss()
-            let alert = UIAlertView()
-            alert.title = "错误"
-            alert.message = "网络超时"
-            alert.addButton(withTitle: "确定")
-            alert.delegate=self
-            alert.show()
+            ShowMessage("错误","网络超时",self)
             break
             
         default:
@@ -284,23 +214,9 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
             print(aSelector)}
     }
 
-    func thread_login() {
-        
-        do{
-            var result:String!
-            result=try mschoolcard.login(thread_user!, password: thread_password!)
-            self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
-        }
-        catch IsdustError.Network{
-            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
-        }catch{
-            
-            
-        }
-    }
+
     func thread_getdetail()  {
         do{
-            //try mschoolcard.NextPage()
         var data =  try mschoolcard.NextPage()
         self.performSelector(onMainThread: Selector(("detail")), with: data as AnyObject, waitUntilDone: false, modes: nil)
         }catch IsdustError.Network{
@@ -312,48 +228,19 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
         
 
     }
-    @IBOutlet weak var view_login: UIView!
     @IBOutlet var view_main: UIView!
-    @IBOutlet weak var edit_user: UITextField!
-    @IBOutlet weak var edit_pass: UITextField!
-
     @IBOutlet weak var view_table: UITableView!
-
-    @IBAction func button_login_click(_ sender: AnyObject) {
-        if(edit_pass.text != "" && edit_user.text != ""){
-            thread_user=edit_user.text!
-            thread_password=edit_pass.text!
-            edit_user.endEditing(true)
-            edit_pass.endEditing(true)
-            serialQueue.async(execute: thread_login)
-            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
-            SVProgressHUD.show()
-        }
-    }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
         UITableView_detail.delegate = self
         UITableView_detail.dataSource = self
-        mschoolcard=SchoolCard()
         serialQueue = DispatchQueue(label: "queuename", attributes: [])
-        thread_user = UserDefaults.standard.string(forKey: key_user)
-        thread_password = UserDefaults.standard.string(forKey: key_password)
-        if(thread_user==""||thread_password==""||thread_user==nil||thread_password==nil){
-            title="校园卡登录"
-            view_table.isHidden=true
-            view_login.isHidden=false
-
-        }else{
-            view_login.isHidden=true
-            view_table.isHidden=false
-            serialQueue.async(execute: thread_login)
-            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
-            SVProgressHUD.show()
-        
-        }
-                //let storedUsername = NSUserDefaults.standardUserDefaults().stringForKey(StrUsernameKey)
+        self.navigationItem.title="余额:"+String(self.mschoolcard.mPersonInfo.balance_total)
+        self.serialQueue.async(execute: self.thread_getdetail)
+        self.serialQueue.async(execute: self.thread_getdetail)
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        SVProgressHUD.show(withStatus: "正在加载交易记录")
     }
 
     override func didReceiveMemoryWarning() {
@@ -364,10 +251,12 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier=="SchoolCardChangePass" {
-            
-            let SchoolCardChangePassController=segue.destination as! SchoolCardChangePass
-            SchoolCardChangePassController.mschoolcard=self.mschoolcard
-            
+            let mcontroller=segue.destination as! ViewSchoolCardChangePass
+            mcontroller.mschoolcard=self.mschoolcard
+        }
+        if segue.identifier=="SchoolCardReportLoss" {
+            let mcontroller=segue.destination as! ViewSchoolCardReportLoss
+            mcontroller.mschoolcard=self.mschoolcard
         }
     }
     

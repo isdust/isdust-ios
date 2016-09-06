@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SchoolCardChangePass: UITableViewController {
+class ViewSchoolCardChangePass: UITableViewController {
     var mschoolcard:SchoolCard!
     var thread_rawpass:String!
     var thread_newpass:String!
@@ -79,34 +79,26 @@ class SchoolCardChangePass: UITableViewController {
         DispatchQueue.main.async(){
             SVProgressHUD.dismiss()
             
-            let alert = UIAlertView()
-            alert.title = "校园卡-修改密码"
-            alert.addButton(withTitle: "确定")
             switch aSelector {
             case Selector(("changepass")):
                 
                 let message=arg as! String
                 if(message=="修改密码成功"){
                     UserDefaults.standard.set(self.thread_newpass, forKey: self.key_password)
-                    alert.message = "密码修改成功"
-                    alert.show()
+                    ShowMessage("校园卡-修改密码","密码修改成功",self)
+
                     self.navigationController?.popViewController(animated: true)
 
                     return
                     
                 }
-                alert.message = message
-                alert.show()
+                ShowMessage("校园卡-修改密码",message,self)
+
                 
                 break
             case Selector(("ErrorNetwork")):
                 SVProgressHUD.dismiss()
-                let alert = UIAlertView()
-                alert.title = "错误"
-                alert.message = "网络超时"
-                alert.addButton(withTitle: "确定")
-                alert.delegate=self
-                alert.show()
+                ShowMessage("错误","网络超时",self)
                 break
             default:
                 break

@@ -9,27 +9,14 @@
 import UIKit
 
 class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITableViewDataSource {
-    var mlibrary:Library=Library()
+    var mlibrary:Library!
     let key_user="library_user"
     let key_password="library_password"
     var serialQueue:DispatchQueue!
     var thread_user:String?
     var thread_password:String?
     var thread_borrowdetail:[[String]]=[[String]]()
-    func thread_login() {
-        do{
-            let result=try mlibrary.login(user: thread_user!, password: thread_password!)
-            self.performSelector(onMainThread: Selector(("login")), with: result as AnyObject, waitUntilDone: false, modes: nil)
-        }
-        catch IsdustError.Network{
-            self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
-        }catch{
-            
-            
-        }
-        
 
-    }
     func thread_borrwingdetail()  {
         do{
             thread_borrowdetail=try mlibrary.get_borrwingdetail()
@@ -69,32 +56,7 @@ class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITab
             case Selector(("borrwingdetail")):
                 self.UITableView_detail.reloadData()
                 break
-            case Selector(("login")):
-                let result=arg as! String
-                if(result=="登录成功"){
-                    self.menu_plus.isEnabled = true
-                    self.view_login.isHidden=true
-                    self.view_table.isHidden=false
-                    UserDefaults.standard.set(self.thread_user, forKey: self.key_user)
-                    UserDefaults.standard.set(self.thread_password, forKey: self.key_password)
-                    self.label_name.text=self.mlibrary.mPersonalInfo.name
-                    self.label_user.text=self.mlibrary.mPersonalInfo.id
-                    self.label_condition.text=self.mlibrary.mPersonalInfo.state
-                    self.serialQueue.async(execute: self.thread_borrwingdetail)
-                    SVProgressHUD.show()
-                    return
-                    
-                
-                }
-                let alert = UIAlertView()
-                alert.title = "图书馆-登录"
-                alert.message = result
-                alert.addButton(withTitle: "确定")
-                alert.delegate=self
-                alert.show()
-                UserDefaults.standard.set("", forKey: self.key_password)
-                self.textfield_pass.text=""
-                break
+
             case Selector(("renewall")):
                 let result=arg as! String
                 let alert = UIAlertView()
@@ -130,7 +92,6 @@ class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITab
     
     @IBOutlet weak var view_table: UIView!
     
-    @IBOutlet weak var view_login: UIView!
     
     @IBOutlet weak var UITableView_detail: UITableView!
 
@@ -144,7 +105,6 @@ class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITab
     @IBOutlet weak var label_condition: UILabel!
     @IBOutlet weak var label_name: UILabel!
     
-    @IBOutlet weak var menu_plus: UIBarButtonItem!
     @IBAction func menu_plus_click(_ sender: AnyObject) {
         let menuArray:[AnyObject] = [
             KxMenuItem.init("一键续借", image: UIImage(named: "item_heartbroken"), target: self, action: #selector(ViewControllerLibraryPersonal.menu_renew)),
@@ -180,16 +140,7 @@ class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITab
     }
     
     
-    @IBAction func button_login_clicked(_ sender: AnyObject) {
-        if(textfield_user.text != "" && textfield_pass.text != ""){
-            thread_user=textfield_user.text!
-            thread_password=textfield_pass.text!
-            textfield_user.endEditing(true)
-            textfield_pass.endEditing(true)
-            serialQueue.async(execute: thread_login)
-            SVProgressHUD.show()
-        }
-    }
+
 
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -216,21 +167,13 @@ class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITab
         UITableView_detail.delegate = self
         UITableView_detail.dataSource = self
         serialQueue = DispatchQueue(label: "queuename", attributes: [])
-        thread_user = UserDefaults.standard.string(forKey: key_user)
-        thread_password = UserDefaults.standard.string(forKey: key_password)
-        menu_plus.isEnabled = false
-        if(thread_user==""||thread_password==""||thread_user==nil||thread_password==nil){
-            //title="图书馆个人中心登录"
-            view_table.isHidden=true
-            view_login.isHidden=false
-            
-        }else{
-            view_login.isHidden=true
-            view_table.isHidden=false
-            serialQueue.async(execute: thread_login)
-            SVProgressHUD.show()
-            
-        }
+
+        self.label_name.text=self.mlibrary.mPersonalInfo.name
+        self.label_user.text=self.mlibrary.mPersonalInfo.id
+        self.label_condition.text=self.mlibrary.mPersonalInfo.state
+        self.serialQueue.async(execute: self.thread_borrwingdetail)
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        SVProgressHUD.show(withStatus: "正在加载书本借阅信息")
         // Do any additional setup after loading the view.
     }
 
@@ -240,16 +183,32 @@ class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITab
     }
     
     func menu_renew()  {
-        SVProgressHUD.show()
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        SVProgressHUD.show(withStatus: "正在续借借阅书本")
         self.serialQueue.async(execute: self.thread_renewall)
     }
     func menu_logout()  {
-        self.mlibrary=Library()
-        UserDefaults.standard.set("", forKey: self.key_password)
-        self.textfield_pass.text=""
-        self.view_table.isHidden=true
-        self.menu_plus.isEnabled = false
-        self.view_login.isHidden=false
+        // Create the alert controller
+        let alertController = UIAlertController(title: "图书馆-注销", message: "是否确认注销?", preferredStyle: .alert)
+        
+        // Create the actions
+        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            
+            UserDefaults.standard.set("", forKey: self.key_password)
+            self.navigationController?.popViewController(animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        // Present the controller
+        self.present(alertController, animated: true, completion: nil)
     }
     
 

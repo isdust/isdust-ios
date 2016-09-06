@@ -30,6 +30,8 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
         thread_week=picker_data.selectedRow(inComponent: 2)+1
         thread_jieci=picker_data.selectedRow(inComponent: 3)+1
         serialQueue.async(execute: thread_search)
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+        SVProgressHUD.show(withStatus: "正在查找空教室信息")
     }
 
     func thread_search() {
@@ -134,6 +136,7 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
         DispatchQueue.main.async(){
             switch aSelector {
             case Selector("emptyclassroom_search"):
+                SVProgressHUD.dismiss()
                 self.table_emptyclassroom.reloadData()
                 break
                 

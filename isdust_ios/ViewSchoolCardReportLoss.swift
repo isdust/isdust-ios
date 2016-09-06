@@ -21,27 +21,22 @@ class ViewSchoolCardReportLoss: UITableViewController {
 
     
     @IBAction func button_changepass(_ sender: AnyObject) {
-        let alert = UIAlertView()
-        alert.title = "校园卡-挂失"
-        alert.addButton(withTitle: "确定")
         
-        alert.delegate=self
         if(textfield_identity.text==""||textfield_pass.text==""){
-            alert.message = "请输入完整信息"
-            alert.show()
+            ShowMessage("校园卡-挂失","请输入完整信息",self)
             return
             
         }
         if(textfield_identity.text != mschoolcard.mPersonInfo.identity){
-            alert.message = "身份证号码验证失败，请重试"
             textfield_identity.text=""
-            alert.show()
+            ShowMessage("校园卡-挂失","身份证号码验证失败，请重试",self)
+            
+            
             return
         }
         if(textfield_pass.text != mschoolcard.mPersonInfo.password){
-            alert.message = "密码验证失败，请重试"
             textfield_pass.text=""
-            alert.show()
+            ShowMessage("校园卡-挂失","密码验证失败，请重试",self)
             return
         }
         
@@ -91,12 +86,7 @@ class ViewSchoolCardReportLoss: UITableViewController {
                 break
             case Selector(("ErrorNetwork")):
                 SVProgressHUD.dismiss()
-                let alert = UIAlertView()
-                alert.title = "错误"
-                alert.message = "网络超时"
-                alert.addButton(withTitle: "确定")
-                alert.delegate=self
-                alert.show()
+                ShowMessage("错误","网络超时",self)
                 break
             default:
                 break
