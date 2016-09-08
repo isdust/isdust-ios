@@ -76,6 +76,7 @@
 		75A0D51D1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A0D51C1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift */; };
 		75A0D51F1D58266C00E0C122 /* TableViewEmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A0D51E1D58266C00E0C122 /* TableViewEmptyClassroom.swift */; };
 		75AB61BF1D6C86360047D4F4 /* ScheduleManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB61BE1D6C86360047D4F4 /* ScheduleManage.swift */; };
+		75ABEE801D8189BD00716887 /* ViewSchoolLifeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75ABEE7F1D8189BD00716887 /* ViewSchoolLifeCell.swift */; };
 		75AF0A4C1D6C91D900E755C2 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AF0A491D6C91CD00E755C2 /* FMDB.framework */; };
 		75B399691D55D263009C8951 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B399611D55CD8F009C8951 /* libcrypto.a */; };
 		75B3996A1D55D263009C8951 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B399621D55CD8F009C8951 /* libssl.a */; };
@@ -266,6 +267,7 @@
 		75A0D51E1D58266C00E0C122 /* TableViewEmptyClassroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewEmptyClassroom.swift; sourceTree = "<group>"; };
 		75A70D4E1D6C9B300093DBEA /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		75AB61BE1D6C86360047D4F4 /* ScheduleManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleManage.swift; sourceTree = "<group>"; };
+		75ABEE7F1D8189BD00716887 /* ViewSchoolLifeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolLifeCell.swift; sourceTree = "<group>"; };
 		75AF0A371D6C91CD00E755C2 /* fmdb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = fmdb.xcodeproj; path = isdust_ios/fmdb/fmdb.xcodeproj; sourceTree = "<group>"; };
 		75B399611D55CD8F009C8951 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = isdust_ios/openssl/x86/libcrypto.a; sourceTree = "<group>"; };
 		75B399621D55CD8F009C8951 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = isdust_ios/openssl/x86/libssl.a; sourceTree = "<group>"; };
@@ -454,13 +456,10 @@
 		7521C5381D4B321C001E0CC0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7512AC481D7D7B8900683233 /* ViewSchoolLife.swift */,
+				75ABEE7E1D81890C00716887 /* SchoolLife */,
 				75C5485C1D7F244F00AECF5D /* ViewAbout.swift */,
-				7575301F1D80E3D20005EAC2 /* ModuleInterface.swift */,
+				75ABEE771D8188D600716887 /* Module */,
 				752404D91D80611900EAC659 /* Main */,
-				753B87A61D684B0A00A0218C /* Library */,
-				753B87A51D684AF300A0218C /* Education */,
-				753B87A41D684AD500A0218C /* SchoolCard */,
 				7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */,
 				7544D4651D55E46D00642A2E /* ViewNetwork.swift */,
 				7512AC3F1D7CECE900683233 /* ViewWeb.swift */,
@@ -492,11 +491,9 @@
 		753B87A51D684AF300A0218C /* Education */ = {
 			isa = PBXGroup;
 			children = (
+				75ABEE821D819DB200716887 /* EmptyClassroom */,
+				75ABEE811D819DA300716887 /* Score */,
 				75BBB62D1D6E736B00568333 /* Schedule */,
-				7544D46B1D56EAEB00642A2E /* ViewEducationScore.swift */,
-				7544D46D1D56ED2400642A2E /* TableViewScore.swift */,
-				75A0D51C1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift */,
-				75A0D51E1D58266C00E0C122 /* TableViewEmptyClassroom.swift */,
 			);
 			name = Education;
 			sourceTree = "<group>";
@@ -607,6 +604,44 @@
 				757BEB0F1D508B3900432695 /* NirKxMenu.m */,
 			);
 			name = NirKxMenu;
+			sourceTree = "<group>";
+		};
+		75ABEE771D8188D600716887 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				7575301F1D80E3D20005EAC2 /* ModuleInterface.swift */,
+				753B87A41D684AD500A0218C /* SchoolCard */,
+				753B87A51D684AF300A0218C /* Education */,
+				753B87A61D684B0A00A0218C /* Library */,
+			);
+			name = Module;
+			sourceTree = "<group>";
+		};
+		75ABEE7E1D81890C00716887 /* SchoolLife */ = {
+			isa = PBXGroup;
+			children = (
+				7512AC481D7D7B8900683233 /* ViewSchoolLife.swift */,
+				75ABEE7F1D8189BD00716887 /* ViewSchoolLifeCell.swift */,
+			);
+			name = SchoolLife;
+			sourceTree = "<group>";
+		};
+		75ABEE811D819DA300716887 /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				7544D46B1D56EAEB00642A2E /* ViewEducationScore.swift */,
+				7544D46D1D56ED2400642A2E /* TableViewScore.swift */,
+			);
+			name = Score;
+			sourceTree = "<group>";
+		};
+		75ABEE821D819DB200716887 /* EmptyClassroom */ = {
+			isa = PBXGroup;
+			children = (
+				75A0D51C1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift */,
+				75A0D51E1D58266C00E0C122 /* TableViewEmptyClassroom.swift */,
+			);
+			name = EmptyClassroom;
 			sourceTree = "<group>";
 		};
 		75AF0A381D6C91CD00E755C2 /* Products */ = {
@@ -893,6 +928,7 @@
 				75C5485D1D7F244F00AECF5D /* ViewAbout.swift in Sources */,
 				753B87AA1D684D2B00A0218C /* TableViewControllerLibrarySearchResult.swift in Sources */,
 				750A197D1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift in Sources */,
+				75ABEE801D8189BD00716887 /* ViewSchoolLifeCell.swift in Sources */,
 				751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */,
 				754AE93F1D7A9C0A00128384 /* MKAnnotationView+WebCache.m in Sources */,
 				75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */,

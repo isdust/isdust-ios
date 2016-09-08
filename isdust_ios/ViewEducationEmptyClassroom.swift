@@ -111,17 +111,15 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
     }
     
     //TableView start
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
 
         
         return emtpyclassroom_detail.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-
-        
         let cell:TableViewEmptyClassroom=tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewEmptyClassroom
-        
         cell.label_location.text=emtpyclassroom_detail[indexPath.row].location
         cell.label_schooldate.text="第"+emtpyclassroom_detail[indexPath.row].zhoushu!+"周"
         cell.label_week.text=data_week[Int(emtpyclassroom_detail[indexPath.row].xingqi!)!-1]
@@ -129,9 +127,6 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
    
         return cell
     }
-    //TableView end
-    
-
     override func performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [String]?) {
         DispatchQueue.main.async(){
             switch aSelector {

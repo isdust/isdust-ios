@@ -221,7 +221,7 @@ class Library{
         return result
     }
     func findBookByName(Name:String) throws -> [Book] {
-        var text_web=try mhttp.get("http://interlib.sdust.edu.cn/opac/search?rows=100&hasholding=1&searchWay0=marc&q0=&logical0=AND&q="+Name+"&searchWay=title&searchSource=reader")
+        var text_web=try mhttp.get("http://interlib.sdust.edu.cn/opac/search?rows=100&hasholding=1&searchWay0=marc&q0=&logical0=AND&q="+mhttp.urlencode(Name)+"&searchWay=title&searchSource=reader")
         var result=try AnalyzeSearch(text: text_web)
         return result
     }

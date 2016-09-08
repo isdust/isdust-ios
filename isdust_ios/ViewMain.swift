@@ -13,7 +13,7 @@ class ViewMain: UIViewController,AdBarDelegate {
         super.viewDidLoad()
 //        print(SchoolTime.date2month(date: "2016/09/01 15:00:00"))
         let width=view.frame.size.width
-        var mframe=CGRect.init(x: 0, y: 64, width: width, height: 172)
+        var mframe=CGRect.init(x: 0, y: 0, width: width, height: 172)
 
         let a=AdBar.init(frame: mframe, num: 2)
         a.load(index: 0, imagea: #imageLiteral(resourceName: "ad_1"), title: "新生入校", url: "http://www.wzq.hk")
@@ -33,12 +33,13 @@ class ViewMain: UIViewController,AdBarDelegate {
 
     }
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        var b=ModuleInterface()
-        b.mviewcontroller=self
-        
-        print(self.view.window?.rootViewController)
-        b.enter(withIdentifier: "Schedule", sender: self)    }
+//        super.viewDidAppear(animated)
+//        var b=ModuleInterface()
+//        b.mviewcontroller=self
+//        
+//        print(self.view.window?.rootViewController)
+//        b.enter(withIdentifier: "Schedule", sender: self)
+    }
     override func viewDidDisappear(_ animated: Bool) {
 
     }

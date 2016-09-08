@@ -350,9 +350,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         
         let view_course=sender.view as! ViewCourseCell
         self.performSegue(withIdentifier: "coursedetail", sender: view_course.course)
-        
-        //print("test")
-        // do other task
+
     }
     func schedule_cell_label(mview:UIView,week:Int,jieci:Int,course:String) {
         

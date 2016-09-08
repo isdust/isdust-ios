@@ -21,12 +21,38 @@ struct Module{
         mdescription=description
         mclassification=classification
         
-        
-        
-        
-        
-        
+        mshortcut = UserDefaults.standard.string(forKey: "shortcut_"+identifier)=="1" ? true : false
     }
+}
+var module_all:[Module] = [
+//校园卡
+Module.init(identifier: "SchoolCard", icon: #imageLiteral(resourceName: "menu_card"), title: "一卡通", description: "提供校园一卡通余额查询，消费情况查询，以及挂失与修改密码服务", classification: "校园卡"),
+    
+//教务
+Module.init(identifier: "Schedule", icon: #imageLiteral(resourceName: "menu_schedule"), title: "课程表", description: "提供课程表查看，课程表下载，还能自定义课表", classification: "教务"),
+Module.init(identifier: "ScoreLookUp", icon: #imageLiteral(resourceName: "menu_mark"), title: "成绩查询", description: "提供所有考试成绩查询，GPA查询", classification: "教务"),
+Module.init(identifier: "EmptyClassroom", icon: #imageLiteral(resourceName: "menu_classroom"), title: "空教室查询", description: "提供指定时间内的空教室信息查询服务", classification: "教务"),
+
+//图书馆
+Module.init(identifier: "LibraryStorage", icon: #imageLiteral(resourceName: "menu_library"), title: "馆藏查询", description: "提供图书馆馆藏状态查询，书本位置查询", classification: "图书馆"),
+Module.init(identifier: "PersonalLibrary", icon: #imageLiteral(resourceName: "menu_person"), title: "个人中心", description: "提供书本续借，还书日期查询", classification: "图书馆"),
+
+]
+func ModuleGetByIdenitifer(idenitifer:String) -> [Module]{
+    return module_all.filter({$0.midentifier==idenitifer})
+}
+func ModuleGetByClass(classification:String)-> [Module]{
+    return module_all.filter({$0.mclassification==classification})
+}
+func ModuleGetClass()->[String]{
+    var result:[String]=[String]()
+    for i in module_all{
+        if result.contains(i.mclassification)==false{
+            result.append(i.mclassification)
+        }
+    }
+    return result
+
 }
 class ModuleInterface:ViewLoginDelegate,ViewSchoolLifeDelegate{
 
