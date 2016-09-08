@@ -63,6 +63,7 @@
 		754AE94E1D7A9C0A00128384 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 754AE93E1D7A9C0A00128384 /* UIView+WebCacheOperation.m */; };
 		754AE9511D7AA22400128384 /* placeHoder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 754AE9501D7AA22400128384 /* placeHoder.jpg */; };
 		754AE9591D7AB20800128384 /* AdBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AE9581D7AB20800128384 /* AdBar.swift */; };
+		757530201D80E3D20005EAC2 /* ModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7575301F1D80E3D20005EAC2 /* ModuleInterface.swift */; };
 		7578EAFB1D52491600F0A538 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAF21D52491600F0A538 /* SVIndefiniteAnimatedView.m */; };
 		7578EAFC1D52491600F0A538 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAF41D52491600F0A538 /* SVProgressAnimatedView.m */; };
 		7578EAFD1D52491600F0A538 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7578EAF61D52491600F0A538 /* SVProgressHUD.bundle */; };
@@ -243,6 +244,7 @@
 		754AE93E1D7A9C0A00128384 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "AdView/SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		754AE9501D7AA22400128384 /* placeHoder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeHoder.jpg; sourceTree = "<group>"; };
 		754AE9581D7AB20800128384 /* AdBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdBar.swift; sourceTree = "<group>"; };
+		7575301F1D80E3D20005EAC2 /* ModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleInterface.swift; sourceTree = "<group>"; };
 		7578EAF11D52491600F0A538 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		7578EAF21D52491600F0A538 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		7578EAF31D52491600F0A538 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressAnimatedView.h; path = SVProgressHUD/SVProgressAnimatedView.h; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 			children = (
 				7512AC481D7D7B8900683233 /* ViewSchoolLife.swift */,
 				75C5485C1D7F244F00AECF5D /* ViewAbout.swift */,
+				7575301F1D80E3D20005EAC2 /* ModuleInterface.swift */,
 				752404D91D80611900EAC659 /* Main */,
 				753B87A61D684B0A00A0218C /* Library */,
 				753B87A51D684AF300A0218C /* Education */,
@@ -881,6 +884,7 @@
 				754AE9421D7A9C0A00128384 /* SDWebImageCompat.m in Sources */,
 				754AE9441D7A9C0A00128384 /* SDWebImageDownloader.m in Sources */,
 				754AE9401D7A9C0A00128384 /* NSData+ImageContentType.m in Sources */,
+				757530201D80E3D20005EAC2 /* ModuleInterface.swift in Sources */,
 				75CC0CB61D63F4930002E113 /* ReaderOverlayView.swift in Sources */,
 				75AB61BF1D6C86360047D4F4 /* ScheduleManage.swift in Sources */,
 				7521C5421D4D9D34001E0CC0 /* ViewSchoolCardMain.swift in Sources */,
@@ -1083,10 +1087,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 526JMJ27M9;
 				ENABLE_BITCODE = NO;
 				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/wzq/项目/isdust_ios/isdust_ios/include/**";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1110,10 +1115,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 526JMJ27M9;
 				ENABLE_BITCODE = NO;
 				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/wzq/项目/isdust_ios/isdust_ios/include";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

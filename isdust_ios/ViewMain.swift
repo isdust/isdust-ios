@@ -19,16 +19,12 @@ class ViewMain: UIViewController,AdBarDelegate {
         a.load(index: 0, imagea: #imageLiteral(resourceName: "ad_1"), title: "新生入校", url: "http://www.wzq.hk")
         a.delegate=self
         view.addSubview(a)
+
         
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var d=ModuleCard()
-        let vc = storyboard.instantiateViewController(withIdentifier: "ViewSchoolLife") as! ViewSchoolLife
-//        vc.ModuleCardDelegate=d
-//        self.present(vc, animated: true, completion: nil)
-        self.navigationController?.pushViewController(vc, animated: false)
-        //vc.performSegue(withIdentifier: "PersonalLibrary", sender:view.self)
-        vc.shouldPerformSegue(withIdentifier: "PersonalLibrary", sender:view.self)
+     
+
+        //vc.shouldPerformSegue(withIdentifier: "PersonalLibrary", sender:view.self)
         //vc.segue
         //vc.ModuleMneuChoose()
         //
@@ -36,6 +32,17 @@ class ViewMain: UIViewController,AdBarDelegate {
         
 
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        var b=ModuleInterface()
+        b.mviewcontroller=self
+        
+        print(self.view.window?.rootViewController)
+        b.enter(withIdentifier: "Schedule", sender: self)    }
+    override func viewDidDisappear(_ animated: Bool) {
+
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
 
     }
@@ -43,20 +50,7 @@ class ViewMain: UIViewController,AdBarDelegate {
 //        //return UIModalPresentationStyle.fullScreen
 //        return UIModalPresentationStyle.none
 //    }
-    override func viewDidAppear(_ animated: Bool) {
 
-        
-        //        let vc = ViewCourseEditJieci()
-//        view.window?.rootViewController?.view.addSubview(vc)
-        
-        //vc.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-        //vc.view.bounds=CGRect.init(x: 0, y: 0, width: 100, height: 100)
-//        vc.preferredContentSize=CGSize.init(width: 200, height: 200)
-//        vc.presentedViewController?.view.frame.size=CGSize.init(width: 200, height: 200)
-
-        //view.addSubview(vc)
-        
-    }
 //    override var preferredContentSize: CGSize{
 //        
 //        get {
