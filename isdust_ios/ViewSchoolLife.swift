@@ -7,11 +7,14 @@
 //
 
 import Foundation
-class ViewSchoolLife:UITableViewController,ViewLoginDelegate,ViewSchoolLifeDelegate{
+class ViewSchoolLife:UITableViewController,ViewLoginDelegate,ViewSchoolLifeDelegate,ModuleCardClick{
 //    internal func schedule_login(delegate: ViewControllerEducationScheduleDelegate) {
 //        
 //    }
-
+    func ModuleMneuChoose() {
+        performSegue(withIdentifier: "PersonalLibrary", sender:nil)
+    }
+    var ModuleCardDelegate:ModuleCard!
     var mzhengfang:Zhengfang!
     var mschoolcard:SchoolCard!
     var mlibrary:Library!
@@ -113,7 +116,7 @@ class ViewSchoolLife:UITableViewController,ViewLoginDelegate,ViewSchoolLifeDeleg
             thread_password = UserDefaults.standard.string(forKey: key_password)
             mlibrary=Library()
             if(thread_user==""||thread_password==""||thread_user==nil||thread_password==nil){
-                let mviewlogin=ViewLogin.init(frame: (view.window?.rootViewController?.view.frame)!)
+                let mviewlogin=ViewLogin.init(frame: (self.navigationController?.view.window?.rootViewController?.view.frame)!)
                 mviewlogin.settitle(title: "图书馆个人中心")
                 mviewlogin.sethint(user: "校园卡号码(10位)", pass: "默认为校园卡号码")
                 mviewlogin.setchannel(mchannel: "librarypersonal")

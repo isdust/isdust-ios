@@ -31,6 +31,7 @@
 		7521C5351D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5331D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift */; };
 		7521C5421D4D9D34001E0CC0 /* ViewSchoolCardMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5411D4D9D34001E0CC0 /* ViewSchoolCardMain.swift */; };
 		7521C5441D4DA2ED001E0CC0 /* ViewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */; };
+		752404DB1D80622500EAC659 /* ModuleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752404DA1D80622500EAC659 /* ModuleCard.swift */; };
 		753B87A81D684BAD00A0218C /* TableViewCellLibrarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B87A71D684BAD00A0218C /* TableViewCellLibrarySearch.swift */; };
 		753B87AA1D684D2B00A0218C /* TableViewControllerLibrarySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B87A91D684D2B00A0218C /* TableViewControllerLibrarySearchResult.swift */; };
 		753B87AC1D6856F000A0218C /* TableViewCellStorageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753B87AB1D6856F000A0218C /* TableViewCellStorageSearch.swift */; };
@@ -81,6 +82,7 @@
 		75BBB6371D6E7A6E00568333 /* ViewControllerCourseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BBB6361D6E7A6E00568333 /* ViewControllerCourseDetail.swift */; };
 		75BBB6391D6E7E2900568333 /* SchoolTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BBB6381D6E7E2900568333 /* SchoolTime.swift */; };
 		75BBB63C1D6EE2A600568333 /* ViewCourseEditWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BBB63B1D6EE2A600568333 /* ViewCourseEditWeek.swift */; };
+		75C5485D1D7F244F00AECF5D /* ViewAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C5485C1D7F244F00AECF5D /* ViewAbout.swift */; };
 		75CC0CB21D63F4930002E113 /* QRCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CC0CAB1D63F4930002E113 /* QRCodeReader.swift */; };
 		75CC0CB31D63F4930002E113 /* QRCodeReaderResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CC0CAC1D63F4930002E113 /* QRCodeReaderResult.swift */; };
 		75CC0CB41D63F4930002E113 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CC0CAD1D63F4930002E113 /* QRCodeViewController.swift */; };
@@ -188,6 +190,7 @@
 		7521C53D1D4B333A001E0CC0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = isdust_ios/libssl.a; sourceTree = "<group>"; };
 		7521C5411D4D9D34001E0CC0 /* ViewSchoolCardMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolCardMain.swift; sourceTree = "<group>"; };
 		7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLogin.swift; sourceTree = "<group>"; };
+		752404DA1D80622500EAC659 /* ModuleCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleCard.swift; sourceTree = "<group>"; };
 		753B87A71D684BAD00A0218C /* TableViewCellLibrarySearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellLibrarySearch.swift; sourceTree = "<group>"; };
 		753B87A91D684D2B00A0218C /* TableViewControllerLibrarySearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerLibrarySearchResult.swift; sourceTree = "<group>"; };
 		753B87AB1D6856F000A0218C /* TableViewCellStorageSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellStorageSearch.swift; sourceTree = "<group>"; };
@@ -268,6 +271,7 @@
 		75BBB6361D6E7A6E00568333 /* ViewControllerCourseDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerCourseDetail.swift; sourceTree = "<group>"; };
 		75BBB6381D6E7E2900568333 /* SchoolTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolTime.swift; sourceTree = "<group>"; };
 		75BBB63B1D6EE2A600568333 /* ViewCourseEditWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 5; lastKnownFileType = sourcecode.swift; path = ViewCourseEditWeek.swift; sourceTree = "<group>"; };
+		75C5485C1D7F244F00AECF5D /* ViewAbout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAbout.swift; sourceTree = "<group>"; };
 		75CC0CAB1D63F4930002E113 /* QRCodeReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCodeReader.swift; path = QRCodeReader/QRCodeReader.swift; sourceTree = "<group>"; };
 		75CC0CAC1D63F4930002E113 /* QRCodeReaderResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCodeReaderResult.swift; path = QRCodeReader/QRCodeReaderResult.swift; sourceTree = "<group>"; };
 		75CC0CAD1D63F4930002E113 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCodeViewController.swift; path = QRCodeReader/QRCodeViewController.swift; sourceTree = "<group>"; };
@@ -401,7 +405,6 @@
 				75BBB6381D6E7E2900568333 /* SchoolTime.swift */,
 				751C35E71D4354F600A26D45 /* Http.m */,
 				753D62F51D75E43000253990 /* Http.swift */,
-				754AE9581D7AB20800128384 /* AdBar.swift */,
 				7512AC501D7EA1EF00683233 /* Base.swift */,
 			);
 			name = Module;
@@ -450,15 +453,26 @@
 			isa = PBXGroup;
 			children = (
 				7512AC481D7D7B8900683233 /* ViewSchoolLife.swift */,
+				75C5485C1D7F244F00AECF5D /* ViewAbout.swift */,
+				752404D91D80611900EAC659 /* Main */,
 				753B87A61D684B0A00A0218C /* Library */,
 				753B87A51D684AF300A0218C /* Education */,
 				753B87A41D684AD500A0218C /* SchoolCard */,
-				751C35B81D4354B500A26D45 /* ViewMain.swift */,
 				7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */,
 				7544D4651D55E46D00642A2E /* ViewNetwork.swift */,
 				7512AC3F1D7CECE900683233 /* ViewWeb.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		752404D91D80611900EAC659 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				751C35B81D4354B500A26D45 /* ViewMain.swift */,
+				754AE9581D7AB20800128384 /* AdBar.swift */,
+				752404DA1D80622500EAC659 /* ModuleCard.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		753B87A41D684AD500A0218C /* SchoolCard */ = {
@@ -872,6 +886,7 @@
 				7521C5421D4D9D34001E0CC0 /* ViewSchoolCardMain.swift in Sources */,
 				75CC0CB71D63F4930002E113 /* SwitchCameraButton.swift in Sources */,
 				754AE94C1D7A9C0A00128384 /* UIImageView+HighlightedWebCache.m in Sources */,
+				75C5485D1D7F244F00AECF5D /* ViewAbout.swift in Sources */,
 				753B87AA1D684D2B00A0218C /* TableViewControllerLibrarySearchResult.swift in Sources */,
 				750A197D1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift in Sources */,
 				751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */,
@@ -882,6 +897,7 @@
 				754AE9461D7A9C0A00128384 /* SDWebImageManager.m in Sources */,
 				754AE9181D7A9BDC00128384 /* AdView.m in Sources */,
 				754AE91C1D7A9BF000128384 /* ZYBanner.m in Sources */,
+				752404DB1D80622500EAC659 /* ModuleCard.swift in Sources */,
 				751C35EE1D44383900A26D45 /* DataType.swift in Sources */,
 				7544D46C1D56EAEB00642A2E /* ViewEducationScore.swift in Sources */,
 				7578EAFF1D52491600F0A538 /* SVRadialGradientLayer.m in Sources */,
@@ -1079,7 +1095,7 @@
 					"$(PROJECT_DIR)/isdust_ios/openssl/arm",
 					"$(PROJECT_DIR)/isdust_ios/openssl/x86",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.isdust.isdust-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.isdust.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "isdust_ios/isdust_ios-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1095,6 +1111,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
+				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/wzq/项目/isdust_ios/isdust_ios/include";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1105,7 +1122,7 @@
 					"$(PROJECT_DIR)/isdust_ios/openssl/arm",
 					"$(PROJECT_DIR)/isdust_ios/openssl/x86",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.isdust.isdust-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.isdust.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "isdust_ios/isdust_ios-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

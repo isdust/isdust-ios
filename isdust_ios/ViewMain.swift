@@ -21,9 +21,18 @@ class ViewMain: UIViewController,AdBarDelegate {
         view.addSubview(a)
         
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var d=ModuleCard()
+        let vc = storyboard.instantiateViewController(withIdentifier: "ViewSchoolLife") as! ViewSchoolLife
+//        vc.ModuleCardDelegate=d
+//        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: false)
+        //vc.performSegue(withIdentifier: "PersonalLibrary", sender:view.self)
+        vc.shouldPerformSegue(withIdentifier: "PersonalLibrary", sender:view.self)
+        //vc.segue
+        //vc.ModuleMneuChoose()
+        //
 
-
-//        
         
 
     }

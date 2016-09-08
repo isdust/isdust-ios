@@ -3608,11 +3608,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewMain.swift"
-            timestampString = "494833781.015984"
+            timestampString = "494958253.994799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "AdImageClick(urla:titlea:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3624,11 +3624,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewMain.swift"
-            timestampString = "494833781.015984"
+            timestampString = "494958253.994799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "AdImageClick(urla:titlea:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3736,11 +3736,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolLife.swift"
-            timestampString = "494845633.872814"
+            timestampString = "494957187.847941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "shouldPerformSegue(withIdentifier:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3752,11 +3752,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolLife.swift"
-            timestampString = "494845633.872814"
+            timestampString = "494957187.847941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "shouldPerformSegue(withIdentifier:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3800,11 +3800,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolLife.swift"
-            timestampString = "494845633.872814"
+            timestampString = "494957187.847941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3816,11 +3816,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolLife.swift"
-            timestampString = "494845633.872814"
+            timestampString = "494957187.847941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "thread_login_zf()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3832,11 +3832,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolLife.swift"
-            timestampString = "494845633.872814"
+            timestampString = "494957187.847941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "thread_login_library()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3848,11 +3848,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolLife.swift"
-            timestampString = "494845633.872814"
+            timestampString = "494957187.847941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "performSelector(onMainThread:with:waitUntilDone:modes:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3864,12 +3864,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/ViewSchoolLife.swift"
-            timestampString = "494845651.646023"
+            timestampString = "494957187.847941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "schedule_login(delegate:mview:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewAbout.swift"
+            timestampString = "494872119.531899"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "ViewAbout"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewMain.swift"
+            timestampString = "494958253.994799"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewSchoolLife.swift"
+            timestampString = "494957932.800353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "shouldPerformSegue(withIdentifier:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
