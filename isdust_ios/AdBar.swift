@@ -78,7 +78,6 @@ class AdBar:UIView,UIScrollViewDelegate{
         urls[index]=url
         if(index==0){
             image_end.image=imagea
-            //mUIImageView[num_image].image=imagea
         }
     }
     func imageclick(_ sender:UITapGestureRecognizer) {
@@ -87,7 +86,7 @@ class AdBar:UIView,UIScrollViewDelegate{
     }
     func nextpage()  {
         page_current=page_current+1
-        if(page_current==num_image){
+        if(page_current>=num_image){
             UIView.animate(withDuration: 0.4, animations:
                 {
                     self.mScrollView.bounds.origin.x=self.mScrollView.bounds.width*CGFloat(self.page_current)

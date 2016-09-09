@@ -1213,14 +1213,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.62745098039215685" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="关于" image="item_home" id="fLS-Bc-LlR"/>
+                    <tabBarItem key="tabBarItem" title="关于" image="item_about" id="fLS-Bc-LlR"/>
                     <connections>
                         <outlet property="tableview_about" destination="C6S-4w-TRD" id="ydR-W2-Wrl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wY8-rM-qPR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-732" y="1202"/>
+            <point key="canvasLocation" x="-355" y="1126"/>
         </scene>
         <!--个人中心-->
         <scene sceneID="sub-Sd-dde">
@@ -1429,7 +1429,7 @@
         <scene sceneID="zrH-1X-BPG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iWT-4C-qEZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="校园服务" image="item_library" id="ji8-vU-cs9"/>
+                    <tabBarItem key="tabBarItem" title="校园服务" image="item_service" id="ji8-vU-cs9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="91e-Bn-8jK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1807,6 +1807,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0051663019689999999" green="0.66427212950000003" blue="0.95733886960000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1968,9 +1971,10 @@
         <image name="ic_detail_course_teacher_icon" width="44" height="44"/>
         <image name="ic_detail_course_week_icon" width="44" height="44"/>
         <image name="ic_week_course_bg" width="720" height="1284"/>
+        <image name="item_about" width="75" height="75"/>
         <image name="item_home" width="25" height="25"/>
-        <image name="item_library" width="25" height="25"/>
         <image name="item_plus" width="25" height="25"/>
+        <image name="item_service" width="75" height="75"/>
         <image name="logo_web" width="100" height="100"/>
         <image name="main_cloud" width="1680" height="170"/>
         <image name="menu_card" width="120" height="120"/>

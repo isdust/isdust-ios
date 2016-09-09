@@ -1167,6 +1167,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.isdust.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "isdust_ios/isdust_ios-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -21,7 +21,7 @@ struct Module{
         mdescription=description
         mclassification=classification
         
-        mshortcut = UserDefaults.standard.string(forKey: "shortcut_"+identifier)=="1" ? true : false
+        mshortcut = UserDefaults.standard.string(forKey: "shortcut_"+identifier)=="0" ? false : true
     }
 }
 var module_all:[Module] = [
@@ -43,6 +43,9 @@ func ModuleGetByIdenitifer(idenitifer:String) -> [Module]{
 }
 func ModuleGetByClass(classification:String)-> [Module]{
     return module_all.filter({$0.mclassification==classification})
+}
+func ModuleGetByShortcut()-> [Module]{
+    return module_all.filter({$0.mshortcut==true})
 }
 func ModuleGetClass()->[String]{
     var result:[String]=[String]()

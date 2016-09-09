@@ -141,20 +141,20 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
     var cell_color:[UIColor]!
     override func viewDidLoad() {
         cell_color=[
-            UIColor(red:132/255, green: 213/255, blue: 148/255, alpha: 0.7),
-            UIColor(red:250/255, green: 158/255, blue: 125/255, alpha: 0.7),
-            UIColor(red:129/255, green: 204/255, blue: 201/255, alpha: 0.7),
-            UIColor(red:241/255, green: 143/255, blue: 146/255, alpha: 0.7),
-            UIColor(red:248/255, green: 191/255, blue: 103/255, alpha: 0.7),
-            UIColor(red:204/255, green: 156/255, blue: 143/255, alpha: 0.7),
-            UIColor(red:101/255, green: 182/255, blue: 223/255, alpha: 0.7),
-            UIColor(red:147/255, green: 206/255, blue: 90/255, alpha: 0.7),
-            UIColor(red:144/255, green: 172/255, blue: 205/255, alpha: 0.7),
-            UIColor(red:133/255, green: 156/255, blue: 228/255, alpha: 0.7),
-            UIColor(red:116/255, green: 183/255, blue: 159/255, alpha: 0.7),
-            UIColor(red:227/255, green: 132/255, blue: 167/255, alpha: 0.7),
-            UIColor(red:223/255, green: 189/255, blue: 131/255, alpha: 0.7),
-            UIColor(red:168/255, green: 146/255, blue: 210/255, alpha: 0.7)
+            UIColor(red:132/255, green: 213/255, blue: 148/255, alpha: 0.5),
+            UIColor(red:250/255, green: 158/255, blue: 125/255, alpha: 0.5),
+            UIColor(red:129/255, green: 204/255, blue: 201/255, alpha: 0.5),
+            UIColor(red:241/255, green: 143/255, blue: 146/255, alpha: 0.5),
+            UIColor(red:248/255, green: 191/255, blue: 103/255, alpha: 0.5),
+            UIColor(red:204/255, green: 156/255, blue: 143/255, alpha: 0.5),
+            UIColor(red:101/255, green: 182/255, blue: 223/255, alpha: 0.5),
+            UIColor(red:147/255, green: 206/255, blue: 90/255, alpha: 0.5),
+            UIColor(red:144/255, green: 172/255, blue: 205/255, alpha: 0.5),
+            UIColor(red:133/255, green: 156/255, blue: 228/255, alpha: 0.5),
+            UIColor(red:116/255, green: 183/255, blue: 159/255, alpha: 0.5),
+            UIColor(red:227/255, green: 132/255, blue: 167/255, alpha: 0.5),
+            UIColor(red:223/255, green: 189/255, blue: 131/255, alpha: 0.5),
+            UIColor(red:168/255, green: 146/255, blue: 210/255, alpha: 0.5)
         
         ]
 
@@ -272,8 +272,8 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
         //print(<#T##items: Any...##Any#>)
         //画节次格子
-        var jieci_height=(self.view.frame.height-base.height-extraheight+self.view.frame.origin.y)/12
-        for i in 0 ..< 12{
+        var jieci_height=(self.view.frame.height-base.height-extraheight+self.view.frame.origin.y)/10
+        for i in 0 ..< 10{
             schedule_head_cell_draw(mview:mview,frame: CGRect.init(x: 0, y: jieci_height*CGFloat(i)+base.height, width: base.width, height: jieci_height))
             schedule_head_label(mview:mview,frame: CGRect.init(x: 7, y: jieci_height*CGFloat(i)+base.height+14, width: base.width, height: jieci_height),text:String(i+1))//周次
         }
@@ -291,7 +291,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         
         //画叉叉
         for i in 1..<7{
-            for j in 1..<12{
+            for j in 1..<10{
                 schedule_cross_draw(mview:mview,location: CGPoint.init(x: xingqi_width*CGFloat(i)+base.width-3, y: jieci_height*CGFloat(j)+base.height-3))
             }
         
@@ -313,7 +313,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         var extraheight = UIApplication.shared.statusBarFrame.height +
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
         
-        var cell_height=(self.view.frame.height+self.view.frame.origin.y-base.height-extraheight)/12
+        var cell_height=(self.view.frame.height+self.view.frame.origin.y-base.height-extraheight)/10
         cell_height*=2
         var cell_width=(self.view.frame.width-base.width)/7
         view_single.frame=CGRect.init(x: (CGFloat(Int(course.xingqi!)!)-1)*cell_width+base.width+interval, y: (CGFloat(Int(course.jieci!)!)-1)*cell_height+base.height+interval, width: cell_width, height: cell_height)
@@ -386,7 +386,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
             self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
         
         let interval:CGFloat=2
-        var cell_height=(self.view.frame.height+self.view.frame.origin.y-base.height-extraheight)/12
+        var cell_height=(self.view.frame.height+self.view.frame.origin.y-base.height-extraheight)/10
         cell_height*=2
         cell_height=cell_height-2*interval
         var cell_width=(self.view.frame.width-base.width)/7
