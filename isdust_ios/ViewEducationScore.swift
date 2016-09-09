@@ -22,6 +22,7 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor=UIColor.white
         table_score.delegate=self
         table_score.dataSource=self
         serialQueue = DispatchQueue(label: "queuename", attributes: [])

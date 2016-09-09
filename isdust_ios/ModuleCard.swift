@@ -10,12 +10,14 @@ import Foundation
 class ModuleCard:UIView{
     let cell_width:CGFloat=60
     let cell_height:CGFloat=80
-    override init(frame: CGRect) {
+    var mviewcontroller:UIViewController!
+    init(frame: CGRect,viewcontroller:UIViewController) {
         super.init(frame: frame)
+        //mviewcontroller=ModuleInterface.init()
+        mviewcontroller=viewcontroller
         drawcell()
-        
-        
     }
+
     func drawcell()  {
         var mdata:[Module]=ModuleGetByShortcut()
         let num_horizon=Int(frame.width)/Int(cell_width)
@@ -24,7 +26,7 @@ class ModuleCard:UIView{
             let pos_x=CGFloat(i%num_horizon)*cell_width
             let pos_y=CGFloat(i/num_horizon)*cell_height
             
-            let singlecard=ModuleSingleCard.init(frame: CGRect.init(x: pos_x, y: pos_y, width: cell_width, height: cell_height))
+            let singlecard=ModuleSingleCard.init(frame: CGRect.init(x: pos_x, y: pos_y, width: cell_width, height: cell_height), viewcontroller: mviewcontroller)
             if(i%2==0){
                 singlecard.backgroundColor=UIColor.init(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
             }
@@ -46,8 +48,11 @@ class ModuleSingleCard:UIView{
     var image_icon:UIImageView!
     var label_title:UILabel!
     var mdata:Module!
-    override init(frame: CGRect) {
+    var interface:ModuleInterface!
+    init(frame: CGRect,viewcontroller:UIViewController) {
         super.init(frame: frame)
+        interface=ModuleInterface.init()
+        interface.mviewcontroller=viewcontroller
         
     }
     func draw(data:Module) {
@@ -71,7 +76,7 @@ class ModuleSingleCard:UIView{
         
     }
     func cardclick(){
-        ModuleInterface().enter(withIdentifier: mdata.midentifier, sender: self)
+        interface.enter(withIdentifier: mdata.midentifier, sender: self)
     
     }
     

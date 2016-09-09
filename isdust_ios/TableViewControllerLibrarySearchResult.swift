@@ -64,6 +64,7 @@ class TableViewControllerLibrarySearchResult: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor=UIColor.white
         serialQueue = DispatchQueue(label: "queuename", attributes: [])
 
         // Uncomment the following line to preserve selection between presentations

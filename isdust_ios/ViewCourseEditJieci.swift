@@ -62,6 +62,7 @@ class ViewCourseEditJieci:UIView,UIPickerViewDelegate,UIPickerViewDataSource{
         if(finished==1){
             return
         }
+        
         self.frame=(self.window?.rootViewController?.view.frame)!
         frame_self=self.frame
         

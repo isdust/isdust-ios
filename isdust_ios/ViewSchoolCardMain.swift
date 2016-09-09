@@ -217,7 +217,7 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
 
     func thread_getdetail()  {
         do{
-        var data =  try mschoolcard.NextPage()
+        var data =  try mschoolcard.GetTransaction()
         self.performSelector(onMainThread: Selector(("detail")), with: data as AnyObject, waitUntilDone: false, modes: nil)
         }catch IsdustError.Network{
             self.performSelector(onMainThread: Selector(("ErrorNetwork")), with: nil, waitUntilDone: false, modes: nil)
@@ -233,6 +233,7 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor=UIColor.white
         UITableView_detail.delegate = self
         UITableView_detail.dataSource = self
         serialQueue = DispatchQueue(label: "queuename", attributes: [])

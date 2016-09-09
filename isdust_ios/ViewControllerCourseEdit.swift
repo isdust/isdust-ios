@@ -93,6 +93,7 @@ class ViewControllerCourseEdit: UITableViewController,ViewCourseEditWeekDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor=UIColor.white
         
         if(type=="add"){
             return

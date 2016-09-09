@@ -46,6 +46,7 @@ class ViewCourseEditWeek:UIView{
           return
           
           }
+          
           self.frame=(self.window?.rootViewController?.view.frame)!
           frame_self=self.frame
           

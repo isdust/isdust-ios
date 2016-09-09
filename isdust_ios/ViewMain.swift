@@ -8,40 +8,34 @@
 
 import UIKit
 class ViewMain: UIViewController,AdBarDelegate {
+    var isdraw=0
     @IBOutlet weak var imageview: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 //        print(SchoolTime.date2month(date: "2016/09/01 15:00:00"))
-        let width=view.frame.size.width
-        var extraheight = UIApplication.shared.statusBarFrame.height +
-            self.navigationController!.navigationBar.frame.height+self.tabBarController!.tabBar.frame.height
-        var mframe=CGRect.init(x: 0, y: 0, width: width, height: 172)
-        
 
-        let a=AdBar.init(frame: mframe, num: 2)
-        a.load(index: 0, imagea: #imageLiteral(resourceName: "ad_1"), title: "新生入校", url: "http://www.wzq.hk")
-        a.delegate=self
-        view.addSubview(a)
 
-        mframe=CGRect.init(x: 0, y: 200, width: width, height: 200)
-        let b=ModuleCard.init(frame: mframe)
-        view.addSubview(b)
-
-        //vc.shouldPerformSegue(withIdentifier: "PersonalLibrary", sender:view.self)
-        //vc.segue
-        //vc.ModuleMneuChoose()
-        //
 
         
 
     }
     override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        var b=ModuleInterface()
-//        b.mviewcontroller=self
-//        
-//        print(self.view.window?.rootViewController)
-//        b.enter(withIdentifier: "Schedule", sender: self)
+        if(isdraw==1){
+            return
+        }
+        isdraw=1
+        let width=view.frame.size.width
+        var mframe=CGRect.init(x: 0, y: 0, width: width, height: 172)
+        
+        
+        let mAdBar=AdBar.init(frame: mframe, num: 2)
+        mAdBar.load(index: 0, imagea: #imageLiteral(resourceName: "ad_1"), title: "新生入校", url: "http://www.wzq.hk")
+        mAdBar.delegate=self
+        view.addSubview(mAdBar)
+        
+        mframe=CGRect.init(x: 0, y: 172, width: width, height: 200)
+        let mModuleCard=ModuleCard.init(frame: mframe,viewcontroller:self)
+        view.addSubview(mModuleCard)
     }
     override func viewDidDisappear(_ animated: Bool) {
 

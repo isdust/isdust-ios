@@ -182,6 +182,7 @@ class SchoolTime{
         var DateFormatter_output_time:Foundation.DateFormatter!
 
         DateFormatter_input=Foundation.DateFormatter()
+        DateFormatter_output_time=Foundation.DateFormatter()
         
         var date1:Date!
         DateFormatter_input.dateFormat = "yyyy/MM/dd HH:mm:ss"

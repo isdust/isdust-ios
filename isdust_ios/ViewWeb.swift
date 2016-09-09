@@ -15,6 +15,7 @@ class  ViewWeb:UIViewController{
     
     override func viewDidLoad() {
         let temp_url=URL.init(string: murl)!
+        navigationController?.navigationBar.tintColor=UIColor.white
         var mrequest=URLRequest.init(url: temp_url)
         mwebview.loadRequest(mrequest)
         

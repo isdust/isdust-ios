@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="16A313a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="0dM-oS-Wri">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="0dM-oS-Wri">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -185,6 +185,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="空教室" id="c0Q-6X-OUp">
                         <barButtonItem key="rightBarButtonItem" title="查询" id="w6E-Y4-FHm">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="button_search:" destination="Oef-O5-sLR" id="vcA-aF-Gmr"/>
                             </connections>
@@ -1803,12 +1804,13 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mKv-I6-8FU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="item_home" id="Qwc-zk-AXs"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dHB-Ab-C9b">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="dHB-Ab-C9b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0051663019689999999" green="0.66427212950000003" blue="0.95733886960000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1974,7 +1976,7 @@
         <image name="item_about" width="75" height="75"/>
         <image name="item_home" width="25" height="25"/>
         <image name="item_plus" width="25" height="25"/>
-        <image name="item_service" width="75" height="75"/>
+        <image name="item_service" width="37" height="37"/>
         <image name="logo_web" width="100" height="100"/>
         <image name="main_cloud" width="1680" height="170"/>
         <image name="menu_card" width="120" height="120"/>

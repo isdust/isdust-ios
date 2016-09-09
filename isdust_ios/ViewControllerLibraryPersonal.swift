@@ -161,6 +161,7 @@ class ViewControllerLibraryPersonal: UIViewController,UITableViewDelegate, UITab
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor=UIColor.white
         UITableView_detail.delegate = self
         UITableView_detail.dataSource = self
         serialQueue = DispatchQueue(label: "queuename", attributes: [])

@@ -292,33 +292,35 @@ class SchoolCard{
         flag_first=0
         date=Date()
     }
-    func GetTransaction()throws -> [Transaction] {
-        var result:[Transaction]=[Transaction]()
+    func GetTransaction()throws -> [[String]] {
+        var result:[[String]]=[[String]]()
         if(flag_first==0){
             var data_today=try LookUpToday()
             var data_history=try NextPage()
-            for i in data_today{
-                var temp_transaction:Transaction=Transaction()
-                temp_transaction.FormatFromString(i)
-                result.append(temp_transaction)
-            
-            }
-            for i in data_history{
-                var temp_transaction:Transaction=Transaction()
-                temp_transaction.FormatFromString(i)
-                result.append(temp_transaction)
-                
-            }
+            result = data_today+data_history
+//            for i in data_today{
+//                var temp_transaction:Transaction=Transaction()
+//                temp_transaction.FormatFromString(i)
+//                result.append(temp_transaction)
+//            
+//            }
+//            for i in data_history{
+//                var temp_transaction:Transaction=Transaction()
+//                temp_transaction.FormatFromString(i)
+//                result.append(temp_transaction)
+//                
+//            }
             flag_first=1
         
         }else{
             var data_history=try NextPage()
-            for i in data_history{
-                var temp_transaction:Transaction=Transaction()
-                temp_transaction.FormatFromString(i)
-                result.append(temp_transaction)
-                
-            }
+            result=data_history
+//            for i in data_history{
+//                var temp_transaction:Transaction=Transaction()
+//                temp_transaction.FormatFromString(i)
+//                result.append(temp_transaction)
+//                
+//            }
         
         }
         return result

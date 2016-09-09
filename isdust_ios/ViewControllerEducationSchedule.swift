@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,ViewControllerEducationScheduleDelegate,ViewControllerCourseDetailDelegate {
+    var isdraw=0
 
     var serialQueue:DispatchQueue!
     var info_year="2016-2017"
@@ -159,6 +160,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         ]
 
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor=UIColor.white
         
 
         
@@ -206,6 +208,9 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         serialQueue.async(execute: self.thread_downloadtable)
     }
     override func viewWillAppear(_ animated: Bool) {
+        if(isdraw==1){
+        return }
+        isdraw=1
          schedule_table_all()
         schedule_goto(week: SchoolTime.gettodayweek())
     }

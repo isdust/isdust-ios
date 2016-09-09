@@ -19,6 +19,7 @@ class ViewControllerCourseDetail: UIViewController,ViewControllerCourseDetailDel
     @IBOutlet weak var label_location: UILabel!
     @IBOutlet weak var label_kecheng: UILabel!
     override func viewDidLoad() {
+        navigationController?.navigationBar.tintColor=UIColor.white
         label_kecheng.text=course.kecheng
         label_location.text=course.location
         label_teacher.text=course.teacher

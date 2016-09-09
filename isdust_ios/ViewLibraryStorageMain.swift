@@ -151,6 +151,7 @@ class ViewLibraryStorageMain: UIViewController,QRCodeReaderViewControllerDelegat
         }
     }
     override func viewDidLoad() {
+        navigationController?.navigationBar.tintColor=UIColor.white
         serialQueue = DispatchQueue(label: "queuename", attributes: [])
         
     }
