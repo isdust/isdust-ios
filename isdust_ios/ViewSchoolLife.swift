@@ -55,6 +55,12 @@ class ViewSchoolLife:UITableViewController{
         return module_classification[section]
     }
 
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1.0
+    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 35
+    }
 
     
     

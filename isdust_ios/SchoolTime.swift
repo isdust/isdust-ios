@@ -12,16 +12,12 @@ class SchoolTime{
     static let D_DAY:Double = 86400
     static let D_WEEK:Double = 604800
 
-    static func gettodayweek()->Int{
+    static func getTodayZhoushu()->Int{
         var DateFormatter_input:Foundation.DateFormatter!
         DateFormatter_input=Foundation.DateFormatter()
         DateFormatter_input.dateFormat = "yyyyMMdd"
         var date_firstweek=DateFormatter_input.date(from: self.date_firstweek)!
         var date_today=Date()
-       // let calendar = Calendar.current
-        
-//        let components = calendar.components(.weekday, fromDate: date_firstweek, toDate: date_today)
-        
         let components=Calendar.current.dateComponents([.day], from: date_firstweek, to: date_today)
         let week=components.day!/7
         if(week<=0){
@@ -31,10 +27,14 @@ class SchoolTime{
             return 23
         }
         return week
-        
-        //var interval=
-        
-        
+    }
+    static func getTodayWeek()->Int{
+        var result = [0,7,1,2,3,4,5,6]
+        var date_today=Date()
+        let components=Calendar.current.dateComponents([.weekday], from: date_today)
+        let weekday=components.weekday!
+  
+        return result[weekday]
     }
     static func getdayarray(week:Int)->[String]{
         var result:[String]=[String]()
@@ -147,10 +147,18 @@ class SchoolTime{
         var date2:Date!=Date()
         DateFormatter_input.dateFormat = "yyyy/MM/dd HH:mm:ss"
         date1=DateFormatter_input.date(from: date)!
-        let components = Calendar.current.dateComponents([.day], from: date1, to: date2)
-        if(components.day==0){
+//        let components = Calendar.current.dateComponents([.day,.hour], from: date1, to: date2)
+        var component1=Calendar.current.dateComponents([.day,.month,.year], from: date1)
+        var component2=Calendar.current.dateComponents([.day,.month,.year], from: date2)
+        
+        let component_delta = Calendar.current.dateComponents([.day,.hour], from: date1, to: date2)
+        
+        let day1=component1.day!
+        let day2=component2.day!
+        //var a=components.hour
+        if(component1.day==component2.day&&component1.month==component2.month&&component1.year==component2.year){
             return "今天"
-        }else if(components.day==1){
+        }else if(component1.month==component2.month&&component1.year==component2.year&&((day2-day1==1))){
             return "昨天"
         }
         

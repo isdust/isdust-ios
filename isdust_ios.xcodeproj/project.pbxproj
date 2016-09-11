@@ -94,6 +94,8 @@
 		75CC0CB81D63F4930002E113 /* ToggleTorchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CC0CB11D63F4930002E113 /* ToggleTorchButton.swift */; };
 		75CC0CBA1D64110A0002E113 /* ViewLibraryStorageMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CC0CB91D64110A0002E113 /* ViewLibraryStorageMain.swift */; };
 		75E0E4651D6349F300EBA91C /* iphone6sp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75E0E4641D6349F300EBA91C /* iphone6sp.storyboard */; };
+		75F01B4D1D8501000089930A /* ScheduleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F01B4C1D8501000089930A /* ScheduleCard.swift */; };
+		75F29A691D83A0E8002903E7 /* Broadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F29A681D83A0E8002903E7 /* Broadcast.swift */; };
 		75F675EE1D490D58004164D0 /* EmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F675ED1D490D58004164D0 /* EmptyClassroom.swift */; };
 /* End PBXBuildFile section */
 
@@ -285,6 +287,8 @@
 		75CC0CB11D63F4930002E113 /* ToggleTorchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToggleTorchButton.swift; path = QRCodeReader/ToggleTorchButton.swift; sourceTree = "<group>"; };
 		75CC0CB91D64110A0002E113 /* ViewLibraryStorageMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLibraryStorageMain.swift; sourceTree = "<group>"; };
 		75E0E4641D6349F300EBA91C /* iphone6sp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iphone6sp.storyboard; path = View/iphone6sp.storyboard; sourceTree = "<group>"; };
+		75F01B4C1D8501000089930A /* ScheduleCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCard.swift; sourceTree = "<group>"; };
+		75F29A681D83A0E8002903E7 /* Broadcast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Broadcast.swift; sourceTree = "<group>"; };
 		75F675DC1D48FCB4004164D0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
 		75F675DE1D48FCE1004164D0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = lib/libssl.a; sourceTree = "<group>"; };
 		75F675E01D49015F004164D0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../OpenSSL-for-iPhone/lib/libcrypto.a"; sourceTree = "<group>"; };
@@ -472,6 +476,8 @@
 				751C35B81D4354B500A26D45 /* ViewMain.swift */,
 				754AE9581D7AB20800128384 /* AdBar.swift */,
 				752404DA1D80622500EAC659 /* ModuleCard.swift */,
+				75F29A681D83A0E8002903E7 /* Broadcast.swift */,
+				75F01B4C1D8501000089930A /* ScheduleCard.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -961,6 +967,7 @@
 				7521C5351D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift in Sources */,
 				75CC0CBA1D64110A0002E113 /* ViewLibraryStorageMain.swift in Sources */,
 				7544D4661D55E46D00642A2E /* ViewNetwork.swift in Sources */,
+				75F29A691D83A0E8002903E7 /* Broadcast.swift in Sources */,
 				75BBB6351D6E756100568333 /* ViewCourseCell.swift in Sources */,
 				75BBB6371D6E7A6E00568333 /* ViewControllerCourseDetail.swift in Sources */,
 				751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */,
@@ -975,6 +982,7 @@
 				751C35EB1D43551D00A26D45 /* Zhengfang.swift in Sources */,
 				75CC0CB41D63F4930002E113 /* QRCodeViewController.swift in Sources */,
 				75CC0CB21D63F4930002E113 /* QRCodeReader.swift in Sources */,
+				75F01B4D1D8501000089930A /* ScheduleCard.swift in Sources */,
 				753B87B01D68593400A0218C /* TableViewControllerSrorageSearchResult.swift in Sources */,
 				751C35E81D4354F600A26D45 /* Http.m in Sources */,
 				754AE9411D7A9C0A00128384 /* SDImageCache.m in Sources */,

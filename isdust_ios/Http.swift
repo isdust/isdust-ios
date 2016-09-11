@@ -16,6 +16,7 @@ class Http{
     var session:URLSession!
     var data_encoding:Int!
     init(){
+        //URLSessionConfiguration.init().connectionProxyDictionary
         session=URLSession.init(configuration: .default)
         data_encoding=0
     

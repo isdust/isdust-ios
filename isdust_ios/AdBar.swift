@@ -20,7 +20,7 @@ class AdBar:UIView,UIScrollViewDelegate{
     init(frame: CGRect,num:Int) {
         super.init(frame: frame)
         mScrollView=UIScrollView()
-        mScrollView.frame=CGRect.init(x: 0, y: 0, width: frame.width, height: frame.height)
+        mScrollView.frame=CGRect.init(x: 0, y: 0, width: frame.width, height: frame.size.height)
         mScrollView.bounces=false
         mScrollView.isPagingEnabled=true
         mScrollView.showsVerticalScrollIndicator=false
@@ -127,10 +127,13 @@ class AdBar:UIView,UIScrollViewDelegate{
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         //print(1)
         page_current=Int(mScrollView.bounds.origin.x/mScrollView.bounds.width)
-        if(page_current==num_image){
+        if(page_current>=num_image){
+      
             self.mScrollView.bounds.origin.x=0
         
         }
+        print(mScrollView.frame.height)
+        print(mUIImageView[0].frame.height)
         page_current=Int(mScrollView.bounds.origin.x/mScrollView.bounds.width)
         mUIPageControl.currentPage=page_current
         

@@ -16,6 +16,7 @@ class ModuleCard:UIView{
         //mviewcontroller=ModuleInterface.init()
         mviewcontroller=viewcontroller
         drawcell()
+        
     }
 
     func drawcell()  {
@@ -36,6 +37,8 @@ class ModuleCard:UIView{
             
             
         }
+        self.backgroundColor=UIColor.white
+        self.frame.size.height=CGFloat(mdata.count/num_horizon)*cell_height
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,7 +71,6 @@ class ModuleSingleCard:UIView{
         label_title.sizeToFit()
         
         label_title.frame=CGRect.init(x: (frame.size.width-label_title.frame.size.width)/2, y: image_icon.frame.origin.y+image_icon.frame.size.height, width: label_title.frame.size.width, height: 19.5)
-        //label_title.textColor=UIColor.init(red: <#T##CGFloat#>, green: <#T##CGFloat#>, blue: <#T##CGFloat#>, alpha: <#T##CGFloat#>)
         self.addSubview(image_icon)
         self.addSubview(label_title)
         let getsure=UITapGestureRecognizer.init(target: self, action: #selector(self.cardclick))

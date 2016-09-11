@@ -212,7 +212,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         return }
         isdraw=1
          schedule_table_all()
-        schedule_goto(week: SchoolTime.gettodayweek())
+        schedule_goto(week: SchoolTime.getTodayZhoushu())
     }
     
     @objc(scrollViewDidEndDecelerating:) func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
