@@ -93,7 +93,7 @@ class ViewSchoolCardMain: UIViewController,UITableViewDelegate, UITableViewDataS
         }        
         
         cell.label_deposit.text=purchase_detail[indexPath.row+record][4]
-        cell.label_balance.text=purchase_detail[indexPath.row+record][5]
+        cell.label_balance.text="￥"+purchase_detail[indexPath.row+record][5]
         cell.label_time_week.text=SchoolTime.date2day_card(date:purchase_detail[indexPath.row+record][0])
         cell.label_time_date.text=SchoolTime.date2time_card(date: purchase_detail[indexPath.row+record][0])
         cell.label_time_date.sizeToFit()

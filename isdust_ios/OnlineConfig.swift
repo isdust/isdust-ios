@@ -100,10 +100,16 @@ class OnlineConfig{
             var temp:AdInfo!
             
             var temp_md5:String!=(ad_array[i] as! NSDictionary)["md5"] as! String
-            var temp_image:UIImage=UIImage.init(data: UserDefaults.standard.data(forKey: "OnlineConfig_AD_"+temp_md5)!)!
+            var image_data=UserDefaults.standard.data(forKey: "OnlineConfig_AD_"+temp_md5)
+            var temp_image:UIImage!
+            if(image_data==nil){
+                temp_image=#imageLiteral(resourceName: "ad_default")
+            }else{
+                temp_image=UIImage.init(data: image_data!)!
+            }
             var temp_url:String=(ad_array[i] as! NSDictionary)["url"] as! String
             var temp_title:String=(ad_array[i] as! NSDictionary)["title"] as! String
-            temp=AdInfo.init(index: i, imagea: temp_image, title: temp_title, url: temp_url)
+            temp=AdInfo.init(index: i, imagea: temp_image!, title: temp_title, url: temp_url)
             result.append(temp)
             
             

@@ -38,7 +38,9 @@ class ModuleCard:UIView{
             
         }
         self.backgroundColor=UIColor.white
-        self.frame.size.height=CGFloat(mdata.count/num_horizon)*cell_height
+        print(mdata.count/num_horizon)
+        var line = mdata.count%num_horizon == 0 ? mdata.count/num_horizon:(mdata.count/num_horizon+1)
+        self.frame.size.height=CGFloat(line)*cell_height
     }
     
     required init?(coder aDecoder: NSCoder) {

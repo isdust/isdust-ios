@@ -41,7 +41,6 @@ class ViewMain: UIViewController,AdBarDelegate {
         for i in mAdInfo{
             mAdBar.load(info: i)
         }
-       // mAdBar.load(index: 0, imagea: #imageLiteral(resourceName: "ad_1"), title: "新生入校", url: "http://www.wzq.hk")
         mAdBar.delegate=self
         mscrollview.addSubview(mAdBar)
         
@@ -49,6 +48,8 @@ class ViewMain: UIViewController,AdBarDelegate {
         mframe=CGRect.init(x: 0, y: mframe.origin.y+mframe.size.height, width: width, height: 200)
         mModuleCard=ModuleCard.init(frame: mframe,viewcontroller:self)
         mscrollview.addSubview(mModuleCard)
+        
+        //print(mModuleCard.frame)
         
         
         

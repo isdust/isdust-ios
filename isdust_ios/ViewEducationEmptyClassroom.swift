@@ -80,9 +80,9 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
         case 0:
             return 50
         case 1:
-            return 55
+            return 60
         case 2:
-            return 85
+            return 60
         case 3:
             return 130
         default:

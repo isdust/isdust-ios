@@ -55,7 +55,7 @@ class AdBar:UIView,UIScrollViewDelegate{
             mUIImageView[i].frame=CGRect.init(x: frame.size.width*CGFloat(i), y: 0, width:frame.size.width , height: frame.size.height)
             mUIImageView[i].tag=i
             mUIImageView[i].contentMode = .scaleAspectFill
-            mUIImageView[i].image=#imageLiteral(resourceName: "test1")
+            mUIImageView[i].image=#imageLiteral(resourceName: "ad_default")
             mUIImageView[i].isUserInteractionEnabled=true
             let gesture = UITapGestureRecognizer(target: self, action: #selector(self.imageclick))
 

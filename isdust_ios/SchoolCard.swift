@@ -21,7 +21,7 @@ class SchoolCard{
     }
 
     var mPersonInfo:PersonInfo=PersonInfo()
-    let location="http://card.proxy.isdust.com:3100/"
+    let location="http://192.168.100.126/"
     var mhttp:Http
     var StandardPicture:[ImageProcess]=[ImageProcess]()
     var relation:[Int]=[Int]()//密码映射关系
@@ -41,6 +41,7 @@ class SchoolCard{
     //var PersonInfo:[String]=[String]()
     init(){
         mhttp=Http()
+        mhttp.setproxy(host: "139.129.133.235", port: 3000)
         for i in 0 ..< 10{
             var temp=ImageProcess()
             temp.loadimage(UIImage(named:"yzm"+String(i)+".png")!)

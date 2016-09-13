@@ -10,8 +10,8 @@ import Foundation
 
 class Zhengfang{
     var mhttp:Http
-    let location_zhengfang="http://1.zf.proxy.isdust.com:3100/"
-    let location_xuanke="http://xuanke.proxy.isdust.com:3100/"
+    let location_zhengfang="http://192.168.109.58/"
+    let location_xuanke="http://192.168.109.142/"
     var url_xuanke:String=""
     var url_chengji:String=""
     var method_score_lookup:String=""
@@ -19,6 +19,7 @@ class Zhengfang{
     init(){
         method_score_lookup="xuanke"
         mhttp=Http();
+        mhttp.setproxy(host: "139.129.133.235", port: 3000)
         mhttp.setencoding(1);
     }
     
@@ -51,7 +52,7 @@ class Zhengfang{
             text_web=try mhttp.get(url_login_zhengfang)
             url_xuanke=try mhttp.getMiddleText(text_web, "信息员意见反馈</a></li><li><a href=\"", "\" target='zhuti' onclick=\"GetMc('激活选课平台帐户');");
             url_xuanke=location_zhengfang+url_xuanke;
-            url_xuanke=url_xuanke.replacingOccurrences(of: "192.168.109.142", with: "xuanke.proxy.isdust.com:3100")
+            //url_xuanke=url_xuanke.replacingOccurrences(of: "192.168.109.142", with: "xuanke.proxy.isdust.com:3100")
             if(text_web.contains("个人成绩查询")==true){
                 url_chengji=try mhttp.getMiddleText(text_web,"学生个人课表</a></li><li><a href=\"","\" target='zhuti' onclick=\"GetMc('个人成绩查询');\">")
                 url_chengji=location_zhengfang+url_chengji

@@ -18,8 +18,27 @@ class Http{
     init(){
         //URLSessionConfiguration.init().connectionProxyDictionary
         session=URLSession.init(configuration: .default)
+        
         data_encoding=0
     
+    }
+    func setproxy(host:String,port:Int) {
+        let dict: [NSObject:AnyObject] = [
+            kCFNetworkProxiesHTTPEnable as NSString : NSNumber(value: 1) as NSNumber,
+            kCFStreamPropertyHTTPProxyPort : port as AnyObject,
+            kCFStreamPropertyHTTPProxyHost : host as AnyObject,
+            
+            
+//            kCFNetworkProxiesHTTPSEnable as NSString : true,
+            kCFStreamPropertyHTTPSProxyPort : port as AnyObject,
+            kCFStreamPropertyHTTPSProxyHost : host as AnyObject
+            
+            
+            
+        ]
+        var temp=session.configuration
+        temp.connectionProxyDictionary=dict
+        session=URLSession.init(configuration: temp)
     }
     func setencoding(_ num:Int) {
         data_encoding=num
