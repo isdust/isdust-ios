@@ -104,7 +104,7 @@ class Http{
         return str
         
     }
-    func get_picture(_ url:String) throws  -> UIImage {
+    func get_picture(_ url:String) throws  -> UIImage? {
         let murl=URL.init(string: url)!
         let sem=DispatchSemaphore.init(value: 0)
         var result:Data!
@@ -120,7 +120,7 @@ class Http{
         if result==nil{
             throw IsdustError.Network
         }
-        let image=UIImage.init(data: result)!
+        let image=UIImage.init(data: result)
         return image
     }
     func getMiddleText(_ text:String,_ start:String,_ end:String) throws -> String {

@@ -12,8 +12,8 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
     var isdraw=0
 
     var serialQueue:DispatchQueue!
-    var info_year="2016-2017"
-    var info_semester="1"
+    var info_year:String=OnlineConfig.get(key: "schedule_xuenian")
+    var info_semester:String=OnlineConfig.get(key: "schedule_xueqi")
     var manager=ScheduleManage()
     
     @IBAction func testa(_ sender: AnyObject) {

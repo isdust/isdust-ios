@@ -7,6 +7,20 @@
 //
 
 import Foundation
+struct AdInfo{
+    var mindex:Int!
+    var mimage:UIImage!
+    var mtitle:String!
+    var murl:String!
+    init(index:Int,imagea:UIImage,title:String,url:String){
+        mindex=index
+        mimage=imagea
+        mtitle=title
+        murl=url
+        
+    }
+
+}
 class AdBar:UIView,UIScrollViewDelegate{
     var mScrollView:UIScrollView!
     var num_image:Int!
@@ -78,6 +92,14 @@ class AdBar:UIView,UIScrollViewDelegate{
         urls[index]=url
         if(index==0){
             image_end.image=imagea
+        }
+    }
+    func load(info:AdInfo) {
+        mUIImageView[info.mindex].image=info.mimage
+        titles[info.mindex]=info.mtitle
+        urls[info.mindex]=info.murl
+        if(info.mindex==0){
+            image_end.image=info.mimage
         }
     }
     func imageclick(_ sender:UITapGestureRecognizer) {

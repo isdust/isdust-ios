@@ -102,7 +102,7 @@ class SchoolCard{
     }
     func login(_ username:String,password:String)throws -> String {
         
-     try recognize(mhttp.get_picture(location+"getpasswdPhoto.action"))
+     try recognize(mhttp.get_picture(location+"getpasswdPhoto.action")!)
         try mhttp.get_picture(location+"getCheckpic.action?rand=6520.280869641985");
         mhttp.setencoding(1)
         var mpassword=translate(password);
@@ -240,7 +240,7 @@ class SchoolCard{
         if(identity != mPersonInfo.identity){
             return "身份证号码错误"
         }
-        try!recognize(try mhttp.get_picture(location+"getpasswdPhoto.action"))
+        try!recognize(try mhttp.get_picture(location+"getpasswdPhoto.action")!)
         let moldpassword=translate(oldpassword)
         let mnewpassword=translate(newpassword)
         let submit="account=" +  mPersonInfo.id + "&passwd=" + moldpassword + "&newpasswd="+mnewpassword + "&newpasswd2=" + mnewpassword
@@ -260,7 +260,7 @@ class SchoolCard{
         if(identity != mPersonInfo.identity){
             return "身份证号码错误"
         }
-        try!recognize(try mhttp.get_picture(location+"getpasswdPhoto.action"))
+        try!recognize(try mhttp.get_picture(location+"getpasswdPhoto.action")!)
         let mpassword=translate(password)
         let submit="account=" + mPersonInfo.id + "&passwd=" + mpassword
         let text_web=try mhttp.post(location+"accountDoLoss.action",submit)

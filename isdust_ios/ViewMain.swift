@@ -18,7 +18,8 @@ class ViewMain: UIViewController,AdBarDelegate {
     
     override func viewDidLoad() {
         var a=SchoolTime.getTodayWeek()
-        
+        OnlineConfig.update()
+        OnlineConfig.downloadad()
         super.viewDidLoad()
     }
     
@@ -34,8 +35,13 @@ class ViewMain: UIViewController,AdBarDelegate {
         
         
         //广告
-        mAdBar=AdBar.init(frame: mframe, num: 2)
-        mAdBar.load(index: 0, imagea: #imageLiteral(resourceName: "ad_1"), title: "新生入校", url: "http://www.wzq.hk")
+        let mAdInfo=OnlineConfig.getad()
+        mAdBar=AdBar.init(frame: mframe, num: mAdInfo.count)
+        
+        for i in mAdInfo{
+            mAdBar.load(info: i)
+        }
+       // mAdBar.load(index: 0, imagea: #imageLiteral(resourceName: "ad_1"), title: "新生入校", url: "http://www.wzq.hk")
         mAdBar.delegate=self
         mscrollview.addSubview(mAdBar)
         
@@ -50,7 +56,7 @@ class ViewMain: UIViewController,AdBarDelegate {
         mframe=CGRect.init(x: 0, y: mModuleCard.frame.origin.y+mModuleCard.frame.size.height+20, width: width, height: 80)
 
         mBroadcast=Broadcast.init(frame: mframe)
-        mBroadcast.setContent(content: "此版本为爱山科ios版本测试版，仍然还有一些未知的bug，遇见后在关于->意见反馈提交")
+        mBroadcast.setContent(content: OnlineConfig.get(key: "system_broadcast"))
         mscrollview.addSubview(mBroadcast)
         
         //今日课程表
