@@ -26,7 +26,7 @@ class SchoolTime{
         if(week>23){
             return 23
         }
-        return week
+        return week+1
     }
     static func getTodayWeek()->Int{
         var result = [0,7,1,2,3,4,5,6]
