@@ -23,10 +23,21 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         }
     }
     @IBAction func button_menu_click(_ sender: AnyObject) {
-        let menuArray:[AnyObject] = [
+        var menuArray:[AnyObject] = [
             KxMenuItem.init("添加课程", image: UIImage(named: "item_key"), target: self, action:#selector(ViewControllerEducationSchedule.menu_addcourse)),
             KxMenuItem.init("重新加载课程", image: UIImage(named: "item_heartbroken"), target: self, action: #selector(ViewControllerEducationSchedule.menu_reload)),
         ]
+        
+        let key_user="zhengfang_user"
+        let key_password="zhengfang_password"
+//        mscheduledelegate=delegate
+        let temp_user = UserDefaults.standard.string(forKey: key_user)
+        let temp_password = UserDefaults.standard.string(forKey: key_password)
+        if((temp_user==""||temp_user==nil||temp_password==""||temp_password==nil)==false){
+            menuArray.append(
+                KxMenuItem.init("注销", image: UIImage(named: "item_logout"), target: self, action: #selector(self.logout))
+            )
+        }
         
         //配置一：基础配置
         KxMenu.setTitleFont(UIFont(name: "HelveticaNeue", size: 15))
@@ -49,6 +60,26 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         a?.size.width*=2
         a?.size.width-=60
         KxMenu.show(in: self.navigationController?.view, from: a!, menuItems:menuArray, withOptions: options)
+    }
+    func logout(){
+        
+        
+        
+        let alertController = UIAlertController(title: "提示", message: "确定注销正方账号?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            let key_user="zhengfang_user"
+            let key_password="zhengfang_password"
+            UserDefaults.standard.set("", forKey:key_password)
+//            self.navigationController?.popViewController(animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     func menu_addcourse() {
         self.performSegue(withIdentifier: "CourseEditAdd", sender: nil)

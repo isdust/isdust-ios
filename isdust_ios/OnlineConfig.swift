@@ -21,9 +21,6 @@ class OnlineConfig{
             current_config=localstorage
         }
         var data = current_config.data(using: String.Encoding.utf8) //data  是json格式字符串
-        
-        
-
         do{
             json = try? JSONSerialization.jsonObject(with: data!) as! NSDictionary
             let temp=json?.object(forKey: "install")
@@ -49,6 +46,7 @@ class OnlineConfig{
             }
         }
         catch{
+            load()
             return
         }
         UserDefaults.standard.set(remote_config, forKey: "OnlineConfig")

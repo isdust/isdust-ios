@@ -9,7 +9,7 @@
 import Foundation
 
 class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITableViewDelegate, UITableViewDataSource {
-    let data_building:[String]=["J1", "Js1","J3","J5","J7","J11","J14","J15"]
+    let data_building:[String]=["J1","Js1","J3","J5","J7","J11","J14","J15"]
     var data_schooldate:[String] = [String]()
     let data_week:[String]=["周一", "周二","周三","周四","周五","周六","周日"]
     let data_jici:[String]=["第一、二节", "第三、四节","第五、六节","第七、八节","第九、十节"]
@@ -25,7 +25,9 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
     var memptyclassroom=EmptyClassroom()
     
     @IBAction func button_search(_ sender: AnyObject) {
-        thread_building=data_building[picker_data.selectedRow(inComponent: 0)]
+        let number_building:Int=picker_data.selectedRow(inComponent: 0)
+        thread_building=data_building[number_building]
+        UserDefaults.standard.set(number_building, forKey: "emptyclassroom_building")
         thread_schooldate=picker_data.selectedRow(inComponent: 1)+1
         thread_week=picker_data.selectedRow(inComponent: 2)+1
         thread_jieci=picker_data.selectedRow(inComponent: 3)+1
@@ -166,9 +168,22 @@ class ViewEducationEmptyClassroom: UIViewController,UIPickerViewDelegate,UIPicke
         for i in 1..<22{
             data_schooldate.append(String(i)+"周")
         }
+        var building_number=UserDefaults.standard.integer(forKey: "emptyclassroom_building")
         picker_data.reloadAllComponents()
+        if((building_number<0||building_number>=data_building.count||building_number==nil)==false){
+            picker_data.selectRow(building_number, inComponent: 0, animated: true)
+
+        
+        }
+        picker_data.selectRow(SchoolTime.getTodayZhoushu()-1, inComponent: 1, animated: true)
+        picker_data.selectRow(SchoolTime.getTodayWeek()-1, inComponent: 2, animated: true)
+        //
+
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

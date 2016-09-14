@@ -14,6 +14,34 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var textfield_Averagejidian: UILabel!
     
     @IBOutlet weak var textfield_Totaljidian: UILabel!
+    
+    @IBAction func button_plus(_ sender: AnyObject) {
+        let menuArray:[AnyObject] = [
+            KxMenuItem.init("注销", image: UIImage(named: "item_logout"), target: self, action:#selector(self.logout))
+            ]
+        
+        //配置一：基础配置
+        KxMenu.setTitleFont(UIFont(name: "HelveticaNeue", size: 15))
+        
+        //配置二：拓展配置
+        let options = OptionalConfiguration(arrowSize: 9,  //指示箭头大小
+            marginXSpacing: 7,  //MenuItem左右边距
+            marginYSpacing: 9,  //MenuItem上下边距
+            intervalSpacing: 25,  //MenuItemImage与MenuItemTitle的间距
+            menuCornerRadius: 6.5,  //菜单圆角半径
+            maskToBackground: true,  //是否添加覆盖在原View上的半透明遮罩
+            shadowOfMenu: false,  //是否添加菜单阴影
+            hasSeperatorLine: true,  //是否设置分割线
+            seperatorLineHasInsets: false,  //是否在分割线两侧留下Insets
+            textColor: Color(R: 0, G: 0, B: 0),  //menuItem字体颜色
+            menuBackgroundColor: Color(R: 1, G: 1, B: 1)  //菜单的底色
+        )
+        var a=self.navigationController?.view.frame
+        a?.size.height=60
+        a?.size.width*=2
+        a?.size.width-=60
+        KxMenu.show(in: self.navigationController?.view, from: a!, menuItems:menuArray, withOptions: options)
+    }
     var mzhengfang:Zhengfang!
     var serialQueue:DispatchQueue!
     var score_section:[String]=[String]()
@@ -151,6 +179,26 @@ class ViewEducationScore: UIViewController,UITableViewDelegate, UITableViewDataS
                 
             }
             print(aSelector)}
+    }
+    func logout(){
+
+        
+        
+        let alertController = UIAlertController(title: "提示", message: "确定注销正方账号?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "确定", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            let key_user="zhengfang_user"
+            let key_password="zhengfang_password"
+            UserDefaults.standard.set("", forKey:key_password)
+            self.navigationController?.popViewController(animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
 
 

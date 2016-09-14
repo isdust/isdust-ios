@@ -10,8 +10,10 @@ import Foundation
 class Broadcast:UIView{
     var label_info:UILabel!
     var image_item:UIImageView!
+    var frame_backup:CGRect!
     override init(frame: CGRect) {
         super.init(frame: frame)
+        frame_backup=frame
         draw()
         
     }
@@ -47,6 +49,12 @@ class Broadcast:UIView{
     func setContent(content:String) {
         label_info.text=content
         label_info.sizeToFit()
+        print(label_info.frame.height)
+        if(label_info.frame.height>28.6){
+            frame.size.height=frame_backup.height+label_info.frame.height-28.6
+
+        
+        }
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
