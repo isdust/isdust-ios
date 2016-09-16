@@ -7,7 +7,14 @@
 //
 
 import UIKit
-class ViewMain: UIViewController,AdBarDelegate {
+import MessageUI
+
+class ViewMain: UIViewController,AdBarDelegate,MFMessageComposeViewControllerDelegate {
+    @available(iOS 4.0, *)
+    public func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        self.dismiss(animated: true, completion: nil)
+        print(result)
+    }
     var isdraw=0
     var mAdBar:AdBar!
     var mModuleCard:ModuleCard!
@@ -17,9 +24,15 @@ class ViewMain: UIViewController,AdBarDelegate {
     @IBOutlet weak var mscrollview: UIScrollView!
     
     override func viewDidLoad() {
-        var a=SchoolTime.getTodayWeek()
+        //var a=NetworkJudge.fetchSSIDInfo()
         OnlineConfig.update()
         OnlineConfig.downloadad()
+        
+        NetworkJudge.cmcc_judge()
+        var a=NetworkCMCC()
+        //try? a.first_login(user: "1501060225", password: "960826wang")
+        //try?a.second_init()
+        //try?a.second_login(user: "15762284638", password: "741852")
         super.viewDidLoad()
     }
     
@@ -27,6 +40,22 @@ class ViewMain: UIViewController,AdBarDelegate {
         if(isdraw==1){
             return
         }
+        
+        //var a=NetworkCMCC()
+        //a.setcontroller(viewcontroller: self)
+        //a.second_changepass()
+ //*/
+        /*
+        var smscontroller = MFMessageComposeViewController.init()
+        smscontroller.body = "806"
+        smscontroller.recipients=["10086"]
+        smscontroller.messageComposeDelegate = self
+        //controller.action
+        if MFMessageComposeViewController.canSendText() {
+            self.present(smscontroller, animated: true, completion: nil)
+        }
+        */
+        
         isdraw=1
         mscrollview.contentSize=view.frame.size
         mscrollview.backgroundColor=UIColor.init(red: 236/255, green: 235/255, blue: 241/255, alpha: 1)

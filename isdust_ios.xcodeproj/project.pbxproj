@@ -13,7 +13,6 @@
 		750A197D1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A197C1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift */; };
 		7512AC401D7CECE900683233 /* ViewWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512AC3F1D7CECE900683233 /* ViewWeb.swift */; };
 		7512AC491D7D7B8900683233 /* ViewSchoolLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512AC481D7D7B8900683233 /* ViewSchoolLife.swift */; };
-		7512AC511D7EA1EF00683233 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512AC501D7EA1EF00683233 /* Base.swift */; };
 		751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B61D4354B500A26D45 /* AppDelegate.swift */; };
 		751C35B91D4354B500A26D45 /* ViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B81D4354B500A26D45 /* ViewMain.swift */; };
 		751C35BC1D4354B500A26D45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751C35BA1D4354B500A26D45 /* Main.storyboard */; };
@@ -21,7 +20,6 @@
 		751C35C11D4354B500A26D45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751C35BF1D4354B500A26D45 /* LaunchScreen.storyboard */; };
 		751C35CC1D4354B500A26D45 /* isdust_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35CB1D4354B500A26D45 /* isdust_iosTests.swift */; };
 		751C35D71D4354B500A26D45 /* isdust_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35D61D4354B500A26D45 /* isdust_iosUITests.swift */; };
-		751C35E81D4354F600A26D45 /* Http.m in Sources */ = {isa = PBXBuildFile; fileRef = 751C35E71D4354F600A26D45 /* Http.m */; };
 		751C35EB1D43551D00A26D45 /* Zhengfang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35EA1D43551D00A26D45 /* Zhengfang.swift */; };
 		751C35EE1D44383900A26D45 /* DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35ED1D44383900A26D45 /* DataType.swift */; };
 		751C35F01D4446E900A26D45 /* SchoolCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35EF1D4446E900A26D45 /* SchoolCard.swift */; };
@@ -80,6 +78,9 @@
 		75AF0A4C1D6C91D900E755C2 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AF0A491D6C91CD00E755C2 /* FMDB.framework */; };
 		75B399691D55D263009C8951 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B399611D55CD8F009C8951 /* libcrypto.a */; };
 		75B3996A1D55D263009C8951 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B399621D55CD8F009C8951 /* libssl.a */; };
+		75BAC3FD1D8B9490005A33B2 /* NetworkCMCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BAC3FC1D8B9490005A33B2 /* NetworkCMCC.swift */; };
+		75BAC3FF1D8B9576005A33B2 /* NetworkJudge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BAC3FE1D8B9576005A33B2 /* NetworkJudge.swift */; };
+		75BAC4011D8BD305005A33B2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BAC4001D8BD305005A33B2 /* Common.swift */; };
 		75BBB6351D6E756100568333 /* ViewCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BBB6341D6E756100568333 /* ViewCourseCell.swift */; };
 		75BBB6371D6E7A6E00568333 /* ViewControllerCourseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BBB6361D6E7A6E00568333 /* ViewControllerCourseDetail.swift */; };
 		75BBB6391D6E7E2900568333 /* SchoolTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BBB6381D6E7E2900568333 /* SchoolTime.swift */; };
@@ -166,7 +167,6 @@
 		750A197C1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerEducationSchedule.swift; sourceTree = "<group>"; };
 		7512AC3F1D7CECE900683233 /* ViewWeb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWeb.swift; sourceTree = "<group>"; };
 		7512AC481D7D7B8900683233 /* ViewSchoolLife.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolLife.swift; sourceTree = "<group>"; };
-		7512AC501D7EA1EF00683233 /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		751C35B31D4354B500A26D45 /* isdust_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = isdust_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		751C35B61D4354B500A26D45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		751C35B81D4354B500A26D45 /* ViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMain.swift; sourceTree = "<group>"; };
@@ -180,9 +180,7 @@
 		751C35D21D4354B500A26D45 /* isdust_iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = isdust_iosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		751C35D61D4354B500A26D45 /* isdust_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = isdust_iosUITests.swift; sourceTree = "<group>"; };
 		751C35D81D4354B500A26D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		751C35E51D4354DF00A26D45 /* Http.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Http.h; sourceTree = "<group>"; };
 		751C35E61D4354F500A26D45 /* isdust_ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "isdust_ios-Bridging-Header.h"; sourceTree = "<group>"; };
-		751C35E71D4354F600A26D45 /* Http.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Http.m; sourceTree = "<group>"; };
 		751C35EA1D43551D00A26D45 /* Zhengfang.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zhengfang.swift; sourceTree = "<group>"; };
 		751C35ED1D44383900A26D45 /* DataType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataType.swift; sourceTree = "<group>"; };
 		751C35EF1D4446E900A26D45 /* SchoolCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolCard.swift; sourceTree = "<group>"; };
@@ -274,6 +272,9 @@
 		75AF0A371D6C91CD00E755C2 /* fmdb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = fmdb.xcodeproj; path = isdust_ios/fmdb/fmdb.xcodeproj; sourceTree = "<group>"; };
 		75B399611D55CD8F009C8951 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = isdust_ios/openssl/x86/libcrypto.a; sourceTree = "<group>"; };
 		75B399621D55CD8F009C8951 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = isdust_ios/openssl/x86/libssl.a; sourceTree = "<group>"; };
+		75BAC3FC1D8B9490005A33B2 /* NetworkCMCC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCMCC.swift; sourceTree = "<group>"; };
+		75BAC3FE1D8B9576005A33B2 /* NetworkJudge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkJudge.swift; sourceTree = "<group>"; };
+		75BAC4001D8BD305005A33B2 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		75BBB6341D6E756100568333 /* ViewCourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCourseCell.swift; sourceTree = "<group>"; };
 		75BBB6361D6E7A6E00568333 /* ViewControllerCourseDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerCourseDetail.swift; sourceTree = "<group>"; };
 		75BBB6381D6E7E2900568333 /* SchoolTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolTime.swift; sourceTree = "<group>"; };
@@ -401,7 +402,6 @@
 		751C35E91D43551000A26D45 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				751C35E51D4354DF00A26D45 /* Http.h */,
 				75F675EC1D4905F0004164D0 /* base64.h */,
 				751C35E61D4354F500A26D45 /* isdust_ios-Bridging-Header.h */,
 				75985B2B1D46784600388278 /* rsa.c */,
@@ -413,10 +413,11 @@
 				7521C52D1D4A5CFB001E0CC0 /* Library.swift */,
 				75AB61BE1D6C86360047D4F4 /* ScheduleManage.swift */,
 				75BBB6381D6E7E2900568333 /* SchoolTime.swift */,
-				751C35E71D4354F600A26D45 /* Http.m */,
 				753D62F51D75E43000253990 /* Http.swift */,
-				7512AC501D7EA1EF00683233 /* Base.swift */,
 				75F01B541D85A11E0089930A /* OnlineConfig.swift */,
+				75BAC3FC1D8B9490005A33B2 /* NetworkCMCC.swift */,
+				75BAC3FE1D8B9576005A33B2 /* NetworkJudge.swift */,
+				75BAC4001D8BD305005A33B2 /* Common.swift */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -922,6 +923,7 @@
 				754AE94E1D7A9C0A00128384 /* UIView+WebCacheOperation.m in Sources */,
 				754AE9481D7A9C0A00128384 /* UIButton+WebCache.m in Sources */,
 				75A0D51D1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift in Sources */,
+				75BAC3FD1D8B9490005A33B2 /* NetworkCMCC.swift in Sources */,
 				753B87B81D694B5C00A0218C /* ViewControllerLibraryPersonal.swift in Sources */,
 				75CC0CB81D63F4930002E113 /* ToggleTorchButton.swift in Sources */,
 				7521C5341D4AF459001E0CC0 /* SWXMLHash.swift in Sources */,
@@ -959,9 +961,9 @@
 				75CC0CB31D63F4930002E113 /* QRCodeReaderResult.swift in Sources */,
 				75BBB6391D6E7E2900568333 /* SchoolTime.swift in Sources */,
 				750A197B1D6955D9006E619E /* TableViewCellBorrowedBook.swift in Sources */,
-				7512AC511D7EA1EF00683233 /* Base.swift in Sources */,
 				75985B2D1D46784600388278 /* rsa.c in Sources */,
 				7578EAFC1D52491600F0A538 /* SVProgressAnimatedView.m in Sources */,
+				75BAC4011D8BD305005A33B2 /* Common.swift in Sources */,
 				754AE9491D7A9C0A00128384 /* UIImage+GIF.m in Sources */,
 				7512AC401D7CECE900683233 /* ViewWeb.swift in Sources */,
 				754AE94B1D7A9C0A00128384 /* UIImage+WebP.m in Sources */,
@@ -988,7 +990,7 @@
 				75CC0CB21D63F4930002E113 /* QRCodeReader.swift in Sources */,
 				75F01B4D1D8501000089930A /* ScheduleCard.swift in Sources */,
 				753B87B01D68593400A0218C /* TableViewControllerSrorageSearchResult.swift in Sources */,
-				751C35E81D4354F600A26D45 /* Http.m in Sources */,
+				75BAC3FF1D8B9576005A33B2 /* NetworkJudge.swift in Sources */,
 				754AE9411D7A9C0A00128384 /* SDImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1139,7 +1141,7 @@
 				ENABLE_BITCODE = NO;
 				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/wzq/项目/isdust_ios/isdust_ios/include/**";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1167,7 +1169,7 @@
 				ENABLE_BITCODE = NO;
 				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/wzq/项目/isdust_ios/isdust_ios/include";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

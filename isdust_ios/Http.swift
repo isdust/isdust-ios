@@ -9,6 +9,7 @@
 import Foundation
 enum IsdustError: Error {
     case Network
+    case Decode
     
 }
 class Http{
@@ -75,7 +76,11 @@ class Http{
         default:
             break
         }
-        let str:String=NSString.init(data: result, encoding: enc2)! as String
+        var data_output=NSString.init(data: result, encoding: enc2)
+        if(data_output==nil){
+            throw IsdustError.Decode
+        }
+        let str:String = data_output as! String
         return str
         
     }
@@ -142,18 +147,7 @@ class Http{
         let image=UIImage.init(data: result)
         return image
     }
-    func getMiddleText(_ text:String,_ start:String,_ end:String) throws -> String {
-        let range_start=(text as NSString).range(of: start)
-        
-        
-        let range_end=((text as NSString).substring(from: range_start.length+range_start.location)as NSString).range(of: end)
-        
-        let range_result=NSRange.init(location: range_start.length+range_start.location, length: range_end.location)
-        
-        var result=try (text as NSString).substring(with: range_result) as String!
-        return result!
-        
-    }
+
     func urlencode(_ encoding:String) -> String {
         var enc2:UInt!
         switch data_encoding {

@@ -195,7 +195,7 @@ class SchoolCard{
             result.append(temp)
             
         }
-        page_total = Int(try mhttp.getMiddleText(text, "&nbsp;&nbsp;共", "页&nbsp;&nbsp;"))!;
+        page_total = Int(try getMiddleText(text, "&nbsp;&nbsp;共", "页&nbsp;&nbsp;"))!;
         return result
         
         

@@ -109,7 +109,7 @@ class Library{
     }
     func renew_all() throws -> String {
         var text_web=try mhttp.post("http://interlib.sdust.edu.cn/opac/loan/doRenew","furl=%2Fopac%2Floan%2FrenewList&renewAll=all" )
-        var content=try mhttp.getMiddleText(text_web, "<div style=\"margin:20px auto; width:50%; height:auto!important; min-height:200px; border:2px dashed #ccc;\">", "<input")
+        var content=try getMiddleText(text_web, "<div style=\"margin:20px auto; width:50%; height:auto!important; min-height:200px; border:2px dashed #ccc;\">", "<input")
         
         content=content.replacingOccurrences(of: "\t", with: "")
         content=content.replacingOccurrences(of: "\n", with: "")
@@ -135,9 +135,9 @@ class Library{
     }
     func AnalyzeStorage(text:String) throws -> [[String]] {
         var result:[[String]] = [[String]] ()
-        let temp:String = try mhttp.getMiddleText(text,"[{\"","}]")
+        let temp:String = try getMiddleText(text,"[{\"","}]")
         var raw_bookinfo = "[{\"" + temp + "}]"
-        var raw_borrowinfo = try mhttp.getMiddleText(text,"{\"loanWorkMap\":",",\"holdingList");
+        var raw_borrowinfo = try getMiddleText(text,"{\"loanWorkMap\":",",\"holdingList");
         
         let data = raw_bookinfo.data(using: String.Encoding.utf8) //data  是json格式字符串
         let json = try? JSONSerialization.jsonObject(with: data!)
@@ -195,11 +195,11 @@ class Library{
             book_name=book_name.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "\r", with: "").replacingOccurrences(of: "\t", with: "")
             var temp_book=Book()
             temp_book.name=book_name
-            temp_book.writer=try mhttp.getMiddleText(text_all, "?searchWay=author&q=", "\" target=\"_blank\"> ")
-            temp_book.publisher=try mhttp.getMiddleText(text_all,  "?searchWay=publisher&q=", "\" target=\"_blank\"> ")
-            temp_book.publishedday=try mhttp.getMiddleText(text_all, "出版日期: ","</div>").replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "\r", with: "").replacingOccurrences(of: "\t",with: "")
-            temp_book.bookrecno=try mhttp.getMiddleText(text_all,  "express_bookrecno=\"", "\" express_isbn=")
-            temp_book.ISBN=try mhttp.getMiddleText(text_all, "express_isbn=\"", "\" express_bookmeta_").replacingOccurrences(of: "-", with: "")
+            temp_book.writer=try getMiddleText(text_all, "?searchWay=author&q=", "\" target=\"_blank\"> ")
+            temp_book.publisher=try getMiddleText(text_all,  "?searchWay=publisher&q=", "\" target=\"_blank\"> ")
+            temp_book.publishedday=try getMiddleText(text_all, "出版日期: ","</div>").replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "\r", with: "").replacingOccurrences(of: "\t",with: "")
+            temp_book.bookrecno=try getMiddleText(text_all,  "express_bookrecno=\"", "\" express_isbn=")
+            temp_book.ISBN=try getMiddleText(text_all, "express_isbn=\"", "\" express_bookmeta_").replacingOccurrences(of: "-", with: "")
              url_suoshuhao+=temp_book.bookrecno+",";
             result.append(temp_book)
             

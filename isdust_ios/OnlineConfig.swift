@@ -9,7 +9,7 @@
 import Foundation
 class OnlineConfig{
     static let version_current:Int=1
-    static let default_config:String="{    \"schedule_xuenian\": \"2016-2017\",    \"schedule_xueqi\": \"1\",    \"system_broadcast\": \"1.学校快通服务器已经崩溃，请去J1圈存机操作\n2.iOS版爱山科即将发布，敬请期待\n---WZQ\",    \"school_date\": \"2016-09-0500: 00: 00\",    \"advertisement\": [        {            \"title\": \"新生入校\",            \"image\": \"http: //app.isdust.com/ad/ad1.jpg\",            \"url\": \"http: //www.wzq.hk\"        }    ],    \"install\": \"true\"}"
+    static let default_config:String="{ \"schedule_xuenian\": \"2016-2017\", \"schedule_xueqi\": \"1\", \"system_broadcast\": \"1.学校快通服务器已经崩溃，请去J1圈存机操作\n2.iOS版爱山科即将发布，敬请期待\n ---WZQ\", \"school_date\": \"2016-09-0500: 00: 00\", \"advertisement\": [ { \"title\": \"新生入校\", \"image\": \"http://app.isdust.com/ad/ad1.jpg\", \"url\": \"http://www.wzq.hk\", \"md5\": \"ec829323ca2d001eacdcf3cb24c4b2b7\" } ], \"install\": \"true\" }"
     static var current_config:String!
     static var json:NSDictionary!
     static var mhttp:Http=Http()
