@@ -28,8 +28,8 @@ class ViewMain: UIViewController,AdBarDelegate,MFMessageComposeViewControllerDel
         OnlineConfig.update()
         OnlineConfig.downloadad()
         
-        NetworkJudge.cmcc_judge()
-        var a=NetworkCMCC()
+//        NetworkJudge.cmcc_judge()
+//        var a=NetworkCMCC()
         //try? a.first_login(user: "1501060225", password: "960826wang")
         //try?a.second_init()
         //try?a.second_login(user: "15762284638", password: "741852")

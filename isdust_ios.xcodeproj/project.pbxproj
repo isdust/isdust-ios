@@ -61,6 +61,11 @@
 		754AE94E1D7A9C0A00128384 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 754AE93E1D7A9C0A00128384 /* UIView+WebCacheOperation.m */; };
 		754AE9511D7AA22400128384 /* placeHoder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 754AE9501D7AA22400128384 /* placeHoder.jpg */; };
 		754AE9591D7AB20800128384 /* AdBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AE9581D7AB20800128384 /* AdBar.swift */; };
+		756EF8611D90FDB8009B78BF /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756EF8601D90FDB8009B78BF /* UMMobClick.framework */; };
+		756EF8691D90FE00009B78BF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756EF8681D90FE00009B78BF /* CoreTelephony.framework */; };
+		756EF86B1D90FE15009B78BF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 756EF86A1D90FE15009B78BF /* libz.tbd */; };
+		756EF86C1D90FE2F009B78BF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7591573A1D6C8B2800EF9023 /* libsqlite3.0.tbd */; };
+		756EF86E1D91032D009B78BF /* ViewCMCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756EF86D1D91032D009B78BF /* ViewCMCC.swift */; };
 		757530201D80E3D20005EAC2 /* ModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7575301F1D80E3D20005EAC2 /* ModuleInterface.swift */; };
 		7578EAFB1D52491600F0A538 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAF21D52491600F0A538 /* SVIndefiniteAnimatedView.m */; };
 		7578EAFC1D52491600F0A538 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAF41D52491600F0A538 /* SVProgressAnimatedView.m */; };
@@ -246,6 +251,10 @@
 		754AE93E1D7A9C0A00128384 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "AdView/SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		754AE9501D7AA22400128384 /* placeHoder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeHoder.jpg; sourceTree = "<group>"; };
 		754AE9581D7AB20800128384 /* AdBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdBar.swift; sourceTree = "<group>"; };
+		756EF8601D90FDB8009B78BF /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMMobClick.framework; path = isdust_ios/UMMobClick.framework; sourceTree = "<group>"; };
+		756EF8681D90FE00009B78BF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		756EF86A1D90FE15009B78BF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		756EF86D1D91032D009B78BF /* ViewCMCC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCMCC.swift; sourceTree = "<group>"; };
 		7575301F1D80E3D20005EAC2 /* ModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleInterface.swift; sourceTree = "<group>"; };
 		7578EAF11D52491600F0A538 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		7578EAF21D52491600F0A538 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
@@ -310,6 +319,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				756EF86C1D90FE2F009B78BF /* libsqlite3.0.tbd in Frameworks */,
+				756EF86B1D90FE15009B78BF /* libz.tbd in Frameworks */,
+				756EF8691D90FE00009B78BF /* CoreTelephony.framework in Frameworks */,
+				756EF8611D90FDB8009B78BF /* UMMobClick.framework in Frameworks */,
 				75AF0A4C1D6C91D900E755C2 /* FMDB.framework in Frameworks */,
 				758B5D8C1D6C9DA5004314D7 /* libsqlite3.dylib in Frameworks */,
 				75B399691D55D263009C8951 /* libcrypto.a in Frameworks */,
@@ -392,6 +405,7 @@
 		751C35E41D4354D000A26D45 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				751C35E61D4354F500A26D45 /* isdust_ios-Bridging-Header.h */,
 				7521C52F1D4AF444001E0CC0 /* Library */,
 				751C35EC1D44382500A26D45 /* Data */,
 				751C35E91D43551000A26D45 /* Module */,
@@ -403,7 +417,6 @@
 			isa = PBXGroup;
 			children = (
 				75F675EC1D4905F0004164D0 /* base64.h */,
-				751C35E61D4354F500A26D45 /* isdust_ios-Bridging-Header.h */,
 				75985B2B1D46784600388278 /* rsa.c */,
 				75985B2C1D46784600388278 /* rsa.h */,
 				751C35EA1D43551D00A26D45 /* Zhengfang.swift */,
@@ -484,6 +497,14 @@
 				75F01B4C1D8501000089930A /* ScheduleCard.swift */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		7537B6C01D8E66470096F12E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				756EF86D1D91032D009B78BF /* ViewCMCC.swift */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 		753B87A41D684AD500A0218C /* SchoolCard */ = {
@@ -618,8 +639,9 @@
 		75ABEE771D8188D600716887 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */,
 				7575301F1D80E3D20005EAC2 /* ModuleInterface.swift */,
+				7521C5431D4DA2ED001E0CC0 /* ViewLogin.swift */,
+				7537B6C01D8E66470096F12E /* Network */,
 				753B87A41D684AD500A0218C /* SchoolCard */,
 				753B87A51D684AF300A0218C /* Education */,
 				753B87A61D684B0A00A0218C /* Library */,
@@ -697,6 +719,9 @@
 		75F675DB1D48FCB4004164D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				756EF86A1D90FE15009B78BF /* libz.tbd */,
+				756EF8681D90FE00009B78BF /* CoreTelephony.framework */,
+				756EF8601D90FDB8009B78BF /* UMMobClick.framework */,
 				75A70D4E1D6C9B300093DBEA /* libsqlite3.dylib */,
 				75F8A8B01D6C9AAC003B24CA /* fmdb.1 */,
 				757A54D21D6C8B7800884622 /* libsqlite3.tbd */,
@@ -970,6 +995,7 @@
 				7521C5441D4DA2ED001E0CC0 /* ViewLogin.swift in Sources */,
 				7578EAFB1D52491600F0A538 /* SVIndefiniteAnimatedView.m in Sources */,
 				7521C5351D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift in Sources */,
+				756EF86E1D91032D009B78BF /* ViewCMCC.swift in Sources */,
 				75CC0CBA1D64110A0002E113 /* ViewLibraryStorageMain.swift in Sources */,
 				7544D4661D55E46D00642A2E /* ViewNetwork.swift in Sources */,
 				75F29A691D83A0E8002903E7 /* Broadcast.swift in Sources */,
@@ -1139,6 +1165,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 526JMJ27M9;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/isdust_ios",
+				);
 				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/wzq/项目/isdust_ios/isdust_ios/include/**";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
@@ -1167,6 +1197,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 526JMJ27M9;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/isdust_ios",
+				);
 				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/wzq/项目/isdust_ios/isdust_ios/include";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;

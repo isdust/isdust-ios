@@ -27,7 +27,10 @@ struct Module{
 var module_all:[Module] = [
 //校园卡
 Module.init(identifier: "SchoolCard", icon: #imageLiteral(resourceName: "menu_card"), title: "一卡通", description: "提供校园一卡通余额查询，消费情况查询，以及挂失与修改密码服务", classification: "校园卡"),
-    
+//网络
+Module.init(identifier: "CMCC", icon: #imageLiteral(resourceName: "menu_cmcc"), title: "CMCC", description: "提供校园CMCC网络的一键登录，下线", classification: "网络"),
+
+
 //教务
 Module.init(identifier: "Schedule", icon: #imageLiteral(resourceName: "menu_schedule"), title: "课程表", description: "提供课程表查看，课程表下载，还能自定义课表", classification: "教务"),
 Module.init(identifier: "ScoreLookUp", icon: #imageLiteral(resourceName: "menu_mark"), title: "成绩查询", description: "提供所有考试成绩查询，GPA查询", classification: "教务"),
@@ -106,7 +109,7 @@ class ModuleInterface:ViewLoginDelegate,ViewSchoolLifeDelegate{
             }
             return
         }
-        if(identifier=="SchoolCard"){
+        else if(identifier=="SchoolCard"){
             if(sender==nil){
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: identifier) as! ViewSchoolCardMain
@@ -137,7 +140,7 @@ class ModuleInterface:ViewLoginDelegate,ViewSchoolLifeDelegate{
             }
             return
         }
-        if(identifier=="PersonalLibrary"){
+        else if(identifier=="PersonalLibrary"){
             if(sender==nil){
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: identifier) as! ViewControllerLibraryPersonal
@@ -168,12 +171,21 @@ class ModuleInterface:ViewLoginDelegate,ViewSchoolLifeDelegate{
             }
             return
         }
-        if(identifier=="Schedule"){
+        else if(identifier=="Schedule"){
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: identifier) as! ViewControllerEducationSchedule
             vc.mViewSchoolLifeDelegate=self
             mviewcontroller.navigationController?.pushViewController(vc, animated: false)
             return
+        
+        }
+        else if(identifier=="CMCC"){
+            if(NetworkJudge.getSSID()=="CMCC"){
+                ShowMessage("CMCC-登录","请先连接CMCC",self)
+                return
+            }
+            
+            
         
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -369,6 +381,13 @@ class ModuleInterface:ViewLoginDelegate,ViewSchoolLifeDelegate{
             SVProgressHUD.show(withStatus: "正在登录图书馆系统")
             break
         case "schedule":
+            thread_user = user
+            thread_password = pass
+            serialQueue.async(execute: thread_login_schedule)
+            SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
+            SVProgressHUD.show(withStatus: "正在登录正方教务系统")
+            break
+        case "CMCC":
             thread_user = user
             thread_password = pass
             serialQueue.async(execute: thread_login_schedule)

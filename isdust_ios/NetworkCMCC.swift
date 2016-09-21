@@ -16,6 +16,8 @@ class NetworkCMCC{
     var wlanacname:String!
     var CSRFToken_HW:String!
     
+    var flag=0
+    
     
     var second_logout_address:String!
     
@@ -49,11 +51,21 @@ class NetworkCMCC{
     }
     
     func second_init() throws{
+        if(flag==1){
+        return
+        }
+        
         mhttp.setencoding(0)
         let html = try mhttp.get("http://baidu.com/")
+        if(html.contains("wlanuserip")==true){
+            flag=1
+        }
+        
+        
         wlanuserip=try getMiddleText(html, "<input type=\"hidden\" name=\"wlanuserip\" id=\"wlanuserip\" value=\"", "\"/>")
         wlanacname=try getMiddleText(html,"<input type=\"hidden\" name=\"wlanacname\" id=\"wlanacname\" value=\"","\"/>")
         CSRFToken_HW=try getMiddleText(html,"<input type='hidden' name='CSRFToken_HW' value='","' /></form>")
+        
     }
     func second_login(user:String,password:String)throws->String{
         let submit="username="+user+"&password="+password+"&cmccdynapw=&unreguser=&wlanuserip="+wlanuserip+"&wlanacname="+wlanacname+"&wlanparameter=null&wlanuserfirsturl=http%3A%2F%2Fwww.baidu.com&ssid=cmcc&loginpage=%2Fcmccpc.jsp&indexpage=%2Fcmccpc_index.jsp&CSRFToken_HW="+CSRFToken_HW

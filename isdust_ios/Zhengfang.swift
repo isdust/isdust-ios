@@ -10,7 +10,7 @@ import Foundation
 
 class Zhengfang{
     var mhttp:Http
-    let location_zhengfang="http://192.168.109.58/"
+    let location_zhengfang="http://zf.app.isdust.com/"
     let location_xuanke="http://192.168.109.142/"
     var url_xuanke:String=""
     var url_chengji:String=""
