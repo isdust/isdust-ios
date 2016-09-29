@@ -208,6 +208,8 @@ class ViewCMCC:UIViewController,ViewLoginDelegate{
                 case 2:
                     ShowMessage("CMCC一层登录", "未知错误", self)
                     break
+                default:
+                    break
                 }
                 
                 
@@ -236,7 +238,8 @@ class ViewCMCC:UIViewController,ViewLoginDelegate{
                 case 4:
                     ShowMessage("CMCC二层登录", "登录失败（原因未知）", self)
                     break
-                    
+                default:
+                    break
                     
                 }
                 
@@ -249,7 +252,7 @@ class ViewCMCC:UIViewController,ViewLoginDelegate{
             case Selector(("ErrorNetwork")):
                 break
             default:
-                <#code#>
+                break
             }
         
         
@@ -257,12 +260,7 @@ class ViewCMCC:UIViewController,ViewLoginDelegate{
 
     }
     func login(channel: String, user: String, pass: String) {
-        switch <#value#> {
-        case <#pattern#>:
-            <#code#>
-        default:
-            <#code#>
-        }
+
         
     }
     

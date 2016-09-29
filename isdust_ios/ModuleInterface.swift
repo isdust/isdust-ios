@@ -28,7 +28,7 @@ var module_all:[Module] = [
 //校园卡
 Module.init(identifier: "SchoolCard", icon: #imageLiteral(resourceName: "menu_card"), title: "一卡通", description: "提供校园一卡通余额查询，消费情况查询，以及挂失与修改密码服务", classification: "校园卡"),
 //网络
-Module.init(identifier: "CMCC", icon: #imageLiteral(resourceName: "menu_cmcc"), title: "CMCC", description: "提供校园CMCC网络的一键登录，下线", classification: "网络"),
+//Module.init(identifier: "CMCC", icon: #imageLiteral(resourceName: "menu_cmcc"), title: "CMCC", description: "提供校园CMCC网络的一键登录，下线", classification: "网络"),
 
 
 //教务
