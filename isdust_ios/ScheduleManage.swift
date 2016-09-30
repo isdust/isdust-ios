@@ -20,17 +20,22 @@ class ScheduleManage{
             print("Unable to open database")
             return
         }
-        try! db.executeStatements("CREATE TABLE schedule (_id INTEGER PRIMARY KEY AUTOINCREMENT, zhoushu SMALLINT, xingqi SMALLINT, jieci SMALLINT, kecheng VARCHAR)")
+        try! db.executeStatements("CREATE TABLE schedule (_id INTEGER PRIMARY KEY AUTOINCREMENT, zhoushu SMALLINT, xingqi SMALLINT, jieci SMALLINT, class VARCHAR,location VARCHAR,teacher VARCHAR)")
     }
 
     func droptable() {
         db.executeStatements("DROP TABLE IF EXISTS schedule")
-        try! db.executeStatements("CREATE TABLE schedule (_id INTEGER PRIMARY KEY AUTOINCREMENT, zhoushu SMALLINT, xingqi SMALLINT, jieci SMALLINT, kecheng VARCHAR)")        
+        try! db.executeStatements("CREATE TABLE schedule (_id INTEGER PRIMARY KEY AUTOINCREMENT, zhoushu SMALLINT, xingqi SMALLINT, jieci SMALLINT, class VARCHAR,location VARCHAR,teacher VARCHAR)")
     }
     func importclass(course:[Kebiao]) {
         for i in course{            
-            try!db.executeUpdate("INSERT INTO schedule VALUES (NULL, ?, ?,?,?)", values: [i.zhoushu!,(i.xingqi!),(i.jieci!),(i.raw!)])
+            try!db.executeUpdate("INSERT INTO schedule VALUES (NULL,?,?,?,?,?,?)", values: [i.zhoushu!,(i.xingqi!),(i.jieci!),(i.kecheng!),(i.location!),(i.teacher!)])
         }
+        
+    }
+    func importclass(course:Kebiao) {
+            try!db.executeUpdate("INSERT INTO schedule VALUES (NULL,?,?,?,?,?,?)", values: [course.zhoushu!,(course.xingqi!),(course.jieci!),(course.kecheng!),(course.location!),(course.teacher!)])
+        
         
     }
     func getcount() -> Int {
@@ -43,7 +48,10 @@ class ScheduleManage{
         try!db.executeUpdate("DELETE FROM schedule WHERE zhoushu=? and xingqi=? and jieci=?", values: [zhoushu,xingqi,jieci])
     }
     func deleteclass(xingqi:Int,jieci:Int,kecheng:String) {
-        try!db.executeUpdate("DELETE FROM schedule WHERE xingqi=? and jieci=? and kecheng=?", values: [xingqi,jieci,kecheng])
+        try!db.executeUpdate("DELETE FROM schedule WHERE xingqi=? and jieci=? and class=?", values: [xingqi,jieci,kecheng])
+    }
+    func deleteclass(xingqi:Int,jieci:Int,kecheng:String,zhoushu:String) {
+        try!db.executeUpdate("DELETE FROM schedule WHERE xingqi=? and jieci=? and class=? and zhoushu=?", values: [xingqi,jieci,kecheng,zhoushu])
     }
     func deleteclass(couser:Kebiao) {
         try!db.executeUpdate("DELETE FROM schedule WHERE zhoushu=? and xingqi=? and jieci=?", values: [couser.zhoushu!,couser.xingqi!,couser.jieci!])
@@ -59,11 +67,10 @@ class ScheduleManage{
             temp.zhoushu=String(query.long(forColumn: "zhoushu"))
             temp.xingqi=String(query.long(forColumn: "xingqi"))
             temp.jieci=String(query.long(forColumn: "jieci"))
-            temp.raw=query.string(forColumn: "kecheng")
-            let temp_array=temp.raw?.components(separatedBy: "<br>")
-            temp.kecheng=temp_array?[0]
-            temp.teacher=temp_array?[2]
-            temp.location=temp_array?[3]
+            
+            temp.kecheng=(query.string(forColumn: "class"))
+            temp.teacher=(query.string(forColumn: "teacher"))
+            temp.location=(query.string(forColumn: "location"))
             result.append(temp)
         }
         return result
@@ -78,11 +85,10 @@ class ScheduleManage{
             temp.zhoushu=String(query.long(forColumn: "zhoushu"))
             temp.xingqi=String(query.long(forColumn: "xingqi"))
             temp.jieci=String(query.long(forColumn: "jieci"))
-            temp.raw=query.string(forColumn: "kecheng")
-            let temp_array=temp.raw?.components(separatedBy: "<br>")
-            temp.kecheng=temp_array?[0]
-            temp.teacher=temp_array?[2]
-            temp.location=temp_array?[3]
+
+            temp.kecheng=(query.string(forColumn: "class"))
+            temp.teacher=(query.string(forColumn: "teacher"))
+            temp.location=(query.string(forColumn: "location"))
             result.append(temp)
         }
         return result
@@ -91,7 +97,7 @@ class ScheduleManage{
     func getcourse(xingqi:Int,jieci:Int,kecheng:String) -> [Kebiao] {
         var result = [Kebiao] ()
         
-        var query=try!db.executeQuery("SELECT * FROM schedule WHERE xingqi=? and jieci=? and kecheng=?", values: [xingqi,jieci,kecheng])
+        var query=try!db.executeQuery("SELECT * FROM schedule WHERE xingqi=? and jieci=? and class=?", values: [xingqi,jieci,kecheng])
         while query.next() {
             var temp=Kebiao()
             //print(query.int(forColumnIndex: query.columnIndex(forName: "zhoushu")))
@@ -99,14 +105,54 @@ class ScheduleManage{
             temp.zhoushu=String(query.long(forColumn: "zhoushu"))
             temp.xingqi=String(query.long(forColumn: "xingqi"))
             temp.jieci=String(query.long(forColumn: "jieci"))
-            temp.raw=query.string(forColumn: "kecheng")
-            let temp_array=temp.raw?.components(separatedBy: "<br>")
-            temp.kecheng=temp_array?[0]
-            temp.teacher=temp_array?[2]
-            temp.location=temp_array?[3]
+            
+            temp.kecheng=(query.string(forColumn: "class"))
+            temp.teacher=(query.string(forColumn: "teacher"))
+            temp.location=(query.string(forColumn: "location"))
             result.append(temp)
         }
         return result
+    }
+    func importclass(data:[Dictionary<String,Any>]){
+        for i in data{
+            let mteacher:String=i["teacher"] as! String
+            let mclass:String=i["class"] as! String
+            let mlocation:String=i["location"] as! String
+            let mjieci:Int=i["jieci"] as! Int
+            let mxingqi:Int=i["xingqi"] as! Int
+            let mzhoushu:[Int]=i["zhoushu"] as! [Int]
+            for j in mzhoushu{
+                var temp=Kebiao()
+                temp.location=mlocation
+                temp.teacher=mteacher
+                temp.kecheng=mclass
+                temp.jieci=String(mjieci)
+                temp.xingqi=String(mxingqi)
+                temp.zhoushu=String(j)
+                importclass(course: temp)
+            }
+        }
+    }
+    func deleteclass(data:[Dictionary<String,Any>]) {
+        for i in data{
+            let mteacher:String=i["teacher"] as! String
+            let mclass:String=i["class"] as! String
+            let mlocation:String=i["location"] as! String
+            let mjieci:Int=i["jieci"] as! Int
+            let mxingqi:Int=i["xingqi"] as! Int
+            let mzhoushu:[Int]=i["zhoushu"] as! [Int]
+            for j in mzhoushu{
+                var temp=Kebiao()
+                temp.location=mlocation
+                temp.teacher=mteacher
+                temp.kecheng=mclass
+                temp.jieci=String(mjieci)
+                temp.xingqi=String(mxingqi)
+                temp.zhoushu=String(j)
+                try!db.executeUpdate("DELETE FROM schedule WHERE xingqi=? and jieci=? and class=? and zhoushu=?", values: [Int(temp.xingqi!),Int(temp.jieci!),temp.kecheng,Int(temp.zhoushu!)])
+
+            }
+        }
     }
 
     

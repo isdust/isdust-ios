@@ -74,6 +74,7 @@
 		7578EAFF1D52491600F0A538 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7578EAFA1D52491600F0A538 /* SVRadialGradientLayer.m */; };
 		757BEB101D508B3900432695 /* NirKxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 757BEB0F1D508B3900432695 /* NirKxMenu.m */; };
 		757BEB121D51513E00432695 /* TableViewSchoolCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757BEB111D51513E00432695 /* TableViewSchoolCard.swift */; };
+		758674AB1D9EB1100028FC50 /* Schedule_zhengfang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758674AA1D9EB1100028FC50 /* Schedule_zhengfang.swift */; };
 		758B5D8C1D6C9DA5004314D7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A70D4E1D6C9B300093DBEA /* libsqlite3.dylib */; };
 		75985B2D1D46784600388278 /* rsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 75985B2B1D46784600388278 /* rsa.c */; };
 		75A0D51D1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A0D51C1D572A2900E0C122 /* ViewEducationEmptyClassroom.swift */; };
@@ -270,6 +271,7 @@
 		757BEB0E1D508B3900432695 /* NirKxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NirKxMenu.h; path = NirKxMenu/NirKxMenu.h; sourceTree = "<group>"; };
 		757BEB0F1D508B3900432695 /* NirKxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NirKxMenu.m; path = NirKxMenu/NirKxMenu.m; sourceTree = "<group>"; };
 		757BEB111D51513E00432695 /* TableViewSchoolCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSchoolCard.swift; sourceTree = "<group>"; };
+		758674AA1D9EB1100028FC50 /* Schedule_zhengfang.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule_zhengfang.swift; sourceTree = "<group>"; };
 		7591573A1D6C8B2800EF9023 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		75985B2B1D46784600388278 /* rsa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rsa.c; sourceTree = "<group>"; };
 		75985B2C1D46784600388278 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rsa.h; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				75F675ED1D490D58004164D0 /* EmptyClassroom.swift */,
 				7521C52D1D4A5CFB001E0CC0 /* Library.swift */,
 				75AB61BE1D6C86360047D4F4 /* ScheduleManage.swift */,
+				758674AA1D9EB1100028FC50 /* Schedule_zhengfang.swift */,
 				75BBB6381D6E7E2900568333 /* SchoolTime.swift */,
 				753D62F51D75E43000253990 /* Http.swift */,
 				75F01B541D85A11E0089930A /* OnlineConfig.swift */,
@@ -996,6 +999,7 @@
 				7578EAFB1D52491600F0A538 /* SVIndefiniteAnimatedView.m in Sources */,
 				7521C5351D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift in Sources */,
 				756EF86E1D91032D009B78BF /* ViewCMCC.swift in Sources */,
+				758674AB1D9EB1100028FC50 /* Schedule_zhengfang.swift in Sources */,
 				75CC0CBA1D64110A0002E113 /* ViewLibraryStorageMain.swift in Sources */,
 				7544D4661D55E46D00642A2E /* ViewNetwork.swift in Sources */,
 				75F29A691D83A0E8002903E7 /* Broadcast.swift in Sources */,

@@ -14,6 +14,7 @@ class Zhengfang{
     let location_xuanke="http://192.168.109.142/"
     var url_xuanke:String=""
     var url_chengji:String=""
+    var url_kebiao:String=""
     var method_score_lookup:String=""
     var isjump:Bool=false
     init(){
@@ -60,6 +61,8 @@ class Zhengfang{
             }else{
                 method_score_lookup="xuanke"
             }
+            url_kebiao=try getMiddleText(text_web,"专业推荐课表查询</a></li><li><a href=\"","\" target='zhuti' onclick=\"GetMc('学生个人课表');")
+            url_kebiao=location_zhengfang+url_kebiao
 
 
             return "登录成功";
@@ -87,7 +90,7 @@ class Zhengfang{
         var text_web="";
         var submit=""
         var result:[[String]]
-        text_web=try mhttp.get(mhttp.urlencode(url_chengji) );
+        text_web=try mhttp.get(mhttp.urlencode(url_chengji) )
         var VIEWSTATE=try getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
         VIEWSTATE=mhttp.postencode(VIEWSTATE);
         submit = "__VIEWSTATE=" + VIEWSTATE+"&ddlXN=&ddlXQ=&btn_zcj=C0%FA%C4%EA%B3%C9%BC%A8"
@@ -164,7 +167,7 @@ class Zhengfang{
         }
         return result
     }
-    func ScheduleLookup(_ week:String,year:String,semester:String) throws-> [Kebiao] {
+    func ScheduleLookup_xuanke(_ week:String,year:String,semester:String) throws-> [Kebiao] {
         mhttp.setencoding(0);
         var text_web = try mhttp.get(location_xuanke+"?zhou="+week+"&xn="+year+"&xq="+semester)
         text_web=text_web.replacingOccurrences(of: " rowspan=\"2\" ", with: "")
@@ -201,6 +204,20 @@ class Zhengfang{
             }
         }
         return result
+        
+    }
+    func ScheduleLookup_zhengfang()throws {
+        var mdb=ScheduleManage()
+        var text_web=try mhttp.get(mhttp.urlencode(url_kebiao))
+        let mschedule=getschedule(data: text_web)
+        mdb.importclass(data: mschedule)
+        let mchange=getchange(data: text_web)
+        for i in mchange{
+            var old:Dictionary<String,Any>=i["old"] as!Dictionary<String,Any>
+            var new:Dictionary<String,Any>=i["new"] as! Dictionary<String,Any>
+            mdb.deleteclass(data: [old])
+            mdb.importclass(data: [new])
+        }
         
     }
     func JidianLookup()throws->[String] {

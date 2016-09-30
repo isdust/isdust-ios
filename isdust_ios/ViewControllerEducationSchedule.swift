@@ -105,15 +105,18 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         
         
         do{
-        try mzhengfang.JumpToSelectClass()
+//        try mzhengfang.JumpToSelectClass()
         manager.droptable()
+        try mzhengfang.ScheduleLookup_zhengfang()
+//        self.performSelector(onMainThread: Selector(("schedule_download_progress")), with: i, waitUntilDone: false, modes: nil)
         
-        for i in 1..<23{
-            var kecheng=try mzhengfang.ScheduleLookup(String(i), year: info_year, semester: info_semester)
-            manager.importclass(course: kecheng)
-            self.performSelector(onMainThread: Selector(("schedule_download_progress")), with: i, waitUntilDone: false, modes: nil)
-
-        }
+        
+//        for i in 1..<23{
+//            var kecheng=try mzhengfang.ScheduleLookup(String(i), year: info_year, semester: info_semester)
+//            manager.importclass(course: kecheng)
+//            self.performSelector(onMainThread: Selector(("schedule_download_progress")), with: i, waitUntilDone: false, modes: nil)
+//
+//        }
         self.performSelector(onMainThread: Selector(("schedule_download_finish")), with: nil, waitUntilDone: false, modes: nil)
         }
         catch IsdustError.Network{
@@ -144,6 +147,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
 
 //                let result=arg as! Int
                 SVProgressHUD.dismiss()
+                self.schedule_table_all()
                 //self.table_emptyclassroom.reloadData()
                 break
             case Selector(("ErrorNetwork")):
@@ -236,6 +240,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         }
         ScheduleManage().droptable()
         manager=ScheduleManage()
+        SVProgressHUD.show(withStatus: "正在下载课表")
         serialQueue.async(execute: self.thread_downloadtable)
     }
     override func viewWillAppear(_ animated: Bool) {
