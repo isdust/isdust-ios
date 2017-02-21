@@ -8,14 +8,14 @@
 
 import Foundation
 class SchoolTime{
-    static var date_firstweek="20160905"
+    static var date_firstweek:String=OnlineConfig.get(key: "school_date")
     static let D_DAY:Double = 86400
     static let D_WEEK:Double = 604800
 
     static func getTodayZhoushu()->Int{
         var DateFormatter_input:Foundation.DateFormatter!
         DateFormatter_input=Foundation.DateFormatter()
-        DateFormatter_input.dateFormat = "yyyyMMdd"
+        DateFormatter_input.dateFormat = "yyyy-MM-dd HH:mm:ss"
         var date_firstweek=DateFormatter_input.date(from: self.date_firstweek)!
         var date_today=Date()
         let components=Calendar.current.dateComponents([.day], from: date_firstweek, to: date_today)
@@ -46,7 +46,7 @@ class SchoolTime{
         DateFormatter_input=Foundation.DateFormatter()
         DateFormatter_output_month=Foundation.DateFormatter()
         DateFormatter_output_day=Foundation.DateFormatter()
-        DateFormatter_input.dateFormat = "yyyyMMdd"
+        DateFormatter_input.dateFormat = "yyyy-MM-dd HH:mm:ss"
         DateFormatter_output_month.dateFormat = "M"
         DateFormatter_output_day.dateFormat = "d"
         

@@ -8,8 +8,9 @@
 
 import Foundation
 class OnlineConfig{
+    static let key="D89475D32EA8BBE933DBD299599EEA3E"
     static let version_current:Int=1
-    static let default_config:String="{ \"schedule_xuenian\": \"2016-2017\", \"schedule_xueqi\": \"1\", \"system_broadcast\": \"1.学校快通服务器已经崩溃，请去J1圈存机操作\n2.iOS版爱山科即将发布，敬请期待\n ---WZQ\", \"school_date\": \"2016-09-0500: 00: 00\", \"advertisement\": [ { \"title\": \"新生入校\", \"image\": \"http://app.isdust.com/ad/ad1.jpg\", \"url\": \"http://www.wzq.hk\", \"md5\": \"ec829323ca2d001eacdcf3cb24c4b2b7\" } ], \"install\": \"true\" }"
+    static let default_config:String="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"
     static var current_config:String!
     static var json:NSDictionary!
     static var mhttp:Http=Http()
@@ -17,6 +18,7 @@ class OnlineConfig{
         let localstorage=UserDefaults.standard.string(forKey: "OnlineConfig")
         if(localstorage == nil||localstorage == ""){
             current_config=default_config
+            current_config=decode(data:current_config)
         }else{
             current_config=localstorage
         }
@@ -32,10 +34,35 @@ class OnlineConfig{
         }
         
     }
+    static func decode(data:String)->String{
+        let key_bytes: [UInt8] = Array(self.key.utf8)
+        let key_len=key_bytes.count
+
+        var temp:NSData=NSData(base64Encoded: data)!
+        var content_byte:[UInt8] = [UInt8](repeating: 0, count: temp.length)
+        temp.getBytes(&content_byte)
+        let data_len=content_byte.count
+        
+        
+        
+        for i in 0..<data_len{
+            content_byte[i]^=key_bytes[i%key_len];
+            
+        }
+        let res = NSString(bytes: content_byte, length:
+            content_byte.count, encoding: String.Encoding.utf8.rawValue) as! String
+        
+        return res
+        
+        
+        
+    
+    }
     static func update(){
         var remote_config:String!
         do{
-            remote_config = try mhttp.get("http://app.isdust.com/config.php")
+            remote_config = try mhttp.get("http://app.isdust.com/sysconfig.php?platform=iOS")
+            remote_config=decode(data:remote_config)
             let data = remote_config.data(using: String.Encoding.utf8) //data  是json格式字符串
 
             let test = try? JSONSerialization.jsonObject(with: data!) as! NSDictionary

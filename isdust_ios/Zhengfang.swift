@@ -20,7 +20,7 @@ class Zhengfang{
     init(){
         method_score_lookup="xuanke"
         mhttp=Http();
-        mhttp.setproxy(host: "proxy1.isdust.com", port: 3000)
+        mhttp.setproxy(host: OnlineConfig.get(key: "proxy_address"), port: Int(OnlineConfig.get(key: "proxy_port"))!)
         mhttp.setencoding(1);
     }
     
