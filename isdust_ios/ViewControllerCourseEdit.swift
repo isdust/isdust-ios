@@ -154,7 +154,7 @@ class ViewControllerCourseEdit: UITableViewController,ViewCourseEditWeekDelegate
         
     }
     func getweek() ->[Int] {
-        let result=ScheduleManage().getcourse(xingqi: Int(course.xingqi!)!, jieci: Int(course.jieci!)!, kecheng: course.raw!)
+        let result=ScheduleManage().getcourse(xingqi: Int(course.xingqi!)!, jieci: Int(course.jieci!)!, kecheng: course.kecheng!)
         var weeks=[Int]()
         result.map({weeks.append(Int($0.zhoushu!)!)})
         return weeks
@@ -171,14 +171,17 @@ class ViewControllerCourseEdit: UITableViewController,ViewCourseEditWeekDelegate
     func update_edit() {
         let mxingqi:Int = ((xingqi_edit == -1) ? Int(course.xingqi!)! : xingqi_edit)
         let mjieci:Int = ((jieci_edit == -1) ? Int(course.jieci!)! : jieci_edit)
-        let mkecheng = textfield_kecheng.text!+"<br>"+""+"<br>"+textfield_teacher.text!+"<br>"+textfield_location.text!
+        let mkecheng = textfield_kecheng.text!
 
-        ScheduleManage().deleteclass(xingqi: Int(course.xingqi!)!, jieci: Int(course.jieci!)!, kecheng: course.raw!)
+        ScheduleManage().deleteclass(xingqi: Int(course.xingqi!)!, jieci: Int(course.jieci!)!, kecheng: course.kecheng!)
         var result=[Kebiao]()
         for i in weeks{
             var temp=Kebiao()
             temp.jieci=String(mjieci)
-            temp.raw=mkecheng
+            temp.kecheng=textfield_kecheng.text!
+            temp.teacher=textfield_teacher.text!
+            temp.location=textfield_location.text!
+            //temp.raw=mkecheng
             temp.xingqi=String(mxingqi)
             temp.zhoushu=String(i)
             result.append(temp)
@@ -191,12 +194,15 @@ class ViewControllerCourseEdit: UITableViewController,ViewCourseEditWeekDelegate
     func update_add()  {
         let mxingqi:Int = xingqi_edit
         let mjieci:Int = jieci_edit
-                let mkecheng = textfield_kecheng.text!+"<br>"+""+"<br>"+textfield_teacher.text!+"<br>"+textfield_location.text!
+//                let mkecheng = textfield_kecheng.text!+"<br>"+""+"<br>"+textfield_teacher.text!+"<br>"+textfield_location.text!
         var result=[Kebiao]()
         for i in weeks{
             var temp=Kebiao()
             temp.jieci=String(mjieci)
-            temp.raw=mkecheng
+            temp.kecheng=textfield_kecheng.text!
+            temp.teacher=textfield_teacher.text!
+            temp.location=textfield_location.text!
+            //temp.raw=mkecheng
             temp.xingqi=String(mxingqi)
             temp.zhoushu=String(i)
             result.append(temp)
