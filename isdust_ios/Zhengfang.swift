@@ -20,7 +20,7 @@ class Zhengfang{
     init(){
         method_score_lookup="xuanke"
         mhttp=Http();
-        mhttp.setproxy(host: "139.129.133.235", port: 3000)
+        mhttp.setproxy(host: "proxy1.isdust.com", port: 3000)
         mhttp.setencoding(1);
     }
     
@@ -38,6 +38,11 @@ class Zhengfang{
         isjump=true
     }
     func Login(_ username:String,password:String)throws->String{
+        var re_schedule_url=Re().compile("<a href=\"(xskbcx.aspx[\\s\\S]*?)\" target=\'zhuti\' onclick=\"GetMc\\(\'学生个人课表\'\\);\">");
+        var re_schedule_score=Re().compile("<a href=\"(xscjcx.aspx[\\s\\S]*?)\" target=\'zhuti\' onclick=\"GetMc\\(\'个人成绩查询\'\\);\">");
+        var re_schedule_xuanke=Re().compile("<a href=\"(wcdefault.aspx[\\s\\S]*?)\" target=\'zhuti\' onclick=\"GetMc\\(\'激活选课平台帐户\'\\);\">");
+        
+        
         isjump=false
         mhttp.setencoding(1);
         var text_web=try mhttp.get(location_zhengfang+"default_ysdx.aspx");
@@ -51,18 +56,15 @@ class Zhengfang{
             var url_login_zhengfang=try getMiddleText(text_web,  "<script>window.open('","','_parent');</script>")
             url_login_zhengfang=location_zhengfang+url_login_zhengfang;
             text_web=try mhttp.get(url_login_zhengfang)
-            url_xuanke=try getMiddleText(text_web, "信息员意见反馈</a></li><li><a href=\"", "\" target='zhuti' onclick=\"GetMc('激活选课平台帐户');");
-            url_xuanke=location_zhengfang+url_xuanke;
+            url_xuanke=location_zhengfang+re_schedule_xuanke.findall(text_web)[0][1]
             //url_xuanke=url_xuanke.replacingOccurrences(of: "192.168.109.142", with: "xuanke.proxy.isdust.com:3100")
             if(text_web.contains("个人成绩查询")==true){
-                url_chengji=try getMiddleText(text_web,"学生个人课表</a></li><li><a href=\"","\" target='zhuti' onclick=\"GetMc('个人成绩查询');\">")
-                url_chengji=location_zhengfang+url_chengji
+                url_chengji=location_zhengfang+re_schedule_score.findall(text_web)[0][1]
                 method_score_lookup="zhengfang"
             }else{
                 method_score_lookup="xuanke"
             }
-            url_kebiao=try getMiddleText(text_web,"专业推荐课表查询</a></li><li><a href=\"","\" target='zhuti' onclick=\"GetMc('学生个人课表');")
-            url_kebiao=location_zhengfang+url_kebiao
+            url_kebiao=location_zhengfang+re_schedule_url.findall(text_web)[0][1]
 
 
             return "登录成功";
@@ -213,10 +215,15 @@ class Zhengfang{
         mdb.importclass(data: mschedule)
         let mchange=getchange(data: text_web)
         for i in mchange{
-            var old:Dictionary<String,Any>=i["old"] as!Dictionary<String,Any>
-            var new:Dictionary<String,Any>=i["new"] as! Dictionary<String,Any>
-            mdb.deleteclass(data: [old])
-            mdb.importclass(data: [new])
+            
+            if(i.keys.contains("old")){
+                var old:Dictionary<String,Any>=i["old"] as!Dictionary<String,Any>
+                mdb.deleteclass(data: [old])
+            }
+            if(i.keys.contains("new")){
+                var new:Dictionary<String,Any>=i["new"] as! Dictionary<String,Any>
+                mdb.importclass(data: [new])
+            }
         }
         
     }

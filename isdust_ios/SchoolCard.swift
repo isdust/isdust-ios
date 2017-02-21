@@ -41,7 +41,7 @@ class SchoolCard{
     //var PersonInfo:[String]=[String]()
     init(){
         mhttp=Http()
-        mhttp.setproxy(host: "139.129.133.235", port: 3000)
+        mhttp.setproxy(host: "proxy1.isdust.com", port: 3000)
         for i in 0 ..< 10{
             var temp=ImageProcess()
             temp.loadimage(UIImage(named:"yzm"+String(i)+".png")!)

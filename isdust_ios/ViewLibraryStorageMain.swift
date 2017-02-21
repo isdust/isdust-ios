@@ -13,6 +13,8 @@ import AVFoundation
 class ViewLibraryStorageMain: UIViewController,QRCodeReaderViewControllerDelegate {
     var mlibrary=Library()
     
+    @IBOutlet weak var button_scan: UIImageView!
+    @IBOutlet weak var button_search: UIImageView!
     var serialQueue:DispatchQueue!
     var thread_result:[Book]!
     var thread_ISBN:String!
@@ -153,6 +155,14 @@ class ViewLibraryStorageMain: UIViewController,QRCodeReaderViewControllerDelegat
     override func viewDidLoad() {
         navigationController?.navigationBar.tintColor=UIColor.white
         serialQueue = DispatchQueue(label: "queuename", attributes: [])
+        
+        let tap_search = UITapGestureRecognizer(target: self, action: #selector(ImageSearchClicked))
+        button_search.addGestureRecognizer(tap_search)
+        button_search.isUserInteractionEnabled = true
+        
+        let tap_scan = UITapGestureRecognizer(target: self, action: #selector(ImageScanClicked))
+        button_scan.addGestureRecognizer(tap_scan)
+        button_scan.isUserInteractionEnabled = true
         
     }
 }
