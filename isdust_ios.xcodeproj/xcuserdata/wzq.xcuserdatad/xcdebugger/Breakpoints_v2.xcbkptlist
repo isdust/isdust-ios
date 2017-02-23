@@ -4200,11 +4200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4216,11 +4216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4232,11 +4232,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4248,11 +4248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "downloadad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4264,11 +4264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "downloadad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4280,11 +4280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "downloadad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4296,11 +4296,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "getad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4312,11 +4312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "getad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4776,11 +4776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4792,11 +4792,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4920,11 +4920,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4936,11 +4936,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5666,23 +5666,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "decode(data:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -5698,11 +5682,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "isdust_ios/OnlineConfig.swift"
-            timestampString = "509386300.664291"
+            timestampString = "509502383.97033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "decode(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/OnlineConfig.swift"
+            timestampString = "509502383.97033"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5817,6 +5817,22 @@
             endingLineNumber = "57"
             landmarkName = "button_save_click(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "isdust_ios/ViewControllerCourseEdit.swift"
+            timestampString = "509502159.431729"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "ViewControllerCourseEdit"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

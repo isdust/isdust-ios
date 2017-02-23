@@ -20,7 +20,12 @@ class OnlineConfig{
             current_config=default_config
             current_config=decode(data:current_config)
         }else{
+            if(localstorage?.contains("install")==true){
             current_config=localstorage
+            }else{
+            current_config=decode(data:localstorage!)
+            }
+            
         }
         var data = current_config.data(using: String.Encoding.utf8) //data  是json格式字符串
         do{
