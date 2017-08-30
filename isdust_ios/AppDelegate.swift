@@ -24,12 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewcontroller : UIViewController = mainView.instantiateViewController(withIdentifier: "viewmain") as UIViewController
         self.window!.rootViewController = viewcontroller
         // Override point for customization after application launch.
-        
-        var mUMAnalyticsConfig=UMAnalyticsConfig.init()
-        mUMAnalyticsConfig.appKey="57db19d867e58e4c0c000fcf"
-        
-        MobClick.setLogEnabled(true)
-        MobClick.start(withConfigure: mUMAnalyticsConfig)
+        Bugly.start(withAppId: "34b78f35de")
+//        var mUMAnalyticsConfig=UMAnalyticsConfig.init()
+//        mUMAnalyticsConfig.appKey="57db19d867e58e4c0c000fcf"
+//        
+//        MobClick.setLogEnabled(true)
+//        MobClick.start(withConfigure: mUMAnalyticsConfig)
         
         
         return true
@@ -58,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
+ 
         //sleep(2)
     }
 }

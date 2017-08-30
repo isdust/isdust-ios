@@ -8,6 +8,6 @@
 #import "AdView.h"
 //#import "FMDB.h"
 #import <sqlite3.h>
-#import "UMMobClick/MobClick.h"
+#import <Bugly/Bugly.h>
 char* openssl_rsa_encrypt(char* data);
 char* openssl_md5(char *data);

@@ -11,6 +11,9 @@
 		750829861D70A5EF00E05C80 /* ViewCourseEditJieci.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750829851D70A5EF00E05C80 /* ViewCourseEditJieci.swift */; };
 		750A197B1D6955D9006E619E /* TableViewCellBorrowedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A197A1D6955D9006E619E /* TableViewCellBorrowedBook.swift */; };
 		750A197D1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A197C1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift */; };
+		751146781F564B1E0039C331 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751146771F564B1E0039C331 /* Bugly.framework */; };
+		7511467A1F564B900039C331 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751146791F564B900039C331 /* Security.framework */; };
+		7511467C1F564B970039C331 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7511467B1F564B970039C331 /* SystemConfiguration.framework */; };
 		7512AC401D7CECE900683233 /* ViewWeb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512AC3F1D7CECE900683233 /* ViewWeb.swift */; };
 		7512AC491D7D7B8900683233 /* ViewSchoolLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512AC481D7D7B8900683233 /* ViewSchoolLife.swift */; };
 		751C35B71D4354B500A26D45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35B61D4354B500A26D45 /* AppDelegate.swift */; };
@@ -24,6 +27,10 @@
 		751C35EE1D44383900A26D45 /* DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35ED1D44383900A26D45 /* DataType.swift */; };
 		751C35F01D4446E900A26D45 /* SchoolCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C35EF1D4446E900A26D45 /* SchoolCard.swift */; };
 		751C36111D445FEC00A26D45 /* ImageProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751C36101D445FEC00A26D45 /* ImageProcess.swift */; };
+		751FB4081F564EC00043E7B8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 756EF86A1D90FE15009B78BF /* libz.tbd */; };
+		751FB40A1F564EED0043E7B8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751FB4091F564EED0043E7B8 /* CFNetwork.framework */; };
+		751FB40C1F564F0F0043E7B8 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751FB40B1F564F0F0043E7B8 /* JavaScriptCore.framework */; };
+		751FB40E1F564F2F0043E7B8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 751FB40D1F564F2F0043E7B8 /* libc++.tbd */; };
 		7521C52E1D4A5CFB001E0CC0 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C52D1D4A5CFB001E0CC0 /* Library.swift */; };
 		7521C5341D4AF459001E0CC0 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5321D4AF459001E0CC0 /* SWXMLHash.swift */; };
 		7521C5351D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7521C5331D4AF459001E0CC0 /* SWXMLHash+TypeConversion.swift */; };
@@ -61,9 +68,7 @@
 		754AE94E1D7A9C0A00128384 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 754AE93E1D7A9C0A00128384 /* UIView+WebCacheOperation.m */; };
 		754AE9511D7AA22400128384 /* placeHoder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 754AE9501D7AA22400128384 /* placeHoder.jpg */; };
 		754AE9591D7AB20800128384 /* AdBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AE9581D7AB20800128384 /* AdBar.swift */; };
-		756EF8611D90FDB8009B78BF /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756EF8601D90FDB8009B78BF /* UMMobClick.framework */; };
 		756EF8691D90FE00009B78BF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756EF8681D90FE00009B78BF /* CoreTelephony.framework */; };
-		756EF86B1D90FE15009B78BF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 756EF86A1D90FE15009B78BF /* libz.tbd */; };
 		756EF86C1D90FE2F009B78BF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7591573A1D6C8B2800EF9023 /* libsqlite3.0.tbd */; };
 		756EF86E1D91032D009B78BF /* ViewCMCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756EF86D1D91032D009B78BF /* ViewCMCC.swift */; };
 		757530201D80E3D20005EAC2 /* ModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7575301F1D80E3D20005EAC2 /* ModuleInterface.swift */; };
@@ -171,6 +176,9 @@
 		750829851D70A5EF00E05C80 /* ViewCourseEditJieci.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCourseEditJieci.swift; sourceTree = "<group>"; };
 		750A197A1D6955D9006E619E /* TableViewCellBorrowedBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellBorrowedBook.swift; sourceTree = "<group>"; };
 		750A197C1D6ABFAA006E619E /* ViewControllerEducationSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerEducationSchedule.swift; sourceTree = "<group>"; };
+		751146771F564B1E0039C331 /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
+		751146791F564B900039C331 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Security.framework; sourceTree = "<group>"; };
+		7511467B1F564B970039C331 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SystemConfiguration.framework; sourceTree = "<group>"; };
 		7512AC3F1D7CECE900683233 /* ViewWeb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWeb.swift; sourceTree = "<group>"; };
 		7512AC481D7D7B8900683233 /* ViewSchoolLife.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSchoolLife.swift; sourceTree = "<group>"; };
 		751C35B31D4354B500A26D45 /* isdust_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = isdust_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +199,9 @@
 		751C35ED1D44383900A26D45 /* DataType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataType.swift; sourceTree = "<group>"; };
 		751C35EF1D4446E900A26D45 /* SchoolCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolCard.swift; sourceTree = "<group>"; };
 		751C36101D445FEC00A26D45 /* ImageProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcess.swift; sourceTree = "<group>"; };
+		751FB4091F564EED0043E7B8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		751FB40B1F564F0F0043E7B8 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		751FB40D1F564F2F0043E7B8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		7521C52D1D4A5CFB001E0CC0 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		7521C5311D4AF459001E0CC0 /* SWXMLHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWXMLHash.h; path = SWXMLHash/SWXMLHash.h; sourceTree = "<group>"; };
 		7521C5321D4AF459001E0CC0 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SWXMLHash.swift; path = SWXMLHash/SWXMLHash.swift; sourceTree = "<group>"; };
@@ -252,7 +263,6 @@
 		754AE93E1D7A9C0A00128384 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "AdView/SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		754AE9501D7AA22400128384 /* placeHoder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeHoder.jpg; sourceTree = "<group>"; };
 		754AE9581D7AB20800128384 /* AdBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdBar.swift; sourceTree = "<group>"; };
-		756EF8601D90FDB8009B78BF /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMMobClick.framework; path = isdust_ios/UMMobClick.framework; sourceTree = "<group>"; };
 		756EF8681D90FE00009B78BF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		756EF86A1D90FE15009B78BF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		756EF86D1D91032D009B78BF /* ViewCMCC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCMCC.swift; sourceTree = "<group>"; };
@@ -321,13 +331,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				751FB40E1F564F2F0043E7B8 /* libc++.tbd in Frameworks */,
+				751FB40C1F564F0F0043E7B8 /* JavaScriptCore.framework in Frameworks */,
+				751FB40A1F564EED0043E7B8 /* CFNetwork.framework in Frameworks */,
+				751FB4081F564EC00043E7B8 /* libz.tbd in Frameworks */,
 				756EF86C1D90FE2F009B78BF /* libsqlite3.0.tbd in Frameworks */,
-				756EF86B1D90FE15009B78BF /* libz.tbd in Frameworks */,
 				756EF8691D90FE00009B78BF /* CoreTelephony.framework in Frameworks */,
-				756EF8611D90FDB8009B78BF /* UMMobClick.framework in Frameworks */,
 				75AF0A4C1D6C91D900E755C2 /* FMDB.framework in Frameworks */,
 				758B5D8C1D6C9DA5004314D7 /* libsqlite3.dylib in Frameworks */,
 				75B399691D55D263009C8951 /* libcrypto.a in Frameworks */,
+				7511467C1F564B970039C331 /* SystemConfiguration.framework in Frameworks */,
+				751146781F564B1E0039C331 /* Bugly.framework in Frameworks */,
+				7511467A1F564B900039C331 /* Security.framework in Frameworks */,
 				75B3996A1D55D263009C8951 /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -722,10 +737,15 @@
 		75F675DB1D48FCB4004164D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				751FB40D1F564F2F0043E7B8 /* libc++.tbd */,
+				751FB40B1F564F0F0043E7B8 /* JavaScriptCore.framework */,
+				751FB4091F564EED0043E7B8 /* CFNetwork.framework */,
 				756EF86A1D90FE15009B78BF /* libz.tbd */,
+				7511467B1F564B970039C331 /* SystemConfiguration.framework */,
+				751146791F564B900039C331 /* Security.framework */,
 				756EF8681D90FE00009B78BF /* CoreTelephony.framework */,
-				756EF8601D90FDB8009B78BF /* UMMobClick.framework */,
 				75A70D4E1D6C9B300093DBEA /* libsqlite3.dylib */,
+				751146771F564B1E0039C331 /* Bugly.framework */,
 				75F8A8B01D6C9AAC003B24CA /* fmdb.1 */,
 				757A54D21D6C8B7800884622 /* libsqlite3.tbd */,
 				7591573A1D6C8B2800EF9023 /* libsqlite3.0.tbd */,
@@ -1172,6 +1192,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/isdust_ios",
+					"$(PROJECT_DIR)",
 				);
 				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/wzq/项目/isdust_ios/isdust_ios/include/**";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
@@ -1183,6 +1204,7 @@
 					"$(PROJECT_DIR)/isdust_ios",
 					"$(PROJECT_DIR)/isdust_ios/openssl/arm",
 					"$(PROJECT_DIR)/isdust_ios/openssl/x86",
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.isdust.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1204,6 +1226,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/isdust_ios",
+					"$(PROJECT_DIR)",
 				);
 				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/wzq/项目/isdust_ios/isdust_ios/include";
 				INFOPLIST_FILE = isdust_ios/Info.plist;
@@ -1215,6 +1238,7 @@
 					"$(PROJECT_DIR)/isdust_ios",
 					"$(PROJECT_DIR)/isdust_ios/openssl/arm",
 					"$(PROJECT_DIR)/isdust_ios/openssl/x86",
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.isdust.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
