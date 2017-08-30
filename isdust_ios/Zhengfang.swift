@@ -208,9 +208,17 @@ class Zhengfang{
         return result
         
     }
-    func ScheduleLookup_zhengfang()throws {
+    func ScheduleLookup_zhengfang(_ year:String,_ semester:String)throws {
         var mdb=ScheduleManage()
         var text_web=try mhttp.get(mhttp.urlencode(url_kebiao))
+        var VIEWSTATE = try getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
+        VIEWSTATE=mhttp.postencode(VIEWSTATE);
+
+        //var submit = "__VIEWSTATE=" + VIEWSTATE+"&__EVENTTARGET=xqd&xnd="+OnlineConfig.get(key: "schedule_xuenian")+"&xqd="+OnlineConfig.get(key: "schedule_xueqi")
+        var submit = "__VIEWSTATE=" + VIEWSTATE+"&__EVENTTARGET=xqd&xnd="+year+"&xqd="+semester
+        
+        
+        text_web=try mhttp.post(mhttp.urlencode(url_kebiao), submit)
         let mschedule=getschedule(data: text_web)
         mdb.importclass(data: mschedule)
         let mchange=getchange(data: text_web)

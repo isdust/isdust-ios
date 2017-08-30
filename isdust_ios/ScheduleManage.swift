@@ -115,6 +115,10 @@ class ScheduleManage{
     }
     func importclass(data:[Dictionary<String,Any>]){
         for i in data{
+            if(i.count==3)            {
+                continue;
+
+            }
             let mteacher:String=i["teacher"] as! String
             let mclass:String=i["class"] as! String
             let mlocation:String=i["location"] as! String

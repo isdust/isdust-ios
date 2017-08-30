@@ -107,7 +107,7 @@ class ViewControllerEducationSchedule: UIViewController,UIScrollViewDelegate,Vie
         do{
 //        try mzhengfang.JumpToSelectClass()
         manager.droptable()
-        try mzhengfang.ScheduleLookup_zhengfang()
+        try mzhengfang.ScheduleLookup_zhengfang(OnlineConfig.get(key: "schedule_xuenian"),OnlineConfig.get(key: "schedule_xueqi"))
 //        self.performSelector(onMainThread: Selector(("schedule_download_progress")), with: i, waitUntilDone: false, modes: nil)
         
         
