@@ -331,10 +331,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				751FB4081F564EC00043E7B8 /* libz.tbd in Frameworks */,
+				751FB40A1F564EED0043E7B8 /* CFNetwork.framework in Frameworks */,
 				751FB40E1F564F2F0043E7B8 /* libc++.tbd in Frameworks */,
 				751FB40C1F564F0F0043E7B8 /* JavaScriptCore.framework in Frameworks */,
-				751FB40A1F564EED0043E7B8 /* CFNetwork.framework in Frameworks */,
-				751FB4081F564EC00043E7B8 /* libz.tbd in Frameworks */,
 				756EF86C1D90FE2F009B78BF /* libsqlite3.0.tbd in Frameworks */,
 				756EF8691D90FE00009B78BF /* CoreTelephony.framework in Frameworks */,
 				75AF0A4C1D6C91D900E755C2 /* FMDB.framework in Frameworks */,
