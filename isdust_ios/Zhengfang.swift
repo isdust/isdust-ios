@@ -210,18 +210,25 @@ class Zhengfang{
     }
     func ScheduleLookup_zhengfang(_ year:String,_ semester:String)throws {
         var mdb=ScheduleManage()
-        var text_web=try mhttp.get(mhttp.urlencode(url_kebiao))
-        var VIEWSTATE = try getMiddleText(text_web, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
+        var text_web1=try mhttp.get(mhttp.urlencode(url_kebiao))
+        var VIEWSTATE = try getMiddleText(text_web1, "<input type=\"hidden\" name=\"__VIEWSTATE\" value=\"", "\" />")
         VIEWSTATE=mhttp.postencode(VIEWSTATE);
 
         //var submit = "__VIEWSTATE=" + VIEWSTATE+"&__EVENTTARGET=xqd&xnd="+OnlineConfig.get(key: "schedule_xuenian")+"&xqd="+OnlineConfig.get(key: "schedule_xueqi")
         var submit = "__VIEWSTATE=" + VIEWSTATE+"&__EVENTTARGET=xqd&xnd="+year+"&xqd="+semester
         
         
-        text_web=try mhttp.post(mhttp.urlencode(url_kebiao), submit)
-        let mschedule=getschedule(data: text_web)
+        var text_web2=try mhttp.post(mhttp.urlencode(url_kebiao), submit)
+        var mschedule=getschedule(data: text_web2)
+        var mchange=getchange(data: text_web2)
+        
+        if(mschedule.count==0){
+            mschedule=getschedule(data: text_web1)
+            mchange=getchange(data: text_web1)
+        }
+        
         mdb.importclass(data: mschedule)
-        let mchange=getchange(data: text_web)
+
         for i in mchange{
             
             if(i.keys.contains("old")){
